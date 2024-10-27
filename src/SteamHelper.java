@@ -1,17 +1,20 @@
 public class SteamHelper {
     private final String apiKey;
 
-    private SteamHelper(String apiKey) {
+    private SteamHelper() {
         //No share!
         this.apiKey = "insert apiKey here.";
     }
 
-    public static void getAppid(){
+    public static int getAppid(String name){
         //implement
+
+        return 0;
     };
 
-    public static void getGameinfo(){
+    public static String getGameinfo(String title, String type){
         //implement
+        return "";
     };
 
 
