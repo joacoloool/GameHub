@@ -9,7 +9,7 @@ public abstract class Game {
     protected int id;
     protected String title;
     protected String description = "";
-    protected Boolean favorite = false;
+    protected boolean favorite = false;
     protected Genre genre;
     protected Time lastTime;
     protected int playCount = 0;
@@ -50,7 +50,7 @@ public abstract class Game {
         this.description = description;
     }
 
-    public Boolean getFavorite() {
+    public boolean getFavorite() {
         return favorite;
     }
 
