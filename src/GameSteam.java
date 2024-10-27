@@ -7,6 +7,6 @@ public class GameSteam extends Game{
 
     public GameSteam(File path) {
         super(path);
-        this.appid = SteamHelper.getAppid(title);
+        this.appid = SteamHelper.getAppid(path.getParentFile());
     }
 }

@@ -20,6 +20,9 @@ public class main {
         System.out.println(user.getGame(1).getTitle());
         System.out.println(user.getGame(2).getTitle());
        // user.getGame(1).run();
+        user.getGame(0).run();
+        System.out.println(user.getGame(2).getLastTime());
+        System.out.println(user.getGame(2).getPlayCount());
 
 
 

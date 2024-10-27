@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class SteamHelper {
     private final String apiKey;
 
@@ -6,8 +8,9 @@ public class SteamHelper {
         this.apiKey = "insert apiKey here.";
     }
 
-    public static int getAppid(String name){
-        //implement
+    public static int getAppid(File path){
+
+    File appid = new File(path,"steam_appid.txt"); //Implement
 
         return 0;
     };
