@@ -14,5 +14,6 @@ public enum Genre {
     MUSIC,
     MOBA,
     SANDBOX,
-    RTS
+    RTS,
+    INDIE,
     }
