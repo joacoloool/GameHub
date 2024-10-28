@@ -3,7 +3,11 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
@@ -14,7 +18,7 @@ public abstract class Game {
     protected String description = "";
     protected boolean favorite = false;
     protected Genre genre;
-    protected Time lastTime;
+    protected Timestamp lastTime;
     protected int playCount = 0;
     protected File path;
     protected static int countID = 0;
@@ -27,7 +31,7 @@ public abstract class Game {
         this.path = path;
         this.title = getPathTitle(); //Si no se especifica el nombre, se guarda como nombre el identificador del archivo.
         this.icon = extractIcon(); //DEBUG
-
+        this.lastTime =Timestamp.valueOf(LocalDateTime.now());
     }
 
     public Game(String title, File path) {
@@ -35,6 +39,7 @@ public abstract class Game {
         this.path = path;
         this.title = title;
         this.icon = extractIcon(); //DEBUG
+        this.lastTime = Timestamp.valueOf(LocalDateTime.now());
     }
 
     //Getters and setters
@@ -71,11 +76,12 @@ public abstract class Game {
         this.genre = genre;
     }
 
-    public Time getLastTime() {
+
+    public Timestamp getLastTime() {
         return lastTime;
     }
 
-    public void setLastTime(Time lastTime) {
+    public void setLastTime(Timestamp lastTime) {
         this.lastTime = lastTime;
     }
 
@@ -140,7 +146,7 @@ public abstract class Game {
             Desktop.getDesktop().open(path);
 
             playCount++;
-            lastTime = Time.valueOf(LocalTime.now());
+            lastTime =  Timestamp.valueOf(LocalDateTime.now());
         } catch (IOException e) {
             System.out.println(e.getMessage() + "No se encontró la ubicación del archivo en el sistema.");
         }
@@ -153,9 +159,6 @@ public abstract class Game {
             System.out.println(e.getMessage() + "No se encontró la ubicación del archivo en el sistema.");
         }
     }
-
-
-
 
 
     //DEBUG
@@ -172,4 +175,4 @@ public abstract class Game {
         return new ImageIcon(scaledImg); // Devolver el ícono escalado
     }
 
-    }
+}

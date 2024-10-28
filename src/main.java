@@ -32,6 +32,24 @@ public class main {
 
 
 
+        //Testeos de Sort
+
+        user.sortName();
+        user.sortLastTime();
+        user.getGame(0).setFavorite(true);
+        user.sortFavorite();
+        user.getGame(1).setPlayCount(4);
+        user.getGame(0).setPlayCount(2);
+        user.getGame(2).setPlayCount(10);
+        user.sortPlayCount();
+
+
+        for (Game g : user.getGames()) {
+            System.out.println(g.getTitle());
+            System.out.println(g.getPlayCount());
+            System.out.println(g.getLastTime());
+            System.out.println(g.getFavorite());
+        }
 
 
 

@@ -1,9 +1,8 @@
-import I.ListHelper;
 import I.SortTool;
 
 import java.util.ArrayList;
 
-public class Manager implements ListHelper<User>, SortTool<User> {
+public class Manager {
 
     protected ArrayList<User> users;
 
@@ -35,41 +34,5 @@ public class Manager implements ListHelper<User>, SortTool<User> {
 
     public void modify() {
         //implement
-    }
-
-
-    @Override
-    public void delete(User user) {
-
-    }
-
-    @Override
-    public void add(User user) {
-
-    }
-
-    @Override
-    public void sortType(User user) {
-
-    }
-
-    @Override
-    public void sortFavorite(User user) {
-
-    }
-
-    @Override
-    public void sortLastTime(User user) {
-
-    }
-
-    @Override
-    public void sortPlayCount(User user) {
-
-    }
-
-    @Override
-    public void groupGenre(User user) {
-
     }
 }

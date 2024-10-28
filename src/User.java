@@ -1,9 +1,9 @@
-import I.ListHelper;
 import I.SortTool;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class User implements ListHelper<Game>, SortTool<Game> {
+public class User implements SortTool<Game> {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name;
@@ -42,6 +42,16 @@ public class User implements ListHelper<Game>, SortTool<Game> {
 
     //Methods
 
+    public void add(Game game) {
+        gameList.add(game);
+    }
+
+    public void remove(Game game) {
+        gameList.remove(game);
+    }
+
+
+
     public void modifyGame(){
         //implement
     };
@@ -57,40 +67,22 @@ public class User implements ListHelper<Game>, SortTool<Game> {
     }
 
     @Override
-    public void sortType(Game game) {
-
+    public void sortName() {
+        gameList.sort(Comparator.comparing(Game::getTitle));
     }
 
     @Override
-    public void sortFavorite(Game game) {
-
+    public void sortFavorite() {
+        gameList.sort(Comparator.comparing(Game::getFavorite).reversed());
     }
 
     @Override
-    public void sortLastTime(Game game) {
-
+    public void sortLastTime() {
+        gameList.sort(Comparator.comparing(Game::getLastTime));
     }
 
     @Override
-    public void sortPlayCount(Game game) {
-
-    }
-
-    @Override
-    public void groupGenre(Game game) {
-
-    }
-
-
-    @Override
-    public void delete(Game game) {
-        gameList.remove(game);
-
-    }
-
-    @Override
-    public void add(Game game) {
-        gameList.add(game);
-
+    public void sortPlayCount() {
+    gameList.sort(Comparator.comparing(Game::getPlayCount).reversed());
     }
 }
