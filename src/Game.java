@@ -22,14 +22,12 @@ public abstract class Game {
         this.id = countID++;
         this.path = path;
         this.title = getPathTitle();
-        this.description = SteamHelper.getGameinfo(title, "Description");
     }
 
     public Game(String title,File path) {
         this.id = countID++;
         this.path = path;
         this.title = title;
-        this.description = SteamHelper.getGameinfo(title, "Description");
     }
 
     //Getters and setters
