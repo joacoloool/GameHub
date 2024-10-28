@@ -15,4 +15,5 @@ public enum Genre {
     MOBA,
     SANDBOX,
     RTS,
+    INDIE,
     }

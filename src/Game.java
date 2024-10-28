@@ -1,3 +1,5 @@
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -16,20 +18,23 @@ public abstract class Game {
     protected int playCount = 0;
     protected File path;
     protected static int countID = 0;
+    protected Icon icon; //DEBUG
 
     //Constructors
 
     public Game(File path) {
         this.id = countID++;
         this.path = path;
-        this.title = getPathTitle();
+        this.title = getPathTitle(); //Si no se especifica el nombre, se guarda como nombre el identificador del archivo.
+        this.icon = extractIcon(); //DEBUG
 
     }
 
-    public Game(String title,File path) {
+    public Game(String title, File path) {
         this.id = countID++;
         this.path = path;
         this.title = title;
+        this.icon = extractIcon(); //DEBUG
     }
 
     //Getters and setters
@@ -98,6 +103,22 @@ public abstract class Game {
         return id;
     }
 
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
+    }
+
     //Methods
 
 
@@ -117,6 +138,7 @@ public abstract class Game {
 
         try {
             Desktop.getDesktop().open(path);
+
             playCount++;
             lastTime = Time.valueOf(LocalTime.now());
         } catch (IOException e) {
@@ -133,4 +155,21 @@ public abstract class Game {
     }
 
 
-}
+
+
+
+    //DEBUG
+    private Icon extractIcon() {
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        Icon icon = fsv.getSystemIcon(path);
+
+        return upscaleIcon(icon);
+    }
+
+    private Icon upscaleIcon(Icon icon) {
+        Image img = ((ImageIcon) icon).getImage();
+        Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImg); // Devolver el ícono escalado
+    }
+
+    }

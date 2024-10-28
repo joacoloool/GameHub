@@ -32,6 +32,7 @@ public class Manager implements ListHelper<User>, SortTool<User> {
     public void addUser(User user) {
         users.add(user);
     }
+
     public void modify() {
         //implement
     }
