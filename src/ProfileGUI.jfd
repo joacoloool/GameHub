@@ -1,0 +1,141 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "21.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par t {seq {space :p:170:p, par t {comp panel3::t:::x, seq t {space :0:16:x, par l:::p {comp panel6::t:::x, comp list6::t::773:x}}}}, seq l {space :p:187:p, par l:::p {comp panel5::t:::x, comp panel4::t:::x}}}, par l {seq t {space s:::x, comp panel2:::p::p, space :p:19:p}, seq l {space :p:38:p, par l {comp button4:::p:212:p, comp button6:::p:110:p}, space :::x}}}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :p:91:p, comp button4:::p:70:p, space :p:20:p, comp button6:::p:43:p}, comp panel3::l:p::p}, space :p:18:p, par l {comp panel2:::::x, seq {comp panel5:::p:34:p, space :p:3:p, comp panel4:::p::p, space s:::p, comp panel6:::p:34:p, space :::p, comp list6:::p:153:p, space :0:2:x}}, space :::p}}"
+		} ) {
+			name: "panel1"
+			"background": new java.awt.Color( 53, 60, 63, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par l {comp label7::l:p:80:p, comp textArea3::l:p::p, comp label6::l:p:61:p, comp list4::l:p:221:p, par t:l::p {comp list5::l::184:x, comp button7::l::184:x}}, space ::44:x}}"
+				"$verticalGroup": "par l {seq l {space :p:8:p, comp label7:::p:29:p, space s:::p, comp textArea3:::p::p, space :::p, comp list5:::p:90:p, space :::p, comp button7:::p:43:p, space ::19:x, comp label6:::p:39:p, space :::p, comp list4:::p:153:p, space :p:17:p}}"
+			} ) {
+				name: "panel2"
+				"border": new javax.swing.border.EtchedBorder( 1, null, null )
+				"background": new java.awt.Color( 38, 45, 50, 255 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button7"
+					"text": "Juegos"
+				} )
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list4"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "amigos"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "En Linea"
+					"font": new java.awt.Font( "Leelawadee UI", 0, 18 )
+					"foreground": new java.awt.Color( 80, 190, 234, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea3"
+					"text": "Insignias"
+				} )
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list5"
+					"visibleRowCount": 4
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:16:p, comp button3:::p:198:p, space :::p, par l {comp scrollPane6:::p:107:p, comp scrollPane7:::p:526:p}, space ::43:x}}"
+				"$verticalGroup": "par l {seq {par l {seq {space :p:25:p, comp button3:::p:180:p}, seq l {space :p:50:p, comp scrollPane6:::p::p, space :::p, comp scrollPane7:::p:162:p}}, space ::22:x}}"
+			} ) {
+				name: "panel3"
+				"background": new java.awt.Color( 53, 60, 63, 255 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "profile Image"
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane6"
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textPane1"
+						"text": "ProfileName"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane7"
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textPane2"
+						"text": "Description"
+						"background": new java.awt.Color( 0, 0, 0, 13 )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Insignia destacada"
+				"border": sfield com.jgoodies.forms.factories.Borders DIALOG_BORDER
+				"background": new java.awt.Color( 43, 45, 48, 156 )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {comp label4:::p:133:p, space :0:0:x}, seq l {space :::p, comp button5:::p:260:p, space ::333:x, par l {seq t {comp scrollPane9:::p::p, space :p:20:p}, seq t {comp scrollPane8:::p:107:p, space :p:46:p}}}}"
+				"$verticalGroup": "par l {seq l {comp label4:::p:39:p, space :::p, par t:::p {comp button5:::p:96:p, seq {comp scrollPane8:::p::p, space :::x, comp scrollPane9:::p::p}}, space ::59:x}}"
+			} ) {
+				name: "panel4"
+				"border": new javax.swing.border.SoftBevelBorder( 1, null, null, null, null )
+				"background": new java.awt.Color( 26, 29, 32, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "most played game"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button5"
+					"text": "most played game"
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane8"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "textArea1"
+						"text": "Veces abierto"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane9"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "textArea2"
+						"text": "Ultima vez abierto"
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button6"
+				"text": "modificar perfil"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:14:p, comp label8:::p:132:p, space ::626:x}}"
+				"$verticalGroup": "par l {seq t {space :0:0:x, comp label8:::p:39:p}}"
+			} ) {
+				name: "panel5"
+				"background": &Color0 new java.awt.Color( 57, 72, 74, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label8"
+					"text": "Actividad Reciente"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:14:p, comp label9:::p:132:p, space ::627:x}}"
+				"$verticalGroup": "par l {seq t {space :0:0:x, comp label9:::p:39:p}}"
+			} ) {
+				name: "panel6"
+				"background": #Color0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "Comentarios"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JList" ) {
+				name: "list6"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1270, 745 )
+		} )
+	}
+}
