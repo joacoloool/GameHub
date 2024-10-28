@@ -6,6 +6,7 @@ import java.time.LocalTime;
 
 
 public abstract class Game {
+
     protected int id;
     protected String title;
     protected String description = "";
@@ -22,6 +23,7 @@ public abstract class Game {
         this.id = countID++;
         this.path = path;
         this.title = getPathTitle();
+
     }
 
     public Game(String title,File path) {

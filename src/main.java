@@ -25,9 +25,20 @@ public class main {
         //System.out.println(user.getGame(2).getPlayCount());
 
         if (user.getGame(0) instanceof GameSteam){
+            System.out.println(((GameSteam) user.getGame(0)).getAppid());
+            System.out.println(SteamHelper.getGameInfo("1062090","description"));
+            System.out.println(SteamHelper.getGameInfo("1062090","image"));
+            System.out.println(SteamHelper.getGameInfo("1062090","header"));
+            System.out.println(SteamHelper.getGameInfo("1062090","release"));
+            System.out.println(SteamHelper.getGameInfo("1062090","genre"));
+
+
+
+            System.out.println(((GameSteam) user.getGame(0)).getUrl());
+
 
         }
-        (GameSteam)user.getGame(0).getAp();
+
 
 
 
