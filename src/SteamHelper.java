@@ -66,7 +66,7 @@ public class SteamHelper {
                             .split("}")[0];
 
 
-                //Este lo hice con chatgpt.
+                //Este lo hice con chatgp.
                 case "genre":
                     String genreData = jsonResponse.replaceAll("\"", "").split("genres:")[1].split("]")[0].trim();
                     List<String> foundGenres = new ArrayList<>();
