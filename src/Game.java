@@ -1,19 +1,18 @@
+import E.Genre;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 
-public abstract class Game {
 
-    protected int id;
+public class Game {
+
+    protected int id = 0;
     protected String title;
     protected String description = "";
     protected boolean favorite = false;
@@ -23,23 +22,52 @@ public abstract class Game {
     protected File path;
     protected static int countID = 0;
     protected Icon icon; //DEBUG
+    protected String appid = "";
+    protected String appidIGDB = "";
+    protected String url = "";
+    protected String releaseDate = "";
+
+    //Pictures
+
+    protected String header = "";
+    protected String image = "";
 
     //Constructors
 
     public Game(File path) {
-        this.id = countID++;
         this.path = path;
-        this.title = getPathTitle(); //Si no se especifica el nombre, se guarda como nombre el identificador del archivo.
-        this.icon = extractIcon(); //DEBUG
-        this.lastTime =Timestamp.valueOf(LocalDateTime.now());
-    }
-
-    public Game(String title, File path) {
         this.id = countID++;
-        this.path = path;
-        this.title = title;
+        this.title = getPathTitle();
+        this.appid = SteamHelper.getAppid(title);
         this.icon = extractIcon(); //DEBUG
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
+        this.appidIGDB = IGDBHelper.getAppid(title);
+
+        if (!appid.isEmpty()){
+            generateSteamData();
+        }
+        else if (!appidIGDB.isEmpty()){
+            generateIGDBData();
+        }
+    }
+
+    public Game(File path,String title) {
+        this.path = path;
+        this.id = countID++;
+        this.title = title;
+        this.appid = SteamHelper.getAppid(title);
+        this.appidIGDB = IGDBHelper.getAppid(title);
+
+        this.icon = extractIcon(); //DEBUG
+        this.lastTime = Timestamp.valueOf(LocalDateTime.now());
+
+        if (!appid.isEmpty()){
+            generateSteamData();
+        }
+        else if (!appidIGDB.isEmpty()){
+            generateIGDBData();
+        }
+
     }
 
     //Getters and setters
@@ -125,13 +153,13 @@ public abstract class Game {
         this.icon = icon;
     }
 
-    //Methods
+    public void setAppid(String appid){this.appid = appid;}
 
+    //Methods
 
     public String getPathTitle() {
 
         String fileName = path.getName(); //Obtenemos el nombre del archivo
-
         if (fileName.contains(".")) { //Si el nombre contiene un punto entonces =
             int dotIndex = fileName.lastIndexOf('.'); //Guardamos el index de donde se encontró el punto
             return fileName.substring(0, dotIndex); //Retornamos lo que hay en el string antes del punto
@@ -141,10 +169,8 @@ public abstract class Game {
     }
 
     public void run() {
-
         try {
             Desktop.getDesktop().open(path);
-
             playCount++;
             lastTime =  Timestamp.valueOf(LocalDateTime.now());
         } catch (IOException e) {
@@ -160,7 +186,30 @@ public abstract class Game {
         }
     }
 
+    private void generateSteamData (){
 
+            this.description = SteamHelper.getGameInfo(appid,"description");
+           // this.genre = Genre.valueOf(SteamHelper.getGameInfo(appid,"genre"));
+            this.title = SteamHelper.getGameInfo(appid,"name");
+            this.url = generateSteamURL();
+            this.releaseDate = SteamHelper.getGameInfo(appid,"release");
+
+            //Pictures
+            this.header = SteamHelper.getGameInfo(appid,"header");
+            this.image = SteamHelper.getGameInfo(appid,"image");
+    }
+
+    private void generateIGDBData (){
+
+        this.description = IGDBHelper.getGameInfo(appidIGDB,"description");
+        this.title = IGDBHelper.getGameInfo(appidIGDB,"name");
+        this.url = generateIGDBURL();
+        this.releaseDate = IGDBHelper.getGameInfo("137989","release");
+
+        //Pictures
+        this.header = SteamHelper.getGameInfo(appid,"header");
+        this.image = SteamHelper.getGameInfo(appid,"image");
+    }
     //DEBUG
     private Icon extractIcon() {
         FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -175,4 +224,33 @@ public abstract class Game {
         return new ImageIcon(scaledImg); // Devolver el ícono escalado
     }
 
+    private String generateSteamURL(){
+        return "https://store.steampowered.com/app/" + appid;
+    }
+
+    private String generateIGDBURL(){
+        return "https://www.igdb.com/games/" + title;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", favorite=" + favorite +
+                ", genre=" + genre +
+                ", lastTime=" + lastTime +
+                ", playCount=" + playCount +
+                ", path=" + path +
+                ", icon=" + icon +
+                ", appid='" + appid + '\'' +
+                ", url='" + url + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", header='" + header + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

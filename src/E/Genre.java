@@ -1,4 +1,7 @@
+package E;
+
 public enum Genre {
+
     ACTION,
     ADVENTURE,
     RPG,
@@ -16,4 +19,5 @@ public enum Genre {
     SANDBOX,
     RTS,
     INDIE,
+    UNKNOWN,
     }

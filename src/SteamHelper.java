@@ -1,3 +1,4 @@
+import E.Genre;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,85 +12,87 @@ public class SteamHelper {
 
 
     public static String getAppid(String title) {
-
         try {
             String titleF = title.replace(" ", "+");
             String url = "https://store.steampowered.com/search/?term=" + titleF;
             Document doc = Jsoup.connect(url).get();
             Element firstResult = doc.select(".search_result_row").first();
-            String foundTitle = firstResult.select(".title").text();
 
-            if (compareLetters(foundTitle, title)) {
-                return firstResult.attr("data-ds-appid");
+            // Verifica si firstResult no es nulo
+            if (firstResult != null && !titleF.isEmpty()) {
+                String foundTitle = firstResult.select(".title").text();
+                if (compareLetters(foundTitle, title)) {
+                    return firstResult.attr("data-ds-appid");
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "";
+        return ""; // Retorna una cadena vacía si no se encuentra el appid
     }
 
     public static String getGameInfo(String appId, String infoType) {
-        try {
+        if (!appId.isEmpty()) {
+            try {
 
-            String url = "https://store.steampowered.com/api/appdetails?appids=" + appId + "&key=" + apiKey;
-            Document doc = Jsoup.connect(url).ignoreContentType(true).get();
-            String jsonResponse = doc.text();
-
-
-            switch (infoType.toLowerCase()) {
-                case "description":
-                    return jsonResponse
-                            .replaceAll("\"", "")
-                            .split("short_description:")[1]
-                            .split(",supported")[0];
-
-                case "name":
-                    return jsonResponse
-                            .replaceAll("\"", "")
-                            .split("name:")[1].split(",")[0].trim();
-
-                case "image":
-                    return jsonResponse
-                            .replaceAll("\"", "")
-                            .split("path_full:")[1].split(",")[0].trim().replace("/","").replace("\\","/");
-
-                case "header":
-                    return jsonResponse
-                            .replaceAll("\"", "")
-                            .split("header_image:")[1].split(",")[0].trim().replace("/","").replace("\\","/");
+                String url = "https://store.steampowered.com/api/appdetails?appids=" + appId + "&key=" + apiKey;
+                Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+                String jsonResponse = doc.text();
 
 
-                case "release":
-                    return jsonResponse
-                            .replaceAll("\"", "")
-                            .split("date:")[2]
-                            .split("}")[0];
+                switch (infoType.toLowerCase()) {
+                    case "description":
+                        return jsonResponse
+                                .replaceAll("\"", "")
+                                .split("short_description:")[1]
+                                .split(",supported")[0];
+
+                    case "name":
+                        return jsonResponse
+                                .replaceAll("\"", "")
+                                .split("name:")[1].split(",")[0].trim();
+
+                    case "image":
+                        return jsonResponse
+                                .replaceAll("\"", "")
+                                .split("path_full:")[1].split(",")[0].trim().replace("/", "").replace("\\", "/");
+
+                    case "header":
+                        return jsonResponse
+                                .replaceAll("\"", "")
+                                .split("header_image:")[1].split(",")[0].trim().replace("/", "").replace("\\", "/");
 
 
-                //Este lo hice con chatgp.
-                case "genre":
-                    String genreData = jsonResponse.replaceAll("\"", "").split("genres:")[1].split("]")[0].trim();
-                    List<String> foundGenres = new ArrayList<>();
+                    case "release":
+                        return jsonResponse
+                                .replaceAll("\"", "")
+                                .split("date:")[2]
+                                .split("}")[0];
 
-                    String[] genresArray = genreData.split("\\},\\{");
+                    case "genre":
+                        String genreData = jsonResponse.replaceAll("\"", "").split("genres:")[1].split("]")[0].trim();
+                        List<String> foundGenres = new ArrayList<>();
 
-                    for (String genre : genresArray) {
-                        String description = genre.split("description:")[1].split(",")[0].trim();
+                        String[] genresArray = genreData.split("\\},\\{");
 
-                        for (Genre g : Genre.values()) {
-                            if (description.equalsIgnoreCase(g.name())) {
-                                foundGenres.add(g.name());
+                        for (String genre : genresArray) {
+                            String description = genre.split("description:")[1].split(",")[0].trim();
+
+                            for (Genre g : Genre.values()) {
+                                if (description.equalsIgnoreCase(g.name())) {
+                                    foundGenres.add(g.name());
+                                }
                             }
                         }
-                    }
 
-                    return String.join(", ", foundGenres);
+                        return String.join(", ", foundGenres);
 
-                default:
-                    return "Tipo de información no soportada: " + infoType;
+                    default:
+                        return "Tipo de información no soportada: " + infoType;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return null;
     }

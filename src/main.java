@@ -1,30 +1,26 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
 
         //Testing
-        User user = new User("Joacolol");
         Manager manager = new Manager();
-        GameNoSteam game_non = new GameNoSteam(new File("F:\\Games\\Others\\Dragon Ball Sparking ZERO\\SparkingZERO.exe"));
-        GameSteam game_steam = new GameSteam(new File("E:\\SteamLibrary\\steamapps\\common\\Timberborn\\Timberborn.exe"));
-        GameNoSteam game_non2 = new GameNoSteam("Parkasaurus", new File("F:\\SteamLibrary\\steamapps\\common\\Parkasaurus\\Parkasaurus.exe"));
 
-        user.add(game_steam);
-        user.add(game_non);
-        user.add(game_non2);
+        //System.out.println(game_non2.toString());
+
+        Game game = new Game(new File("C:\\Users\\joaal\\OneDrive\\Escritorio\\Party Animals.url"));
 
 
-        System.out.println(user.getGame(0).getTitle());
-        System.out.println(user.getGame(1).getTitle());
-        System.out.println(user.getGame(2).getTitle());
+        User user = new User("Joacolool");
+        manager.addUser(user);
+        manager.users.get(0).gameList().add(game);
+        manager.users.get(0).setOpenGameCounter(1);
+        manager.verifyAchievements();
+
+
+
+
+
         // user.getGame(1).run();
         //user.getGame(2).run();
         // System.out.println(user.getGame(2).getLastTime());
@@ -34,41 +30,6 @@ public class main {
 
         //Testeos de Sort
 
-        user.sortName();
-        user.sortLastTime();
-        user.getGame(0).setFavorite(true);
-        user.sortFavorite();
-        user.getGame(1).setPlayCount(4);
-        user.getGame(0).setPlayCount(2);
-        user.getGame(2).setPlayCount(10);
-        user.sortPlayCount();
-
-
-        for (Game g : user.getGames()) {
-            System.out.println(g.getTitle());
-            System.out.println(g.getPlayCount());
-            System.out.println(g.getLastTime());
-            System.out.println(g.getFavorite());
-        }
-
-
-
-
-        //Testeos de SteamHelper
-        if (user.getGame(0) instanceof GameSteam) {
-            System.out.println(((GameSteam) user.getGame(0)).getAppid());
-            System.out.println(SteamHelper.getGameInfo("1062090", "description"));
-            System.out.println(SteamHelper.getGameInfo("1062090", "image"));
-            System.out.println(SteamHelper.getGameInfo("1062090", "header"));
-            System.out.println(SteamHelper.getGameInfo("1062090", "release"));
-            System.out.println(SteamHelper.getGameInfo("1062090", "genre"));
-
-
-            System.out.println(((GameSteam) user.getGame(0)).getUrl());
-
-
-
-        }
 
 /*
         //IMAGE DEBUG BANNER
