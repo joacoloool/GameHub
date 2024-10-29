@@ -14,6 +14,12 @@ public class User implements SortTool<Game> {
     protected Achievement favoriteAchievement;
 
 
+    public User() {
+        this.gameList = new ArrayList<>();
+        this.feed = new Feed();
+        this.friends = new TreeSet<>();
+        this.myAchievements = new ArrayList<>();
+    }
 
     public User(String name) {
         this.name = name;
@@ -77,9 +83,37 @@ public class User implements SortTool<Game> {
         this.description = description;
     }
 
+    public ArrayList<Achievement> getMyAchievements(){
+        return myAchievements;
+    }
+    public void setMyAchievements(){this.myAchievements = myAchievements;}
+    public Achievement getFavoriteAchievement() { return favoriteAchievement; }
+    public void setFavoriteAchievement(){this.myAchievements.add(favoriteAchievement);}
 
+    public ArrayList<Game> getGameList() {
+        return gameList;
+    }
 
-    //Methods
+    public void setGameList(ArrayList<Game> gameList) {
+        this.gameList = gameList;
+    }
+
+    public int getOpenGameCounter() {
+        return openGameCounter;
+    }
+
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
+
+    public void setFriends(TreeSet<Integer> friends) {
+        this.friends = friends;
+    }
+
+    public void setMyAchievements(ArrayList<Achievement> myAchievements) {
+        this.myAchievements = myAchievements;
+    }
+//Methods
 
     public int getCountGame()
     {

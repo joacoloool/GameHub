@@ -24,6 +24,8 @@ public class Feed {
         }
     }
 
+
+
     public void deletePost(int i) {
         try {
             posts.remove(i);

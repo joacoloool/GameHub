@@ -69,8 +69,63 @@ public class Game {
         }
 
     }
-
+    public Game() {
+    }
     //Getters and setters
+
+
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getAppidIGDB() {
+        return appidIGDB;
+    }
+
+    public void setAppidIGDB(String appidIGDB) {
+        this.appidIGDB = appidIGDB;
+    }
+
+    public String getAppid() {
+        return appid;
+    }
+
+    public static void setCountID(int countID) {
+        Game.countID = countID;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

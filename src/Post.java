@@ -44,6 +44,12 @@ public class Post {
         this.fav = fav;
     }
 
+    public boolean getFav(){
+        return fav;
+    }
+
+
+
     /// Methods
 
     @Override

@@ -19,6 +19,9 @@ public class Achievement{
         count++;
     }
 
+    public Achievement() {
+    }
+
     public boolean checkCondition(int valueCondition){
         if (valueCondition == condition)
         {
@@ -44,6 +47,18 @@ public class Achievement{
     }
     public int getId() {
         return id;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Achievement.count = count;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     //Setters

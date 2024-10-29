@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Manager {
 
     protected ArrayList<User> users;
-        protected HashMap <AchievType,ArrayList<Achievement>> achievement;
+    protected HashMap <AchievType,ArrayList<Achievement>> achievement;
 
 
     //Constructors
@@ -93,6 +93,14 @@ public class Manager {
         achievement.put(AchievType.GAMES,Games);
         achievement.put(AchievType.POSTS,Posts);
 
+    }
+
+    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {
+        this.achievement = achievement;
     }
 
     public void verifyAchievements()
