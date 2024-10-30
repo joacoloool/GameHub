@@ -1,7 +1,10 @@
+import java.util.HashSet;
+
 public class Post {
     protected String message;
     protected int likes = 0;
     protected boolean fav = false;
+    private HashSet<Integer> usersWhoLiked;
 
     public Post(String message, int likes, boolean fav) {
         this.message = message;
@@ -11,9 +14,11 @@ public class Post {
 
     public Post(String message) {
         this.message = message;
+        this.usersWhoLiked = new HashSet<>();
     }
 
     public Post() {
+        this.usersWhoLiked = new HashSet<>();
     }
 
     public String getMessage() {
@@ -46,6 +51,16 @@ public class Post {
 
     public boolean getFav(){
         return fav;
+    }
+
+    public void likePost(int userId) {
+        if (usersWhoLiked.contains(userId)) {
+            usersWhoLiked.remove(userId);
+            likes--;
+        } else {
+            usersWhoLiked.add(userId);
+            likes++;
+        }
     }
 
 

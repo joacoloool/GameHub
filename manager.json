@@ -1,0 +1,324 @@
+{
+  "achievement": [
+    {
+      "condition": 1,
+      "name": "Newbie",
+      "count": 17,
+      "description": "Add your first Steam game.",
+      "id": 5,
+      "type": "GAMES"
+    },
+    {
+      "condition": 10,
+      "name": "Empezando el Vicio",
+      "count": 17,
+      "description": "Get 10 Steam games.",
+      "id": 6,
+      "type": "GAMES"
+    },
+    {
+      "condition": 50,
+      "name": "Ballena Jr.",
+      "count": 17,
+      "description": "Reach 50 Steam games.",
+      "id": 7,
+      "type": "GAMES"
+    },
+    {
+      "condition": 100,
+      "name": "Biblioteca Insana",
+      "count": 17,
+      "description": "Get to 100 games.",
+      "id": 8,
+      "type": "GAMES"
+    },
+    {
+      "condition": 200,
+      "name": "Archivador Supremo",
+      "count": 17,
+      "description": "Reach 200 games.",
+      "id": 9,
+      "type": "GAMES"
+    },
+    {
+      "condition": 500,
+      "name": "Fachabiblioteca",
+      "count": 17,
+      "description": "Surpass 500 games.",
+      "id": 10,
+      "type": "GAMES"
+    },
+    {
+      "condition": 1,
+      "name": "Primer Bait",
+      "count": 17,
+      "description": "Create your first post.",
+      "id": 11,
+      "type": "POSTS"
+    },
+    {
+      "condition": 10,
+      "name": "Baitmaster",
+      "count": 17,
+      "description": "Reach 10 posts.",
+      "id": 12,
+      "type": "POSTS"
+    },
+    {
+      "condition": 50,
+      "name": "Mini Influencer",
+      "count": 17,
+      "description": "Get to 50 posts.",
+      "id": 13,
+      "type": "POSTS"
+    },
+    {
+      "condition": 100,
+      "name": "Forero Facha",
+      "count": 17,
+      "description": "Publish 100 posts.",
+      "id": 14,
+      "type": "POSTS"
+    },
+    {
+      "condition": 500,
+      "name": "Foro Sensei",
+      "count": 17,
+      "description": "Reach 500 posts.",
+      "id": 15,
+      "type": "POSTS"
+    },
+    {
+      "condition": 1000,
+      "name": "Taringuero",
+      "count": 17,
+      "description": "Surpass 1000 posts.",
+      "id": 16,
+      "type": "POSTS"
+    },
+    {
+      "condition": 1,
+      "name": "Dame Masa",
+      "count": 17,
+      "description": "Open your first game and start the adventure!",
+      "id": 0,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 10,
+      "name": "Casi Main",
+      "count": 17,
+      "description": "Open any game 10 times.",
+      "id": 1,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 50,
+      "name": "Tryhard",
+      "count": 17,
+      "description": "Open a game 50 times.",
+      "id": 2,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 100,
+      "name": "Full Vicio",
+      "count": 17,
+      "description": "Open games 100 times in total.",
+      "id": 3,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 500,
+      "name": "Gordo Virgo",
+      "count": 17,
+      "description": "Open a game 500 times.",
+      "id": 4,
+      "type": "CPLAYS"
+    }
+  ],
+  "users": [
+    {
+      "feed": {"posts": [{
+        "fav": false,
+        "message": "HelloWorld",
+        "likes": 4
+      }]},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [
+        {
+          "lastTime": "2024-10-29 23:58:29.1621157",
+          "appidIGDB": "",
+          "releaseDate": "",
+          "description": "",
+          "title": "PlayRDR",
+          "url": "",
+          "playCount": 0,
+          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
+          "appid": "",
+          "genre": "UNKNOWN",
+          "id": 1,
+          "favorite": false,
+          "countID": 4
+        },
+        {
+          "lastTime": "2024-10-29 23:58:31.4065315",
+          "appidIGDB": "",
+          "releaseDate": "",
+          "description": "",
+          "title": "PlayRDR",
+          "url": "",
+          "playCount": 0,
+          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
+          "appid": "",
+          "genre": "UNKNOWN",
+          "id": 2,
+          "favorite": false,
+          "countID": 4
+        },
+        {
+          "lastTime": "2024-10-29 23:58:32.5898717",
+          "appidIGDB": "",
+          "releaseDate": "",
+          "description": "",
+          "title": "PlayRDR",
+          "url": "",
+          "playCount": 0,
+          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
+          "appid": "",
+          "genre": "UNKNOWN",
+          "id": 3,
+          "favorite": false,
+          "countID": 4
+        }
+      ],
+      "id": 0,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 1,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 2,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 3,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 4,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 5,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 6,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 7,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 8,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 9,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 10,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 11,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    }
+  ]
+}

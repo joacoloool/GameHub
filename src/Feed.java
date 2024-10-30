@@ -24,6 +24,17 @@ public class Feed {
         }
     }
 
+    public void likePost(int postIndex, int userId) {
+        try {
+            posts.get(postIndex).likePost(userId);
+            System.out.println("Post actualizado: " + posts.get(postIndex).getMessage() + " - Likes: " + posts.get(postIndex).getLikes());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("El índice proporcionado es inválido.");
+        } catch (NullPointerException e) {
+            System.out.println("La lista de posts no ha sido inicializada.");
+        }
+    }
+
 
 
     public void deletePost(int i) {
@@ -46,6 +57,8 @@ public class Feed {
     }
 
     // ------------------------------------------------------------
+
+
     public void likePost(int i) {
         // ponerle una restriccion para que solo pueda dar 1 like
         try {
@@ -55,7 +68,6 @@ public class Feed {
         } catch (NullPointerException e) {
             System.out.println("La lista de posts no ha sido inicializada.");
         }
-
     }
 
     public void dislikePost(int i) {

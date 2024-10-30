@@ -1,26 +1,46 @@
+import org.json.JSONObject;
 import java.io.File;
+import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
 
         //Testing
-        Manager manager = new Manager();
+        //Manager manager = new Manager();
+        Manager manager = JsonUtil.leerManager();
 
         //System.out.println(game_non2.toString());
 
-        Game game = new Game(new File("C:\\Users\\joaal\\OneDrive\\Escritorio\\Party Animals.url"));
-
-
         User user = new User("Joacolool");
+        User user2 = new User("Tom");
         manager.addUser(user);
-        manager.users.get(0).gameList().add(game);
-        manager.users.get(0).setOpenGameCounter(1);
+        manager.addUser(user2);
+
+
         manager.verifyAchievements();
 
 
 
+        ArrayList<Game> games = new ArrayList<>();
 
 
+
+       // System.out.println(games.toString());
+
+        manager.getUsers().getFirst().feed.createPost("HelloWorld");
+        manager.getUsers().getFirst().feed.likePost(0);
+        manager.getUsers().getFirst().feed.likePost(0);
+        manager.getUsers().getFirst().feed.likePost(0);
+        manager.getUsers().getFirst().feed.likePost(0);
+        System.out.println(manager.getUsers().getFirst().feed.posts.toString());
+
+
+      JsonUtil.sobreescribir("manager.json",JsonUtil.ManagerToJSONObject(manager));
+
+        for (int i=0;i<manager.users.get(0).gameList.size();i++) {
+            System.out.println(manager.users.get(0).gameList.get(i).getId());
+            System.out.println(manager.users.get(0).gameList.get(i).toString()+"\n");
+        }
         // user.getGame(1).run();
         //user.getGame(2).run();
         // System.out.println(user.getGame(2).getLastTime());

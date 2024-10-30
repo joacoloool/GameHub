@@ -31,7 +31,7 @@ public class IGDBHelper {
                 return String.valueOf(jsonArray.getJSONObject(0).getInt("id"));
             }
         }
-        return null; // Retorna null si no se encuentra el ID
+        return ""; // Retorna null si no se encuentra el ID
     }
 
     public static String getGameInfo(String gameId, String infoType) {
@@ -76,7 +76,7 @@ public class IGDBHelper {
                 }
             }
         }
-        return null;
+        return "";
     }
 
 
@@ -108,7 +108,7 @@ public class IGDBHelper {
         } catch (Exception e) {
             System.err.println("Excepción al obtener el token de acceso: " + e.getMessage());
         }
-        return null; // Retorna null si ocurre algún error
+        return ""; // Retorna null si ocurre algún error
     }
 
     // Logica para generar una conexion
@@ -155,7 +155,7 @@ public class IGDBHelper {
         } catch (Exception e) {
             System.err.println("Excepción al ejecutar la consulta: " + e.getMessage());
         }
-        return null; // Retorna null si ocurre algún error
+        return ""; // Retorna null si ocurre algún error
     }
 
 

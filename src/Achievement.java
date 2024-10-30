@@ -20,6 +20,8 @@ public class Achievement{
     }
 
     public Achievement() {
+        this.id = count;
+        count++;
     }
 
     public boolean checkCondition(int valueCondition){

@@ -12,15 +12,15 @@ import java.time.LocalDateTime;
 
 public class Game {
 
-    protected int id = 0;
+    protected int id;
     protected String title;
     protected String description = "";
     protected boolean favorite = false;
-    protected Genre genre;
+    protected Genre genre = Genre.UNKNOWN;
     protected Timestamp lastTime;
     protected int playCount = 0;
     protected File path;
-    protected static int countID = 0;
+    protected static int countID = 1;
     protected Icon icon; //DEBUG
     protected String appid = "";
     protected String appidIGDB = "";

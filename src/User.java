@@ -1,3 +1,4 @@
+import E.AchievType;
 import I.SortTool;
 
 import java.util.*;
@@ -6,19 +7,24 @@ public class User implements SortTool<Game> {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name;
-    protected int openGameCounter =0;
-    protected String description= "";
+    protected int openGameCounter = 0;
+    protected String description = "";
     protected Feed feed;
     protected TreeSet<Integer> friends;
     protected ArrayList<Achievement> myAchievements;
-    protected Achievement favoriteAchievement;
+    protected int favoriteAchievement = 0;
+    protected static int count = 0;
 
 
     public User() {
+
         this.gameList = new ArrayList<>();
         this.feed = new Feed();
         this.friends = new TreeSet<>();
         this.myAchievements = new ArrayList<>();
+        this.id = count;
+        count++;
+
     }
 
     public User(String name) {
@@ -27,13 +33,11 @@ public class User implements SortTool<Game> {
         this.feed = new Feed();
         this.friends = new TreeSet<>();
         this.myAchievements = new ArrayList<>();
+        this.id = count;
+        count++;
     }
     //Getters and setters
 
-    public void setFavoriteAchievement (Achievement achievement){
-
-        this.favoriteAchievement = achievement;
-    }
 
     public int getId() {
         return id;
@@ -47,10 +51,11 @@ public class User implements SortTool<Game> {
         this.id = id;
     }
 
-    public ArrayList<Game> gameList(){
-        return gameList;
+    public void addGame(Game game) {
+        this.gameList.add(game);
     }
-    public void setGameList(){
+
+    public void setGameList() {
         this.gameList = gameList;
     }
 
@@ -58,9 +63,18 @@ public class User implements SortTool<Game> {
         return name;
     }
 
+    public int getFavoriteAchievement() {
+        return favoriteAchievement;
+    }
+
+    public void setFavoriteAchievement(int favoriteAchievement) {
+        this.favoriteAchievement = favoriteAchievement;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Feed getFeed() {
         return feed;
     }
@@ -68,6 +82,7 @@ public class User implements SortTool<Game> {
     public void setName(Feed feed) {
         this.feed = feed;
     }
+
     public TreeSet<Integer> getFriends() {
         return friends;
     }
@@ -75,6 +90,7 @@ public class User implements SortTool<Game> {
     public void setName(TreeSet<Integer> friends) {
         this.friends = friends;
     }
+
     public String getDescription() {
         return description;
     }
@@ -83,12 +99,13 @@ public class User implements SortTool<Game> {
         this.description = description;
     }
 
-    public ArrayList<Achievement> getMyAchievements(){
+    public ArrayList<Achievement> getMyAchievements() {
         return myAchievements;
     }
-    public void setMyAchievements(){this.myAchievements = myAchievements;}
-    public Achievement getFavoriteAchievement() { return favoriteAchievement; }
-    public void setFavoriteAchievement(){this.myAchievements.add(favoriteAchievement);}
+
+    public void setMyAchievements() {
+        this.myAchievements = myAchievements;
+    }
 
     public ArrayList<Game> getGameList() {
         return gameList;
@@ -115,34 +132,34 @@ public class User implements SortTool<Game> {
     }
 //Methods
 
-    public int getCountGame()
-    {
-        int num=0;
+    public int getCountGame() {
+        int num = 0;
 
-        for (Game game: gameList)
-        {
-            num=+game.playCount;
+        for (Game game : gameList) {
+            num = +game.playCount;
         }
         return num;
     }
 
-    public void modifyGame(){
+    public void modifyGame() {
         //implement
-    };
-
-    public Game getGame (int pos){
-       try{
-           return gameList.get(pos);
-       }
-       catch (Exception e){
-           return null;
-       }
     }
-    public void addFriend(Integer id){
+
+    ;
+
+    public Game getGame(int pos) {
+        try {
+            return gameList.get(pos);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public void addFriend(Integer id) {
         friends.add(id);
     }
 
-    public void deleteFriend(Integer id){
+    public void deleteFriend(Integer id) {
         try {
             if (!friends.remove(id)) {
                 System.out.println("El amigo no está en la lista");
@@ -163,7 +180,7 @@ public class User implements SortTool<Game> {
         return null;
     }
 
-    public void viewFeed(){
+    public void viewFeed() {
         try {
             feed.recorrerFeed();
         } catch (NullPointerException e) {
@@ -172,7 +189,24 @@ public class User implements SortTool<Game> {
     }
 
     @Override
-    public void sortName() {gameList.sort(Comparator.comparing(Game::getTitle));}
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", gameList=" + gameList +
+                ", name='" + name + '\'' +
+                ", openGameCounter=" + openGameCounter +
+                ", description='" + description + '\'' +
+                ", feed=" + feed +
+                ", friends=" + friends +
+                ", myAchievements=" + myAchievements +
+                ", favoriteAchievement=" + favoriteAchievement +
+                '}';
+    }
+
+    @Override
+    public void sortName() {
+        gameList.sort(Comparator.comparing(Game::getTitle));
+    }
 
     @Override
     public void sortFavorite() {
@@ -186,6 +220,6 @@ public class User implements SortTool<Game> {
 
     @Override
     public void sortPlayCount() {
-    gameList.sort(Comparator.comparing(Game::getPlayCount).reversed());
+        gameList.sort(Comparator.comparing(Game::getPlayCount).reversed());
     }
 }
