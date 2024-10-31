@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Feed {
@@ -24,18 +25,6 @@ public class Feed {
         }
     }
 
-    public void likePost(int postIndex, int userId) {
-        try {
-            posts.get(postIndex).likePost(userId);
-            System.out.println("Post actualizado: " + posts.get(postIndex).getMessage() + " - Likes: " + posts.get(postIndex).getLikes());
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El índice proporcionado es inválido.");
-        } catch (NullPointerException e) {
-            System.out.println("La lista de posts no ha sido inicializada.");
-        }
-    }
-
-
 
     public void deletePost(int i) {
         try {
@@ -59,36 +48,50 @@ public class Feed {
     // ------------------------------------------------------------
 
 
-    public void likePost(int i) {
-        // ponerle una restriccion para que solo pueda dar 1 like
-        try {
-            posts.get(i).likePost();
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El índice proporcionado es inválido.");
-        } catch (NullPointerException e) {
-            System.out.println("La lista de posts no ha sido inicializada.");
+
+
+    private void pinPost(Post post) {
+
+        if (posts.contains(post))
+        {
+            if (!post.getFav())
+            {
+                posts.remove(post);
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!posts.get(i).getFav() && !posts.get(i).equals(post))
+                    {
+                        posts.set(i, post);
+                        post.setFav(true);
+                        break;
+                    }
+                }
+            }
+
         }
     }
 
-    public void dislikePost(int i) {
-        // tmb una restriccion
-        try {
-            posts.get(i).likes--;
-
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El índice proporcionado es inválido.");
-        } catch (NullPointerException e) {
-            System.out.println("La lista de posts no ha sido inicializada.");
+    private void unpinPost (Post post){
+        if (posts.contains(post))
+        {
+            if (post.getFav()) {
+                posts.remove(post);
+                posts.addLast(post);
+                post.setFav(false);
+            }
+        }
+    }
+    public void togglePinPost(Post post)
+    {
+        if (post.getFav())
+        {
+            unpinPost(post);
+        }
+        else{
+            pinPost(post);
         }
     }
 
-    public void pinPost(int i) {
-        try {
-            posts.get(i).setFav(true);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El índice proporcionado es inválido.");
-        } catch (NullPointerException e) {
-            System.out.println("La lista de posts no ha sido inicializada.");
-        }
-    }
+
+
 }

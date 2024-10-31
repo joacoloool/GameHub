@@ -168,7 +168,6 @@ public class JsonUtil {
 
         JSONObject post = new JSONObject();
         post.put("message", p.getMessage());
-        post.put("likes", p.getLikes());
         post.put("fav", p.getFav());
 
         return post;
@@ -213,9 +212,8 @@ public class JsonUtil {
 
 
     public static Post JSONtoPost(JSONObject m) {
-        Post post = new Post();
+        Post post = new Post("");
         post.setMessage(m.getString("message"));
-        post.setLikes(m.getInt("likes"));
         post.setFav(m.getBoolean("fav"));
         return post;
     }

@@ -23,15 +23,17 @@ public class main {
 
         ArrayList<Game> games = new ArrayList<>();
 
-
-
        // System.out.println(games.toString());
 
         manager.getUsers().getFirst().feed.createPost("HelloWorld");
-        manager.getUsers().getFirst().feed.likePost(0);
-        manager.getUsers().getFirst().feed.likePost(0);
-        manager.getUsers().getFirst().feed.likePost(0);
-        manager.getUsers().getFirst().feed.likePost(0);
+        manager.getUsers().getFirst().feed.createPost("1HelloWorld");
+        manager.getUsers().getFirst().feed.createPost("12HelloWorld");
+        manager.getUsers().getFirst().feed.createPost("123HelloWorld");
+        manager.getUsers().getFirst().feed.createPost("1234HelloWorld");
+        manager.getUsers().getFirst().feed.createPost("12345HelloWorld");
+        manager.getUsers().getFirst().feed.togglePinPost(manager.getUsers().getFirst().feed.getPosts().get(5));
+        System.out.println(manager.getUsers().getFirst().feed.posts.toString());
+        manager.getUsers().getFirst().feed.togglePinPost(manager.getUsers().getFirst().feed.getPosts().get(0));
         System.out.println(manager.getUsers().getFirst().feed.posts.toString());
 
 
