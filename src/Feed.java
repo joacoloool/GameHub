@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -92,6 +94,12 @@ public class Feed {
         }
     }
 
+//Json
 
+    public JSONObject toJson() {
+        JSONObject feed = new JSONObject();
+        feed.put("posts", JsonUtil.postToJSONArray(posts));
+        return feed;
+    }
 
 }

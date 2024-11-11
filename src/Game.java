@@ -1,4 +1,6 @@
 import E.Genre;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
@@ -7,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 
 
 public class Game {
@@ -43,15 +44,14 @@ public class Game {
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
         this.appidIGDB = IGDBHelper.getAppid(title);
 
-        if (!appid.isEmpty()){
+        if (!appid.isEmpty()) {
             generateSteamData();
-        }
-        else if (!appidIGDB.isEmpty()){
+        } else if (!appidIGDB.isEmpty()) {
             generateIGDBData();
         }
     }
 
-    public Game(File path,String title) {
+    public Game(File path, String title) {
         this.path = path;
         this.id = countID++;
         this.title = title;
@@ -61,18 +61,17 @@ public class Game {
         this.icon = extractIcon(); //DEBUG
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
 
-        if (!appid.isEmpty()){
+        if (!appid.isEmpty()) {
             generateSteamData();
-        }
-        else if (!appidIGDB.isEmpty()){
+        } else if (!appidIGDB.isEmpty()) {
             generateIGDBData();
         }
 
     }
+
     public Game() {
     }
     //Getters and setters
-
 
 
     public String getImage() {
@@ -208,7 +207,9 @@ public class Game {
         this.icon = icon;
     }
 
-    public void setAppid(String appid){this.appid = appid;}
+    public void setAppid(String appid) {
+        this.appid = appid;
+    }
 
     //Methods
 
@@ -227,7 +228,7 @@ public class Game {
         try {
             Desktop.getDesktop().open(path);
             playCount++;
-            lastTime =  Timestamp.valueOf(LocalDateTime.now());
+            lastTime = Timestamp.valueOf(LocalDateTime.now());
         } catch (IOException e) {
             System.out.println(e.getMessage() + "No se encontró la ubicación del archivo en el sistema.");
         }
@@ -241,30 +242,31 @@ public class Game {
         }
     }
 
-    private void generateSteamData (){
+    private void generateSteamData() {
 
-            this.description = SteamHelper.getGameInfo(appid,"description");
-           // this.genre = Genre.valueOf(SteamHelper.getGameInfo(appid,"genre"));
-            this.title = SteamHelper.getGameInfo(appid,"name");
-            this.url = generateSteamURL();
-            this.releaseDate = SteamHelper.getGameInfo(appid,"release");
-
-            //Pictures
-            this.header = SteamHelper.getGameInfo(appid,"header");
-            this.image = SteamHelper.getGameInfo(appid,"image");
-    }
-
-    private void generateIGDBData (){
-
-        this.description = IGDBHelper.getGameInfo(appidIGDB,"description");
-        this.title = IGDBHelper.getGameInfo(appidIGDB,"name");
-        this.url = generateIGDBURL();
-        this.releaseDate = IGDBHelper.getGameInfo("137989","release");
+        this.description = SteamHelper.getGameInfo(appid, "description");
+        // this.genre = Genre.valueOf(SteamHelper.getGameInfo(appid,"genre"));
+        this.title = SteamHelper.getGameInfo(appid, "name");
+        this.url = generateSteamURL();
+        this.releaseDate = SteamHelper.getGameInfo(appid, "release");
 
         //Pictures
-        this.header = SteamHelper.getGameInfo(appid,"header");
-        this.image = SteamHelper.getGameInfo(appid,"image");
+        this.header = SteamHelper.getGameInfo(appid, "header");
+        this.image = SteamHelper.getGameInfo(appid, "image");
     }
+
+    private void generateIGDBData() {
+
+        this.description = IGDBHelper.getGameInfo(appidIGDB, "description");
+        this.title = IGDBHelper.getGameInfo(appidIGDB, "name");
+        this.url = generateIGDBURL();
+        this.releaseDate = IGDBHelper.getGameInfo("137989", "release");
+
+        //Pictures
+        this.header = SteamHelper.getGameInfo(appid, "header");
+        this.image = SteamHelper.getGameInfo(appid, "image");
+    }
+
     //DEBUG
     private Icon extractIcon() {
         FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -279,15 +281,39 @@ public class Game {
         return new ImageIcon(scaledImg); // Devolver el ícono escalado
     }
 
-    private String generateSteamURL(){
+    private String generateSteamURL() {
         return "https://store.steampowered.com/app/" + appid;
     }
 
-    private String generateIGDBURL(){
+    private String generateIGDBURL() {
         return "https://www.igdb.com/games/" + title;
     }
 
+    //Json
 
+    public JSONObject toJson() {
+        JSONObject game = new JSONObject();
+        try {
+            game.put("id", id);
+            game.put("title", title);
+            game.put("description", description);
+            game.put("favorite", favorite);
+            game.put("genre", genre);
+            game.put("lastTime", lastTime.toString());
+            game.put("playCount", playCount);
+            game.put("path", path);
+            game.put("countID", countID);
+            game.put("icon", icon);
+            game.put("appid", appid);
+            game.put("appidIGDB", appidIGDB);
+            game.put("url", url);
+            game.put("releaseDate", releaseDate);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return game;
+    }
 
     @Override
     public String toString() {

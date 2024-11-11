@@ -1,4 +1,6 @@
 import E.AchievType;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -6,7 +8,7 @@ import java.util.HashMap;
 public class Manager {
 
     protected ArrayList<User> users;
-    protected HashMap <AchievType,ArrayList<Achievement>> achievement;
+    protected HashMap<AchievType, ArrayList<Achievement>> achievement;
 
 
     //Constructors
@@ -36,8 +38,7 @@ public class Manager {
     }
 
 
-
-    private void createAchievement(){
+    private void createAchievement() {
         //Se crean los arreglos que van en el hashmap
         ArrayList<Achievement> Cplays = new ArrayList<>();
         ArrayList<Achievement> Games = new ArrayList<>();
@@ -87,11 +88,11 @@ public class Manager {
         Posts.add(achievementP5);
         Posts.add(achievementP6);
 
-    //Cargamos en el HashMap los arreglos
+        //Cargamos en el HashMap los arreglos
 
-        achievement.put(AchievType.CPLAYS,Cplays);
-        achievement.put(AchievType.GAMES,Games);
-        achievement.put(AchievType.POSTS,Posts);
+        achievement.put(AchievType.CPLAYS, Cplays);
+        achievement.put(AchievType.GAMES, Games);
+        achievement.put(AchievType.POSTS, Posts);
 
     }
 
@@ -103,30 +104,22 @@ public class Manager {
         this.achievement = achievement;
     }
 
-    public void verifyAchievements()
-    {
-        for (User user: users)
-        {
-            for (Achievement achievement: achievement.get(AchievType.POSTS))
-            {
-               if(achievement.checkCondition(user.feed.posts.size()) && !user.myAchievements.contains(achievement))
-                {
+    public void verifyAchievements() {
+        for (User user : users) {
+            for (Achievement achievement : achievement.get(AchievType.POSTS)) {
+                if (achievement.checkCondition(user.feed.posts.size()) && !user.myAchievements.contains(achievement)) {
                     user.myAchievements.add(achievement);
                     System.out.println(3);
                 }
             }
-            for (Achievement achievement: achievement.get(AchievType.GAMES))
-            {
-                if(achievement.checkCondition(user.gameList.size()) && !user.myAchievements.contains(achievement))
-                {
+            for (Achievement achievement : achievement.get(AchievType.GAMES)) {
+                if (achievement.checkCondition(user.gameList.size()) && !user.myAchievements.contains(achievement)) {
                     user.myAchievements.add(achievement);
                     System.out.println(1);
                 }
             }
-            for(Achievement achievement: achievement.get(AchievType.CPLAYS))
-            {
-                if(achievement.checkCondition(user.openGameCounter) && !user.myAchievements.contains(achievement))
-                {
+            for (Achievement achievement : achievement.get(AchievType.CPLAYS)) {
+                if (achievement.checkCondition(user.openGameCounter) && !user.myAchievements.contains(achievement)) {
                     user.myAchievements.add(achievement);
                     System.out.println(2);
                 }
@@ -135,11 +128,20 @@ public class Manager {
     }
 
 
-
-
     public void modify() {
         //implement
     }
+
+    //Json
+
+    public JSONObject toJson() {
+        JSONObject manager = new JSONObject();
+        manager.put("users", JsonUtil.UsersToJSONArray(users));
+        manager.put("achievement", JsonUtil.achievementsToJSONArray(achievement));
+
+        return manager;
+    }
+
 
     @Override
     public String toString() {

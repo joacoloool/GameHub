@@ -139,11 +139,28 @@
   ],
   "users": [
     {
-      "feed": {"posts": [{
-        "fav": false,
-        "message": "HelloWorld",
-        "likes": 4
-      }]},
+      "feed": {"posts": [
+        {
+          "fav": false,
+          "message": "1HelloWorld"
+        },
+        {
+          "fav": false,
+          "message": "12HelloWorld"
+        },
+        {
+          "fav": false,
+          "message": "123HelloWorld"
+        },
+        {
+          "fav": false,
+          "message": "1234HelloWorld"
+        },
+        {
+          "fav": false,
+          "message": "12345HelloWorld"
+        }
+      ]},
       "favoriteAchievements": 0,
       "name": "Joacolool",
       "description": "",
@@ -316,6 +333,28 @@
       "description": "",
       "gameList": [],
       "id": 11,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 12,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 13,
       "openGameCounter": 0,
       "friends": [],
       "myAchievements": []

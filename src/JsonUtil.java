@@ -16,32 +16,22 @@ public class JsonUtil {
 
 //Guardar archivo
 
-                                    //USER
-    public static JSONObject userToJSONObject(User u) {
-        JSONObject user = new JSONObject();
-        try {
-            user.put("id", u.getId());
-            user.put("name", u.getName());
-            user.put("openGameCounter", u.getCountGame());
-            user.put("description", u.getDescription());
-            user.put("favoriteAchievements", u.getFavoriteAchievement());
+    //USER
 
-            //Json Array
-            user.put("feed", feedtoJsonObject(u.getFeed()));
-            user.put("myAchievements", MyachievementsToJSONArray(u.getMyAchievements()));
-            user.put("friends", friendsToJSONArray(u.getFriends()));
-            user.put("gameList", gamestoJSONArray(u.getGameList()));
-
-        } catch (JSONException e) {
-            System.out.println(e.getMessage());
+    public static JSONArray toJsonArray(ArrayList<Object> arr) {
+        JSONArray jsonArray = new JSONArray();
+        for (Object o : arr) {
+            jsonArray.toJson;
         }
-        return user;
+        return jsonArray;
     }
+
+
     public static JSONArray UsersToJSONArray(ArrayList<User> userArr) {
         JSONArray users = new JSONArray();
         try {
             for (User u : userArr) {
-                users.put(userToJSONObject(u));
+                users.put(u.toJson());
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -49,61 +39,24 @@ public class JsonUtil {
         return users;
     }
 
-                                //GAME TO JSON
+    //GAME TO JSON
 
-    public static JSONObject gameToJSONObject(Game u) {
-        JSONObject game = new JSONObject();
-        try {
-            game.put("id", u.getId());
-            game.put("title", u.getTitle());
-            game.put("description", u.getDescription());
-            game.put("favorite", u.getFavorite());
-            game.put("genre", u.getGenre());
-            game.put("lastTime", u.getLastTime().toString());
-            game.put("playCount", u.getPlayCount());
-            game.put("path", u.getPath());
-            game.put("countID", Game.getCountID());
-            game.put("icon", u.getIcon());
-            game.put("appid", u.getAppid());
-            game.put("appidIGDB", u.getAppidIGDB());
-            game.put("url", u.getUrl());
-            game.put("releaseDate", u.getReleaseDate());
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return game;
-    }
 
     public static JSONArray gamestoJSONArray(ArrayList<Game> games) {
         JSONArray g = new JSONArray();
         for (Game e : games) {
-            g.put(gameToJSONObject(e));
+            g.put(e.toJson());
         }
         return g;
     }
 
-                                //achievement
+    //achievement
 
-    public static JSONObject achievementToJSONObject(Achievement a) {
-        JSONObject achievement = new JSONObject();
-        try {
-            achievement.put("id", a.getId());
-            achievement.put("name", a.getName());
-            achievement.put("description", a.getDescription());
-            achievement.put("type", a.getType());
-            achievement.put("condition", a.getCondition());
-            achievement.put("count", Achievement.getCount());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return achievement;
-    }
-    public static JSONArray MyachievementsToJSONArray(ArrayList<Achievement> a ) {
+
+    public static JSONArray MyachievementsToJSONArray(ArrayList<Achievement> a) {
         JSONArray achievements = new JSONArray();
         for (Achievement e : a) {
-            achievements.put(achievementToJSONObject(e));
+            achievements.put(e.toJson());
         }
         return achievements;
     }
@@ -114,14 +67,13 @@ public class JsonUtil {
         // Iteramos sobre las entradas del HashMap
         for (ArrayList<Achievement> achievementList : achievementsMap.values()) {
             for (Achievement achievement : achievementList) {
-                achievements.put(achievementToJSONObject(achievement));
+                achievements.put(achievement.toJson());
             }
         }
-
         return achievements;
     }
 
-                                    //Friends
+    //Friends
 
     public static JSONArray friendsToJSONArray(TreeSet<Integer> f) {
         JSONArray friends = new JSONArray();
@@ -135,14 +87,7 @@ public class JsonUtil {
         return friends;
     }
 
-                                     //Manager
-    public static JSONObject ManagerToJSONObject(Manager m) {
-        JSONObject manager = new JSONObject();
-        manager.put("users", UsersToJSONArray(m.getUsers()));
-        manager.put("achievement", achievementsToJSONArray(m.getAchievement()));
-
-        return manager;
-    }
+    //Manager
 
 
     public static HashMap<AchievType, ArrayList<Achievement>> JsonToManagerMap(JSONArray m) {
@@ -163,7 +108,7 @@ public class JsonUtil {
         return manager;
     }
 
-                                        //Post
+    //Post
     public static JSONObject postToJSONObject(Post p) {
 
         JSONObject post = new JSONObject();
@@ -172,6 +117,7 @@ public class JsonUtil {
 
         return post;
     }
+
     public static JSONArray postToJSONArray(ArrayList<Post> p) {
         JSONArray posts = new JSONArray();
         for (Post post : p) {
@@ -179,18 +125,6 @@ public class JsonUtil {
         }
         return posts;
     }
-
-                                    //Feed
-
-    public static JSONObject feedtoJsonObject(Feed f) {
-        JSONObject feed = new JSONObject();
-        feed.put("posts", postToJSONArray(f.getPosts()));
-        return feed;
-    }
-    protected String message;
-    protected int likes = 0;
-    protected boolean fav = false;
-
 
 
     //CARGAR ARCHIVO
@@ -204,7 +138,7 @@ public class JsonUtil {
     }
 
     //Json a object
-    public static Feed JSONToFeed(JSONObject f){
+    public static Feed JSONToFeed(JSONObject f) {
         Feed feed = new Feed();
         feed.setPosts(JSONtoPosts(f.getJSONArray("post")));
         return feed;
@@ -219,11 +153,11 @@ public class JsonUtil {
     }
 
     public static ArrayList<Post> JSONtoPosts(JSONArray m) {
-       ArrayList<Post> posts = new ArrayList<>();
-       for (int i = 0; i < m.length(); i++) {
-           posts.add(JSONtoPost(m.getJSONObject(i)));
-       }
-       return posts;
+        ArrayList<Post> posts = new ArrayList<>();
+        for (int i = 0; i < m.length(); i++) {
+            posts.add(JSONtoPost(m.getJSONObject(i)));
+        }
+        return posts;
     }
 
     public static User JSONToUser(JSONObject u) {
@@ -324,6 +258,7 @@ public class JsonUtil {
         //Icon
         return game;
     }
+
     public static ArrayList<Game> JSONArrayToGames(JSONArray a) {
         ArrayList<Game> games = new ArrayList<>();
         for (int i = 0; i < a.length(); i++) {
@@ -331,17 +266,19 @@ public class JsonUtil {
         }
         return games;
     }
+
     ///GUARDAR Y CARGAR
-    public static void guardar(JSONObject a){
-        try{
+    public static void guardar(JSONObject a) {
+        try {
             FileWriter save = new FileWriter("manager.json");
             save.write(a.toString());
             save.flush();
             save.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     public static void sobreescribir(String nombreArchivo, JSONObject contenido) {
         File file = new File(nombreArchivo);
         try (FileWriter fileWriter = new FileWriter(file)) {
@@ -350,11 +287,12 @@ public class JsonUtil {
             e.printStackTrace();
         }
     }
+
     public static void addInfo(String nombreArchivo, String contenido) {
 
         File file = new File(nombreArchivo);
 
-        try{
+        try {
             PrintWriter salida = new PrintWriter(new FileWriter(file, true));
             salida.println(contenido);
             salida.close();
@@ -366,15 +304,16 @@ public class JsonUtil {
         }
     }
 
-    public static JSONTokener readWithTokener(String archivo){
+    public static JSONTokener readWithTokener(String archivo) {
         JSONTokener token = null;
-        try{
+        try {
             token = new JSONTokener(new FileReader(archivo));
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return token;
     }
+
     public static Manager leerManager() {
         File file = new File("manager.json");
         StringBuilder jsonContent = new StringBuilder();

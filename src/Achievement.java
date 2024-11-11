@@ -1,6 +1,8 @@
 import E.AchievType;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Achievement{
+public class Achievement {
 
     protected String name = "";
     protected int condition;
@@ -10,7 +12,7 @@ public class Achievement{
     protected static int count = 0;
 
     //Builders
-    public Achievement(String name, String description, AchievType type,int condition) {
+    public Achievement(String name, String description, AchievType type, int condition) {
         this.name = name;
         this.condition = condition;
         this.description = description;
@@ -24,29 +26,28 @@ public class Achievement{
         count++;
     }
 
-    public boolean checkCondition(int valueCondition){
-        if (valueCondition == condition)
-        {
+    public boolean checkCondition(int valueCondition) {
+        if (valueCondition == condition) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-
-
 
 
     //Getters
     public String getName() {
         return name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public AchievType getType() {
         return type;
     }
+
     public int getId() {
         return id;
     }
@@ -67,9 +68,11 @@ public class Achievement{
     public void setName(String name) {
         this.name = name;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public void setType(AchievType type) {
         this.type = type;
     }
@@ -95,6 +98,23 @@ public class Achievement{
                 ", type=" + type +
                 ", id=" + id +
                 '}';
+    }
+
+//Json
+
+    public JSONObject toJson() {
+        JSONObject achievement = new JSONObject();
+        try {
+            achievement.put("id", id);
+            achievement.put("name", name);
+            achievement.put("description", description);
+            achievement.put("type", type);
+            achievement.put("condition", condition);
+            achievement.put("count", count);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return achievement;
     }
 
 

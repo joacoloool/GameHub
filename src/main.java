@@ -37,7 +37,7 @@ public class main {
         System.out.println(manager.getUsers().getFirst().feed.posts.toString());
 
 
-      JsonUtil.sobreescribir("manager.json", Manager.ManagerToJSONObject(manager));
+      JsonUtil.sobreescribir("manager.json", manager.toJson());
 
         for (int i=0;i<manager.users.get(0).gameList.size();i++) {
             System.out.println(manager.users.get(0).gameList.get(i).getId());
