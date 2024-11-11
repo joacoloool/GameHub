@@ -2,7 +2,7 @@ import E.AchievType;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Achievement {
+public class Achievement implements JsonConvertible {
 
     protected String name = "";
     protected int condition;
@@ -100,8 +100,7 @@ public class Achievement {
                 '}';
     }
 
-//Json
-
+    @Override
     public JSONObject toJson() {
         JSONObject achievement = new JSONObject();
         try {
@@ -116,6 +115,9 @@ public class Achievement {
         }
         return achievement;
     }
+
+
+//Json
 
 
 }

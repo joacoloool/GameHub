@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
-public class Game {
+public class Game implements JsonConvertible{
 
     protected int id;
     protected String title;

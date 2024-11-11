@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Manager {
+public class Manager implements JsonConvertible{
 
     protected ArrayList<User> users;
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
@@ -134,13 +134,6 @@ public class Manager {
 
     //Json
 
-    public JSONObject toJson() {
-        JSONObject manager = new JSONObject();
-        manager.put("users", JsonUtil.UsersToJSONArray(users));
-        manager.put("achievement", JsonUtil.achievementsToJSONArray(achievement));
-
-        return manager;
-    }
 
 
     @Override
@@ -149,5 +142,14 @@ public class Manager {
                 "users=" + users +
                 ", achievement=" + achievement +
                 '}';
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject manager = new JSONObject();
+        manager.put("users", JsonUtil.usersToJSONArray(users));
+        manager.put("achievement", JsonUtil.achievementsToJSONArray(achievement));
+
+        return manager;
     }
 }

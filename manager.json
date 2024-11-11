@@ -2,6 +2,46 @@
   "achievement": [
     {
       "condition": 1,
+      "name": "Dame Masa",
+      "count": 17,
+      "description": "Open your first game and start the adventure!",
+      "id": 0,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 10,
+      "name": "Casi Main",
+      "count": 17,
+      "description": "Open any game 10 times.",
+      "id": 1,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 50,
+      "name": "Tryhard",
+      "count": 17,
+      "description": "Open a game 50 times.",
+      "id": 2,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 100,
+      "name": "Full Vicio",
+      "count": 17,
+      "description": "Open games 100 times in total.",
+      "id": 3,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 500,
+      "name": "Gordo Virgo",
+      "count": 17,
+      "description": "Open a game 500 times.",
+      "id": 4,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 1,
       "name": "Newbie",
       "count": 17,
       "description": "Add your first Steam game.",
@@ -95,46 +135,6 @@
       "description": "Surpass 1000 posts.",
       "id": 16,
       "type": "POSTS"
-    },
-    {
-      "condition": 1,
-      "name": "Dame Masa",
-      "count": 17,
-      "description": "Open your first game and start the adventure!",
-      "id": 0,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 10,
-      "name": "Casi Main",
-      "count": 17,
-      "description": "Open any game 10 times.",
-      "id": 1,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 50,
-      "name": "Tryhard",
-      "count": 17,
-      "description": "Open a game 50 times.",
-      "id": 2,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 100,
-      "name": "Full Vicio",
-      "count": 17,
-      "description": "Open games 100 times in total.",
-      "id": 3,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 500,
-      "name": "Gordo Virgo",
-      "count": 17,
-      "description": "Open a game 500 times.",
-      "id": 4,
-      "type": "CPLAYS"
     }
   ],
   "users": [
@@ -355,6 +355,72 @@
       "description": "",
       "gameList": [],
       "id": 13,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 14,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 15,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 16,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 17,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Joacolool",
+      "description": "",
+      "gameList": [],
+      "id": 18,
+      "openGameCounter": 0,
+      "friends": [],
+      "myAchievements": []
+    },
+    {
+      "feed": {"posts": []},
+      "favoriteAchievements": 0,
+      "name": "Tom",
+      "description": "",
+      "gameList": [],
+      "id": 19,
       "openGameCounter": 0,
       "friends": [],
       "myAchievements": []

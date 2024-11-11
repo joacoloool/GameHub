@@ -1,6 +1,8 @@
+import org.json.JSONObject;
+
 import java.util.HashSet;
 
-public class Post {
+public class Post implements JsonConvertible {
     protected String message;
     protected boolean fav = false;
 
@@ -30,10 +32,9 @@ public class Post {
         this.fav = fav;
     }
 
-    public boolean getFav(){
+    public boolean getFav() {
         return fav;
     }
-
 
 
     /// Methods
@@ -45,4 +46,15 @@ public class Post {
                 ", fav=" + fav +
                 '}';
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject post = new JSONObject();
+        post.put("message", message);
+        post.put("fav", fav);
+
+        return post;
+    }
+
+
 }

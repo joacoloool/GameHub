@@ -18,16 +18,7 @@ public class JsonUtil {
 
     //USER
 
-    public static JSONArray toJsonArray(ArrayList<Object> arr) {
-        JSONArray jsonArray = new JSONArray();
-        for (Object o : arr) {
-            jsonArray.toJson;
-        }
-        return jsonArray;
-    }
-
-
-    public static JSONArray UsersToJSONArray(ArrayList<User> userArr) {
+    public static JSONArray usersToJSONArray(ArrayList<User> userArr) {
         JSONArray users = new JSONArray();
         try {
             for (User u : userArr) {
@@ -41,7 +32,6 @@ public class JsonUtil {
 
     //GAME TO JSON
 
-
     public static JSONArray gamestoJSONArray(ArrayList<Game> games) {
         JSONArray g = new JSONArray();
         for (Game e : games) {
@@ -51,7 +41,6 @@ public class JsonUtil {
     }
 
     //achievement
-
 
     public static JSONArray MyachievementsToJSONArray(ArrayList<Achievement> a) {
         JSONArray achievements = new JSONArray();
@@ -70,6 +59,7 @@ public class JsonUtil {
                 achievements.put(achievement.toJson());
             }
         }
+
         return achievements;
     }
 
@@ -89,7 +79,6 @@ public class JsonUtil {
 
     //Manager
 
-
     public static HashMap<AchievType, ArrayList<Achievement>> JsonToManagerMap(JSONArray m) {
         HashMap<AchievType, ArrayList<Achievement>> manager = new HashMap<>();
 
@@ -104,28 +93,19 @@ public class JsonUtil {
             }
             manager.get(type).add(achievement);
         }
-
         return manager;
     }
 
     //Post
-    public static JSONObject postToJSONObject(Post p) {
 
-        JSONObject post = new JSONObject();
-        post.put("message", p.getMessage());
-        post.put("fav", p.getFav());
-
-        return post;
-    }
 
     public static JSONArray postToJSONArray(ArrayList<Post> p) {
         JSONArray posts = new JSONArray();
         for (Post post : p) {
-            posts.put(postToJSONObject(post));
+            posts.put(post.toJson());
         }
         return posts;
     }
-
 
     //CARGAR ARCHIVO
 

@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class User implements SortTool<Game> {
+public class User implements SortTool<Game>, JsonConvertible {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name;
@@ -192,26 +192,6 @@ public class User implements SortTool<Game> {
 
     //Json
 
-    public JSONObject toJson() {
-        JSONObject user = new JSONObject();
-        try {
-            user.put("id", id); // Accediendo a los campos de instancia del objeto actual
-            user.put("name", name);
-            user.put("openGameCounter", openGameCounter);
-            user.put("description", description);
-            user.put("favoriteAchievements", favoriteAchievement);
-
-            // JSON Array
-            user.put("feed", feed.toJson());
-            user.put("myAchievements", JsonUtil.MyachievementsToJSONArray(myAchievements));
-            user.put("friends", JsonUtil.friendsToJSONArray(this.friends));
-            user.put("gameList", JsonUtil.gamestoJSONArray(this.gameList));
-
-        } catch (JSONException e) {
-            System.out.println(e.getMessage());
-        }
-        return user;
-    }
 
     @Override
     public String toString() {
@@ -247,4 +227,28 @@ public class User implements SortTool<Game> {
     public void sortPlayCount() {
         gameList.sort(Comparator.comparing(Game::getPlayCount).reversed());
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject user = new JSONObject();
+        try {
+            user.put("id", id); // Accediendo a los campos de instancia del objeto actual
+            user.put("name", name);
+            user.put("openGameCounter", openGameCounter);
+            user.put("description", description);
+            user.put("favoriteAchievements", favoriteAchievement);
+
+            // JSON Array
+            user.put("feed", feed.toJson());
+            user.put("myAchievements", JsonUtil.MyachievementsToJSONArray(myAchievements));
+            user.put("friends", JsonUtil.friendsToJSONArray(friends));
+            user.put("gameList", JsonUtil.gamestoJSONArray(gameList));
+
+        } catch (JSONException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+
 }

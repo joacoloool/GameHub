@@ -39,6 +39,8 @@ public class main {
 
       JsonUtil.sobreescribir("manager.json", manager.toJson());
 
+
+
         for (int i=0;i<manager.users.get(0).gameList.size();i++) {
             System.out.println(manager.users.get(0).gameList.get(i).getId());
             System.out.println(manager.users.get(0).gameList.get(i).toString()+"\n");
