@@ -7,7 +7,7 @@ public class main {
 
         //Testing
         //Manager manager = new Manager();
-        Manager manager = JsonUtil.leerManager();
+       Manager manager = JsonUtil.leerManager();
 
         //System.out.println(game_non2.toString());
 
@@ -37,7 +37,7 @@ public class main {
         System.out.println(manager.getUsers().getFirst().feed.posts.toString());
 
 
-      JsonUtil.sobreescribir("manager.json",JsonUtil.ManagerToJSONObject(manager));
+      JsonUtil.sobreescribir("manager.json", Manager.ManagerToJSONObject(manager));
 
         for (int i=0;i<manager.users.get(0).gameList.size();i++) {
             System.out.println(manager.users.get(0).gameList.get(i).getId());
