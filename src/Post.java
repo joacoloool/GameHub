@@ -19,19 +19,15 @@ public class Post implements JsonConvertible {
     public String getMessage() {
         return message;
     }
-
     public void setMessage(String message) {
         this.message = message;
     }
-
     public boolean isFav() {
         return fav;
     }
-
     public void setFav(boolean fav) {
         this.fav = fav;
     }
-
     public boolean getFav() {
         return fav;
     }

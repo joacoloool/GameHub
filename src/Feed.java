@@ -13,7 +13,6 @@ public class Feed implements JsonConvertible{
     public ArrayList<Post> getPosts() {
         return posts;
     }
-
     public void setPosts(ArrayList<Post> posts) {
         this.posts = posts;
     }
@@ -36,20 +35,6 @@ public class Feed implements JsonConvertible{
         }
 
     }
-
-    // metodos que seguro hay que borrar -----------------------------------------
-    public String recorrerFeed() {
-
-        return posts.toString();
-    }
-
-    public Post selectPosPost(int i) {
-        return posts.get(i);
-    }
-
-    // ------------------------------------------------------------
-
-
 
 
     private void pinPost(Post post) {

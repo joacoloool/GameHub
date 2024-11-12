@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Manager implements JsonConvertible{
+public class Manager implements JsonConvertible {
 
     protected ArrayList<User> users;
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
@@ -16,8 +16,7 @@ public class Manager implements JsonConvertible{
     public Manager() {
         users = new ArrayList<>();
         achievement = new HashMap<>();
-        createAchievement();
-
+        createAchievements();
     }
 
     //Getters and setters
@@ -25,7 +24,6 @@ public class Manager implements JsonConvertible{
     public ArrayList<User> getUsers() {
         return users;
     }
-
     public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
@@ -38,11 +36,12 @@ public class Manager implements JsonConvertible{
     }
 
 
-    private void createAchievement() {
+    private void createAchievements() {
+
         //Se crean los arreglos que van en el hashmap
-        ArrayList<Achievement> Cplays = new ArrayList<>();
-        ArrayList<Achievement> Games = new ArrayList<>();
-        ArrayList<Achievement> Posts = new ArrayList<>();
+        ArrayList<Achievement> cPlays = new ArrayList<>();
+        ArrayList<Achievement> games = new ArrayList<>();
+        ArrayList<Achievement> posts = new ArrayList<>();
 
         //Creamos cada tipo de achievement
 
@@ -68,41 +67,36 @@ public class Manager implements JsonConvertible{
 
         // Cargamos en cada arraylist sus respectivos logros
 
-        Cplays.add(achievementC1);
-        Cplays.add(achievementC2);
-        Cplays.add(achievementC3);
-        Cplays.add(achievementC4);
-        Cplays.add(achievementC5);
+        cPlays.add(achievementC1);
+        cPlays.add(achievementC2);
+        cPlays.add(achievementC3);
+        cPlays.add(achievementC4);
+        cPlays.add(achievementC5);
 
-        Games.add(achievementG1);
-        Games.add(achievementG2);
-        Games.add(achievementG3);
-        Games.add(achievementG4);
-        Games.add(achievementG5);
-        Games.add(achievementG6);
+        games.add(achievementG1);
+        games.add(achievementG2);
+        games.add(achievementG3);
+        games.add(achievementG4);
+        games.add(achievementG5);
+        games.add(achievementG6);
 
-        Posts.add(achievementP1);
-        Posts.add(achievementP2);
-        Posts.add(achievementP3);
-        Posts.add(achievementP4);
-        Posts.add(achievementP5);
-        Posts.add(achievementP6);
+        posts.add(achievementP1);
+        posts.add(achievementP2);
+        posts.add(achievementP3);
+        posts.add(achievementP4);
+        posts.add(achievementP5);
+        posts.add(achievementP6);
+
 
         //Cargamos en el HashMap los arreglos
 
-        achievement.put(AchievType.CPLAYS, Cplays);
-        achievement.put(AchievType.GAMES, Games);
-        achievement.put(AchievType.POSTS, Posts);
-
+        achievement.put(AchievType.CPLAYS, cPlays);
+        achievement.put(AchievType.GAMES, games);
+        achievement.put(AchievType.POSTS, posts);
     }
 
-    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {
-        return achievement;
-    }
-
-    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {
-        this.achievement = achievement;
-    }
+    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}
+    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {this.achievement = achievement;}
 
     public void verifyAchievements() {
         for (User user : users) {
@@ -127,13 +121,7 @@ public class Manager implements JsonConvertible{
         }
     }
 
-
-    public void modify() {
-        //implement
-    }
-
     //Json
-
 
 
     @Override

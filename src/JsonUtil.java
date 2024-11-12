@@ -267,7 +267,7 @@ public class JsonUtil {
         }
         // Convertimos el contenido JSON en un objeto Manager
 
-        Manager manager = new Manager();
+        Manager manager;
         try {
             JSONObject jsonObject = new JSONObject(jsonContent.toString());
             manager = JSONtoManager(jsonObject);

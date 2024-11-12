@@ -39,27 +39,21 @@ public class Achievement implements JsonConvertible {
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
-
     public AchievType getType() {
         return type;
     }
-
     public int getId() {
         return id;
     }
-
     public static int getCount() {
         return count;
     }
-
     public static void setCount(int count) {
         Achievement.count = count;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -68,23 +62,18 @@ public class Achievement implements JsonConvertible {
     public void setName(String name) {
         this.name = name;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setType(AchievType type) {
         this.type = type;
     }
-
     public int compareTo(Achievement otherAchievement) {
         return name.compareTo(otherAchievement.name);
     }
-
     public int getCondition() {
         return condition;
     }
-
     public void setCondition(int condition) {
         this.condition = condition;
     }
@@ -99,7 +88,7 @@ public class Achievement implements JsonConvertible {
                 ", id=" + id +
                 '}';
     }
-
+    //Json
     @Override
     public JSONObject toJson() {
         JSONObject achievement = new JSONObject();
@@ -115,9 +104,4 @@ public class Achievement implements JsonConvertible {
         }
         return achievement;
     }
-
-
-//Json
-
-
 }

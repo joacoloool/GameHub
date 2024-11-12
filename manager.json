@@ -2,46 +2,6 @@
   "achievement": [
     {
       "condition": 1,
-      "name": "Dame Masa",
-      "count": 17,
-      "description": "Open your first game and start the adventure!",
-      "id": 0,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 10,
-      "name": "Casi Main",
-      "count": 17,
-      "description": "Open any game 10 times.",
-      "id": 1,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 50,
-      "name": "Tryhard",
-      "count": 17,
-      "description": "Open a game 50 times.",
-      "id": 2,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 100,
-      "name": "Full Vicio",
-      "count": 17,
-      "description": "Open games 100 times in total.",
-      "id": 3,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 500,
-      "name": "Gordo Virgo",
-      "count": 17,
-      "description": "Open a game 500 times.",
-      "id": 4,
-      "type": "CPLAYS"
-    },
-    {
-      "condition": 1,
       "name": "Newbie",
       "count": 17,
       "description": "Add your first Steam game.",
@@ -87,6 +47,46 @@
       "description": "Surpass 500 games.",
       "id": 10,
       "type": "GAMES"
+    },
+    {
+      "condition": 1,
+      "name": "Dame Masa",
+      "count": 17,
+      "description": "Open your first game and start the adventure!",
+      "id": 0,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 10,
+      "name": "Casi Main",
+      "count": 17,
+      "description": "Open any game 10 times.",
+      "id": 1,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 50,
+      "name": "Tryhard",
+      "count": 17,
+      "description": "Open a game 50 times.",
+      "id": 2,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 100,
+      "name": "Full Vicio",
+      "count": 17,
+      "description": "Open games 100 times in total.",
+      "id": 3,
+      "type": "CPLAYS"
+    },
+    {
+      "condition": 500,
+      "name": "Gordo Virgo",
+      "count": 17,
+      "description": "Open a game 500 times.",
+      "id": 4,
+      "type": "CPLAYS"
     },
     {
       "condition": 1,
@@ -164,53 +164,7 @@
       "favoriteAchievements": 0,
       "name": "Joacolool",
       "description": "",
-      "gameList": [
-        {
-          "lastTime": "2024-10-29 23:58:29.1621157",
-          "appidIGDB": "",
-          "releaseDate": "",
-          "description": "",
-          "title": "PlayRDR",
-          "url": "",
-          "playCount": 0,
-          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
-          "appid": "",
-          "genre": "UNKNOWN",
-          "id": 1,
-          "favorite": false,
-          "countID": 4
-        },
-        {
-          "lastTime": "2024-10-29 23:58:31.4065315",
-          "appidIGDB": "",
-          "releaseDate": "",
-          "description": "",
-          "title": "PlayRDR",
-          "url": "",
-          "playCount": 0,
-          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
-          "appid": "",
-          "genre": "UNKNOWN",
-          "id": 2,
-          "favorite": false,
-          "countID": 4
-        },
-        {
-          "lastTime": "2024-10-29 23:58:32.5898717",
-          "appidIGDB": "",
-          "releaseDate": "",
-          "description": "",
-          "title": "PlayRDR",
-          "url": "",
-          "playCount": 0,
-          "path": "F:\\Games\\Others\\Red Dead Redemption\\PlayRDR.exe",
-          "appid": "",
-          "genre": "UNKNOWN",
-          "id": 3,
-          "favorite": false,
-          "countID": 4
-        }
-      ],
+      "gameList": [],
       "id": 0,
       "openGameCounter": 0,
       "friends": [],
@@ -223,204 +177,6 @@
       "description": "",
       "gameList": [],
       "id": 1,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 2,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 3,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 4,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 5,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 6,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 7,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 8,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 9,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 10,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 11,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 12,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 13,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 14,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 15,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 16,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 17,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Joacolool",
-      "description": "",
-      "gameList": [],
-      "id": 18,
-      "openGameCounter": 0,
-      "friends": [],
-      "myAchievements": []
-    },
-    {
-      "feed": {"posts": []},
-      "favoriteAchievements": 0,
-      "name": "Tom",
-      "description": "",
-      "gameList": [],
-      "id": 19,
       "openGameCounter": 0,
       "friends": [],
       "myAchievements": []

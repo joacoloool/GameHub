@@ -98,8 +98,7 @@ public class SteamHelper {
     }
 
 
-    private static boolean compareLetters(String str1, String str2) { //hardcode feo, no sabia como pingo hacer , abierto a modificaciones.
-
+    private static boolean compareLetters(String str1, String str2) {
         boolean flag = false;
 
         if (str1.isEmpty() || str2.isEmpty()) {
