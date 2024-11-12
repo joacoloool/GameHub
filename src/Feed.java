@@ -1,9 +1,8 @@
+import I.JsonConvertible;
 import org.json.JSONObject;
-
-import javax.swing.*;
 import java.util.ArrayList;
 
-public class Feed implements JsonConvertible{
+public class Feed implements JsonConvertible {
     protected ArrayList<Post> posts;
 
     public Feed() {

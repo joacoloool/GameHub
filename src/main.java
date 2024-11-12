@@ -1,7 +1,3 @@
-import org.json.JSONObject;
-import java.io.File;
-import java.util.ArrayList;
-
 public class main {
     public static void main(String[] args) {
 
@@ -24,13 +20,11 @@ public class main {
            manager.getUsers().getFirst().feed.createPost("1234HelloWorld");
            manager.getUsers().getFirst().feed.createPost("12345HelloWorld");
            manager.getUsers().getFirst().feed.togglePinPost(manager.getUsers().getFirst().feed.getPosts().get(5));
-           System.out.println(manager.getUsers().getFirst().feed.posts.toString());
            manager.getUsers().getFirst().feed.togglePinPost(manager.getUsers().getFirst().feed.getPosts().get(0));
-           System.out.println(manager.getUsers().getFirst().feed.posts.toString());
 
        }
 
-      JsonUtil.sobreescribir("manager.json", manager.toJson());
+      JsonUtil.guardar("manager.json", manager.toJson());
 
         // user.getGame(1).run();
         //user.getGame(2).run();

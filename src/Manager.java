@@ -1,7 +1,8 @@
 import E.AchievType;
+import I.JsonConvertible;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -38,26 +39,23 @@ public class Manager implements JsonConvertible {
 
     private void createAchievements() {
 
-        //Se crean los arreglos que van en el hashmap
+        // Se crean los arreglos que van en el hashmap
         ArrayList<Achievement> cPlays = new ArrayList<>();
         ArrayList<Achievement> games = new ArrayList<>();
         ArrayList<Achievement> posts = new ArrayList<>();
 
-        //Creamos cada tipo de achievement
-
+        // Creamos cada tipo de achievement
         Achievement achievementC1 = new Achievement("Dame Masa", "Open your first game and start the adventure!", AchievType.CPLAYS, 1);
         Achievement achievementC2 = new Achievement("Casi Main", "Open any game 10 times.", AchievType.CPLAYS, 10);
         Achievement achievementC3 = new Achievement("Tryhard", "Open a game 50 times.", AchievType.CPLAYS, 50);
         Achievement achievementC4 = new Achievement("Full Vicio", "Open games 100 times in total.", AchievType.CPLAYS, 100);
         Achievement achievementC5 = new Achievement("Gordo Virgo", "Open a game 500 times.", AchievType.CPLAYS, 500);
-
         Achievement achievementG1 = new Achievement("Newbie", "Add your first Steam game.", AchievType.GAMES, 1);
         Achievement achievementG2 = new Achievement("Empezando el Vicio", "Get 10 Steam games.", AchievType.GAMES, 10);
         Achievement achievementG3 = new Achievement("Ballena Jr.", "Reach 50 Steam games.", AchievType.GAMES, 50);
         Achievement achievementG4 = new Achievement("Biblioteca Insana", "Get to 100 games.", AchievType.GAMES, 100);
         Achievement achievementG5 = new Achievement("Archivador Supremo", "Reach 200 games.", AchievType.GAMES, 200);
         Achievement achievementG6 = new Achievement("Fachabiblioteca", "Surpass 500 games.", AchievType.GAMES, 500);
-
         Achievement achievementP1 = new Achievement("Primer Bait", "Create your first post.", AchievType.POSTS, 1);
         Achievement achievementP2 = new Achievement("Baitmaster", "Reach 10 posts.", AchievType.POSTS, 10);
         Achievement achievementP3 = new Achievement("Mini Influencer", "Get to 50 posts.", AchievType.POSTS, 50);
@@ -66,30 +64,11 @@ public class Manager implements JsonConvertible {
         Achievement achievementP6 = new Achievement("Taringuero", "Surpass 1000 posts.", AchievType.POSTS, 1000);
 
         // Cargamos en cada arraylist sus respectivos logros
+        Collections.addAll(cPlays, achievementC1, achievementC2, achievementC3, achievementC4, achievementC5);
+        Collections.addAll(games, achievementG1, achievementG2, achievementG3, achievementG4, achievementG5, achievementG6);
+        Collections.addAll(posts, achievementP1, achievementP2, achievementP3, achievementP4, achievementP5, achievementP6);
 
-        cPlays.add(achievementC1);
-        cPlays.add(achievementC2);
-        cPlays.add(achievementC3);
-        cPlays.add(achievementC4);
-        cPlays.add(achievementC5);
-
-        games.add(achievementG1);
-        games.add(achievementG2);
-        games.add(achievementG3);
-        games.add(achievementG4);
-        games.add(achievementG5);
-        games.add(achievementG6);
-
-        posts.add(achievementP1);
-        posts.add(achievementP2);
-        posts.add(achievementP3);
-        posts.add(achievementP4);
-        posts.add(achievementP5);
-        posts.add(achievementP6);
-
-
-        //Cargamos en el HashMap los arreglos
-
+        // Cargamos en el HashMap los arreglos
         achievement.put(AchievType.CPLAYS, cPlays);
         achievement.put(AchievType.GAMES, games);
         achievement.put(AchievType.POSTS, posts);

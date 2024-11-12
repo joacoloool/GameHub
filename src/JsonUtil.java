@@ -1,11 +1,9 @@
 import E.AchievType;
 import E.Genre;
-
+import I.JsonConvertible;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -37,10 +35,8 @@ public class JsonUtil {
                 achievements.put(achievement.toJson());
             }
         }
-
         return achievements;
     }
-
 
     //Manager
 
@@ -60,8 +56,6 @@ public class JsonUtil {
         }
         return manager;
     }
-
-    //Post
 
     //CARGAR ARCHIVO
 
@@ -106,8 +100,6 @@ public class JsonUtil {
         user.setOpenGameCounter(u.getInt("openGameCounter"));
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
         user.setFriends(JSONtoFriends(u.getJSONArray("friends")));
-
-
         return user;
     }
 
@@ -135,7 +127,7 @@ public class JsonUtil {
         ach.setName(a.getString("name"));
         ach.setDescription(a.getString("description"));
         ach.setCondition(a.getInt("condition"));
-        ach.setCount(a.getInt("count"));
+        Achievement.setCount(a.getInt("count"));
 
         AchievType type = AchievType.valueOf(a.getString("type"));
         ach.setType(type);
@@ -204,50 +196,15 @@ public class JsonUtil {
     }
 
     ///GUARDAR Y CARGAR
-    public static void guardar(JSONObject a) {
-        try {
-            FileWriter save = new FileWriter("manager.json");
-            save.write(a.toString());
-            save.flush();
-            save.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public static void sobreescribir(String nombreArchivo, JSONObject contenido) {
+    public static void guardar(String nombreArchivo, JSONObject contenido) {
         File file = new File(nombreArchivo);
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(contenido.toString(2)); // Escribe el contenido formateado
+            fileWriter.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al guardar el archivo: " + e.getMessage());
         }
-    }
-
-    public static void addInfo(String nombreArchivo, String contenido) {
-
-        File file = new File(nombreArchivo);
-
-        try {
-            PrintWriter salida = new PrintWriter(new FileWriter(file, true));
-            salida.println(contenido);
-            salida.close();
-            System.out.println("");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static JSONTokener readWithTokener(String archivo) {
-        JSONTokener token = null;
-        try {
-            token = new JSONTokener(new FileReader(archivo));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return token;
     }
 
     public static Manager leerManager() {
@@ -262,11 +219,9 @@ public class JsonUtil {
                 linea = reader.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            return null; // Retornar null si hay un error de lectura
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            return null;
         }
-        // Convertimos el contenido JSON en un objeto Manager
-
         Manager manager;
         try {
             JSONObject jsonObject = new JSONObject(jsonContent.toString());
@@ -276,8 +231,5 @@ public class JsonUtil {
             return null;
         }
         return manager;
-
-
     }
-
 }

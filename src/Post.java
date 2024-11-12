@@ -1,6 +1,5 @@
+import I.JsonConvertible;
 import org.json.JSONObject;
-
-import java.util.HashSet;
 
 public class Post implements JsonConvertible {
     protected String message;

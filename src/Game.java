@@ -1,7 +1,7 @@
 import E.Genre;
+import I.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
-public class Game implements JsonConvertible{
+public class Game implements JsonConvertible {
 
     protected int id;
     protected String title;

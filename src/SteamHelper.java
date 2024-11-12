@@ -73,7 +73,7 @@ public class SteamHelper {
                         String genreData = jsonResponse.replaceAll("\"", "").split("genres:")[1].split("]")[0].trim();
                         List<String> foundGenres = new ArrayList<>();
 
-                        String[] genresArray = genreData.split("\\},\\{");
+                        String[] genresArray = genreData.split("},\\{");
 
                         for (String genre : genresArray) {
                             String description = genre.split("description:")[1].split(",")[0].trim();
@@ -91,7 +91,7 @@ public class SteamHelper {
                         return "Tipo de información no soportada: " + infoType;
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("No fue posible conectar a la base de datos de steam.");
             }
         }
         return null;

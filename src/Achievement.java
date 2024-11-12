@@ -1,4 +1,5 @@
 import E.AchievType;
+import I.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,11 +28,7 @@ public class Achievement implements JsonConvertible {
     }
 
     public boolean checkCondition(int valueCondition) {
-        if (valueCondition == condition) {
-            return true;
-        } else {
-            return false;
-        }
+        return valueCondition == condition;
     }
 
 
@@ -100,7 +97,7 @@ public class Achievement implements JsonConvertible {
             achievement.put("condition", condition);
             achievement.put("count", count);
         } catch (JSONException e) {
-            e.printStackTrace();
+            System.out.println("No fue posible cargar el JSON.");
         }
         return achievement;
     }
