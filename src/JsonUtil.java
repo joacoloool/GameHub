@@ -9,6 +9,7 @@ import org.json.JSONTokener;
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.TreeSet;
 
@@ -16,39 +17,16 @@ public class JsonUtil {
 
 //Guardar archivo
 
-    //USER
-
-    public static JSONArray usersToJSONArray(ArrayList<User> userArr) {
-        JSONArray users = new JSONArray();
-        try {
-            for (User u : userArr) {
-                users.put(u.toJson());
+    public static JSONArray toJsonArray(Collection<?> arr) {
+        JSONArray jsonArray = new JSONArray();
+        for (Object o : arr) {
+            if (o instanceof JsonConvertible) {
+                jsonArray.put(((JsonConvertible) o).toJson());
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-        return users;
+        return jsonArray;
     }
 
-    //GAME TO JSON
-
-    public static JSONArray gamestoJSONArray(ArrayList<Game> games) {
-        JSONArray g = new JSONArray();
-        for (Game e : games) {
-            g.put(e.toJson());
-        }
-        return g;
-    }
-
-    //achievement
-
-    public static JSONArray MyachievementsToJSONArray(ArrayList<Achievement> a) {
-        JSONArray achievements = new JSONArray();
-        for (Achievement e : a) {
-            achievements.put(e.toJson());
-        }
-        return achievements;
-    }
 
     public static JSONArray achievementsToJSONArray(HashMap<AchievType, ArrayList<Achievement>> achievementsMap) {
         JSONArray achievements = new JSONArray();
@@ -63,19 +41,6 @@ public class JsonUtil {
         return achievements;
     }
 
-    //Friends
-
-    public static JSONArray friendsToJSONArray(TreeSet<Integer> f) {
-        JSONArray friends = new JSONArray();
-        try {
-            for (Integer i : f) {
-                friends.put(i);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return friends;
-    }
 
     //Manager
 
@@ -97,15 +62,6 @@ public class JsonUtil {
     }
 
     //Post
-
-
-    public static JSONArray postToJSONArray(ArrayList<Post> p) {
-        JSONArray posts = new JSONArray();
-        for (Post post : p) {
-            posts.put(post.toJson());
-        }
-        return posts;
-    }
 
     //CARGAR ARCHIVO
 

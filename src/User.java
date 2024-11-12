@@ -240,9 +240,9 @@ public class User implements SortTool<Game>, JsonConvertible {
 
             // JSON Array
             user.put("feed", feed.toJson());
-            user.put("myAchievements", JsonUtil.MyachievementsToJSONArray(myAchievements));
-            user.put("friends", JsonUtil.friendsToJSONArray(friends));
-            user.put("gameList", JsonUtil.gamestoJSONArray(gameList));
+            user.put("myAchievements", JsonUtil.toJsonArray(myAchievements));
+            user.put("friends", JsonUtil.toJsonArray(friends));
+            user.put("gameList", JsonUtil.toJsonArray(gameList));
 
         } catch (JSONException e) {
             System.out.println(e.getMessage());

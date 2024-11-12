@@ -147,7 +147,7 @@ public class Manager implements JsonConvertible{
     @Override
     public JSONObject toJson() {
         JSONObject manager = new JSONObject();
-        manager.put("users", JsonUtil.usersToJSONArray(users));
+        manager.put("users", JsonUtil.toJsonArray(users));
         manager.put("achievement", JsonUtil.achievementsToJSONArray(achievement));
 
         return manager;

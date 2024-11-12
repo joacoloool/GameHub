@@ -97,7 +97,7 @@ public class Feed implements JsonConvertible{
     @Override
             public JSONObject toJson() {
             JSONObject feed = new JSONObject();
-            feed.put("posts", JsonUtil.postToJSONArray(posts));
+            feed.put("posts", JsonUtil.toJsonArray(posts));
             return feed;
         }
 
