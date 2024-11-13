@@ -1,4 +1,4 @@
-package E;
+package com.gamehub.enums;
 
 public enum Genre {
 

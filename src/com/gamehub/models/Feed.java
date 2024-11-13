@@ -1,4 +1,7 @@
-import I.JsonConvertible;
+package com.gamehub.models;
+
+import com.gamehub.interfaces.JsonConvertible;
+import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
 import java.util.ArrayList;
 

@@ -1,5 +1,9 @@
-import E.Genre;
-import I.JsonConvertible;
+package com.gamehub.models;
+
+import com.gamehub.enums.Genre;
+import com.gamehub.interfaces.JsonConvertible;
+import com.gamehub.utils.IGDBHelper;
+import com.gamehub.utils.SteamHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.*;
@@ -19,7 +23,7 @@ public class Game implements JsonConvertible {
     protected boolean favorite = false;
     protected Genre genre = Genre.UNKNOWN;
     protected Timestamp lastTime;
-    protected int playCount = 0;
+    protected int gameLaunches = 0;
     protected File path;
     protected static int countID = 1;
     protected Icon icon; //DEBUG
@@ -167,12 +171,12 @@ public class Game implements JsonConvertible {
         this.lastTime = lastTime;
     }
 
-    public int getPlayCount() {
-        return playCount;
+    public int getGameLaunches() {
+        return gameLaunches;
     }
 
-    public void setPlayCount(int playCount) {
-        this.playCount = playCount;
+    public void setGameLaunches(int gameLaunches) {
+        this.gameLaunches = gameLaunches;
     }
 
     public File getPath() {
@@ -227,7 +231,7 @@ public class Game implements JsonConvertible {
     public void run() {
         try {
             Desktop.getDesktop().open(path);
-            playCount++;
+            gameLaunches++;
             lastTime = Timestamp.valueOf(LocalDateTime.now());
         } catch (IOException e) {
             System.out.println(e.getMessage() + "No se encontró la ubicación del archivo en el sistema.");
@@ -245,7 +249,7 @@ public class Game implements JsonConvertible {
     private void generateSteamData() {
 
         this.description = SteamHelper.getGameInfo(appid, "description");
-        // this.genre = Genre.valueOf(SteamHelper.getGameInfo(appid,"genre"));
+        // this.genre = Genre.valueOf(com.gamehub.utils.SteamHelper.getGameInfo(appid,"genre"));
         this.title = SteamHelper.getGameInfo(appid, "name");
         this.url = generateSteamURL();
         this.releaseDate = SteamHelper.getGameInfo(appid, "release");
@@ -300,7 +304,7 @@ public class Game implements JsonConvertible {
             game.put("favorite", favorite);
             game.put("genre", genre);
             game.put("lastTime", lastTime.toString());
-            game.put("playCount", playCount);
+            game.put("gameLaunches", gameLaunches);
             game.put("path", path);
             game.put("countID", countID);
             game.put("icon", icon);
@@ -317,14 +321,14 @@ public class Game implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "Game{" +
+        return "com.gamehub.models.Game{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", favorite=" + favorite +
                 ", genre=" + genre +
                 ", lastTime=" + lastTime +
-                ", playCount=" + playCount +
+                ", gameLaunches=" + gameLaunches +
                 ", path=" + path +
                 ", icon=" + icon +
                 ", appid='" + appid + '\'' +

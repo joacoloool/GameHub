@@ -1,5 +1,6 @@
-import E.AchievType;
-import I.JsonConvertible;
+package com.gamehub.models;
+import com.gamehub.enums.AchievType;
+import com.gamehub.interfaces.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,7 +78,7 @@ public class Achievement implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "Achievement{" +
+        return "com.gamehub.models.Achievement{" +
                 "name='" + name + '\'' +
                 ", condition=" + condition +
                 ", description='" + description + '\'' +

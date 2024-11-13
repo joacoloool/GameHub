@@ -1,5 +1,9 @@
-import E.AchievType;
-import I.JsonConvertible;
+package com.gamehub.managers;
+import com.gamehub.enums.AchievType;
+import com.gamehub.interfaces.JsonConvertible;
+import com.gamehub.models.Achievement;
+import com.gamehub.models.User;
+import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,20 +84,20 @@ public class Manager implements JsonConvertible {
     public void verifyAchievements() {
         for (User user : users) {
             for (Achievement achievement : achievement.get(AchievType.POSTS)) {
-                if (achievement.checkCondition(user.feed.posts.size()) && !user.myAchievements.contains(achievement)) {
-                    user.myAchievements.add(achievement);
+                if (achievement.checkCondition(user.getFeed().getPosts().size()) && !user.getMyAchievements().contains(achievement)) {
+                    user.getMyAchievements().add(achievement);
                     System.out.println(3);
                 }
             }
             for (Achievement achievement : achievement.get(AchievType.GAMES)) {
-                if (achievement.checkCondition(user.gameList.size()) && !user.myAchievements.contains(achievement)) {
-                    user.myAchievements.add(achievement);
+                if (achievement.checkCondition(user.getGameList().size()) && !user.getMyAchievements().contains(achievement)) {
+                    user.getMyAchievements().add(achievement);
                     System.out.println(1);
                 }
             }
             for (Achievement achievement : achievement.get(AchievType.CPLAYS)) {
-                if (achievement.checkCondition(user.openGameCounter) && !user.myAchievements.contains(achievement)) {
-                    user.myAchievements.add(achievement);
+                if (achievement.checkCondition(user.getOpenGameCounter()) && !user.getMyAchievements().contains(achievement)) {
+                    user.getMyAchievements().add(achievement);
                     System.out.println(2);
                 }
             }
@@ -105,7 +109,7 @@ public class Manager implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "Manager{" +
+        return "com.gamehub.managers.Manager{" +
                 "users=" + users +
                 ", achievement=" + achievement +
                 '}';

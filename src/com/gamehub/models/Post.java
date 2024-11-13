@@ -1,4 +1,6 @@
-import I.JsonConvertible;
+package com.gamehub.models;
+
+import com.gamehub.interfaces.JsonConvertible;
 import org.json.JSONObject;
 
 public class Post implements JsonConvertible {
@@ -36,7 +38,7 @@ public class Post implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "Post{" +
+        return "com.gamehub.models.Post{" +
                 "message='" + message + '\'' +
                 ", fav=" + fav +
                 '}';

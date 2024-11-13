@@ -1,4 +1,5 @@
-import E.Genre;
+package com.gamehub.utils;
+import com.gamehub.enums.Genre;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

@@ -1,5 +1,8 @@
-import I.JsonConvertible;
-import I.SortTool;
+package com.gamehub.models;
+
+import com.gamehub.interfaces.JsonConvertible;
+import com.gamehub.interfaces.SortTool;
+import com.gamehub.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,35 +42,77 @@ public class User implements SortTool<Game>, JsonConvertible {
         count++;
     }
     //Getters and setters
-    public int getId() {return id;}
-    public void setOpenGameCounter(int openGameCounter) {this.openGameCounter = openGameCounter;}
-    public void setId(int id) {this.id = id;}
-    public void setGameList() {this.gameList = gameList;}
-    public String getName() {return name;}
-    public int getFavoriteAchievement() {return favoriteAchievement;}
-    public void setFavoriteAchievement(int favoriteAchievement) {this.favoriteAchievement = favoriteAchievement;}
-    public void setName(String name) {this.name = name;}
-    public Feed getFeed() {return feed;}
-    public void setName(Feed feed) {this.feed = feed;}
-    public TreeSet<Integer> getFriends() {return friends;}
-    public void setName(TreeSet<Integer> friends) {this.friends = friends;}
-    public String getDescription() {return description;}
-    public void setDescription(String description) {this.description = description;}
-    public ArrayList<Achievement> getMyAchievements() {return myAchievements;}
-    public void setMyAchievements() {this.myAchievements = myAchievements;}
-    public ArrayList<Game> getGameList() {return gameList;}
-    public void setGameList(ArrayList<Game> gameList) {this.gameList = gameList;}
-    public int getOpenGameCounter() {return openGameCounter;}
-    public void setFeed(Feed feed) {this.feed = feed;}
-    public void setFriends(TreeSet<Integer> friends) {this.friends = friends;}
-    public void setMyAchievements(ArrayList<Achievement> myAchievements) {this.myAchievements = myAchievements;}
+    public int getId() {
+        return id;
+    }
+    public void setOpenGameCounter(int openGameCounter) {
+        this.openGameCounter = openGameCounter;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setGameList() {
+        this.gameList = gameList;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getFavoriteAchievement() {
+        return favoriteAchievement;
+    }
+    public void setFavoriteAchievement(int favoriteAchievement) {
+        this.favoriteAchievement = favoriteAchievement;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Feed getFeed() {
+        return feed;
+    }
+    public void setName(Feed feed) {
+        this.feed = feed;
+    }
+    public TreeSet<Integer> getFriends() {
+        return friends;
+    }
+    public void setName(TreeSet<Integer> friends) {
+        this.friends = friends;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;}
+    public ArrayList<Achievement> getMyAchievements() {
+        return myAchievements;
+    }
+    public void setMyAchievements() {
+        this.myAchievements = myAchievements;
+    }
+    public ArrayList<Game> getGameList() {
+        return gameList;
+    }
+    public void setGameList(ArrayList<Game> gameList) {
+        this.gameList = gameList;
+    }
+    public int getOpenGameCounter() {
+        return openGameCounter;
+    }
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
+    public void setFriends(TreeSet<Integer> friends) {
+        this.friends = friends;
+    }
+    public void setMyAchievements(ArrayList<Achievement> myAchievements) {
+        this.myAchievements = myAchievements;
+    }
 //Methods
 
     public int getCountGame() {
         int num = 0;
-
         for (Game game : gameList) {
-            num = +game.playCount;
+            num = +game.gameLaunches;
         }
         return num;
     }
@@ -76,13 +121,9 @@ public class User implements SortTool<Game>, JsonConvertible {
         this.gameList.add(game);
     }
 
-
-
     public void modifyGame() {
         //implement
     }
-
-    ;
 
     public Game getGame(int pos) {
         try {
@@ -116,12 +157,23 @@ public class User implements SortTool<Game>, JsonConvertible {
         System.out.println("Amigo no encontrado con ID: " + id);
         return null;
     }
+
+    public void createPost(String str)
+    {
+        feed.createPost(str);
+    }
+
+    public void deletePost(int i)
+    {
+        feed.deletePost(i);
+    }
+
     //Json
 
 
     @Override
     public String toString() {
-        return "User{" +
+        return "com.gamehub.models.User{" +
                 "id=" + id +
                 ", gameList=" + gameList +
                 ", name='" + name + '\'' +
@@ -151,7 +203,7 @@ public class User implements SortTool<Game>, JsonConvertible {
 
     @Override
     public void sortPlayCount() {
-        gameList.sort(Comparator.comparing(Game::getPlayCount).reversed());
+        gameList.sort(Comparator.comparing(Game::getGameLaunches).reversed());
     }
 
     @Override

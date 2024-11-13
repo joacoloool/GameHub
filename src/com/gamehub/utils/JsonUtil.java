@@ -1,6 +1,8 @@
-import E.AchievType;
-import E.Genre;
-import I.JsonConvertible;
+package com.gamehub.utils;
+import com.gamehub.models.*;
+import com.gamehub.enums.*;
+import com.gamehub.interfaces.JsonConvertible;
+import com.gamehub.managers.Manager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +40,7 @@ public class JsonUtil {
         return achievements;
     }
 
-    //Manager
+    //com.gamehub.managers.Manager
 
     public static HashMap<AchievType, ArrayList<Achievement>> JsonToManagerMap(JSONArray m) {
         HashMap<AchievType, ArrayList<Achievement>> manager = new HashMap<>();
@@ -159,7 +161,7 @@ public class JsonUtil {
                 achievementMap.get(type).add(achievement);
 
             } catch (JSONException e) {
-                System.out.println("Error al convertir JSONObject a Achievement: " + e.getMessage());
+                System.out.println("Error al convertir JSONObject a com.gamehub.models.Achievement: " + e.getMessage());
             }
         }
 
@@ -168,7 +170,7 @@ public class JsonUtil {
 
     public static Game JSONToGame(JSONObject u) {
         Game game = new Game();
-        game.setPlayCount(u.getInt("playCount"));
+        game.setGameLaunches(u.getInt("gameLaunches"));
         game.setId(u.getInt("id"));
         game.setAppid(u.getString("appid"));
         game.setAppidIGDB(u.getString("appidIGDB"));
@@ -227,7 +229,7 @@ public class JsonUtil {
             JSONObject jsonObject = new JSONObject(jsonContent.toString());
             manager = JSONtoManager(jsonObject);
         } catch (Exception e) {
-            System.out.println("Error al convertir JSON a Manager: " + e.getMessage());
+            System.out.println("Error al convertir JSON a com.gamehub.managers.Manager: " + e.getMessage());
             return null;
         }
         return manager;

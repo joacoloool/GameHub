@@ -1,4 +1,4 @@
-package I;
+package com.gamehub.interfaces;
 
 import org.json.JSONObject;
 
