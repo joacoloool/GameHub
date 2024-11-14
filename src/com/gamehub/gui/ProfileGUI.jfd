@@ -4,18 +4,54 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:410:p, comp label1:::p::p, space ::458:x}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp label1:::p::p, space ::537:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:40:p, par l {seq {par l {seq {comp button2:::p:120:p, space :::p, comp button3:::p:120:p}, comp label1::l:p:596:p}, space :::x}, seq l {comp label3:::p:170:p, space s:::p, par l {comp label4::l:p:155:p, comp label5::l:p:422:p}, par l {seq {space :p:65:p, par l {comp button1:::p:120:p, comp label2:::p:143:p}, space ::42:x}, seq t {space ::74:x, comp label6:::p:92:p, space :p:84:p}, seq t {space ::53:x, comp label7:::p:132:p, space ::65:x}}}}}}"
+			"$verticalGroup": "par l {seq l {par l {seq l {space :::p, par b {comp button2::b:p::p, comp button3::b:p::p}, space :p:12:p, par l {comp label3:::p:160:p, seq {comp label6:::p:27:p, space :p:103:p, comp button1:::p::p}}}, seq l {space :p:65:p, comp label4:::p:35:p, space :p:12:p, par l {comp label5:::p:100:p, comp label7:::p:41:p}}}, space s:::p, comp label1:::p:35:p, space :::p, comp label2:::p:32:p, space ::253:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg" )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Nombre usuario"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "//DESCRIPTION"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Modificar Perfil"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Nivel perfil"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Perfil"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Biblioteca"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "perfil"
+				"text": "Juegos //Actividad reciente y horas jugadas"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Logros"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "En linea"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 5, 10 )
+			"location": new java.awt.Point( 10, 10 )
 			"size": new java.awt.Dimension( 900, 560 )
 		} )
 	}
 }
-
