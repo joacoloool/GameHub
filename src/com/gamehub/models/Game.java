@@ -61,156 +61,119 @@ public class Game implements JsonConvertible {
         this.title = title;
         this.appid = SteamHelper.getAppid(title);
         this.appidIGDB = IGDBHelper.getAppid(title);
-
         this.icon = extractIcon(); //DEBUG
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
-
         if (!appid.isEmpty()) {
             generateSteamData();
         } else if (!appidIGDB.isEmpty()) {
             generateIGDBData();
         }
-
     }
 
     public Game() {
     }
-    //Getters and setters
-
-
+    //Getters
     public String getImage() {
         return image;
     }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getHeader() {
         return header;
     }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
-
     public String getReleaseDate() {
         return releaseDate;
     }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
     public String getUrl() {
         return url;
     }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getAppidIGDB() {
         return appidIGDB;
     }
-
-    public void setAppidIGDB(String appidIGDB) {
-        this.appidIGDB = appidIGDB;
-    }
-
     public String getAppid() {
         return appid;
     }
-
-    public static void setCountID(int countID) {
-        Game.countID = countID;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public boolean getFavorite() {
         return favorite;
     }
-
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
+    public String getDescription() {
+        return description;
     }
-
     public Genre getGenre() {
         return genre;
     }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
-
     public Timestamp getLastTime() {
         return lastTime;
     }
-
-    public void setLastTime(Timestamp lastTime) {
-        this.lastTime = lastTime;
-    }
-
     public int getGameLaunches() {
         return gameLaunches;
     }
-
-    public void setGameLaunches(int gameLaunches) {
-        this.gameLaunches = gameLaunches;
-    }
-
     public File getPath() {
         return path;
     }
-
-    public void setPath(File path) {
-        this.path = path;
-    }
-
     public static int getCountID() {
         return countID;
     }
-
     public int getId() {
         return id;
     }
-
     public boolean isFavorite() {
         return favorite;
     }
-
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public Icon getIcon() {
         return icon;
     }
 
+    //Setters
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public void setHeader(String header) {
+        this.header = header;
+    }
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public void setAppidIGDB(String appidIGDB) {
+        this.appidIGDB = appidIGDB;
+    }
+    public static void setCountID(int countID) {
+        Game.countID = countID;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+    public void setLastTime(Timestamp lastTime) {
+        this.lastTime = lastTime;
+    }
+    public void setGameLaunches(int gameLaunches) {
+        this.gameLaunches = gameLaunches;
+    }
+    public void setPath(File path) {
+        this.path = path;
+    }
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
     public void setIcon(Icon icon) {
         this.icon = icon;
     }
-
     public void setAppid(String appid) {
         this.appid = appid;
     }
@@ -271,6 +234,26 @@ public class Game implements JsonConvertible {
         this.image = SteamHelper.getGameInfo(appid, "image");
     }
 
+    @Override
+    public String toString() {
+        return "com.gamehub.models.Game{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", favorite=" + favorite +
+                ", genre=" + genre +
+                ", lastTime=" + lastTime +
+                ", gameLaunches=" + gameLaunches +
+                ", path=" + path +
+                ", icon=" + icon +
+                ", appid='" + appid + '\'' +
+                ", url='" + url + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", header='" + header + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
+
     //DEBUG
     private Icon extractIcon() {
         FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -319,23 +302,4 @@ public class Game implements JsonConvertible {
         return game;
     }
 
-    @Override
-    public String toString() {
-        return "com.gamehub.models.Game{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", favorite=" + favorite +
-                ", genre=" + genre +
-                ", lastTime=" + lastTime +
-                ", gameLaunches=" + gameLaunches +
-                ", path=" + path +
-                ", icon=" + icon +
-                ", appid='" + appid + '\'' +
-                ", url='" + url + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", header='" + header + '\'' +
-                ", image='" + image + '\'' +
-                '}';
-    }
 }

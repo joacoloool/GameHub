@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class Manager implements JsonConvertible {
 
-    protected ArrayList<User> users;
+    protected ArrayList<User> users; //A revisar preferiblemente un set
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
 
 
@@ -33,6 +33,8 @@ public class Manager implements JsonConvertible {
     public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
+    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}
+    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {this.achievement = achievement;}
 
     //Methods
 
@@ -40,8 +42,6 @@ public class Manager implements JsonConvertible {
     public void addUser(User user) {
         users.add(user);
     }
-
-
     private void createAchievements() {
 
         // Se crean los arreglos que van en el hashmap
@@ -78,9 +78,6 @@ public class Manager implements JsonConvertible {
         achievement.put(AchievType.GAMES, games);
         achievement.put(AchievType.POSTS, posts);
     }
-
-    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}
-    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {this.achievement = achievement;}
 
     public void verifyAchievements() {
         for (User user : users) {
@@ -120,9 +117,6 @@ public class Manager implements JsonConvertible {
         }
     }
 
-    //Json
-
-
     @Override
     public String toString() {
         return "com.gamehub.managers.Manager{" +
@@ -131,6 +125,7 @@ public class Manager implements JsonConvertible {
                 '}';
     }
 
+    //Json
     @Override
     public JSONObject toJson() {
         JSONObject manager = new JSONObject();

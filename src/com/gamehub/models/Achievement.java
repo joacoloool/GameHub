@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class Achievement implements JsonConvertible {
 
-    protected String name = "";
+    protected String name;
     protected int condition;
     protected String description = "";
     protected AchievType type;
@@ -46,14 +46,11 @@ public class Achievement implements JsonConvertible {
     public int getId() {
         return id;
     }
+    public int getCondition() {
+        return condition;
+    }
     public static int getCount() {
         return count;
-    }
-    public static void setCount(int count) {
-        Achievement.count = count;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 
     //Setters
@@ -66,8 +63,11 @@ public class Achievement implements JsonConvertible {
     public void setType(AchievType type) {
         this.type = type;
     }
-    public int getCondition() {
-        return condition;
+    public static void setCount(int count) {
+        Achievement.count = count;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
     public void setCondition(int condition) {
         this.condition = condition;

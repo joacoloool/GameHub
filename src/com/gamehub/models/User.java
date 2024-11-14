@@ -42,18 +42,9 @@ public class User implements SortTool<Game>, JsonConvertible {
         this.id = count;
         count++;
     }
-    //Getters and setters
+    //Getters
     public int getId() {
         return id;
-    }
-    public void setGamesQuant(int gamesQuant) {
-        this.gamesQuant = gamesQuant;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setGameList() {
-        this.gameList = gameList;
     }
     public String getName() {
         return name;
@@ -61,38 +52,46 @@ public class User implements SortTool<Game>, JsonConvertible {
     public int getFavoriteAchievement() {
         return favoriteAchievement;
     }
+    public Feed getFeed() {
+        return feed;
+    }
+    public TreeSet<Integer> getFriends() {
+        return friends;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public ArrayList<Achievement> getMyAchievements() {
+        return myAchievements;
+    }
+    public ArrayList<Game> getGameList() {
+        return gameList;
+    }
+    //Setters
+
+    public void setGamesQuant(int gamesQuant) {
+        this.gamesQuant = gamesQuant;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setFavoriteAchievement(int favoriteAchievement) {
         this.favoriteAchievement = favoriteAchievement;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public Feed getFeed() {
-        return feed;
-    }
     public void setName(Feed feed) {
         this.feed = feed;
-    }
-    public TreeSet<Integer> getFriends() {
-        return friends;
     }
     public void setName(TreeSet<Integer> friends) {
         this.friends = friends;
     }
-    public String getDescription() {
-        return description;
-    }
+
     public void setDescription(String description) {
         this.description = description;}
-    public ArrayList<Achievement> getMyAchievements() {
-        return myAchievements;
-    }
-    public void setMyAchievements() {
-        this.myAchievements = myAchievements;
-    }
-    public ArrayList<Game> getGameList() {
-        return gameList;
-    }
+
+
     public void setGameList(ArrayList<Game> gameList) {
         this.gameList = gameList;
     }
@@ -108,11 +107,10 @@ public class User implements SortTool<Game>, JsonConvertible {
     public void setMyAchievements(ArrayList<Achievement> myAchievements) {
         this.myAchievements = myAchievements;
     }
-//Methods
-
+    //Methods
     public int getNumberOfPost()
     {
-            return  feed.getPosts().size();
+        return  feed.getPosts().size();
     }
 
     public int getGameLaunches() {
@@ -129,8 +127,6 @@ public class User implements SortTool<Game>, JsonConvertible {
             throw new DuplicateElementException("This element already exist");
         }
     }
-
-
 
     public void addGame(Game game)throws DuplicateElementException {
         if (!gameList.add(game))
@@ -177,8 +173,6 @@ public class User implements SortTool<Game>, JsonConvertible {
         return null;
     }
 
-
-
     public void createPost(String str)
     {
         feed.createPost(str);
@@ -187,24 +181,6 @@ public class User implements SortTool<Game>, JsonConvertible {
     public void deletePost(int i)
     {
         feed.deletePost(i);
-    }
-
-    //Json
-
-
-    @Override
-    public String toString() {
-        return "com.gamehub.models.User{" +
-                "id=" + id +
-                ", gameList=" + gameList +
-                ", name='" + name + '\'' +
-                ", gamesQuant=" + gamesQuant +
-                ", description='" + description + '\'' +
-                ", feed=" + feed +
-                ", friends=" + friends +
-                ", myAchievements=" + myAchievements +
-                ", favoriteAchievement=" + favoriteAchievement +
-                '}';
     }
 
     @Override
@@ -225,6 +201,22 @@ public class User implements SortTool<Game>, JsonConvertible {
     @Override
     public void sortPlayCount() {
         gameList.sort(Comparator.comparing(Game::getGameLaunches).reversed());
+    }
+
+    //Json
+    @Override
+    public String toString() {
+        return "com.gamehub.models.User{" +
+                "id=" + id +
+                ", gameList=" + gameList +
+                ", name='" + name + '\'' +
+                ", gamesQuant=" + gamesQuant +
+                ", description='" + description + '\'' +
+                ", feed=" + feed +
+                ", friends=" + friends +
+                ", myAchievements=" + myAchievements +
+                ", favoriteAchievement=" + favoriteAchievement +
+                '}';
     }
 
     @Override

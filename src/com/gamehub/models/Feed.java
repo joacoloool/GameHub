@@ -12,6 +12,7 @@ public class Feed implements JsonConvertible {
         this.posts = new ArrayList<>();
     }
 
+    // Getters and Setters
     public ArrayList<Post> getPosts() {
         return posts;
     }
@@ -28,7 +29,6 @@ public class Feed implements JsonConvertible {
         }
     }
 
-
     public void deletePost(int i) {
         try {
             posts.remove(i);
@@ -37,7 +37,6 @@ public class Feed implements JsonConvertible {
         }
 
     }
-
 
     private void pinPost(Post post) {
 
@@ -80,17 +79,11 @@ public class Feed implements JsonConvertible {
             pinPost(post);
         }
     }
-
+    //Json
     @Override
-            public JSONObject toJson() {
-            JSONObject feed = new JSONObject();
-            feed.put("posts", JsonUtil.toJsonArray(posts));
-            return feed;
-        }
-
-
-//Json
-
-
-
+    public JSONObject toJson() {
+        JSONObject feed = new JSONObject();
+        feed.put("posts", JsonUtil.toJsonArray(posts));
+        return feed;
+    }
 }
