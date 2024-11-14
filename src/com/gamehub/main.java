@@ -45,9 +45,18 @@ public class main {
 
         FlatGitHubDarkIJTheme.setup();
 
-        JFrame frame = new JFrame("Profile GUI Example");
+        // Crear el JFrame para la interfaz
+        JFrame frame = new JFrame("GameHub");
 
-        // Crear una instancia de ProfileGUI y agregarla al JFrame
+        // Crear la instancia de MainGUI
+        MainGUI mainGui = new MainGUI();
+
+        // Configurar el JFrame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para que cierre la aplicación al cerrar la ventana
+        frame.setSize(1024, 768); // Establecer tamaño de la ventana
+        frame.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        frame.add(mainGui); // Agregar el panel principal (MainGUI) al JFrame
+        frame.setVisible(true); // Hacer visible la ventana
 
         
     }
