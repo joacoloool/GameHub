@@ -57,8 +57,11 @@ public class main {
         frame.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         frame.add(mainGui); // Agregar el panel principal (MainGUI) al JFrame
         frame.setVisible(true); // Hacer visible la ventana
+        ImageIcon imageIcon = new ImageIcon("gamhub2.png");
+        frame.setIconImage(imageIcon.getImage());
 
-        
+
+
     }
 }
 

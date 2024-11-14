@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :::p, par t {comp container:::::x, seq {comp libraryButton:::p::p, space ::762:x, comp profileButton:::p::p}}, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :::p, par l:::p {comp libraryButton:::p:28:p, comp profileButton::::0:x}, space :::p, comp container:::::x}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp container:::::x, seq t {space :p:9:p, comp profileButton:::p::p, space :::p, comp libraryButton:::p::p, space :0:747:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :::p, par b {comp profileButton::b::0:x, comp libraryButton::b:p:28:p}, space :::p, comp container::::480:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -22,9 +22,8 @@ new FormModel {
 				name: "container"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 185, 40 )
 			"size": new java.awt.Dimension( 930, 520 )
 		} )
 	}
 }
-

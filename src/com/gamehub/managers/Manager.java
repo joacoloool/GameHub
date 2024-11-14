@@ -11,23 +11,27 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.TreeSet;
 
+/** *
+ * CLASE GESTORA
+ *
+ * */
 
 public class Manager implements JsonConvertible {
 
+    /** * Colecciones tree */
     protected TreeSet<User> users;
+    /** * Colecciones HashMap*/
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
 
 
-    //Constructors
-
+    /** *Constructor*/
     public Manager() {
         users = new TreeSet<>();
         achievement = new HashMap<>();
         createAchievements();
     }
 
-    //Getters and setters
-
+    /** *Getters y setters */
     public TreeSet<User> getUsers() {
         return users;
     }
@@ -37,31 +41,44 @@ public class Manager implements JsonConvertible {
     public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}
     public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {this.achievement = achievement;}
 
-    //Methods
+    // Metodos
 
-
+    /** Agregar usuario */
     public void addUser(User user) {
         users.add(user);
     }
+
+    /** *Arreglos que van en el hashmap
+     *
+     *
+     * Arreglo de de los logros
+     * cada uno de los arraylist carga uno de los tipos de logros
+     * los logros de luncher, logros de añadir juegos y logro de crear post
+     *
+     *
+     * */
+
     private void createAchievements() {
 
-        // Se crean los arreglos que van en el hashmap
         ArrayList<Achievement> gameLaunches = new ArrayList<>();
         ArrayList<Achievement> games = new ArrayList<>();
         ArrayList<Achievement> posts = new ArrayList<>();
 
-        // Creamos cada tipo de achievement
+        /** *Creamos los logros*/
+        /** *logros de abrir el luncher*/
         Achievement achievementC1 = new Achievement("Dame Masa", "Open your first game and start the adventure!", AchievType.GAME_LAUNCHES, 1);
         Achievement achievementC2 = new Achievement("Casi Main", "Open any game 10 times.", AchievType.GAME_LAUNCHES, 10);
         Achievement achievementC3 = new Achievement("Tryhard", "Open a game 50 times.", AchievType.GAME_LAUNCHES, 50);
         Achievement achievementC4 = new Achievement("Full Vicio", "Open games 100 times in total.", AchievType.GAME_LAUNCHES, 100);
         Achievement achievementC5 = new Achievement("Gordo Virgo", "Open a game 500 times.", AchievType.GAME_LAUNCHES, 500);
+        /** *logros al añadir juegos */
         Achievement achievementG1 = new Achievement("Newbie", "Add your first Steam game.", AchievType.GAMES, 1);
         Achievement achievementG2 = new Achievement("Empezando el Vicio", "Get 10 Steam games.", AchievType.GAMES, 10);
         Achievement achievementG3 = new Achievement("Ballena Jr.", "Reach 50 Steam games.", AchievType.GAMES, 50);
         Achievement achievementG4 = new Achievement("Biblioteca Insana", "Get to 100 games.", AchievType.GAMES, 100);
         Achievement achievementG5 = new Achievement("Archivador Supremo", "Reach 200 games.", AchievType.GAMES, 200);
         Achievement achievementG6 = new Achievement("Fachabiblioteca", "Surpass 500 games.", AchievType.GAMES, 500);
+        /** *logros al crear un posts */
         Achievement achievementP1 = new Achievement("Primer Bait", "Create your first post.", AchievType.POSTS, 1);
         Achievement achievementP2 = new Achievement("Baitmaster", "Reach 10 posts.", AchievType.POSTS, 10);
         Achievement achievementP3 = new Achievement("Mini Influencer", "Get to 50 posts.", AchievType.POSTS, 50);
@@ -69,17 +86,24 @@ public class Manager implements JsonConvertible {
         Achievement achievementP5 = new Achievement("Foro Sensei", "Reach 500 posts.", AchievType.POSTS, 500);
         Achievement achievementP6 = new Achievement("Taringuero", "Surpass 1000 posts.", AchievType.POSTS, 1000);
 
-        // Cargamos en cada arraylist sus respectivos logros
+        /** * agregamos en cada arraylist sus logros segun cada uno */
         Collections.addAll(gameLaunches, achievementC1, achievementC2, achievementC3, achievementC4, achievementC5);
         Collections.addAll(games, achievementG1, achievementG2, achievementG3, achievementG4, achievementG5, achievementG6);
         Collections.addAll(posts, achievementP1, achievementP2, achievementP3, achievementP4, achievementP5, achievementP6);
 
-        // Cargamos en el HashMap los arreglos
+        /** * Cargamos en el HashMap los arreglos */
         achievement.put(AchievType.GAME_LAUNCHES, gameLaunches);
         achievement.put(AchievType.GAMES, games);
         achievement.put(AchievType.POSTS, posts);
     }
 
+    /**
+     *
+     * Verificador de logros
+     * Lo que hace es verificar si conseguiste el logro de cierta categoria
+     * ya sea los logros de launcher, logros de añadir juegos y logro de crear post
+     *
+     * */
     public void verifyAchievements() {
         for (User user : users) {
             for (Achievement achievement : achievement.get(AchievType.POSTS)) {
@@ -120,10 +144,9 @@ public class Manager implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "com.gamehub.managers.Manager{" +
+        return "com.gamehub.managers.Manager" +
                 "users=" + users +
-                ", achievement=" + achievement +
-                '}';
+                ", achievement=" + achievement ;
     }
 
     //Json

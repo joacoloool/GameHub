@@ -21,16 +21,20 @@ public class MainGUI extends JPanel {
         initComponents();
         libraryGUI = new LibraryGUI();
         profileGUI = new ProfileGUI();
+
+        container.add(libraryGUI, "Library");
+        container.add(profileGUI, "Profile");
+
     }
 
 
     
     private void libraryButtonMouseClicked(MouseEvent e) {
-      container.add(libraryGUI);
+      container.add(profileGUI);
     }
 
     private void profileButtonMouseClicked(MouseEvent e) {
-       container.add(profileGUI);
+       container.add(libraryGUI);
     }
 
     private void initComponents() {
@@ -41,11 +45,12 @@ public class MainGUI extends JPanel {
         container = new JPanel();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-        , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+        EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing
+        .border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),
+        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))
+        throw new RuntimeException();}});
 
         //---- libraryButton ----
         libraryButton.setText("Library");
@@ -74,25 +79,27 @@ public class MainGUI extends JPanel {
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup()
                         .addComponent(container, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addComponent(profileButton)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(libraryButton)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 762, Short.MAX_VALUE)
-                            .addComponent(profileButton)))
+                            .addGap(0, 747, Short.MAX_VALUE)))
                     .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(profileButton, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(profileButton, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(container, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }

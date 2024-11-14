@@ -8,7 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.*;
-
+/**
+ *
+ * CLASE USUARIO
+ *
+ */
 public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     protected int id;
     protected ArrayList<Game> gameList;
@@ -107,12 +111,19 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     public void setMyAchievements(ArrayList<Achievement> myAchievements) {
         this.myAchievements = myAchievements;
     }
+
     //Methods
+
+    /** Retorna la cantidad de publicaciones en el feed del usuario
+     * utiliza el metodo del objeto feed para
+     * */
     public int getNumberOfPost()
     {
         return  feed.getPosts().size();
     }
-
+    /** Calcula el total de lanzamientos de un juego en la lista del usuario
+     * Suma los lanzamientos de cada jeugo en la lista y devuelve el total
+     * */
     public int getGameLaunches() {
         int num = 0;
         for (Game game : gameList) {
@@ -120,7 +131,9 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
         return num;
     }
-
+    /** Agrega un logro a la lista de logros del usuario
+     * Si el logro ya exisite lanza exception
+     * */
     public void addAchievement(Achievement achievement) throws DuplicateElementException{
         if (!myAchievements.add(achievement))
         {
@@ -215,8 +228,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
                 ", feed=" + feed +
                 ", friends=" + friends +
                 ", myAchievements=" + myAchievements +
-                ", favoriteAchievement=" + favoriteAchievement +
-                '}';
+                ", favoriteAchievement=" + favoriteAchievement;
     }
 
     @Override

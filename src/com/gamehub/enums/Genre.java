@@ -1,5 +1,8 @@
 package com.gamehub.enums;
 
+/** *
+ * Tipos de generos de los juegos.
+ * */
 public enum Genre {
 
     ACTION,

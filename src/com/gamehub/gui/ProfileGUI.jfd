@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:182:p, comp label1:::p::p, space ::313:x}}"
-			"$verticalGroup": "par l {seq l {space :p:123:p, comp label1:::p::p, space ::225:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:410:p, comp label1:::p::p, space ::458:x}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp label1:::p::p, space ::537:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -13,8 +13,9 @@ new FormModel {
 				"text": "perfil"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 520, 365 )
+			"location": new java.awt.Point( 5, 10 )
+			"size": new java.awt.Dimension( 900, 560 )
 		} )
 	}
 }
+
