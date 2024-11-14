@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class User implements SortTool<Game>, JsonConvertible {
+public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name;
@@ -242,4 +242,8 @@ public class User implements SortTool<Game>, JsonConvertible {
     }
 
 
+    @Override
+    public int compareTo(User other) {
+        return this.name.compareTo(other.name);
+    }
 }

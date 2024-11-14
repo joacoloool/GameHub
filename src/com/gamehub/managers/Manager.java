@@ -9,28 +9,29 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.TreeSet;
 
 
 public class Manager implements JsonConvertible {
 
-    protected ArrayList<User> users; //A revisar preferiblemente un set
+    protected TreeSet<User> users;
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
 
 
     //Constructors
 
     public Manager() {
-        users = new ArrayList<>();
+        users = new TreeSet<>();
         achievement = new HashMap<>();
         createAchievements();
     }
 
     //Getters and setters
 
-    public ArrayList<User> getUsers() {
+    public TreeSet<User> getUsers() {
         return users;
     }
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(TreeSet<User> users) {
         this.users = users;
     }
     public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}

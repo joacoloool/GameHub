@@ -1,9 +1,10 @@
 package com.gamehub;
-import com.gamehub.gui.ProfileGUI;
+import com.gamehub.gui.*;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import com.gamehub.managers.*;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
+import scala.App;
 
 import javax.swing.*;
 
@@ -21,16 +22,14 @@ public class main {
            User user2 = new User("Tom");
            manager.addUser(user);
            manager.addUser(user2);
-
-
-           manager.getUsers().getFirst().getFeed().createPost("HelloWorld");
            manager.getUsers().getFirst().getFeed().createPost("1HelloWorld");
            manager.getUsers().getFirst().getFeed().createPost("12HelloWorld");
            manager.getUsers().getFirst().getFeed().createPost("123HelloWorld");
            manager.getUsers().getFirst().getFeed().createPost("1234HelloWorld");
            manager.getUsers().getFirst().getFeed().createPost("12345HelloWorld");
-           manager.getUsers().getFirst().getFeed().togglePinPost(manager.getUsers().getFirst().getFeed().getPosts().get(5));
+           manager.getUsers().getFirst().getFeed().togglePinPost(manager.getUsers().getFirst().getFeed().getPosts().get(4));
            manager.getUsers().getFirst().getFeed().togglePinPost(manager.getUsers().getFirst().getFeed().getPosts().get(0));
+
 
        }
 
@@ -49,16 +48,15 @@ public class main {
         JFrame frame = new JFrame("Profile GUI Example");
 
         // Crear una instancia de ProfileGUI y agregarla al JFrame
-        ProfileGUI profileGUI = new ProfileGUI();
-        frame.setContentPane(profileGUI);
-
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        AppGui appGui = new AppGui();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Asegura que la aplicación se cierre al cerrar la ventana
+        frame.setSize(800, 600); // Establecer el tamaño de la ventana
         frame.setLocationRelativeTo(null); // Centrar la ventana
-        frame.setVisible(true);
 
-
+        // Agregar el panel principal (AppGui) al JFrame
+        frame.add(appGui.getJose()); // getJosePanel es el panel principal de tu GUI
+        frame.setVisible(true); // Hacer visible la ventana
     }
 }
+
 

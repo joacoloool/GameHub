@@ -142,10 +142,6 @@
       "feed": {"posts": [
         {
           "fav": false,
-          "message": "1HelloWorld"
-        },
-        {
-          "fav": false,
           "message": "12HelloWorld"
         },
         {

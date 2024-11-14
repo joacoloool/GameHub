@@ -105,8 +105,8 @@ public class JsonUtil {
         return user;
     }
 
-    public static ArrayList<User> JSONToUsers(JSONArray u) {
-        ArrayList<User> users = new ArrayList<>();
+    public static TreeSet<User> JSONToUsers(JSONArray u) {
+        TreeSet<User> users = new TreeSet<>();
 
         for (int i = 0; i < u.length(); i++) {
             users.add(JSONToUser(u.getJSONObject(i)));
