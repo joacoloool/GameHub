@@ -48,14 +48,8 @@ public class main {
         JFrame frame = new JFrame("Profile GUI Example");
 
         // Crear una instancia de ProfileGUI y agregarla al JFrame
-        AppGui appGui = new AppGui();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Asegura que la aplicación se cierre al cerrar la ventana
-        frame.setSize(800, 600); // Establecer el tamaño de la ventana
-        frame.setLocationRelativeTo(null); // Centrar la ventana
 
-        // Agregar el panel principal (AppGui) al JFrame
-        frame.add(appGui.getJose()); // getJosePanel es el panel principal de tu GUI
-        frame.setVisible(true); // Hacer visible la ventana
+        
     }
 }
 
