@@ -1,5 +1,6 @@
 package com.gamehub.models;
 
+import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.JsonUtil;
@@ -12,7 +13,7 @@ public class User implements SortTool<Game>, JsonConvertible {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name;
-    protected int openGameCounter = 0;
+    protected int gamesQuant = 0;
     protected String description = "";
     protected Feed feed;
     protected TreeSet<Integer> friends;
@@ -45,8 +46,8 @@ public class User implements SortTool<Game>, JsonConvertible {
     public int getId() {
         return id;
     }
-    public void setOpenGameCounter(int openGameCounter) {
-        this.openGameCounter = openGameCounter;
+    public void setGamesQuant(int gamesQuant) {
+        this.gamesQuant = gamesQuant;
     }
     public void setId(int id) {
         this.id = id;
@@ -95,8 +96,8 @@ public class User implements SortTool<Game>, JsonConvertible {
     public void setGameList(ArrayList<Game> gameList) {
         this.gameList = gameList;
     }
-    public int getOpenGameCounter() {
-        return openGameCounter;
+    public int getGamesQuant() {
+        return gamesQuant;
     }
     public void setFeed(Feed feed) {
         this.feed = feed;
@@ -109,16 +110,34 @@ public class User implements SortTool<Game>, JsonConvertible {
     }
 //Methods
 
-    public int getCountGame() {
+    public int getNumberOfPost()
+    {
+            return  feed.getPosts().size();
+    }
+
+    public int getGameLaunches() {
         int num = 0;
         for (Game game : gameList) {
-            num = +game.gameLaunches;
+            num = +game.getGameLaunches();
         }
         return num;
     }
 
-    public void addGame(Game game) {
-        this.gameList.add(game);
+    public void addAchievement(Achievement achievement) throws DuplicateElementException{
+        if (!myAchievements.add(achievement))
+        {
+            throw new DuplicateElementException("This element already exist");
+        }
+    }
+
+
+
+    public void addGame(Game game)throws DuplicateElementException {
+        if (!gameList.add(game))
+        {
+            throw new DuplicateElementException("This element already exist");
+        }
+        gamesQuant++;
     }
 
     public void modifyGame() {
@@ -158,6 +177,8 @@ public class User implements SortTool<Game>, JsonConvertible {
         return null;
     }
 
+
+
     public void createPost(String str)
     {
         feed.createPost(str);
@@ -177,7 +198,7 @@ public class User implements SortTool<Game>, JsonConvertible {
                 "id=" + id +
                 ", gameList=" + gameList +
                 ", name='" + name + '\'' +
-                ", openGameCounter=" + openGameCounter +
+                ", gamesQuant=" + gamesQuant +
                 ", description='" + description + '\'' +
                 ", feed=" + feed +
                 ", friends=" + friends +
@@ -212,7 +233,7 @@ public class User implements SortTool<Game>, JsonConvertible {
         try {
             user.put("id", id);
             user.put("name", name);
-            user.put("openGameCounter", openGameCounter);
+            user.put("gamesQuant", gamesQuant);
             user.put("description", description);
             user.put("favoriteAchievements", favoriteAchievement);
 

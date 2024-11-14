@@ -66,9 +66,6 @@ public class Achievement implements JsonConvertible {
     public void setType(AchievType type) {
         this.type = type;
     }
-    public int compareTo(Achievement otherAchievement) {
-        return name.compareTo(otherAchievement.name);
-    }
     public int getCondition() {
         return condition;
     }

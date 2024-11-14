@@ -1,5 +1,6 @@
 package com.gamehub.managers;
 import com.gamehub.enums.AchievType;
+import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.models.Achievement;
 import com.gamehub.models.User;
@@ -84,21 +85,36 @@ public class Manager implements JsonConvertible {
     public void verifyAchievements() {
         for (User user : users) {
             for (Achievement achievement : achievement.get(AchievType.POSTS)) {
-                if (achievement.checkCondition(user.getFeed().getPosts().size()) && !user.getMyAchievements().contains(achievement)) {
-                    user.getMyAchievements().add(achievement);
-                    System.out.println(3);
+                if (achievement.checkCondition(user.getNumberOfPost()) && !user.getMyAchievements().contains(achievement)) {
+                    try {
+                        user.addAchievement(achievement);
+                    }
+                    catch (DuplicateElementException e)
+                    {
+                        System.err.println(e.getMessage());
+                    }
                 }
             }
             for (Achievement achievement : achievement.get(AchievType.GAMES)) {
-                if (achievement.checkCondition(user.getGameList().size()) && !user.getMyAchievements().contains(achievement)) {
-                    user.getMyAchievements().add(achievement);
-                    System.out.println(1);
+                if (achievement.checkCondition(user.getGamesQuant()) && !user.getMyAchievements().contains(achievement)) {
+                    try {
+                        user.addAchievement(achievement);
+                    }
+                    catch (DuplicateElementException e)
+                    {
+                        System.err.println(e.getMessage());
+                    }
                 }
             }
             for (Achievement achievement : achievement.get(AchievType.GAME_LAUNCHES)) {
-                if (achievement.checkCondition(user.getOpenGameCounter()) && !user.getMyAchievements().contains(achievement)) {
-                    user.getMyAchievements().add(achievement);
-                    System.out.println(2);
+                if (achievement.checkCondition(user.getGameLaunches()) && !user.getMyAchievements().contains(achievement)) {
+                    try {
+                        user.addAchievement(achievement);
+                    }
+                    catch (DuplicateElementException e)
+                    {
+                        System.err.println(e.getMessage());
+                    }
                 }
             }
         }
