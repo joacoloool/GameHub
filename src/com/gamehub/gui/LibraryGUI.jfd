@@ -4,17 +4,21 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:396:p, comp label1:::p::p, space ::457:x}}"
-			"$verticalGroup": "par l {seq l {space :p:113:p, comp label1:::p::p, space ::415:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:155:p, comp label1:::p::p}, seq l {space :p:86:p, comp button1:::p::p}}, space ::199:x}}"
+			"$verticalGroup": "par l {seq t {space ::67:x, comp button1:::p::p, space :p:47:p, comp label1:::p::p, space :p:135:p}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "Pene Libreria"
+				"text": "Libreria"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "text"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 10 )
-			"size": new java.awt.Dimension( 935, 545 )
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}
 }
