@@ -54,7 +54,7 @@
       "count": 17,
       "description": "Open your first game and start the adventure!",
       "id": 0,
-      "type": "CPLAYS"
+      "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
@@ -62,7 +62,7 @@
       "count": 17,
       "description": "Open any game 10 times.",
       "id": 1,
-      "type": "CPLAYS"
+      "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
@@ -70,7 +70,7 @@
       "count": 17,
       "description": "Open a game 50 times.",
       "id": 2,
-      "type": "CPLAYS"
+      "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
@@ -78,7 +78,7 @@
       "count": 17,
       "description": "Open games 100 times in total.",
       "id": 3,
-      "type": "CPLAYS"
+      "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
@@ -86,7 +86,7 @@
       "count": 17,
       "description": "Open a game 500 times.",
       "id": 4,
-      "type": "CPLAYS"
+      "type": "GAME_LAUNCHES"
     },
     {
       "condition": 1,
