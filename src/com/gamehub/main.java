@@ -1,8 +1,11 @@
 package com.gamehub;
+import com.gamehub.gui.ProfileGUI;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import com.gamehub.managers.*;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
 
+import javax.swing.*;
 
 
 public class main {
@@ -37,6 +40,25 @@ public class main {
         //user.getGame(2).run();
         // System.out.println(user.getGame(2).getLastTime());
         //System.out.println(user.getGame(2).getGameLaunches());
+
+
+        //UI debug
+
+        FlatGitHubDarkIJTheme.setup();
+
+        JFrame frame = new JFrame("Profile GUI Example");
+
+        // Crear una instancia de ProfileGUI y agregarla al JFrame
+        ProfileGUI profileGUI = new ProfileGUI();
+        frame.setContentPane(profileGUI);
+
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null); // Centrar la ventana
+        frame.setVisible(true);
+
+
     }
 }
 
