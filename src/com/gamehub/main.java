@@ -1,8 +1,11 @@
 package com.gamehub;
+import com.gamehub.gui.MainGUI;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import com.gamehub.managers.*;
-
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class main {
@@ -37,6 +40,24 @@ public class main {
         //user.getGame(2).run();
         // System.out.println(user.getGame(2).getLastTime());
         //System.out.println(user.getGame(2).getGameLaunches());
+
+        FlatGitHubDarkIJTheme.setup();
+
+        // Crear el JFrame para la interfaz
+        JFrame frame = new JFrame("GameHub");
+
+        // Crear la instancia de MainGUI
+        MainGUI mainGui = new MainGUI();
+
+        // Configurar el JFrame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para que cierre la aplicación al cerrar la ventana
+        frame.setSize(1024, 768); // Establecer tamaño de la ventana
+        frame.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        frame.add(mainGui); // Agregar el panel principal (MainGUI) al JFrame
+        frame.setVisible(true); // Hacer visible la ventana
     }
+
+
 }
+
 
