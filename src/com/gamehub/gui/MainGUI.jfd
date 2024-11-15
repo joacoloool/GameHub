@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {comp container:::::x, seq t {space :p:12:p, comp libraryButton:::p::p, space u:::p, comp profileButton:::p::p, space :0:738:x}}, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :::p, par b {comp libraryButton::b:p:28:p, comp profileButton::b::0:x}, space :::p, comp container::::480:x}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp container:::::x, space :::p}, seq l {space :p:12:p, comp libraryButton:::p::p, space u:::p, comp profileButton:::p::p, space :::p, comp themeButton:::p::p, space ::660:x}}}}"
+			"$verticalGroup": "par l {seq t {space :::p, par b {comp libraryButton::b:p:28:p, comp profileButton::b::35:x, comp themeButton::b:p::p}, space :::p, comp container::::473:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -20,6 +20,11 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 				name: "container"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "themeButton"
+				"text": "debug"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "themeButtonMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 185, 40 )

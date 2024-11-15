@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p::p, par l {seq l {comp addGame:::p:205:p, space :12:12:p}, seq l {comp scrolPanelGames:::p:233:p, space s:::p, par l {seq {comp imageL::::0:x, space :p:12:p}, seq {comp panel1:::::x, space :p:12:p}, seq {comp panel2:::::x, space :::p}}}}}}"
+			"$horizontalGroup": "par l {seq {space :p::p, par l {seq l {comp addGame:::p:205:p, space :::x}, seq l {comp scrolPanelGames:::p:233:p, space s:::p, par l {seq {comp imageL::::0:x, space :p:12:p}, seq {comp panel1:::::x, space :p:12:p}, seq {comp panel2:::::x, space :::p}}}}}}"
 			"$verticalGroup": "par l {seq l {space :p::p, par l {comp scrolPanelGames::::608:x, seq {comp imageL:::p:228:p, space :::p, comp panel1:::p::p, space :::p, comp panel2:::::x}}, space :::p, comp addGame:::p::p, space :p::p}}"
 		} ) {
 			name: "this"
@@ -15,16 +15,17 @@ new FormModel {
 					name: "gamesList"
 					"focusable": false
 					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "selectedGame", true ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "gamesListRightClick", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "addGame"
-				"text": "Add Game +"
+				"text": "Add Game"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addGameMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "imageL"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\Proyecto nuevo (3).png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/headerProfile.png" )
 				"componentOrientation": sfield java.awt.ComponentOrientation RIGHT_TO_LEFT
 				"verticalAlignment": 3
 				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
@@ -123,8 +124,35 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 30, 40 )
+			"location": new java.awt.Point( 120, 175 )
 			"size": new java.awt.Dimension( 1040, 660 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "popupList"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "contextPlay"
+				"text": "Play"
+				"background": new java.awt.Color( 68, 195, 53, 255 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextPlayMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "contextFavorite"
+				"text": "Favorite"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextFavoriteMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "contextModify"
+				"text": "Modify"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextModifyMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "contextDelete"
+				"text": "Delete"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextDeleteMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 20, 195 )
+			"size": new java.awt.Dimension( 80, 148 )
 		} )
 	}
 }

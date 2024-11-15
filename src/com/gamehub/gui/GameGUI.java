@@ -4,6 +4,7 @@
 
 package com.gamehub.gui;
 
+import com.gamehub.enums.Genre;
 import com.gamehub.models.Game;
 
 import java.awt.*;
@@ -20,20 +21,26 @@ import javax.swing.border.*;
 public class GameGUI extends JDialog {
 
     private LibraryGUI libraryGUI;
+    private Boolean editing = false;
 
     public GameGUI() {
         initComponents();
+
     }
 
     public GameGUI(LibraryGUI libraryGUI) {
         initComponents();
         this.libraryGUI = libraryGUI;
+        this.editing = false;
+
     }
 
 
-    public GameGUI(Game game) {
+    public GameGUI(Game game, LibraryGUI libraryGUI) {
         initComponents();
+        this.libraryGUI = libraryGUI;
         setLabels(game);
+        this.editing = true;
     }
 
     private void cancelButtonMouseClicked(MouseEvent e) {
@@ -57,15 +64,17 @@ public class GameGUI extends JDialog {
         }
     }
 
-    private void setLabels (Game game) {
+    private void setLabels(Game game) {
         titleField.setText(game.getTitle());
         releaseField.setText(game.getReleaseDate());
         descriptionField.setText(game.getDescription());
         igdbField.setText(game.getAppidIGDB());
         steamField.setText(game.getAppid());
+        pathField.setText(game.getPath().getAbsolutePath());
+        genreBox.setSelectedItem(game.getGenre());
     }
 
-    private void setLabels(File file){
+    private void setLabels(File file) {
         pathField.setText(file.getAbsolutePath());
         Game game = new Game(file);
         descriptionField.setText(game.getDescription());
@@ -73,9 +82,10 @@ public class GameGUI extends JDialog {
         releaseField.setText(game.getReleaseDate());
         igdbField.setText(game.getAppidIGDB());
         steamField.setText(game.getAppid());
+        genreBox.setSelectedItem(game.getGenre());
     }
 
-    public Game okButtonMouseClicked(MouseEvent e) {
+    public void okButtonMouseClicked(MouseEvent e) {
         File file = new File(pathField.getText());
 
         Game game = new Game();
@@ -87,11 +97,15 @@ public class GameGUI extends JDialog {
         game.setPath(new File(pathField.getText()));
         game.setIcon(file);
         game.setImages();
+        game.setGenre((Genre) genreBox.getSelectedItem());
+        if (editing) {
+            libraryGUI.gamesListModel.removeElement(libraryGUI.selectedGame);
+            libraryGUI.addGame(game);
+        } else {
+            libraryGUI.addGame(game);
+        }
         closeWindow();
-        libraryGUI.addGame(game);
-        return game;
     }
-
 
 
     private void initComponents() {
@@ -112,6 +126,8 @@ public class GameGUI extends JDialog {
         label4 = new JLabel();
         scrollPane1 = new JScrollPane();
         descriptionField = new JTextArea();
+        label5 = new JLabel();
+        genreBox = new JComboBox<>(Genre.values());
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -123,17 +139,20 @@ public class GameGUI extends JDialog {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
+
+                //---- pathField ----
+                pathField.setEditable(false);
 
                 //---- searchPathButton ----
                 searchPathButton.setText("...");
@@ -150,8 +169,14 @@ public class GameGUI extends JDialog {
                 //---- label1 ----
                 label1.setText("Steam AppID");
 
+                //---- steamField ----
+                steamField.setEditable(false);
+
                 //---- label2 ----
                 label2.setText("IGDB AppID");
+
+                //---- igdbField ----
+                igdbField.setEditable(false);
 
                 //---- label3 ----
                 label3.setText("Description");
@@ -168,6 +193,9 @@ public class GameGUI extends JDialog {
                     descriptionField.setWrapStyleWord(true);
                     scrollPane1.setViewportView(descriptionField);
                 }
+
+                //---- label5 ----
+                label5.setText("Genre");
 
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
@@ -186,15 +214,21 @@ public class GameGUI extends JDialog {
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(searchPathButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(contentPanelLayout.createSequentialGroup()
-                                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(steamField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(contentPanelLayout.createParallelGroup()
                                                 .addComponent(label1)
-                                                .addComponent(label2)
-                                                .addComponent(igdbField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label4)
-                                                .addComponent(releaseField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(titleField, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(50, 50, 50)
+                                                .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(label5)
+                                                    .addGroup(contentPanelLayout.createParallelGroup()
+                                                        .addComponent(label2)
+                                                        .addComponent(igdbField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label4)
+                                                        .addComponent(releaseField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(titleField, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                                    .addComponent(steamField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(genreBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(69, 69, 69)
                                             .addGroup(contentPanelLayout.createParallelGroup()
                                                 .addGroup(contentPanelLayout.createSequentialGroup()
                                                     .addGap(86, 86, 86)
@@ -214,15 +248,18 @@ public class GameGUI extends JDialog {
                                 .addComponent(searchPathButton))
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(contentPanelLayout.createParallelGroup()
                                 .addGroup(contentPanelLayout.createSequentialGroup()
                                     .addComponent(titleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(label1)
+                                    .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label1)
+                                        .addComponent(label5, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(steamField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(9, 9, 9)
+                                    .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(steamField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(genreBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(14, 14, 14)
                                     .addComponent(label2)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(igdbField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -296,6 +333,8 @@ public class GameGUI extends JDialog {
     private JLabel label4;
     private JScrollPane scrollPane1;
     private JTextArea descriptionField;
+    private JLabel label5;
+    private JComboBox genreBox;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

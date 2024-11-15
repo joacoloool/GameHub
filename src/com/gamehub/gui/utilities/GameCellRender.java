@@ -17,10 +17,16 @@ public class GameCellRender extends DefaultListCellRenderer {
             if (icon != null) {
                 setIcon(icon);
             } else {
-                System.out.println("No se cargo el icono correctamente.");
+                System.out.println("No se cargó el icono correctamente.");
+            }
+
+            // Cambia el color a azul si el juego es favorito
+            if (game.getFavorite()) {
+                setForeground(Color.decode("#FDFD96"));
+            } else {
+                setForeground(Color.LIGHT_GRAY); // Color predeterminado para los no favoritos
             }
         }
-
 
         return this;
     }

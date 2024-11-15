@@ -7,14 +7,16 @@ package com.gamehub.gui;
 import java.awt.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
 import com.gamehub.gui.utilities.GameCellRender;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
 
 import java.awt.event.*;
-import java.io.File;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
 
 /**
  * @author Administrator
@@ -43,38 +45,38 @@ public class LibraryGUI extends JPanel {
         addgame.setVisible(true);
     }
 
-    private void updateInfo(){
-        if(selectedGame.getLastTime() != null){
-            lastPlayedL.setText(selectedGame.getLastTimeFormatted());
-        }
-        else {
-            lastPlayedL.setText("Never played.");
-        }
-        if (selectedGame.getGenre() != null) {
-            genreL.setText(String.valueOf(selectedGame.getGenre()));
-        }
-        else {
-            genreL.setText("Unknown.");
-        }
-        platformL.setText(selectedGame.getPlatform());
-        if (selectedGame.getReleaseDate() != null) {
-            releaseL.setText(String.valueOf(selectedGame.getReleaseDate()));
-        }
-        if (selectedGame.getDescription() != null) {
-            descriptionL.setText(selectedGame.getDescription());
-        }
-        else{
-            descriptionL.setText("This game not have any description.");
+    private void updateInfo() {
+
+        if (selectedGame != null) {
+            if (selectedGame.getLastTime() != null) {
+                lastPlayedL.setText(selectedGame.getLastTimeFormatted());
+            } else {
+                lastPlayedL.setText("Never played.");
+            }
+            if (selectedGame.getGenre() != null) {
+                genreL.setText(String.valueOf(selectedGame.getGenre()));
+            } else {
+                genreL.setText("Unknown.");
+            }
+            platformL.setText(selectedGame.getPlatform());
+            if (selectedGame.getReleaseDate() != null) {
+                releaseL.setText(String.valueOf(selectedGame.getReleaseDate()));
+            }
+            if (selectedGame.getDescription() != null) {
+                descriptionL.setText(selectedGame.getDescription());
+            } else {
+                descriptionL.setText("This game not have any description.");
+            }
+
         }
 
     }
 
     private void playButtonMouseClicked(MouseEvent e) {
-        try{
+        try {
             selectedGame.run();
             updateInfo();
-        }
-        catch (NullPointerException ex){
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "You have not selected a game");
         }
 
@@ -88,9 +90,68 @@ public class LibraryGUI extends JPanel {
     }
 
     private void updatePics() {
-        headerL.setIcon(selectedGame.getHeader());
-        imageL.setIcon(selectedGame.getImage());
+        if (selectedGame != null) {
+            headerL.setIcon(selectedGame.getHeader());
+            imageL.setIcon(selectedGame.getImage());
+        }
+
     }
+
+    private void gamesListRightClick(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            selectedGame = (Game) gamesList.getSelectedValue();
+            if (selectedGame != null) {
+                popupList.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
+    }
+
+    private void contextPlayMouseClicked(MouseEvent e) {
+        playButtonMouseClicked(e);
+        popupList.setVisible(false);
+    }
+
+    private void contextDeleteMouseClicked(MouseEvent e) {
+        if (selectedGame != null) {
+            int index = gamesListModel.indexOf(selectedGame);
+            if (index != -1) {
+                gamesListModel.remove(index);
+            }
+        }
+        popupList.setVisible(false);
+    }
+
+    private void contextModifyMouseClicked(MouseEvent e) {
+        GameGUI modifyGame = new GameGUI(selectedGame, this);  // 'this' es la referencia de LibraryGUI
+        modifyGame.setAlwaysOnTop(true);
+        modifyGame.setVisible(true);
+    }
+
+    private void contextFavoriteMouseClicked(MouseEvent e) {
+        selectedGame.setFavorite(!selectedGame.getFavorite());
+        orderByFavorite();
+    }
+
+    private void orderByFavorite() {
+        ArrayList<Game> games = new ArrayList<>();
+        ArrayList<Game> others = new ArrayList<>();
+
+        for (int i = 0; i < gamesListModel.getSize(); i++) {
+            if (gamesListModel.getElementAt(i).getFavorite()) {
+                games.add(gamesListModel.getElementAt(i));
+            } else {
+                others.add(gamesListModel.getElementAt(i));
+            }
+        }
+        gamesListModel.removeAllElements();
+        for (Game game : games) {
+            gamesListModel.addElement(game);
+        }
+        for (Game other : others) {
+            gamesListModel.addElement(other);
+        }
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -113,13 +174,20 @@ public class LibraryGUI extends JPanel {
         headerL = new JLabel();
         scrollPane1 = new JScrollPane();
         descriptionL = new JTextArea();
+        popupList = new JPopupMenu();
+        contextPlay = new JButton();
+        contextFavorite = new JButton();
+        contextModify = new JButton();
+        contextDelete = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder
+        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .
+        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
+        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+        ;
 
         //======== scrolPanelGames ========
         {
@@ -128,11 +196,17 @@ public class LibraryGUI extends JPanel {
             //---- gamesList ----
             gamesList.setFocusable(false);
             gamesList.addListSelectionListener(e -> selectedGame(e));
+            gamesList.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    gamesListRightClick(e);
+                }
+            });
             scrolPanelGames.setViewportView(gamesList);
         }
 
         //---- addGame ----
-        addGame.setText("Add Game +");
+        addGame.setText("Add Game");
         addGame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -141,7 +215,7 @@ public class LibraryGUI extends JPanel {
         });
 
         //---- imageL ----
-        imageL.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\Proyecto nuevo (3).png"));
+        imageL.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/headerProfile.png")));
         imageL.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         imageL.setVerticalAlignment(SwingConstants.BOTTOM);
         imageL.setBorder(new BevelBorder(BevelBorder.LOWERED));
@@ -314,7 +388,7 @@ public class LibraryGUI extends JPanel {
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(addGame, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(scrolPanelGames, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -345,6 +419,51 @@ public class LibraryGUI extends JPanel {
                     .addComponent(addGame)
                     .addContainerGap())
         );
+
+        //======== popupList ========
+        {
+
+            //---- contextPlay ----
+            contextPlay.setText("Play");
+            contextPlay.setBackground(new Color(0x44c335));
+            contextPlay.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    contextPlayMouseClicked(e);
+                }
+            });
+            popupList.add(contextPlay);
+
+            //---- contextFavorite ----
+            contextFavorite.setText("Favorite");
+            contextFavorite.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    contextFavoriteMouseClicked(e);
+                }
+            });
+            popupList.add(contextFavorite);
+
+            //---- contextModify ----
+            contextModify.setText("Modify");
+            contextModify.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    contextModifyMouseClicked(e);
+                }
+            });
+            popupList.add(contextModify);
+
+            //---- contextDelete ----
+            contextDelete.setText("Delete");
+            contextDelete.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    contextDeleteMouseClicked(e);
+                }
+            });
+            popupList.add(contextDelete);
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
@@ -368,5 +487,10 @@ public class LibraryGUI extends JPanel {
     private JLabel headerL;
     private JScrollPane scrollPane1;
     private JTextArea descriptionL;
+    private JPopupMenu popupList;
+    private JButton contextPlay;
+    private JButton contextFavorite;
+    private JButton contextModify;
+    private JButton contextDelete;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

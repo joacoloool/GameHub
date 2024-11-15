@@ -9,12 +9,13 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq l {space :p:12:p, comp titleLabel:::p:36:p}, seq l {space :p::p, par t {seq {comp pathField:::p:430:p, space :::p, comp searchPathButton:::p:40:p}, seq {par l:::p {comp steamField::l:p:88:p, comp label1::l:p::p, comp label2::l:p::p, comp igdbField::l:p:88:p, comp label4::l:p::p, comp releaseField::l:p:88:p, comp titleField::l:p:165:p}, space :p:50:p, par l {seq {space :p:86:p, comp label3:::p::p, space :p:104:p}, seq t {comp scrollPane1:::p:226:p, space :p:22:p}}}}}}, space :p:14:p}}"
-					"$verticalGroup": "par l {seq l {space :::p, par b {comp pathField::b:p::p, comp searchPathButton::b:p::p}, space :::p, comp titleLabel:::p:17:p, space :::p, par l {seq {comp titleField:::p::p, space :::p, comp label1:::p::p, space :::p, comp steamField:::p::p, space :p:9:p, comp label2:::p::p, space :::p, comp igdbField:::p::p, space :::p, comp label4:::p::p, space :::x, comp releaseField:::p::p}, seq {space :0:0:x, comp label3:::p:17:p, space :::p, comp scrollPane1:::p:192:p}}, space :::p}}"
+					"$horizontalGroup": "par l {seq {par l {seq l {space :p:12:p, comp titleLabel:::p:36:p}, seq l {space :p::p, par t {seq {comp pathField:::p:430:p, space :::p, comp searchPathButton:::p:40:p}, seq {par l {comp label1::l:p::p, par t:l {comp label5:::p::p, par l {comp label2::l:p::p, comp igdbField::l:p:88:p, comp label4::l:p::p, comp releaseField::l:p:88:p, comp titleField::l:p:165:p}}, seq l {comp steamField:::p:88:p, space s:::p, comp genreBox:::p::p}}, space :p:69:p, par l {seq {space :p:86:p, comp label3:::p::p, space :p:104:p}, seq t {comp scrollPane1:::p:226:p, space :p:22:p}}}}}}, space :p:14:p}}"
+					"$verticalGroup": "par l {seq l {space :::p, par b {comp pathField::b:p::p, comp searchPathButton::b:p::p}, space :::p, comp titleLabel:::p:17:p, par l {seq {comp titleField:::p::p, space :::p, par b {comp label1::b:p::p, comp label5::b:p:17:p}, space :::p, par b {comp steamField::b:p::p, comp genreBox::b:p::p}, space :p:14:p, comp label2:::p::p, space :::p, comp igdbField:::p::p, space :::p, comp label4:::p::p, space :::x, comp releaseField:::p::p}, seq {space :0:0:x, comp label3:::p:17:p, space :::p, comp scrollPane1:::p:192:p}}, space :::p}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "pathField"
+						"editable": false
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "searchPathButton"
@@ -34,6 +35,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "steamField"
+						"editable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
@@ -41,6 +43,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "igdbField"
+						"editable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"
@@ -61,6 +64,16 @@ new FormModel {
 							"lineWrap": true
 							"wrapStyleWord": true
 						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Genre"
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "genreBox"
+						auxiliary() {
+							"JavaCodeGenerator.customCreateCode": "new JComboBox<>(Genre.values());"
+						}
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"

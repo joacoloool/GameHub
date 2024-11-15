@@ -2,6 +2,54 @@
   "achievement": [
     {
       "condition": 1,
+      "name": "Newbie",
+      "count": 17,
+      "description": "Add your first Steam game.",
+      "id": 5,
+      "type": "GAMES"
+    },
+    {
+      "condition": 10,
+      "name": "Empezando el Vicio",
+      "count": 17,
+      "description": "Get 10 Steam games.",
+      "id": 6,
+      "type": "GAMES"
+    },
+    {
+      "condition": 50,
+      "name": "Ballena Jr.",
+      "count": 17,
+      "description": "Reach 50 Steam games.",
+      "id": 7,
+      "type": "GAMES"
+    },
+    {
+      "condition": 100,
+      "name": "Biblioteca Insana",
+      "count": 17,
+      "description": "Get to 100 games.",
+      "id": 8,
+      "type": "GAMES"
+    },
+    {
+      "condition": 200,
+      "name": "Archivador Supremo",
+      "count": 17,
+      "description": "Reach 200 games.",
+      "id": 9,
+      "type": "GAMES"
+    },
+    {
+      "condition": 500,
+      "name": "Fachabiblioteca",
+      "count": 17,
+      "description": "Surpass 500 games.",
+      "id": 10,
+      "type": "GAMES"
+    },
+    {
+      "condition": 1,
       "name": "Primer Bait",
       "count": 17,
       "description": "Create your first post.",
@@ -87,54 +135,6 @@
       "description": "Open a game 500 times.",
       "id": 4,
       "type": "GAME_LAUNCHES"
-    },
-    {
-      "condition": 1,
-      "name": "Newbie",
-      "count": 17,
-      "description": "Add your first Steam game.",
-      "id": 5,
-      "type": "GAMES"
-    },
-    {
-      "condition": 10,
-      "name": "Empezando el Vicio",
-      "count": 17,
-      "description": "Get 10 Steam games.",
-      "id": 6,
-      "type": "GAMES"
-    },
-    {
-      "condition": 50,
-      "name": "Ballena Jr.",
-      "count": 17,
-      "description": "Reach 50 Steam games.",
-      "id": 7,
-      "type": "GAMES"
-    },
-    {
-      "condition": 100,
-      "name": "Biblioteca Insana",
-      "count": 17,
-      "description": "Get to 100 games.",
-      "id": 8,
-      "type": "GAMES"
-    },
-    {
-      "condition": 200,
-      "name": "Archivador Supremo",
-      "count": 17,
-      "description": "Reach 200 games.",
-      "id": 9,
-      "type": "GAMES"
-    },
-    {
-      "condition": 500,
-      "name": "Fachabiblioteca",
-      "count": 17,
-      "description": "Surpass 500 games.",
-      "id": 10,
-      "type": "GAMES"
     }
   ],
   "users": [
