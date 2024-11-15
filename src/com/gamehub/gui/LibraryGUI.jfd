@@ -4,23 +4,127 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l:::p {comp scrolPanelGames::::205:x, comp addGame::::205:x}, space ::709:x}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp scrolPanelGames::::508:x, space :::p, comp addGame:::p::p, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :p::p, par l {seq l {comp addGame:::p:205:p, space :12:12:p}, seq l {comp scrolPanelGames:::p:233:p, space s:::p, par l {seq {comp imageL::::0:x, space :p:12:p}, seq {comp panel1:::::x, space :p:12:p}, seq {comp panel2:::::x, space :::p}}}}}}"
+			"$verticalGroup": "par l {seq l {space :p::p, par l {comp scrolPanelGames::::608:x, seq {comp imageL:::p:228:p, space :::p, comp panel1:::p::p, space :::p, comp panel2:::::x}}, space :::p, comp addGame:::p::p, space :p::p}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrolPanelGames"
+				"horizontalScrollBarPolicy": 31
 				add( new FormComponent( "javax.swing.JList" ) {
-					name: "games"
+					name: "gamesList"
+					"focusable": false
+					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "selectedGame", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "addGame"
 				"text": "Add Game +"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addGameMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "imageL"
+				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\Proyecto nuevo (3).png" )
+				"componentOrientation": sfield java.awt.ComponentOrientation RIGHT_TO_LEFT
+				"verticalAlignment": 3
+				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
+				"verticalTextPosition": 3
+				"font": new java.awt.Font( "Inter", 2, 50 )
+				"requestFocusEnabled": false
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp playButton:::p:146:p, space :p:28:p, par t:::p {seq t {comp lastPlayedL:::p:107:p, space u:::p, comp genreL:::p:107:p}, seq t {comp lastText:::p:120:p, space :p:18:p, comp genreText:::p:76:p}}, space :::p, par t {comp PlatformText:::p:89:p, comp platformL:::p:107:p}, space u:::p, par l {comp releaseL:::p:107:p, comp releaseText::l:p:133:p}, space :0:0:x}}"
+				"$verticalGroup": "par l {seq t {space :::p, par t {seq l {comp lastText:::p::p, space :::p, par b {comp lastPlayedL::b:::x, comp genreL::b:p:33:p, comp platformL::b:p:33:p, comp releaseL::b:p:33:p}}, seq l {par t {comp playButton::l:p:57:p, par b:l {comp genreText::b:p::p, comp PlatformText::b:p::p, comp releaseText::b:p::p}}, space :0:0:x}}, space :::p}}"
+			} ) {
+				name: "panel1"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "playButton"
+					"text": "PLAY"
+					"font": new java.awt.Font( "Yu Gothic UI Light", 0, 20 )
+					"background": new java.awt.Color( 68, 195, 53, 255 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "playButtonMouseClicked", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lastText"
+					"text": "Last Played"
+					"font": &Font0 new java.awt.Font( "JetBrains Mono Medium", 0, 17 )
+					"foreground": &Color0 new java.awt.Color( 186, 187, 180, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lastPlayedL"
+					"text": "30/05/oct"
+					"font": &Font1 new java.awt.Font( "JetBrains Mono Medium", 0, 13 )
+					"foreground": sfield java.awt.Color gray
+					"horizontalAlignment": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "genreText"
+					"text": "Genre"
+					"font": #Font0
+					"foreground": #Color0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "genreL"
+					"text": "Action"
+					"font": #Font1
+					"foreground": sfield java.awt.Color gray
+					"horizontalAlignment": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "platformL"
+					"text": "Steam"
+					"font": #Font1
+					"foreground": sfield java.awt.Color gray
+					"horizontalAlignment": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "PlatformText"
+					"text": "Platform"
+					"font": #Font0
+					"foreground": #Color0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "releaseText"
+					"text": "Release Date"
+					"font": #Font0
+					"foreground": #Color0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "releaseL"
+					"text": "Steam"
+					"font": #Font1
+					"foreground": sfield java.awt.Color gray
+					"horizontalAlignment": 0
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp headerL:::p:122:p, space :::p, comp scrollPane1:::p:560:p, space :0:79:x}}"
+				"$verticalGroup": "par l {seq {space :::p, par l {comp scrollPane1:::::x, seq {comp headerL:::p:127:p, space :0:0:x}}, space ::156:x}}"
+			} ) {
+				name: "panel2"
+				"border": new javax.swing.border.EtchedBorder( 1, null, null )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "headerL"
+					"text": "Header"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "descriptionL"
+						"editable": false
+						"lineWrap": true
+						"wrapStyleWord": true
+						"focusable": false
+					} )
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 30, 40 )
-			"size": new java.awt.Dimension( 920, 560 )
+			"size": new java.awt.Dimension( 1040, 660 )
 		} )
 	}
 }

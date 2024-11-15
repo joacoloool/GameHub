@@ -6,12 +6,16 @@ import com.gamehub.utils.IGDBHelper;
 import com.gamehub.utils.SteamHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 
@@ -34,8 +38,8 @@ public class Game implements JsonConvertible {
 
     //Pictures
 
-    protected String header = "";
-    protected String image = "";
+    protected Icon header;
+    protected Icon image;
 
     //Constructors
 
@@ -47,7 +51,6 @@ public class Game implements JsonConvertible {
         this.icon = extractIcon(); //DEBUG
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
         this.appidIGDB = IGDBHelper.getAppid(title);
-
         if (!appid.isEmpty()) {
             generateSteamData();
         } else if (!appidIGDB.isEmpty()) {
@@ -72,108 +75,153 @@ public class Game implements JsonConvertible {
 
     public Game() {
     }
+
     //Getters
-    public String getImage() {
-        return image;
-    }
-    public String getHeader() {
+
+
+    public Icon getHeader() {
         return header;
     }
+
+    public void setHeader(Icon header) {
+        this.header = header;
+    }
+
+    public Icon getImage() {
+        return image;
+    }
+
+    public void setImage(Icon image) {
+        this.image = image;
+    }
+
     public String getReleaseDate() {
         return releaseDate;
     }
+
     public String getUrl() {
         return url;
     }
+
     public String getAppidIGDB() {
         return appidIGDB;
     }
+
     public String getAppid() {
         return appid;
     }
+
     public String getTitle() {
         return title;
     }
+
     public boolean getFavorite() {
         return favorite;
     }
+
     public String getDescription() {
         return description;
     }
+
     public Genre getGenre() {
         return genre;
     }
+
     public Timestamp getLastTime() {
         return lastTime;
     }
+
+    public String getLastTimeFormatted() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(lastTime);
+    }
+
     public int getGameLaunches() {
         return gameLaunches;
     }
+
     public File getPath() {
         return path;
     }
+
     public static int getCountID() {
         return countID;
     }
+
     public int getId() {
         return id;
     }
+
     public boolean isFavorite() {
         return favorite;
     }
+
     public Icon getIcon() {
         return icon;
     }
 
     //Setters
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public void setHeader(String header) {
-        this.header = header;
-    }
+
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
+
     public void setAppidIGDB(String appidIGDB) {
         this.appidIGDB = appidIGDB;
     }
+
     public static void setCountID(int countID) {
         Game.countID = countID;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
     }
+
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
     public void setLastTime(Timestamp lastTime) {
         this.lastTime = lastTime;
     }
+
     public void setGameLaunches(int gameLaunches) {
         this.gameLaunches = gameLaunches;
     }
+
     public void setPath(File path) {
         this.path = path;
     }
+
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
+
     public void setIcon(Icon icon) {
         this.icon = icon;
     }
+
+    public void setIcon(File file) {
+        this.icon = extractIcon();
+    }
+
     public void setAppid(String appid) {
         this.appid = appid;
     }
@@ -218,8 +266,7 @@ public class Game implements JsonConvertible {
         this.releaseDate = SteamHelper.getGameInfo(appid, "release");
 
         //Pictures
-        this.header = SteamHelper.getGameInfo(appid, "header");
-        this.image = SteamHelper.getGameInfo(appid, "image");
+        setImages();
     }
 
     private void generateIGDBData() {
@@ -230,36 +277,60 @@ public class Game implements JsonConvertible {
         this.releaseDate = IGDBHelper.getGameInfo("137989", "release");
 
         //Pictures
-        this.header = SteamHelper.getGameInfo(appid, "header");
-        this.image = SteamHelper.getGameInfo(appid, "image");
+        setImages();
     }
 
     @Override
     public String toString() {
-        return "com.gamehub.models.Game{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", favorite=" + favorite +
-                ", genre=" + genre +
-                ", lastTime=" + lastTime +
-                ", gameLaunches=" + gameLaunches +
-                ", path=" + path +
-                ", icon=" + icon +
-                ", appid='" + appid + '\'' +
-                ", url='" + url + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", header='" + header + '\'' +
-                ", image='" + image + '\'' +
-                '}';
+        return title;
+    }
+
+    public String getPlatform(){
+        if (!appid.isEmpty()){
+            return "Steam";
+        } else if (!appidIGDB.isEmpty()) {
+            return "IGDB";
+
+        }
+        return "Unknown";
     }
 
     //DEBUG
-    private Icon extractIcon() {
+    public Icon extractIcon() {
         FileSystemView fsv = FileSystemView.getFileSystemView();
         Icon icon = fsv.getSystemIcon(path);
 
         return upscaleIcon(icon);
+    }
+
+    public Icon urlToIcon(String url) {
+        try{
+            URL imageUrl = new URL(url);
+            return new ImageIcon(imageUrl);
+        }
+        catch (MalformedURLException e){
+            System.out.println("Url para icon no valida.");
+        }
+        return icon;
+    }
+
+    public void setImages (){
+
+        String headerURL;
+        String imageURL;
+        if (!appid.isEmpty()){
+            headerURL = SteamHelper.getGameInfo(appid, "header");
+            imageURL = SteamHelper.getGameInfo(appid, "image");
+            this.header = urlToIcon(headerURL);
+            this.image = urlToIcon(imageURL);
+        }
+        else if (!appidIGDB.isEmpty()){
+            headerURL = IGDBHelper.getGameInfo(appid, "header");
+            imageURL = IGDBHelper.getGameInfo(appid, "image");
+            this.header = urlToIcon(headerURL);
+            this.image = urlToIcon(imageURL);
+        }
+
     }
 
     private Icon upscaleIcon(Icon icon) {
