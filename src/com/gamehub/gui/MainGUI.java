@@ -22,14 +22,14 @@ import javax.swing.GroupLayout;
  */
 public class MainGUI extends JPanel {
     Boolean darkMode = false;
-    ProfileGUI profileGUI;
+    ProfileGui profileGUI;
     LibraryGUI libraryGUI;
 
 
     public MainGUI(Manager manager, User user) {
         initComponents();
         libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGUI();
+        profileGUI = new ProfileGui();
 
         container.add(libraryGUI, "Library");
         container.add(profileGUI, "Profile");

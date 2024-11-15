@@ -4,7 +4,7 @@
       "condition": 1,
       "name": "Newbie",
       "count": 17,
-      "description": "Add your first Steam game.",
+      "description": "Add your first game.",
       "id": 5,
       "type": "GAMES"
     },
@@ -12,7 +12,7 @@
       "condition": 10,
       "name": "Empezando el Vicio",
       "count": 17,
-      "description": "Get 10 Steam games.",
+      "description": "Get 10 games.",
       "id": 6,
       "type": "GAMES"
     },
@@ -20,7 +20,7 @@
       "condition": 50,
       "name": "Ballena Jr.",
       "count": 17,
-      "description": "Reach 50 Steam games.",
+      "description": "Reach 50 games.",
       "id": 7,
       "type": "GAMES"
     },
@@ -33,7 +33,7 @@
       "type": "GAMES"
     },
     {
-      "condition": 200,
+      "condition": 250,
       "name": "Archivador Supremo",
       "count": 17,
       "description": "Reach 200 games.",
