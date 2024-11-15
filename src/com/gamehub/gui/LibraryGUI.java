@@ -16,7 +16,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-
+import static com.gamehub.utils.ImageFormatter.*;
 
 /**
  * @author Administrator
@@ -67,6 +67,9 @@ public class LibraryGUI extends JPanel {
             } else {
                 descriptionL.setText("This game not have any description.");
             }
+            imageText.setText(selectedGame.getTitle());
+
+            imageL.setIcon(upscaleIco(imageL.getIcon(),imageLayered.getWidth(),imageLayered.getHeight()));
 
         }
 
@@ -86,6 +89,7 @@ public class LibraryGUI extends JPanel {
         selectedGame = (Game) gamesList.getSelectedValue();
         updateInfo();
         updatePics();
+
 
     }
 
@@ -159,7 +163,6 @@ public class LibraryGUI extends JPanel {
         scrolPanelGames = new JScrollPane();
         gamesList = new JList();
         addGame = new JButton();
-        imageL = new JLabel();
         panel1 = new JPanel();
         playButton = new JButton();
         lastText = new JLabel();
@@ -174,6 +177,10 @@ public class LibraryGUI extends JPanel {
         headerL = new JLabel();
         scrollPane1 = new JScrollPane();
         descriptionL = new JTextArea();
+        imageLayered = new JLayeredPane();
+        imageText = new JLabel();
+        shadow = new JLabel();
+        imageL = new JLabel();
         popupList = new JPopupMenu();
         contextPlay = new JButton();
         contextFavorite = new JButton();
@@ -181,12 +188,11 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER
-        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r"
-        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
+        , 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
+         getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //======== scrolPanelGames ========
         {
@@ -212,15 +218,6 @@ public class LibraryGUI extends JPanel {
                 addGameMouseClicked(e);
             }
         });
-
-        //---- imageL ----
-        imageL.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/headerProfile.png")));
-        imageL.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        imageL.setVerticalAlignment(SwingConstants.BOTTOM);
-        imageL.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        imageL.setVerticalTextPosition(SwingConstants.BOTTOM);
-        imageL.setFont(new Font("Inter", Font.ITALIC, 50));
-        imageL.setRequestFocusEnabled(false);
 
         //======== panel1 ========
         {
@@ -363,7 +360,7 @@ public class LibraryGUI extends JPanel {
                         .addComponent(headerL, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 79, Short.MAX_VALUE))
+                        .addGap(0, 97, Short.MAX_VALUE))
             );
             panel2Layout.setVerticalGroup(
                 panel2Layout.createParallelGroup()
@@ -374,8 +371,29 @@ public class LibraryGUI extends JPanel {
                             .addGroup(panel2Layout.createSequentialGroup()
                                 .addComponent(headerL, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(156, Short.MAX_VALUE))
+                        .addContainerGap(32, Short.MAX_VALUE))
             );
+        }
+
+        //======== imageLayered ========
+        {
+
+            //---- imageText ----
+            imageText.setFont(new Font("Inconsolata", Font.BOLD, 50));
+            imageLayered.add(imageText, JLayeredPane.DEFAULT_LAYER);
+            imageText.setBounds(25, 225, 750, 62);
+
+            //---- shadow ----
+            shadow.setText("text");
+            shadow.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\shadow.png"));
+            imageLayered.add(shadow, JLayeredPane.DEFAULT_LAYER);
+            shadow.setBounds(0, 0, 800, 305);
+
+            //---- imageL ----
+            imageL.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/headerProfile.png")));
+            imageL.setVerticalAlignment(SwingConstants.BOTTOM);
+            imageLayered.add(imageL, JLayeredPane.DEFAULT_LAYER);
+            imageL.setBounds(0, 0, 800, 305);
         }
 
         GroupLayout layout = new GroupLayout(this);
@@ -390,29 +408,23 @@ public class LibraryGUI extends JPanel {
                             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(scrolPanelGames, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(imageL, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                                    .addGap(12, 12, 12))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(12, 12, 12))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addContainerGap())))))
+                                .addComponent(imageLayered, GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+                                .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(scrolPanelGames, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                        .addComponent(scrolPanelGames)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(imageL, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(imageLayered, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
+                            .addGap(43, 43, 43)
                             .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(addGame)
@@ -471,7 +483,6 @@ public class LibraryGUI extends JPanel {
     private JScrollPane scrolPanelGames;
     private JList gamesList;
     private JButton addGame;
-    private JLabel imageL;
     private JPanel panel1;
     private JButton playButton;
     private JLabel lastText;
@@ -486,6 +497,10 @@ public class LibraryGUI extends JPanel {
     private JLabel headerL;
     private JScrollPane scrollPane1;
     private JTextArea descriptionL;
+    public static JLayeredPane imageLayered;
+    private JLabel imageText;
+    private JLabel shadow;
+    private JLabel imageL;
     private JPopupMenu popupList;
     private JButton contextPlay;
     private JButton contextFavorite;

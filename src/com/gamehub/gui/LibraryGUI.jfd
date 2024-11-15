@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p::p, par l {seq l {comp addGame:::p:205:p, space :::x}, seq l {comp scrolPanelGames:::p:233:p, space s:::p, par l {seq {comp imageL::::0:x, space :p:12:p}, seq {comp panel1:::::x, space :p:12:p}, seq {comp panel2:::::x, space :::p}}}}}}"
-			"$verticalGroup": "par l {seq l {space :p::p, par l {comp scrolPanelGames::::608:x, seq {comp imageL:::p:228:p, space :::p, comp panel1:::p::p, space :::p, comp panel2:::::x}}, space :::p, comp addGame:::p::p, space :p::p}}"
+			"$horizontalGroup": "par l {seq {space :p::p, par l {seq l {comp addGame:::p:205:p, space :::x}, seq l {comp scrolPanelGames:::p:233:p, space :::p, par l {comp imageLayered::l::795:x, comp panel1::l:::x, comp panel2::l:::x}}}}}"
+			"$verticalGroup": "par l {seq l {space :p::p, par l {comp scrolPanelGames:::::x, seq {comp imageLayered:::p:308:p, space :p:43:p, comp panel1:::p::p, space u:::p, comp panel2:::::x}}, space :::p, comp addGame:::p::p, space :p::p}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -22,16 +22,6 @@ new FormModel {
 				name: "addGame"
 				"text": "Add Game"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addGameMouseClicked", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "imageL"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/headerProfile.png" )
-				"componentOrientation": sfield java.awt.ComponentOrientation RIGHT_TO_LEFT
-				"verticalAlignment": 3
-				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
-				"verticalTextPosition": 3
-				"font": new java.awt.Font( "Inter", 2, 50 )
-				"requestFocusEnabled": false
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space :::p, comp playButton:::p:146:p, space :p:28:p, par t:::p {seq t {comp lastPlayedL:::p:107:p, space u:::p, comp genreL:::p:107:p}, seq t {comp lastText:::p:120:p, space :p:18:p, comp genreText:::p:76:p}}, space :::p, par t {comp PlatformText:::p:89:p, comp platformL:::p:107:p}, space u:::p, par l {comp releaseL:::p:107:p, comp releaseText::l:p:133:p}, space :0:0:x}}"
@@ -102,8 +92,8 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :::p, comp headerL:::p:122:p, space :::p, comp scrollPane1:::p:560:p, space :0:79:x}}"
-				"$verticalGroup": "par l {seq {space :::p, par l {comp scrollPane1:::::x, seq {comp headerL:::p:127:p, space :0:0:x}}, space ::156:x}}"
+				"$horizontalGroup": "par l {seq l {space :::p, comp headerL:::p:122:p, space :::p, comp scrollPane1:::p:560:p, space :0:97:x}}"
+				"$verticalGroup": "par l {seq {space :::p, par l {comp scrollPane1:::::x, seq {comp headerL:::p:127:p, space :0:0:x}}, space ::32:x}}"
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.EtchedBorder( 1, null, null )
@@ -121,6 +111,41 @@ new FormModel {
 						"wrapStyleWord": true
 						"focusable": false
 					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JLayeredPane", new FormLayoutManager( class javax.swing.JLayeredPane ) ) {
+				name: "imageLayered"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 9
+				}
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "imageText"
+					"font": new java.awt.Font( "Inconsolata", 1, 50 )
+				}, new FormLayoutConstraints( null ) {
+					"x": 25
+					"y": 225
+					"width": 750
+					"height": 62
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "shadow"
+					"text": "text"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\shadow.png" )
+				}, new FormLayoutConstraints( null ) {
+					"x": 0
+					"y": 0
+					"width": 800
+					"height": 305
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "imageL"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/headerProfile.png" )
+					"verticalAlignment": 3
+				}, new FormLayoutConstraints( null ) {
+					"x": 0
+					"y": 0
+					"width": 800
+					"height": 305
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {

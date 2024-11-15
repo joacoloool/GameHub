@@ -1,6 +1,8 @@
 package com.gamehub.models;
 
 import com.gamehub.enums.Genre;
+import com.gamehub.gui.LibraryGUI;
+import com.gamehub.gui.ProfileGui;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.utils.IGDBHelper;
 import com.gamehub.utils.SteamHelper;
@@ -12,11 +14,11 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+
+import static com.gamehub.utils.ImageFormatter.*;
 
 
 public class Game implements JsonConvertible {
@@ -285,8 +287,8 @@ public class Game implements JsonConvertible {
         return title;
     }
 
-    public String getPlatform(){
-        if (!appid.isEmpty()){
+    public String getPlatform() {
+        if (!appid.isEmpty()) {
             return "Steam";
         } else if (!appidIGDB.isEmpty()) {
             return "IGDB";
@@ -300,43 +302,28 @@ public class Game implements JsonConvertible {
         FileSystemView fsv = FileSystemView.getFileSystemView();
         Icon icon = fsv.getSystemIcon(path);
 
-        return upscaleIcon(icon);
+        return upscaleIco(icon);
     }
 
-    public Icon urlToIcon(String url) {
-        try{
-            URL imageUrl = new URL(url);
-            return new ImageIcon(imageUrl);
-        }
-        catch (MalformedURLException e){
-            System.out.println("Url para icon no valida.");
-        }
-        return icon;
-    }
 
-    public void setImages (){
+    public void setImages() {
 
         String headerURL;
         String imageURL;
-        if (!appid.isEmpty()){
+        if (!appid.isEmpty()) {
             headerURL = SteamHelper.getGameInfo(appid, "header");
             imageURL = SteamHelper.getGameInfo(appid, "image");
             this.header = urlToIcon(headerURL);
             this.image = urlToIcon(imageURL);
-        }
-        else if (!appidIGDB.isEmpty()){
+        } else if (!appidIGDB.isEmpty()) {
             headerURL = IGDBHelper.getGameInfo(appid, "header");
             imageURL = IGDBHelper.getGameInfo(appid, "image");
             this.header = urlToIcon(headerURL);
             this.image = urlToIcon(imageURL);
         }
 
-    }
+        this.image= upscaleIco(image, LibraryGUI.imageLayered.getWidth(), LibraryGUI.imageLayered.getHeight());
 
-    private Icon upscaleIcon(Icon icon) {
-        Image img = ((ImageIcon) icon).getImage();
-        Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-        return new ImageIcon(scaledImg); // Devolver el ícono escalado
     }
 
     private String generateSteamURL() {
