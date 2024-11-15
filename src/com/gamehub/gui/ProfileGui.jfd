@@ -1,0 +1,95 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "21.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, comp profile::::1003:x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp profile::::678:x, space :::p}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "profile"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space s:::p, par l {seq l {space :6:6:p, comp descriptionLabel:::p:422:p}, seq l {comp usernameNameLabel:::p:155:p, space :::p, comp button2:::p:120:p}}}, comp label1::l:p:78:p, comp LastPlayedPanel::l:p::p, comp scrollPane1:::p:570:p}, space :p:131:p, par l {comp logroTextLabel2:::p:66:p, par l:::p {comp logroList::::200:x, comp scrollPane3::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
+					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp usernameNameLabel::b:p:35:p, comp button2::b:p::p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, comp label1:::p:43:p, space :p::p, comp scrollPane1::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp logroList:::p:236:p, space ::26:x, comp logroTextLabel2:::p:32:p, space :::p, comp scrollPane3:::p:280:p}}, space :p:43:p}}"
+				} ) {
+					name: "group"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "profileImageLabel"
+						"text": "text"
+						"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg" )
+						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "usernameNameLabel"
+						"text": "Username"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "descriptionLabel"
+						"text": "//DESCRIPTION"
+						"font": new java.awt.Font( "JetBrains Mono", 0, 13 )
+						"border": #EtchedBorder0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"text": "Modificar Perfil"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "logroTextLabel"
+						"text": "Logros"
+					} )
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "logroList"
+						"border": #EtchedBorder0
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :::p, comp lastGameImage2:::p:132:p, space s:::p, comp lastGameNameLabel:::p:334:p, space ::70:x}}"
+						"$verticalGroup": "par l {seq {space :::p, par l {comp lastGameImage2:::p:116:p, comp lastGameNameLabel::l:p:32:p}, space :::x}}"
+					} ) {
+						name: "LastPlayedPanel"
+						"border": new javax.swing.border.TitledBorder( "Last Played" )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lastGameNameLabel"
+							"text": "Dragon Ball Z"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lastGameImage2"
+							"text": "nices"
+							"icon": #SwingIcon0
+							"border": #EtchedBorder0
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "Feed"
+						"font": new com.jformdesigner.model.SwingDerivedFont( "JetBrains Mono", 131072, 22, true )
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "list1"
+							"border": #EtchedBorder0
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane3"
+						"border": #EtchedBorder0
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "list2"
+							"border": #EtchedBorder0
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "logroTextLabel2"
+						"text": "Friends"
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 30, 30 )
+			"size": new java.awt.Dimension( 1015, 690 )
+		} )
+	}
+}
+

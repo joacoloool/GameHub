@@ -72,11 +72,11 @@ public class Manager implements JsonConvertible {
         Achievement achievementC4 = new Achievement("Full Vicio", "Open games 100 times in total.", AchievType.GAME_LAUNCHES, 100);
         Achievement achievementC5 = new Achievement("Gordo Virgo", "Open a game 500 times.", AchievType.GAME_LAUNCHES, 500);
         /** *logros al añadir juegos */
-        Achievement achievementG1 = new Achievement("Newbie", "Add your first Steam game.", AchievType.GAMES, 1);
-        Achievement achievementG2 = new Achievement("Empezando el Vicio", "Get 10 Steam games.", AchievType.GAMES, 10);
-        Achievement achievementG3 = new Achievement("Ballena Jr.", "Reach 50 Steam games.", AchievType.GAMES, 50);
+        Achievement achievementG1 = new Achievement("Newbie", "Add your first game.", AchievType.GAMES, 1);
+        Achievement achievementG2 = new Achievement("Empezando el Vicio", "Get 10 games.", AchievType.GAMES, 10);
+        Achievement achievementG3 = new Achievement("Ballena Jr.", "Reach 50 games.", AchievType.GAMES, 50);
         Achievement achievementG4 = new Achievement("Biblioteca Insana", "Get to 100 games.", AchievType.GAMES, 100);
-        Achievement achievementG5 = new Achievement("Archivador Supremo", "Reach 200 games.", AchievType.GAMES, 200);
+        Achievement achievementG5 = new Achievement("Archivador Supremo", "Reach 200 games.", AchievType.GAMES, 250);
         Achievement achievementG6 = new Achievement("Fachabiblioteca", "Surpass 500 games.", AchievType.GAMES, 500);
         /** *logros al crear un posts */
         Achievement achievementP1 = new Achievement("Primer Bait", "Create your first post.", AchievType.POSTS, 1);

@@ -16,17 +16,17 @@ import javax.swing.GroupLayout;
  * @author Administrator
  */
 public class MainGUI extends JPanel {
-    ProfileGUI profileGUI;
+    ProfileGui profileGUI;
     LibraryGUI libraryGUI;
 
 
     public MainGUI(Manager manager, User user) {
         initComponents();
         libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGUI();
+        profileGUI = new ProfileGui();
 
         container.add(libraryGUI, "Library");
-        container.add(profileGUI, "Profile");
+        container.add(profileGUI,"Profile");
 
     }
 
@@ -40,8 +40,6 @@ public class MainGUI extends JPanel {
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         libraryButton = new JButton();
         profileButton = new JButton();
         container = new JPanel();
@@ -104,13 +102,9 @@ public class MainGUI extends JPanel {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(container, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
-    }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    }
     private JButton libraryButton;
     private JButton profileButton;
     private JPanel container;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

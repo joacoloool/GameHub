@@ -15,6 +15,8 @@ new FormModel {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "pathField"
+						"editable": false
+						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "searchPathButton"
@@ -34,6 +36,8 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "steamField"
+						"editable": false
+						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
@@ -41,6 +45,8 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "igdbField"
+						"editable": false
+						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"

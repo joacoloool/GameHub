@@ -24,7 +24,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "imageL"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\Proyecto nuevo (3).png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\Aprendiendo_Java\\GameHub\\Proyecto nuevo (3).png" )
 				"componentOrientation": sfield java.awt.ComponentOrientation RIGHT_TO_LEFT
 				"verticalAlignment": 3
 				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
