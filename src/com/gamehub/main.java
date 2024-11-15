@@ -45,11 +45,12 @@ public class main {
 
         FlatGitHubDarkIJTheme.setup();
 
+
         // Crear el JFrame para la interfaz
         JFrame frame = new JFrame("GameHub");
 
         // Crear la instancia de MainGUI
-        MainGUI mainGui = new MainGUI();
+        MainGUI mainGui = new MainGUI(manager,manager.getUsers().getFirst());
 
         // Configurar el JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para que cierre la aplicación al cerrar la ventana
