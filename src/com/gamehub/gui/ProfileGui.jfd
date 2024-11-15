@@ -11,8 +11,8 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "profile"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space s:::p, par l {seq l {space :6:6:p, comp descriptionLabel:::p:422:p}, seq l {comp usernameNameLabel:::p:155:p, space :::p, comp button2:::p:120:p}}}, comp label1::l:p:78:p, comp LastPlayedPanel::l:p::p, comp scrollPane1:::p:570:p}, space :p:131:p, par l {comp logroTextLabel2:::p:66:p, par l:::p {comp logroList::::200:x, comp scrollPane3::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
-					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp usernameNameLabel::b:p:35:p, comp button2::b:p::p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, comp label1:::p:43:p, space :p::p, comp scrollPane1::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp logroList:::p:236:p, space ::26:x, comp logroTextLabel2:::p:32:p, space :::p, comp scrollPane3:::p:280:p}}, space :p:43:p}}"
+					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space s:::p, par l {seq l {space :6:6:p, comp descriptionLabel:::p:422:p}, seq l {comp usernameNameLabel:::p:155:p, space :::p, comp modifyProfileButton:::p:120:p}}}, comp feedNameLabel::l:p:78:p, comp LastPlayedPanel::l:p::p, comp feedScrollPanel:::p:570:p}, space :p:131:p, par l {comp FriendsTextLabel:::p:66:p, par l:::p {comp logroList::::200:x, comp friendScrollPanel::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
+					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp usernameNameLabel::b:p:35:p, comp modifyProfileButton::b:p::p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, comp feedNameLabel:::p:43:p, space :p::p, comp feedScrollPanel::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp logroList:::p:236:p, space ::26:x, comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:280:p}}, space :p:43:p}}"
 				} ) {
 					name: "group"
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -32,7 +32,7 @@ new FormModel {
 						"border": #EtchedBorder0
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button2"
+						name: "modifyProfileButton"
 						"text": "Modificar Perfil"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -61,27 +61,27 @@ new FormModel {
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
+						name: "feedNameLabel"
 						"text": "Feed"
 						"font": new com.jformdesigner.model.SwingDerivedFont( "JetBrains Mono", 131072, 22, true )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane1"
+						name: "feedScrollPanel"
 						add( new FormComponent( "javax.swing.JList" ) {
-							name: "list1"
+							name: "feedList"
 							"border": #EtchedBorder0
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane3"
+						name: "friendScrollPanel"
 						"border": #EtchedBorder0
 						add( new FormComponent( "javax.swing.JList" ) {
-							name: "list2"
+							name: "friendList"
 							"border": #EtchedBorder0
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "logroTextLabel2"
+						name: "FriendsTextLabel"
 						"text": "Friends"
 					} )
 				} )
@@ -92,4 +92,3 @@ new FormModel {
 		} )
 	}
 }
-

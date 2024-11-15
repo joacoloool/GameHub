@@ -20,31 +20,33 @@ public class ProfileGui extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         profile = new JScrollPane();
         group = new JPanel();
         profileImageLabel = new JLabel();
         usernameNameLabel = new JLabel();
         descriptionLabel = new JLabel();
-        button2 = new JButton();
+        modifyProfileButton = new JButton();
         logroTextLabel = new JLabel();
         logroList = new JList();
         LastPlayedPanel = new JPanel();
         lastGameNameLabel = new JLabel();
         lastGameImage2 = new JLabel();
-        label1 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        list1 = new JList();
-        scrollPane3 = new JScrollPane();
-        list2 = new JList();
-        logroTextLabel2 = new JLabel();
+        feedNameLabel = new JLabel();
+        feedScrollPanel = new JScrollPane();
+        feedList = new JList();
+        friendScrollPanel = new JScrollPane();
+        friendList = new JList();
+        FriendsTextLabel = new JLabel();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== profile ========
         {
@@ -65,8 +67,8 @@ public class ProfileGui extends JPanel {
                 descriptionLabel.setFont(new Font("JetBrains Mono", Font.PLAIN, 13));
                 descriptionLabel.setBorder(new EtchedBorder());
 
-                //---- button2 ----
-                button2.setText("Modificar Perfil");
+                //---- modifyProfileButton ----
+                modifyProfileButton.setText("Modificar Perfil");
 
                 //---- logroTextLabel ----
                 logroTextLabel.setText("Logros");
@@ -108,29 +110,29 @@ public class ProfileGui extends JPanel {
                     );
                 }
 
-                //---- label1 ----
-                label1.setText("Feed");
-                label1.setFont(new Font("JetBrains Mono", label1.getFont().getStyle() & ~Font.ITALIC, 22));
+                //---- feedNameLabel ----
+                feedNameLabel.setText("Feed");
+                feedNameLabel.setFont(new Font("JetBrains Mono", feedNameLabel.getFont().getStyle() & ~Font.ITALIC, 22));
 
-                //======== scrollPane1 ========
+                //======== feedScrollPanel ========
                 {
 
-                    //---- list1 ----
-                    list1.setBorder(new EtchedBorder());
-                    scrollPane1.setViewportView(list1);
+                    //---- feedList ----
+                    feedList.setBorder(new EtchedBorder());
+                    feedScrollPanel.setViewportView(feedList);
                 }
 
-                //======== scrollPane3 ========
+                //======== friendScrollPanel ========
                 {
-                    scrollPane3.setBorder(new EtchedBorder());
+                    friendScrollPanel.setBorder(new EtchedBorder());
 
-                    //---- list2 ----
-                    list2.setBorder(new EtchedBorder());
-                    scrollPane3.setViewportView(list2);
+                    //---- friendList ----
+                    friendList.setBorder(new EtchedBorder());
+                    friendScrollPanel.setViewportView(friendList);
                 }
 
-                //---- logroTextLabel2 ----
-                logroTextLabel2.setText("Friends");
+                //---- FriendsTextLabel ----
+                FriendsTextLabel.setText("Friends");
 
                 GroupLayout groupLayout = new GroupLayout(group);
                 group.setLayout(groupLayout);
@@ -149,16 +151,16 @@ public class ProfileGui extends JPanel {
                                         .addGroup(groupLayout.createSequentialGroup()
                                             .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE))
                             .addGap(131, 131, 131)
                             .addGroup(groupLayout.createParallelGroup()
-                                .addComponent(logroTextLabel2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addComponent(logroList, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                    .addComponent(friendScrollPanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                 .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
                             .addContainerGap(200, Short.MAX_VALUE))
                 );
@@ -172,7 +174,7 @@ public class ProfileGui extends JPanel {
                                             .addGap(25, 25, 25)
                                             .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                                 .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(button2))
+                                                .addComponent(modifyProfileButton))
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(groupLayout.createSequentialGroup()
@@ -181,18 +183,18 @@ public class ProfileGui extends JPanel {
                                     .addGap(31, 31, 31)
                                     .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                                    .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
                                 .addGroup(groupLayout.createSequentialGroup()
                                     .addGap(34, 34, 34)
                                     .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(logroList, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                    .addComponent(logroTextLabel2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)))
                             .addGap(43, 43, 43))
                 );
             }
@@ -219,23 +221,23 @@ public class ProfileGui extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JScrollPane profile;
     private JPanel group;
     private JLabel profileImageLabel;
     private JLabel usernameNameLabel;
     private JLabel descriptionLabel;
-    private JButton button2;
+    private JButton modifyProfileButton;
     private JLabel logroTextLabel;
     private JList logroList;
     private JPanel LastPlayedPanel;
     private JLabel lastGameNameLabel;
     private JLabel lastGameImage2;
-    private JLabel label1;
-    private JScrollPane scrollPane1;
-    private JList list1;
-    private JScrollPane scrollPane3;
-    private JList list2;
-    private JLabel logroTextLabel2;
+    private JLabel feedNameLabel;
+    private JScrollPane feedScrollPanel;
+    private JList feedList;
+    private JScrollPane friendScrollPanel;
+    private JList friendList;
+    private JLabel FriendsTextLabel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
