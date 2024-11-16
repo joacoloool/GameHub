@@ -29,7 +29,7 @@ public class MainGUI extends JPanel {
     public MainGUI(Manager manager, User user) {
         initComponents();
         libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGui();
+        profileGUI = new ProfileGui(manager, user);
 
         container.add(libraryGUI, "Library");
         container.add(profileGUI, "Profile");
@@ -82,12 +82,13 @@ public class MainGUI extends JPanel {
         themeButton = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
 
         //---- libraryButton ----
         libraryButton.setText("Library");
@@ -133,21 +134,20 @@ public class MainGUI extends JPanel {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(themeButton)
                     .addContainerGap(660, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(container, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                .addComponent(container, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(profileButton, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                        .addComponent(themeButton))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profileButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(themeButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addContainerGap())
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }

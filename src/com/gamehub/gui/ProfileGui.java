@@ -37,7 +37,7 @@ public class ProfileGui extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         profile = new JScrollPane();
         group = new JPanel();
         profileImageLabel = new JLabel();
@@ -45,7 +45,7 @@ public class ProfileGui extends JPanel {
         descriptionLabel = new JLabel();
         modifyProfileButton = new JButton();
         logroTextLabel = new JLabel();
-        logroList = new JList();
+        achievmentList = new JList();
         LastPlayedPanel = new JPanel();
         lastGameNameLabel = new JLabel();
         lastGameImage2 = new JLabel();
@@ -58,11 +58,11 @@ public class ProfileGui extends JPanel {
 
         //======== this ========
         setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-        .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing
+        .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
         .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-        Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red
+        Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
         ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-        public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName(
+        public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
         )))throw new RuntimeException();}});
 
         //======== profile ========
@@ -72,7 +72,7 @@ public class ProfileGui extends JPanel {
             {
 
                 //---- profileImageLabel ----
-                profileImageLabel.setText("text");
+                profileImageLabel.setText(".");
                 profileImageLabel.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg"));
                 profileImageLabel.setBorder(new EtchedBorder());
 
@@ -90,8 +90,8 @@ public class ProfileGui extends JPanel {
                 //---- logroTextLabel ----
                 logroTextLabel.setText("Logros");
 
-                //---- logroList ----
-                logroList.setBorder(new EtchedBorder());
+                //---- achievmentList ----
+                achievmentList.setBorder(new EtchedBorder());
 
                 //======== LastPlayedPanel ========
                 {
@@ -101,7 +101,7 @@ public class ProfileGui extends JPanel {
                     lastGameNameLabel.setText("Dragon Ball Z");
 
                     //---- lastGameImage2 ----
-                    lastGameImage2.setText("nices");
+                    lastGameImage2.setText(".");
                     lastGameImage2.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg"));
                     lastGameImage2.setBorder(new EtchedBorder());
 
@@ -120,10 +120,11 @@ public class ProfileGui extends JPanel {
                         LastPlayedPanelLayout.createParallelGroup()
                             .addGroup(LastPlayedPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(LastPlayedPanelLayout.createParallelGroup()
-                                    .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(90, Short.MAX_VALUE))
+                            .addGroup(LastPlayedPanelLayout.createSequentialGroup()
+                                .addComponent(lastGameImage2, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                                .addContainerGap())
                     );
                 }
 
@@ -160,15 +161,13 @@ public class ProfileGui extends JPanel {
                             .addGroup(groupLayout.createParallelGroup()
                                 .addGroup(groupLayout.createSequentialGroup()
                                     .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
+                                    .addGap(24, 24, 24)
                                     .addGroup(groupLayout.createParallelGroup()
-                                        .addGroup(groupLayout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 422, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(groupLayout.createSequentialGroup()
                                             .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 422, GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE))
@@ -176,7 +175,7 @@ public class ProfileGui extends JPanel {
                             .addGroup(groupLayout.createParallelGroup()
                                 .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(logroList, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(achievmentList, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                     .addComponent(friendScrollPanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                 .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
                             .addContainerGap(200, Short.MAX_VALUE))
@@ -190,15 +189,15 @@ public class ProfileGui extends JPanel {
                                         .addGroup(groupLayout.createSequentialGroup()
                                             .addGap(25, 25, 25)
                                             .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(modifyProfileButton))
+                                                .addComponent(modifyProfileButton)
+                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(groupLayout.createSequentialGroup()
                                             .addGap(37, 37, 37)
                                             .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
                                     .addGap(31, 31, 31)
-                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -207,7 +206,7 @@ public class ProfileGui extends JPanel {
                                     .addGap(34, 34, 34)
                                     .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(logroList, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                                     .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -238,7 +237,7 @@ public class ProfileGui extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JScrollPane profile;
     private JPanel group;
     private JLabel profileImageLabel;
@@ -246,7 +245,7 @@ public class ProfileGui extends JPanel {
     private JLabel descriptionLabel;
     private JButton modifyProfileButton;
     private JLabel logroTextLabel;
-    private JList logroList;
+    private JList achievmentList;
     private JPanel LastPlayedPanel;
     private JLabel lastGameNameLabel;
     private JLabel lastGameImage2;

@@ -129,7 +129,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "shadow"
-					"text": "text"
+					"text": "."
 					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\shadow.png" )
 				}, new FormLayoutConstraints( null ) {
 					"x": 0
