@@ -4,6 +4,7 @@ import com.gamehub.interfaces.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.util.Objects;
 
 public class Achievement implements JsonConvertible {
@@ -14,6 +15,7 @@ public class Achievement implements JsonConvertible {
     protected AchievType type;
     protected int id;
     protected static int count = 0;
+    protected Icon icon;
 
     //Builders
     public Achievement(String name, String description, AchievType type, int condition) {

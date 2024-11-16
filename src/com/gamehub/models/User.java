@@ -188,13 +188,13 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
     }
 
-    public String searchFriend(int id)
+    public boolean searchFriend(int id)
     {
-        for (Integer integer:friends)
+        if (friends.contains(id))
         {
-
+            return true;
         }
-        return "";
+        return false;
     }
 
     public User viewFriend(ArrayList<User> users, int id) {

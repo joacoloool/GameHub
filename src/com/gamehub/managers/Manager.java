@@ -105,38 +105,20 @@ public class Manager implements JsonConvertible {
      *
      * */
     public void verifyAchievements() {
-        for (User user : users) {
-            for (Achievement achievement : achievement.get(AchievType.POSTS)) {
-                if (achievement.checkCondition(user.getNumberOfPost()) && !user.getMyAchievements().contains(achievement)) {
-                    try {
-                        user.addAchievement(achievement);
-                    }
-                    catch (DuplicateElementException e)
-                    {
-                        System.err.println(e.getMessage());
-                    }
-                }
-            }
-            for (Achievement achievement : achievement.get(AchievType.GAMES)) {
-                if (achievement.checkCondition(user.getGamesQuant()) && !user.getMyAchievements().contains(achievement)) {
-                    try {
-                        user.addAchievement(achievement);
-                    }
-                    catch (DuplicateElementException e)
-                    {
-                        System.err.println(e.getMessage());
-                    }
-                }
-            }
-            for (Achievement achievement : achievement.get(AchievType.GAME_LAUNCHES)) {
-                if (achievement.checkCondition(user.getGameLaunches()) && !user.getMyAchievements().contains(achievement)) {
-                    try {
-                        user.addAchievement(achievement);
-                    }
-                    catch (DuplicateElementException e)
-                    {
-                        System.err.println(e.getMessage());
-                    }
+        for (User  user : users) {
+            checkAchievementsForType(user, AchievType.POSTS, user.getNumberOfPost());
+            checkAchievementsForType(user, AchievType.GAMES, user.getGamesQuant());
+            checkAchievementsForType(user, AchievType.GAME_LAUNCHES, user.getGameLaunches());
+        }
+    }
+
+    private void checkAchievementsForType(User user, AchievType type, int conditionValue) {
+        for (Achievement achievement : achievement.get(type)) {
+            if (achievement.checkCondition(conditionValue) && !user.getMyAchievements().contains(achievement)) {
+                try {
+                    user.addAchievement(achievement);
+                } catch (DuplicateElementException e) {
+                    System.err.println(e.getMessage());
                 }
             }
         }
