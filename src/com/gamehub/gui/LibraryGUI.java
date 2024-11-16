@@ -5,15 +5,19 @@
 package com.gamehub.gui;
 
 import java.awt.*;
+import javax.print.MultiDocPrintService;
 import javax.swing.border.*;
 import javax.swing.event.*;
 
+import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.gui.utilities.GameCellRender;
+import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
 
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -23,23 +27,30 @@ import javax.swing.GroupLayout;
  */
 public class LibraryGUI extends JPanel {
 
-    DefaultListModel<Game> gamesListModel;
-    Game selectedGame;
+    DefaultListModel<Game> gamesListModel = new DefaultListModel<>();
+    User user;
 
     public LibraryGUI(User user) {
         initComponents();
-        DefaultListModel<Game> gamesListModel = new DefaultListModel<>();
         Game selectedGame = new Game();
         gamesList.setModel(gamesListModel);
         gamesList.setCellRenderer(new GameCellRender());
+        Game selectedGame = new Game();
+        this.user = user;
 
         for (Game game : user.getGameList()) {
             gamesListModel.addElement(game);
         }
     }
 
-    public void addGame(Game game) {
-        gamesListModel.addElement(game);
+    public void addGame(Game game) {//añadi extra seguridad cosa de que solo exista un juego
+        try {
+            user.addGame(game);
+            gamesListModel.addElement(game);
+        }catch (DuplicateElementException e)
+        {
+            System.err.println(e.getMessage());
+        }
     }
 
     private void addGameMouseClicked(MouseEvent e) {
@@ -186,13 +197,12 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
-        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-        .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
-        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
 
         //======== scrolPanelGames ========
         {

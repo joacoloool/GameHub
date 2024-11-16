@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static com.gamehub.utils.ImageFormatter.*;
 
@@ -269,6 +270,19 @@ public class Game implements JsonConvertible {
 
         //Pictures
         setImages();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(appid, game.appid) && Objects.equals(appidIGDB, game.appidIGDB);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(appid, appidIGDB);
     }
 
     private void generateIGDBData() {

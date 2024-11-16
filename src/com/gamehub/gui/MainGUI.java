@@ -2,13 +2,8 @@
  * Created by JFormDesigner on Thu Nov 14 13:24:57 ART 2024
  */
 package com.gamehub.gui;
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlIJTheme;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.User;
 
@@ -24,12 +19,14 @@ public class MainGUI extends JPanel {
     Boolean darkMode = false;
     ProfileGui profileGUI;
     LibraryGUI libraryGUI;
+    Manager manager;
 
 
-    public MainGUI(Manager manager, User user) {
+    public MainGUI(Manager manager) {
         initComponents();
         libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGui(manager, user);
+        profileGUI = new ProfileGui(manager, manager.getUsers().getFirst());
+        this.manager=manager;
 
         container.add(libraryGUI, "Library");
         container.add(profileGUI, "Profile");
@@ -40,8 +37,10 @@ public class MainGUI extends JPanel {
         container.add(profileGUI);
     }
 
-    private void profileButtonMouseClicked(MouseEvent e) {
+    private void profileButtonMouseClicked(MouseEvent e) {//por algun motivo los botones estan invertidos y funcionan xd
         container.add(libraryGUI);
+        profileGUI.updateProfile(manager.getUsers().getFirst(),manager);
+
     }
 
     private void themeButtonMouseClicked(MouseEvent e) {

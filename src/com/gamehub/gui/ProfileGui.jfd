@@ -11,8 +11,8 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "profile"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space :p:24:p, par l {seq {comp usernameNameLabel:::p:155:p, space :::p, comp modifyProfileButton:::p:120:p}, comp descriptionLabel:::p:422:p}}, comp feedNameLabel::l:p:78:p, comp LastPlayedPanel::l:p::p, comp feedScrollPanel:::p:570:p}, space :p:131:p, par l {comp FriendsTextLabel:::p:66:p, par l:::p {comp achievmentList::::200:x, comp friendScrollPanel::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
-					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp modifyProfileButton::b:p::p, comp usernameNameLabel::b:p:35:p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, comp feedNameLabel:::p:43:p, space :p::p, comp feedScrollPanel::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp achievmentList:::p:236:p, space ::26:x, comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:280:p}}, space :p:43:p}}"
+					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space :p:24:p, par l {seq {comp usernameNameLabel:::p:155:p, space :::p, comp modifyProfileButton:::p:120:p}, comp descriptionLabel:::p:422:p}}, comp LastPlayedPanel::l:p::p, par t:l::p {seq {comp feedNameLabel:::p:78:p, space :::x, comp createPostButton:::p::p}, comp feedScrollPanel:::p:570:p}}, space :p:131:p, par l {comp FriendsTextLabel:::p:66:p, par l:::p {comp achievmentList::::200:x, comp friendScrollPanel::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
+					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp modifyProfileButton::b:p::p, comp usernameNameLabel::b:p:35:p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, par b {comp feedNameLabel::b:p:43:p, comp createPostButton::b:p::p}, space :p::p, comp feedScrollPanel::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp achievmentList:::p:236:p, space ::26:x, comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:280:p}}, space :p:43:p}}"
 				} ) {
 					name: "group"
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -44,7 +44,7 @@ new FormModel {
 						"border": #EtchedBorder0
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :::p, comp lastGameImage2:::p:200:p, space :::p, comp lastGameNameLabel:::p:334:p, space ::14:x}}"
+						"$horizontalGroup": "par l {seq l {space :::p, comp lastGameImage2:::p:188:p, space s:::p, comp lastGameNameLabel:::p:334:p, space ::14:x}}"
 						"$verticalGroup": "par l {seq {space :::p, comp lastGameNameLabel:::p:32:p, space ::90:x}, seq l {comp lastGameImage2::::122:x, space :::p}}"
 					} ) {
 						name: "LastPlayedPanel"
@@ -83,6 +83,11 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "FriendsTextLabel"
 						"text": "Friends"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "createPostButton"
+						"text": "Create Post"
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createPostButtonMouseClicked", true ) )
 					} )
 				} )
 			} )

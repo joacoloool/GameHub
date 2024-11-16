@@ -1,5 +1,9 @@
 package com.gamehub;
+import com.gamehub.enums.AchievType;
+import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.gui.*;
+import com.gamehub.models.Achievement;
+import com.gamehub.models.Game;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import com.gamehub.managers.*;
@@ -20,20 +24,33 @@ public class main {
        if (manager.getUsers().isEmpty()) {
            User user = new User("Joacolool");
            User user2 = new User("Tom");
+          Game game= new Game();
+
+          
+          /*
+          try {
+              user.addGame(game);
+          }
+          catch (DuplicateElementException e)
+          {
+              System.err.println(e.getMessage());
+          }
+
+           try {
+               user.addGame(game);
+           }
+           catch (DuplicateElementException e)
+           {
+               System.err.println(e.getMessage());
+           }
+        */
            manager.addUser(user);
            manager.addUser(user2);
-           manager.getUsers().getFirst().getFeed().createPost("1HelloWorld");
-           manager.getUsers().getFirst().getFeed().createPost("12HelloWorld");
-           manager.getUsers().getFirst().getFeed().createPost("123HelloWorld");
-           manager.getUsers().getFirst().getFeed().createPost("1234HelloWorld");
-           manager.getUsers().getFirst().getFeed().createPost("12345HelloWorld");
-           manager.getUsers().getFirst().getFeed().togglePinPost(manager.getUsers().getFirst().getFeed().getPosts().get(4));
-           manager.getUsers().getFirst().getFeed().togglePinPost(manager.getUsers().getFirst().getFeed().getPosts().get(0));
 
 
        }
 
-      JsonUtil.guardar("manager.json", manager.toJson());
+
 
         // user.getGame(1).run();
         //user.getGame(2).run();
@@ -42,7 +59,6 @@ public class main {
 
 
         //UI debug
-
         FlatGitHubDarkIJTheme.setup();
 
 
@@ -50,7 +66,7 @@ public class main {
         JFrame frame = new JFrame("GameHub");
 
         // Crear la instancia de MainGUI
-        MainGUI mainGui = new MainGUI(manager,manager.getUsers().getFirst());
+        MainGUI mainGui = new MainGUI(manager);
 
         // Configurar el JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para que cierre la aplicación al cerrar la ventana
@@ -60,7 +76,6 @@ public class main {
         frame.setVisible(true); // Hacer visible la ventana
         ImageIcon imageIcon = new ImageIcon("gamhub2.png");
         frame.setIconImage(imageIcon.getImage());
-
 
 
     }

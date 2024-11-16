@@ -139,24 +139,7 @@
   ],
   "users": [
     {
-      "feed": {"posts": [
-        {
-          "fav": false,
-          "message": "12HelloWorld"
-        },
-        {
-          "fav": false,
-          "message": "123HelloWorld"
-        },
-        {
-          "fav": false,
-          "message": "1234HelloWorld"
-        },
-        {
-          "fav": false,
-          "message": "12345HelloWorld"
-        }
-      ]},
+      "feed": {"posts": []},
       "favoriteAchievements": 0,
       "name": "Joacolool",
       "description": "",

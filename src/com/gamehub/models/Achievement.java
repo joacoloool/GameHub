@@ -4,6 +4,8 @@ import com.gamehub.interfaces.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class Achievement implements JsonConvertible {
 
     protected String name;
@@ -29,7 +31,7 @@ public class Achievement implements JsonConvertible {
     }
 
     public boolean checkCondition(int valueCondition) {
-        return valueCondition == condition;
+     return valueCondition>=condition;
     }
 
 
@@ -71,6 +73,19 @@ public class Achievement implements JsonConvertible {
     }
     public void setCondition(int condition) {
         this.condition = condition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Achievement that = (Achievement) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override

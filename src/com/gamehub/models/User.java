@@ -1,6 +1,7 @@
 package com.gamehub.models;
 
 import com.gamehub.exceptions.DuplicateElementException;
+import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.JsonUtil;
@@ -21,7 +22,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     protected String description = "";
     protected Feed feed;
     protected TreeSet<Integer> friends;
-    protected ArrayList<Achievement> myAchievements;
+    private ArrayList<Achievement> myAchievements;
     protected int favoriteAchievement = 0;
     protected static int count = 0;
 
@@ -141,10 +142,22 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
     }
 
+    public void deleteGame(Game game)throws NonExistObjectException
+    {
+        if (!gameList.remove(game))
+        {
+            throw new NonExistObjectException("El objeto que quiere borrar no existe"); //esta en duda esta excepcion ya que no afecta en mucho esto
+        }
+        gamesQuant--;
+    }
+
     public void addGame(Game game)throws DuplicateElementException {
-        if (!gameList.add(game))
+        if (gameList.contains(game))
         {
             throw new DuplicateElementException("This element already exist");
+        }else
+        {
+            gameList.add(game);
         }
         gamesQuant++;
     }
@@ -173,6 +186,15 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         } catch (NullPointerException e) {
             System.out.println("La lista de amigos no ha sido inicializada");
         }
+    }
+
+    public String searchFriend(int id)
+    {
+        for (Integer integer:friends)
+        {
+
+        }
+        return "";
     }
 
     public User viewFriend(ArrayList<User> users, int id) {
