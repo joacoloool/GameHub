@@ -16,11 +16,28 @@ import javax.swing.border.*;
 public class ProfileGui extends JPanel {
     public ProfileGui() {
         initComponents();
+        Icon profileIcon = new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg");//Para escalar es perfli
+        profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+
+        Icon lastGameIcon = new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg");//para escalar el ultimo juego
+        lastGameImage2.setIcon(upscaleIco(lastGameIcon, 200, 120));
+    }
+
+    public static Icon upscaleIco(Icon icon) {
+        Image img = ((ImageIcon) icon).getImage();
+        Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImg);
+    }
+
+    public static Icon upscaleIco(Icon icon, int width, int height) {
+        Image img = ((ImageIcon) icon).getImage();
+        Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImg);
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
         profile = new JScrollPane();
         group = new JPanel();
         profileImageLabel = new JLabel();
@@ -40,13 +57,13 @@ public class ProfileGui extends JPanel {
         FriendsTextLabel = new JLabel();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
-        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-        .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
-        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+        .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing
+        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+        Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red
+        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+        public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName(
+        )))throw new RuntimeException();}});
 
         //======== profile ========
         {
@@ -94,18 +111,18 @@ public class ProfileGui extends JPanel {
                         LastPlayedPanelLayout.createParallelGroup()
                             .addGroup(LastPlayedPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 334, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(70, Short.MAX_VALUE))
+                                .addContainerGap(14, Short.MAX_VALUE))
                     );
                     LastPlayedPanelLayout.setVerticalGroup(
                         LastPlayedPanelLayout.createParallelGroup()
                             .addGroup(LastPlayedPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(LastPlayedPanelLayout.createParallelGroup()
-                                    .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
                 }
@@ -181,7 +198,7 @@ public class ProfileGui extends JPanel {
                                             .addGap(37, 37, 37)
                                             .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
                                     .addGap(31, 31, 31)
-                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -221,7 +238,7 @@ public class ProfileGui extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+    // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
     private JScrollPane profile;
     private JPanel group;
     private JLabel profileImageLabel;
