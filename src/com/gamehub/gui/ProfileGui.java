@@ -11,10 +11,14 @@ import java.awt.event.*;
     import com.gamehub.models.User;
 
     import java.awt.*;
-    import java.util.ArrayList;
-    import javax.swing.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
     /**
@@ -28,9 +32,11 @@ import java.awt.event.*;
 
         public ProfileGui(Manager manager, User user) {
             initComponents();
+            this.manager = manager;
+            this.currentUser  = user;
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
-            updateProfile(user,manager);
+            updateProfile(currentUser , manager);
         }
 
         public static Icon upscaleIco(Icon icon) {
@@ -46,14 +52,17 @@ import java.awt.event.*;
         }
 
 
-        protected void updateProfile(User user,Manager manager) {
-            // Actualiza la información del perfil con los datos del usuario
+        protected void updateProfile(User user, Manager manager) {
             usernameNameLabel.setText(user.getName());
             descriptionLabel.setText(user.getDescription());
 
-            // Escalar y establecer la imagen de perfil
-            Icon profileIcon = new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg"); // Cambiar según la ruta
-            profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+            Icon profileIcon = user.getProfileImage();
+            if (profileIcon != null) {
+                profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+            } else {
+                // Si no hay imagen, puedes establecer una imagen por defecto
+                profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
+            }
 
             // Actualizar logros
             achievementDefaultListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
@@ -65,7 +74,7 @@ import java.awt.event.*;
 
             // Actualizar el feed de actividades
             feedListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
-            ArrayList<Post> activities = user.getFeed().getPosts(); //
+            ArrayList<Post> activities = user.getFeed().getPosts();
             for (Post activity : activities) {
                 feedListModel.addElement(activity);
             }
@@ -75,11 +84,85 @@ import java.awt.event.*;
         private void createPostButtonMouseClicked(MouseEvent e) {
             // TODO add your code here
         }
+        private void modifyProfile(ActionEvent e) {
+            JDialog editProfileDialog = new JDialog((Frame)null, "Editar Perfil", true);
+            editProfileDialog.setSize(700, 700);
+            editProfileDialog.setLocationRelativeTo(this);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            editProfileDialog.add(panel);
+
+            JLabel profileImageLabel = this.profileImageLabel;
+            panel.add(profileImageLabel);
+
+            JButton changeImageButton = new JButton("Cambiar Imagen");
+            panel.add(changeImageButton);
+
+            JLabel nameLabel = new JLabel("Cambiar Nombre:");
+            JTextField nameTextField = new JTextField(currentUser .getName()); // Usar el nombre actual
+            nameTextField.setPreferredSize(new Dimension(200, 30));
+
+            JPanel namePanel = new JPanel();
+            namePanel.add(nameLabel);
+            namePanel.add(nameTextField);
+            panel.add(namePanel);
+
+            panel.add(Box.createVerticalStrut(1));
+
+            JLabel descriptionLabel = new JLabel("Cambiar Descripción:");
+            JTextField descriptionTextField = new JTextField(currentUser .getDescription()); // Usar la descripción actual
+            descriptionTextField.setPreferredSize(new Dimension(200, 30));
+
+            JPanel descriptionPanel = new JPanel();
+            descriptionPanel.add(descriptionLabel);
+            descriptionPanel.add(descriptionTextField);
+            panel.add(descriptionPanel);
+
+            JButton applyChangesButton = new JButton("Aplicar Cambios");
+            panel.add(applyChangesButton);
+
+            final ImageIcon[] selectedIcon = new ImageIcon[1];
+
+            changeImageButton.addActionListener(e1 -> {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Seleccionar imagen de perfil");
+                fileChooser.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "jpeg", "png"));
+
+                int returnValue = fileChooser.showOpenDialog(editProfileDialog);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    String selectedImagePath = fileChooser.getSelectedFile().getAbsolutePath();
+                    selectedIcon[0] = new ImageIcon(selectedImagePath);
+                    profileImageLabel.setIcon(upscaleIco(selectedIcon[0], 170, 160));
+                }
+            });
+
+            applyChangesButton.addActionListener(e1 -> {
+                String newName = nameTextField.getText().trim();
+                String newDescription = descriptionTextField.getText().trim();
+                if (!newName.isEmpty()) {
+                    currentUser .setName(newName); // Modificar el nombre del usuario existente
+                    currentUser .setDescription(newDescription); // Modificar la descripción
+
+                    if (selectedIcon[0] != null) {
+                        currentUser .setProfileImage(selectedIcon[0]); // Cambiar la imagen de perfil
+                    }
+
+                    JOptionPane.showMessageDialog(editProfileDialog, "Cambios aplicados exitosamente.");
+                    updateProfile(currentUser , manager); // Actualizar la interfaz de usuario
+                    editProfileDialog.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(editProfileDialog, "Por favor, ingrese un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            });
+
+            editProfileDialog.setVisible(true);
+        }
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+            // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
             profile = new JScrollPane();
             group = new JPanel();
             profileImageLabel = new JLabel();
@@ -100,11 +183,9 @@ import java.awt.event.*;
             createPostButton = new JButton();
 
             //======== this ========
-            setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            setBorder(new CompoundBorder(new TitledBorder(new EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",TitledBorder.CENTER,TitledBorder.BOTTOM,new Font("Dia\u006cog",Font.BOLD,
+            12),Color.red), getBorder())); addPropertyChangeListener(new PropertyChangeListener(){@Override public void propertyChange(PropertyChangeEvent e){if("bord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
 
             //======== profile ========
             {
@@ -127,6 +208,7 @@ import java.awt.event.*;
 
                     //---- modifyProfileButton ----
                     modifyProfileButton.setText("Modificar Perfil");
+                    modifyProfileButton.addActionListener(e -> modifyProfile(e));
 
                     //---- logroTextLabel ----
                     logroTextLabel.setText("Logros");
@@ -293,7 +375,7 @@ import java.awt.event.*;
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
         private JScrollPane profile;
         private JPanel group;
         private JLabel profileImageLabel;
@@ -312,5 +394,9 @@ import java.awt.event.*;
         private JList friendList;
         private JLabel FriendsTextLabel;
         private JButton createPostButton;
+        private User currentUser;
+        private Manager manager;;
+
+
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

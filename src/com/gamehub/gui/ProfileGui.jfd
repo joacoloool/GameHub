@@ -34,6 +34,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "modifyProfileButton"
 						"text": "Modificar Perfil"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modifyProfile", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "logroTextLabel"

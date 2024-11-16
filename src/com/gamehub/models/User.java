@@ -8,6 +8,7 @@ import com.gamehub.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.util.*;
 /**
  *
@@ -25,6 +26,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     private ArrayList<Achievement> myAchievements;
     protected int favoriteAchievement = 0;
     protected static int count = 0;
+    private Icon profileImage;
 
 
     public User() {
@@ -113,6 +115,13 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         this.myAchievements = myAchievements;
     }
 
+    public Icon getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Icon profileImage) {
+        this.profileImage = profileImage;
+    }
     //Methods
 
     /** Retorna la cantidad de publicaciones en el feed del usuario
