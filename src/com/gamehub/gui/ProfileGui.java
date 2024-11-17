@@ -19,6 +19,7 @@ import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import net.miginfocom.swing.*;
 
 
     /**
@@ -28,6 +29,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
+        private User currentUser;
+        private Manager manager;
 
 
         public ProfileGui(Manager manager, User user) {
@@ -85,78 +88,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
             // TODO add your code here
         }
         private void modifyProfile(ActionEvent e) {
-            JDialog editProfileDialog = new JDialog((Frame)null, "Editar Perfil", true);
-            editProfileDialog.setSize(700, 700);
-            editProfileDialog.setLocationRelativeTo(this);
 
-            JPanel panel = new JPanel();
-            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-            editProfileDialog.add(panel);
+        }
 
-            JLabel profileImageLabel = this.profileImageLabel;
-            panel.add(profileImageLabel);
-
-            JButton changeImageButton = new JButton("Cambiar Imagen");
-            panel.add(changeImageButton);
-
-            JLabel nameLabel = new JLabel("Cambiar Nombre:");
-            JTextField nameTextField = new JTextField(currentUser .getName()); // Usar el nombre actual
-            nameTextField.setPreferredSize(new Dimension(200, 30));
-
-            JPanel namePanel = new JPanel();
-            namePanel.add(nameLabel);
-            namePanel.add(nameTextField);
-            panel.add(namePanel);
-
-            panel.add(Box.createVerticalStrut(1));
-
-            JLabel descriptionLabel = new JLabel("Cambiar Descripción:");
-            JTextField descriptionTextField = new JTextField(currentUser .getDescription()); // Usar la descripción actual
-            descriptionTextField.setPreferredSize(new Dimension(200, 30));
-
-            JPanel descriptionPanel = new JPanel();
-            descriptionPanel.add(descriptionLabel);
-            descriptionPanel.add(descriptionTextField);
-            panel.add(descriptionPanel);
-
-            JButton applyChangesButton = new JButton("Aplicar Cambios");
-            panel.add(applyChangesButton);
-
-            final ImageIcon[] selectedIcon = new ImageIcon[1];
-
-            changeImageButton.addActionListener(e1 -> {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Seleccionar imagen de perfil");
-                fileChooser.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "jpeg", "png"));
-
-                int returnValue = fileChooser.showOpenDialog(editProfileDialog);
-                if (returnValue == JFileChooser.APPROVE_OPTION) {
-                    String selectedImagePath = fileChooser.getSelectedFile().getAbsolutePath();
-                    selectedIcon[0] = new ImageIcon(selectedImagePath);
-                    profileImageLabel.setIcon(upscaleIco(selectedIcon[0], 170, 160));
-                }
-            });
-
-            applyChangesButton.addActionListener(e1 -> {
-                String newName = nameTextField.getText().trim();
-                String newDescription = descriptionTextField.getText().trim();
-                if (!newName.isEmpty()) {
-                    currentUser .setName(newName); // Modificar el nombre del usuario existente
-                    currentUser .setDescription(newDescription); // Modificar la descripción
-
-                    if (selectedIcon[0] != null) {
-                        currentUser .setProfileImage(selectedIcon[0]); // Cambiar la imagen de perfil
-                    }
-
-                    JOptionPane.showMessageDialog(editProfileDialog, "Cambios aplicados exitosamente.");
-                    updateProfile(currentUser , manager); // Actualizar la interfaz de usuario
-                    editProfileDialog.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(editProfileDialog, "Por favor, ingrese un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            });
-
-            editProfileDialog.setVisible(true);
+        private void createPost(ActionEvent e) {
+            // TODO add your code here
         }
 
 
@@ -181,11 +117,27 @@ import javax.swing.filechooser.FileNameExtensionFilter;
             friendList = new JList();
             FriendsTextLabel = new JLabel();
             createPostButton = new JButton();
+            dialog1 = new JDialog();
+            textField1 = new JTextField();
+            button2 = new JButton();
+            button1 = new JButton();
+            dialog2 = new JDialog();
+            label1 = new JLabel();
+            textField2 = new JTextField();
+            label2 = new JLabel();
+            textField3 = new JTextField();
+            label3 = new JLabel();
+            button5 = new JButton();
+            button4 = new JButton();
+            button3 = new JButton();
 
             //======== this ========
-            setBorder(new CompoundBorder(new TitledBorder(new EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",TitledBorder.CENTER,TitledBorder.BOTTOM,new Font("Dia\u006cog",Font.BOLD,
-            12),Color.red), getBorder())); addPropertyChangeListener(new PropertyChangeListener(){@Override public void propertyChange(PropertyChangeEvent e){if("bord\u0065r".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -277,12 +229,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
                     //---- createPostButton ----
                     createPostButton.setText("Create Post");
-                    createPostButton.addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mouseClicked(MouseEvent e) {
-                            createPostButtonMouseClicked(e);
-                        }
-                    });
+                    createPostButton.addActionListener(e -> createPost(e));
 
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
@@ -368,9 +315,119 @@ import javax.swing.filechooser.FileNameExtensionFilter;
                 layout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                         .addContainerGap())
             );
+
+            //======== dialog1 ========
+            {
+                dialog1.setTitle("Crear Post");
+                var dialog1ContentPane = dialog1.getContentPane();
+                dialog1ContentPane.setLayout(new MigLayout(
+                    "hidemode 3",
+                    // columns
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]",
+                    // rows
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]"));
+                dialog1ContentPane.add(textField1, "cell 0 0 13 6");
+
+                //---- button2 ----
+                button2.setText("Cancelar");
+                dialog1ContentPane.add(button2, "cell 2 6");
+
+                //---- button1 ----
+                button1.setText("Publicar");
+                dialog1ContentPane.add(button1, "cell 11 6");
+                dialog1.pack();
+                dialog1.setLocationRelativeTo(dialog1.getOwner());
+            }
+
+            //======== dialog2 ========
+            {
+                dialog2.setTitle("Modificar Perfil");
+                var dialog2ContentPane = dialog2.getContentPane();
+                dialog2ContentPane.setLayout(new MigLayout(
+                    "hidemode 3",
+                    // columns
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]" +
+                    "[fill]",
+                    // rows
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]" +
+                    "[]"));
+
+                //---- label1 ----
+                label1.setText("Modificar Nombre");
+                dialog2ContentPane.add(label1, "cell 2 1");
+                dialog2ContentPane.add(textField2, "cell 2 3 10 1");
+
+                //---- label2 ----
+                label2.setText("Cambiar Descripcion");
+                dialog2ContentPane.add(label2, "cell 2 5");
+                dialog2ContentPane.add(textField3, "cell 2 7 10 1");
+
+                //---- label3 ----
+                label3.setText("Cambiar imagen");
+                dialog2ContentPane.add(label3, "cell 2 9");
+
+                //---- button5 ----
+                button5.setText("Buscar archivo...");
+                dialog2ContentPane.add(button5, "cell 2 11");
+
+                //---- button4 ----
+                button4.setText("Cancelar");
+                dialog2ContentPane.add(button4, "cell 2 18");
+
+                //---- button3 ----
+                button3.setText("Aplicar Cambios");
+                dialog2ContentPane.add(button3, "cell 11 18");
+                dialog2.pack();
+                dialog2.setLocationRelativeTo(dialog2.getOwner());
+            }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
 
@@ -394,9 +451,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
         private JList friendList;
         private JLabel FriendsTextLabel;
         private JButton createPostButton;
-        private User currentUser;
-        private Manager manager;;
-
-
+        private JDialog dialog1;
+        private JTextField textField1;
+        private JButton button2;
+        private JButton button1;
+        private JDialog dialog2;
+        private JLabel label1;
+        private JTextField textField2;
+        private JLabel label2;
+        private JTextField textField3;
+        private JLabel label3;
+        private JButton button5;
+        private JButton button4;
+        private JButton button3;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }
