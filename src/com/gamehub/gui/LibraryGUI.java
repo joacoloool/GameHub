@@ -10,6 +10,7 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 
 import com.gamehub.exceptions.DuplicateElementException;
+import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.gui.utilities.GameCellRender;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
@@ -49,7 +50,7 @@ public class LibraryGUI extends JPanel {
             gamesListModel.addElement(game);
         }catch (DuplicateElementException e)
         {
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Este juego ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -125,13 +126,21 @@ public class LibraryGUI extends JPanel {
     }
 
     private void contextDeleteMouseClicked(MouseEvent e) {
-        if (selectedGame != null) {
-            int index = gamesListModel.indexOf(selectedGame);
-            if (index != -1) {
-                gamesListModel.remove(index);
+        try {
+            if (selectedGame != null) {
+                int index = gamesListModel.indexOf(selectedGame);
+                if (index != -1) {
+                    gamesListModel.remove(index);
+                    user.deleteGame(selectedGame);
+                }
             }
+            popupList.setVisible(false);
         }
-        popupList.setVisible(false);
+        catch (NonExistObjectException e1) {
+            // Mostrar un mensaje de error en un pop-up
+            JOptionPane.showMessageDialog(null, "Este juego no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     private void contextModifyMouseClicked(MouseEvent e) {

@@ -23,7 +23,8 @@ public class main {
 
        if (manager.getUsers().isEmpty()) {
            User user = new User("Joacolool");
-           User user2 = new User("Tom");
+           User user2 = new User("Joacolool");
+
           Game game= new Game();
 
           
@@ -46,7 +47,7 @@ public class main {
         */
            manager.addUser(user);
            manager.addUser(user2);
-
+           System.out.println(manager.getUsers());
 
        }
 
@@ -76,6 +77,7 @@ public class main {
         frame.setVisible(true); // Hacer visible la ventana
         ImageIcon imageIcon = new ImageIcon("gamhub2.png");
         frame.setIconImage(imageIcon.getImage());
+        System.out.println(manager.getUsers().getFirst().getMyAchievements());
 
 
     }
