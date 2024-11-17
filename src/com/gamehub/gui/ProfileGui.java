@@ -98,7 +98,7 @@ import net.miginfocom.swing.*;
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
             profile = new JScrollPane();
             group = new JPanel();
             profileImageLabel = new JLabel();
@@ -132,18 +132,19 @@ import net.miginfocom.swing.*;
             button3 = new JButton();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
+            , 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
+             getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
             //======== profile ========
             {
+                profile.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
                 //======== group ========
                 {
+                    group.setFont(group.getFont().deriveFont(group.getFont().getSize() + 13f));
 
                     //---- profileImageLabel ----
                     profileImageLabel.setText(".");
@@ -152,18 +153,19 @@ import net.miginfocom.swing.*;
 
                     //---- usernameNameLabel ----
                     usernameNameLabel.setText("Username");
+                    usernameNameLabel.setFont(usernameNameLabel.getFont().deriveFont(usernameNameLabel.getFont().getSize() + 8f));
 
                     //---- descriptionLabel ----
                     descriptionLabel.setText("//DESCRIPTION");
                     descriptionLabel.setFont(new Font("JetBrains Mono", Font.PLAIN, 13));
-                    descriptionLabel.setBorder(new EtchedBorder());
+                    descriptionLabel.setBorder(null);
 
                     //---- modifyProfileButton ----
                     modifyProfileButton.setText("Modificar Perfil");
                     modifyProfileButton.addActionListener(e -> modifyProfile(e));
 
                     //---- logroTextLabel ----
-                    logroTextLabel.setText("Logros");
+                    logroTextLabel.setText("Badges");
 
                     //---- achievmentList ----
                     achievmentList.setBorder(new EtchedBorder());
@@ -204,8 +206,8 @@ import net.miginfocom.swing.*;
                     }
 
                     //---- feedNameLabel ----
-                    feedNameLabel.setText("Feed");
-                    feedNameLabel.setFont(new Font("JetBrains Mono", feedNameLabel.getFont().getStyle() & ~Font.ITALIC, 22));
+                    feedNameLabel.setText("Comments");
+                    feedNameLabel.setFont(new Font("JetBrains Mono", feedNameLabel.getFont().getStyle() & ~Font.ITALIC, 15));
 
                     //======== feedScrollPanel ========
                     {
@@ -239,60 +241,65 @@ import net.miginfocom.swing.*;
                                 .addGap(24, 24, 24)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(24, 24, 24)
+                                        .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(groupLayout.createParallelGroup()
                                             .addGroup(groupLayout.createSequentialGroup()
-                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 422, GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(19, 19, 19)
+                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(groupLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(groupLayout.createSequentialGroup()
-                                            .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(feedNameLabel)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(createPostButton))
                                         .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE)))
-                                .addGap(131, 131, 131)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                                 .addGroup(groupLayout.createParallelGroup()
-                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(achievmentList, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                        .addComponent(friendScrollPanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(200, Short.MAX_VALUE))
+                                    .addGroup(groupLayout.createSequentialGroup()
+                                        .addGroup(groupLayout.createParallelGroup()
+                                            .addComponent(achievmentList, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(groupLayout.createSequentialGroup()
+                                                .addGroup(groupLayout.createParallelGroup()
+                                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addContainerGap(200, Short.MAX_VALUE))
+                                    .addGroup(groupLayout.createSequentialGroup()
+                                        .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(280, Short.MAX_VALUE))))
                     );
                     groupLayout.setVerticalGroup(
                         groupLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, groupLayout.createSequentialGroup()
                                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                     .addGroup(groupLayout.createSequentialGroup()
+                                        .addGap(25, 25, 25)
                                         .addGroup(groupLayout.createParallelGroup()
                                             .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(25, 25, 25)
                                                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(modifyProfileButton)
-                                                    .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(modifyProfileButton))
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(37, 37, 37)
-                                                .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
                                         .addGap(31, 31, 31)
                                         .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(createPostButton))
+                                            .addComponent(createPostButton)
+                                            .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
+                                        .addContainerGap(183, Short.MAX_VALUE)
                                         .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                                         .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)))
@@ -432,7 +439,7 @@ import net.miginfocom.swing.*;
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         private JScrollPane profile;
         private JPanel group;
         private JLabel profileImageLabel;

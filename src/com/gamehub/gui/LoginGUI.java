@@ -41,7 +41,7 @@ public class LoginGUI extends JFrame {
             try {
                 // Intentamos registrar al usuario
                 manager.addUser(user);
-                mainGUI = new MainGUI(manager, user);
+                mainGUI = new MainGUI(manager,user);
                 mainGUI.setVisible(true);
                 this.dispose();
             } catch (DuplicateElementException x) {
@@ -107,6 +107,9 @@ public class LoginGUI extends JFrame {
         backButton = new JButton();
 
         //======== this ========
+        setResizable(false);
+        setAlwaysOnTop(true);
+        setMaximumSize(new Dimension(620, 420));
         var contentPane = getContentPane();
 
         //---- signInL ----
@@ -198,14 +201,6 @@ public class LoginGUI extends JFrame {
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(textAccount)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(createAccountButton, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-                            .addGap(14, 14, 14))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(passwordWarning, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
-                            .addGap(96, 96, 96))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(gamehubIcon, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(contentPaneLayout.createParallelGroup()
@@ -217,7 +212,15 @@ public class LoginGUI extends JFrame {
                                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                                     .addComponent(gamehubL, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
                                     .addGap(390, 390, 390)
-                                    .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(passwordWarning, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addComponent(textAccount)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(createAccountButton, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
+                            .addGap(14, 14, 14))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -245,11 +248,11 @@ public class LoginGUI extends JFrame {
                         .addComponent(backButton))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(passwordWarning, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                    .addGap(12, 12, 12)
+                    .addGap(28, 28, 28)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(textAccount)
                         .addComponent(createAccountButton))
-                    .addContainerGap(63, Short.MAX_VALUE))
+                    .addContainerGap(11, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

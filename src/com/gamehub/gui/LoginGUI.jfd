@@ -4,10 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp signInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}, space :::x}, seq t {space :::x, par l {seq t {comp textAccount:::p::p, space :::p, comp createAccountButton:::p:143:p, space :p:14:p}, seq t {comp passwordWarning:::p:396:p, space :p:96:p}, seq t {comp gamehubIcon:::p:56:p, space :::p, par l {seq t {comp backButton:::p:50:p, space s:::p, comp okButton:::p:254:p, space :p:191:p}, seq t {comp gamehubL:::p:154:p, space :p:390:p, comp closeButton:::p:38:p}}}}}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL::b:p:50:p, comp gamehubIcon::b:p:68:p}, space u:::p, comp signInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p}, comp closeButton:::p:29:p}, space :p:12:p, par b {comp okButton::b:p:50:p, comp backButton::b:p::p}, space :::p, comp passwordWarning:::p:30:p, space :p:12:p, par b {comp textAccount::b:p::p, comp createAccountButton::b:p::p}, space ::63:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp signInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}, space :::x}, seq t {space :::x, par l {seq t {comp gamehubIcon:::p:56:p, space :::p, par l {seq t {comp backButton:::p:50:p, space s:::p, comp okButton:::p:254:p, space :p:191:p}, seq t {comp gamehubL:::p:154:p, space :p:390:p, comp closeButton:::p:38:p}}}, seq t {par t {comp passwordWarning:::p:396:p, seq {comp textAccount:::p::p, space :::p, comp createAccountButton:::p:143:p}}, space :p:14:p}}}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL::b:p:50:p, comp gamehubIcon::b:p:68:p}, space u:::p, comp signInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p}, comp closeButton:::p:29:p}, space :p:12:p, par b {comp okButton::b:p:50:p, comp backButton::b:p::p}, space :::p, comp passwordWarning:::p:30:p, space :p:28:p, par b {comp textAccount::b:p::p, comp createAccountButton::b:p::p}, space ::11:x}}"
 		} ) {
 			name: "this"
+			"resizable": false
+			"alwaysOnTop": true
+			"maximumSize": new java.awt.Dimension( 620, 420 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "signInL"
 				"text": "SIGN IN WITH ACCOUNT NAME"

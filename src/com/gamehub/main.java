@@ -1,4 +1,5 @@
 package com.gamehub;
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.gamehub.enums.AchievType;
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.gui.*;
@@ -52,7 +53,7 @@ public class main {
 
 
         //UI debug
-        FlatGitHubDarkIJTheme.setup();
+        FlatOneDarkIJTheme.setup();
 
 
         // Crear el JFrame para la interfaz
@@ -60,7 +61,7 @@ public class main {
 
         // Configurar y mostrar el LoginGUI
         loginGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar la aplicación al salir
-        loginGUI.setSize(1024, 768); // Tamaño del JFrame
+        loginGUI.setSize(670,470 ); // Tamaño del JFrame
         loginGUI.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
         loginGUI.setVisible(true); // Mostrar el JFrame
         loginGUI.setTitle("GameHub"); // Título de la ventana

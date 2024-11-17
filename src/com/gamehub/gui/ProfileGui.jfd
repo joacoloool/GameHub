@@ -10,11 +10,13 @@ new FormModel {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "profile"
+				"horizontalScrollBarPolicy": 31
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:170:p, space :p:24:p, par l {seq {comp usernameNameLabel:::p:155:p, space :::p, comp modifyProfileButton:::p:120:p}, comp descriptionLabel:::p:422:p}}, comp LastPlayedPanel::l:p::p, par t:l::p {seq {comp feedNameLabel:::p:78:p, space :::x, comp createPostButton:::p::p}, comp feedScrollPanel:::p:570:p}}, space :p:131:p, par l {comp FriendsTextLabel:::p:66:p, par l:::p {comp achievmentList::::200:x, comp friendScrollPanel::::200:x}, comp logroTextLabel:::p:66:p}, space ::200:x}}"
-					"$verticalGroup": "par l {seq t {par t {seq {par l {seq {space :p:25:p, par b {comp modifyProfileButton::b:p::p, comp usernameNameLabel::b:p:35:p}, space :::p, comp descriptionLabel:::p:119:p}, seq l {space :p:37:p, comp profileImageLabel:::p:160:p}}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, par b {comp feedNameLabel::b:p:43:p, comp createPostButton::b:p::p}, space :p::p, comp feedScrollPanel::::205:x}, seq {space :p:34:p, comp logroTextLabel:::p:32:p, space :::p, comp achievmentList:::p:236:p, space ::26:x, comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:280:p}}, space :p:43:p}}"
+					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {comp profileImageLabel:::p:188:p, par l {seq {space :p:19:p, comp usernameNameLabel:::p:155:p}, seq l {space s:::p, comp descriptionLabel:::p:410:p}}}, comp LastPlayedPanel::l:p::p, par t:l::p {seq {comp feedNameLabel:::p::p, space :::x, comp createPostButton:::p::p}, comp feedScrollPanel:::p:570:p}}, space ::131:x, par l {seq {par l {comp achievmentList::l:::x, seq {par l {comp FriendsTextLabel:::p:66:p, comp friendScrollPanel:::p:200:p, comp logroTextLabel::l:p:66:p}, space :0:0:x}}, space ::200:x}, seq {comp modifyProfileButton:::p:120:p, space ::280:x}}}}"
+					"$verticalGroup": "par l {seq t {par t {seq {space :p:25:p, par l {seq {par b {comp usernameNameLabel::b:p:35:p, comp modifyProfileButton::b:p::p}, space :::p, comp descriptionLabel:::p:119:p}, comp profileImageLabel:::p:172:p}, space :p:31:p, comp LastPlayedPanel:::p::p, space s:p::p, par b {comp createPostButton::b:p::p, comp feedNameLabel::b:p:43:p}, space :p::p, comp feedScrollPanel::::205:x}, seq {space ::183:x, comp logroTextLabel:::p:32:p, space u:::p, comp achievmentList:::p:101:p, space :::p, comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:280:p}}, space :p:43:p}}"
 				} ) {
 					name: "group"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 13, false )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "profileImageLabel"
 						"text": "."
@@ -24,12 +26,13 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "usernameNameLabel"
 						"text": "Username"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "descriptionLabel"
 						"text": "//DESCRIPTION"
 						"font": new java.awt.Font( "JetBrains Mono", 0, 13 )
-						"border": #EtchedBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "modifyProfileButton"
@@ -38,7 +41,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "logroTextLabel"
-						"text": "Logros"
+						"text": "Badges"
 					} )
 					add( new FormComponent( "javax.swing.JList" ) {
 						name: "achievmentList"
@@ -63,8 +66,8 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "feedNameLabel"
-						"text": "Feed"
-						"font": new com.jformdesigner.model.SwingDerivedFont( "JetBrains Mono", 131072, 22, true )
+						"text": "Comments"
+						"font": new com.jformdesigner.model.SwingDerivedFont( "JetBrains Mono", 131072, 15, true )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "feedScrollPanel"
