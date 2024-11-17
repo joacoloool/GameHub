@@ -3,17 +3,17 @@ JFDML JFormDesigner: "8.2.4.0.393" Java: "21.0.3" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp SignInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}, space :::x}, seq t {space :::x, par l {seq t {comp gamehubIcon:::p:56:p, space :::p, comp gamehubL:::p:154:p, space :p:390:p, comp closeButton:::p:38:p}, seq t {comp label1:::p::p, space :::p, comp createAccountButton:::p:143:p, space :p:14:p}, seq t {comp passwordWarning:::p:396:p, space :p:96:p}, seq t {comp okButton:::p:254:p, space :p:191:p}}}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL::b:p:50:p, comp gamehubIcon::b:p:68:p}, space u:::p, comp SignInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p}, comp closeButton:::p:29:p}, space :p:12:p, comp okButton:::p:50:p, space :::p, comp passwordWarning:::p:30:p, space :p:12:p, par b {comp label1::b:p::p, comp createAccountButton::b:p::p}, space ::27:x}}"
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp signInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}, space :::x}, seq t {space :::x, par l {seq t {comp textAccount:::p::p, space :::p, comp createAccountButton:::p:143:p, space :p:14:p}, seq t {comp passwordWarning:::p:396:p, space :p:96:p}, seq t {comp gamehubIcon:::p:56:p, space :::p, par l {seq t {comp backButton:::p:50:p, space s:::p, comp okButton:::p:254:p, space :p:191:p}, seq t {comp gamehubL:::p:154:p, space :p:390:p, comp closeButton:::p:38:p}}}}}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL::b:p:50:p, comp gamehubIcon::b:p:68:p}, space u:::p, comp signInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p}, comp closeButton:::p:29:p}, space :p:12:p, par b {comp okButton::b:p:50:p, comp backButton::b:p::p}, space :::p, comp passwordWarning:::p:30:p, space :p:12:p, par b {comp textAccount::b:p::p, comp createAccountButton::b:p::p}, space ::63:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "SignInL"
+				name: "signInL"
 				"text": "SIGN IN WITH ACCOUNT NAME"
-				"background": &Color0 new java.awt.Color( 0, 0, 0, 255 )
-				"foreground": &Color1 new java.awt.Color( 26, 153, 235, 255 )
-				"font": &Font0 new java.awt.Font( "Inter", 1, 13 )
+				"background": new java.awt.Color( 0, 0, 0, 255 )
+				"foreground": new java.awt.Color( 26, 153, 235, 255 )
+				"font": new java.awt.Font( "Inter", 1, 13 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "passwordL"
@@ -22,12 +22,13 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "rememberMeCheck"
 				"text": "Remember me"
+				"visible": false
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "okButton"
 				"text": "text"
-				"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\signButton.png" )
-				"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\signButton.png" )
+				"border": new javax.swing.border.EtchedBorder( 1, null, null )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -35,23 +36,24 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "passwordWarning"
-				"foreground": &Color2 new java.awt.Color( 210, 61, 65, 255 )
-				"enabled": false
+				"foreground": new java.awt.Color( 210, 61, 65, 255 )
+				"text": "Please check your password and account name and try again"
+				"visible": false
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "gamehubIcon"
 				"text": "text"
-				"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/hubIco.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/hubIco.png" )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "gamehubL"
 				"text": "GAMEHUB®"
-				"font": &Font1 new java.awt.Font( "Yu Gothic", 0, 25 )
+				"font": new java.awt.Font( "Yu Gothic", 0, 25 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "closeButton"
 				"text": "X"
-				"border": &MatteBorder0 new javax.swing.border.MatteBorder( 1, 0, 0, 1, new java.awt.Color( 26, 153, 235, 255 ) )
+				"border": new javax.swing.border.MatteBorder( 1, 0, 0, 1, new java.awt.Color( 26, 153, 235, 255 ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "closeButtonMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -63,80 +65,20 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createAccountButtonMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "textAccount"
 				"text": "Don´t have a GameHub account? "
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "passwordField1"
 			} )
-		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 20, 0 )
-			"size": new java.awt.Dimension( 650, 440 )
-		} )
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {par t {seq t {space :::x, par t {seq t {comp gamehubIcon2:::p:56:p, space :::p, comp gamehubL2:::p:154:p, space :p:390:p, comp closeButton2:::p:38:p}, seq t {comp backButton:::p:58:p, space :::p, comp passwordWarning2:::p:396:p, space s:::p, comp okButton2:::p:80:p, space :p:63:p}}}, seq l {space :p:127:p, par l:::p {comp SignInL2:::p:206:p, comp nameF::::350:x, comp passwordF::::350:x, comp passwordL2::l:p:80:p, comp passwordL3::l:p:148:p, comp confirmPF::t::350:x}, space :0:0:x}}, space :::x}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL2::b:p:50:p, comp gamehubIcon2::b:p:68:p}, space u:::p, comp SignInL2:::p::p, space :::p, comp nameF:::p:43:p}, comp closeButton2:::p:29:p}, space :::p, comp passwordL2:::p:24:p, space :::p, comp passwordF:::p:43:p, space :::p, comp passwordL3:::p:24:p, space :::p, comp confirmPF:::p:43:p, space s:::p, par t {comp okButton2:::p:50:p, seq t {par t {comp backButton:::p:44:p, comp passwordWarning2:::p:30:p}, space :p:4:p}}, space ::49:x}}"
-		} ) {
-			name: "register"
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "SignInL2"
-				"text": "ACCOUNT NAME"
-				"background": #Color0
-				"foreground": #Color1
-				"font": #Font0
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "passwordL2"
-				"text": "PASSWORD"
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "okButton2"
-				"icon": #SwingIcon0
-				"border": #EtchedBorder0
-				"horizontalTextPosition": 0
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "nameF"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "passwordWarning2"
-				"foreground": #Color2
-				"enabled": false
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "gamehubIcon2"
-				"text": "text"
-				"icon": #SwingIcon1
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "gamehubL2"
-				"text": "GAMEHUB®"
-				"font": #Font1
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "closeButton2"
-				"text": "X"
-				"border": #MatteBorder0
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "closeButtonMouseClicked", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JPasswordField" ) {
-				name: "passwordF"
-			} )
-			add( new FormComponent( "javax.swing.JPasswordField" ) {
-				name: "confirmPF"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "passwordL3"
-				"text": "CONFIRM PASSWORD"
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "backButton"
 				"text": "<"
+				"visible": false
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "backButtonMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 20, 460 )
+			"location": new java.awt.Point( 20, 0 )
 			"size": new java.awt.Dimension( 650, 440 )
 		} )
 	}

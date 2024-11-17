@@ -2,6 +2,7 @@
  * Created by JFormDesigner on Thu Nov 14 13:24:57 ART 2024
  */
 package com.gamehub.gui;
+
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
 import com.gamehub.managers.Manager;
@@ -15,22 +16,29 @@ import javax.swing.GroupLayout;
 /**
  * @author Administrator
  */
-public class MainGUI extends JPanel {
+public class MainGUI extends JFrame {
     Boolean darkMode = false;
     ProfileGui profileGUI;
     LibraryGUI libraryGUI;
     Manager manager;
+    User selectedProfile;
 
 
-    public MainGUI(Manager manager) {
+    public MainGUI(Manager manager, User selectedProfile) {
         initComponents();
-        libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGui(manager, manager.getUsers().getFirst());
-        this.manager=manager;
+        this.selectedProfile = selectedProfile;
+        libraryGUI = new LibraryGUI(selectedProfile);
+        profileGUI = new ProfileGui(manager, manager.getUserByName(selectedProfile.getName()));
+        this.manager = manager;
 
         container.add(libraryGUI, "Library");
         container.add(profileGUI, "Profile");
 
+
+        // Configuración del JFrame
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar aplicación al cerrar ventana
+        this.setSize(1024, 768); // Tamaño de la ventana
+        this.setLocationRelativeTo(null); // Centrar ventana en pantalla
     }
 
     private void libraryButtonMouseClicked(MouseEvent e) {
@@ -39,8 +47,8 @@ public class MainGUI extends JPanel {
 
     private void profileButtonMouseClicked(MouseEvent e) {//por algun motivo los botones estan invertidos y funcionan xd
         container.add(libraryGUI);
-        manager.getUsers().getFirst().setGamesQuant(manager.getUsers().getFirst().getGamesQuant()+10);
-        profileGUI.updateProfile(manager.getUsers().getFirst(),manager);
+        manager.getUsers().getFirst().setGamesQuant(manager.getUsers().getFirst().getGamesQuant() + 10);
+        profileGUI.updateProfile(manager.getUsers().getFirst(), manager);
 
     }
 
@@ -75,20 +83,14 @@ public class MainGUI extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         libraryButton = new JButton();
         profileButton = new JButton();
         container = new JPanel();
         themeButton = new JButton();
 
         //======== this ========
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-        swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-        .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-        ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
-        ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-        .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-        ();}});
+        var contentPane = getContentPane();
 
         //---- libraryButton ----
         libraryButton.setText("Library");
@@ -110,6 +112,13 @@ public class MainGUI extends JPanel {
 
         //======== container ========
         {
+            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             container.setLayout(new CardLayout());
         }
 
@@ -122,39 +131,41 @@ public class MainGUI extends JPanel {
             }
         });
 
-        GroupLayout layout = new GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addComponent(libraryButton)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(profileButton)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(themeButton)
-                    .addContainerGap(660, Short.MAX_VALUE))
+                    .addContainerGap(658, Short.MAX_VALUE))
                 .addComponent(container, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                             .addComponent(profileButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
                         .addComponent(themeButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                     .addContainerGap())
         );
+        pack();
+        setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
     private JButton libraryButton;
     private JButton profileButton;
     private JPanel container;

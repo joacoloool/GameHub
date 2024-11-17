@@ -22,11 +22,6 @@ public class main {
        //com.gamehub.managers.Manager manager = com.gamehub.utils.JsonUtil.leerManager();
 
        if (manager.getUsers().isEmpty()) {
-           User user = new User("Joacolool");
-           User user2 = new User("Tom");
-          Game game= new Game();
-
-          
           /*
           try {
               user.addGame(game);
@@ -44,8 +39,6 @@ public class main {
                System.err.println(e.getMessage());
            }
         */
-           manager.addUser(user);
-           manager.addUser(user2);
 
 
        }
@@ -63,19 +56,18 @@ public class main {
 
 
         // Crear el JFrame para la interfaz
-        JFrame frame = new JFrame("GameHub");
+        LoginGUI loginGUI = new LoginGUI(manager);
 
-        // Crear la instancia de MainGUI
-        MainGUI mainGui = new MainGUI(manager);
+        // Configurar y mostrar el LoginGUI
+        loginGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar la aplicación al salir
+        loginGUI.setSize(1024, 768); // Tamaño del JFrame
+        loginGUI.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
+        loginGUI.setVisible(true); // Mostrar el JFrame
+        loginGUI.setTitle("GameHub"); // Título de la ventana
 
-        // Configurar el JFrame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para que cierre la aplicación al cerrar la ventana
-        frame.setSize(1024, 768); // Establecer tamaño de la ventana
-        frame.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
-        frame.add(mainGui); // Agregar el panel principal (MainGUI) al JFrame
-        frame.setVisible(true); // Hacer visible la ventana
-        ImageIcon imageIcon = new ImageIcon("gamhub2.png");
-        frame.setIconImage(imageIcon.getImage());
+        // Configurar el ícono del JFrame
+        ImageIcon imageIcon = new ImageIcon("gamhub2.png"); // Ruta al ícono
+        loginGUI.setIconImage(imageIcon.getImage());
 
 
     }

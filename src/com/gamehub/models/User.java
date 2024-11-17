@@ -1,7 +1,6 @@
 package com.gamehub.models;
 
 import com.gamehub.exceptions.DuplicateElementException;
-import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.JsonUtil;
@@ -18,7 +17,8 @@ import java.util.*;
 public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     protected int id;
     protected ArrayList<Game> gameList;
-    protected String name;
+    protected String name = "";
+    protected String password="";
     protected int gamesQuant = 0;
     protected String description = "";
     protected Feed feed;
@@ -47,6 +47,19 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         this.friends = new TreeSet<>();
         this.myAchievements = new ArrayList<>();
         this.id = count;
+
+        count++;
+    }
+
+    public User(String name,String password) {
+        this.name = name;
+        this.gameList = new ArrayList<>();
+        this.feed = new Feed();
+        this.friends = new TreeSet<>();
+        this.myAchievements = new ArrayList<>();
+        this.id = count;
+        this.password = password;
+
         count++;
     }
     //Getters
@@ -151,11 +164,18 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
     }
 
-    public void deleteGame(Game game)throws NonExistObjectException
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void deleteGame(Game game)
     {
         if (!gameList.remove(game))
         {
-            throw new NonExistObjectException("El objeto que quiere borrar no existe"); //esta en duda esta excepcion ya que no afecta en mucho esto
         }
         gamesQuant--;
     }

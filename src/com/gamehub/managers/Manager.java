@@ -1,4 +1,5 @@
 package com.gamehub.managers;
+
 import com.gamehub.enums.AchievType;
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.interfaces.JsonConvertible;
@@ -6,57 +7,76 @@ import com.gamehub.models.Achievement;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.TreeSet;
 
-/** *
+/**
  * CLASE GESTORA
- *
- * */
+ */
 
 public class Manager implements JsonConvertible {
 
-    /** * Colecciones tree */
+    /**
+     * Colecciones tree
+     */
     protected TreeSet<User> users;
-    /** * Colecciones HashMap*/
+    /**
+     * Colecciones HashMap
+     */
     protected HashMap<AchievType, ArrayList<Achievement>> achievement;
 
 
-    /** *Constructor*/
+    /**
+     * Constructor
+     */
     public Manager() {
         users = new TreeSet<>();
         achievement = new HashMap<>();
         createAchievements();
     }
 
-    /** *Getters y setters */
+    /**
+     * Getters y setters
+     */
     public TreeSet<User> getUsers() {
         return users;
     }
+
     public void setUsers(TreeSet<User> users) {
         this.users = users;
     }
-    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {return achievement;}
-    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {this.achievement = achievement;}
+
+    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {
+        this.achievement = achievement;
+    }
 
     // Metodos
 
-    /** Agregar usuario */
+    /**
+     * Agregar usuario
+     */
     public void addUser(User user) {
-        users.add(user);
+        if (!users.add(user)){
+            throw new DuplicateElementException("El usuario ya existe");
+        }
+
     }
 
-    /** *Arreglos que van en el hashmap
-     *
-     *
+    /**
+     * Arreglos que van en el hashmap
+     * <p>
+     * <p>
      * Arreglo de de los logros
      * cada uno de los arraylist carga uno de los tipos de logros
      * los logros de luncher, logros de añadir juegos y logro de crear post
-     *
-     *
-     * */
+     */
 
     private void createAchievements() {
 
@@ -98,14 +118,12 @@ public class Manager implements JsonConvertible {
     }
 
     /**
-     *
      * Verificador de logros
      * Lo que hace es verificar si conseguiste el logro de cierta categoria
      * ya sea los logros de launcher, logros de añadir juegos y logro de crear post
-     *
-     * */
+     */
     public void verifyAchievements() {
-        for (User  user : users) {
+        for (User user : users) {
             checkAchievementsForType(user, AchievType.POSTS, user.getNumberOfPost());
             checkAchievementsForType(user, AchievType.GAMES, user.getGamesQuant());
             checkAchievementsForType(user, AchievType.GAME_LAUNCHES, user.getGameLaunches());
@@ -124,11 +142,29 @@ public class Manager implements JsonConvertible {
         }
     }
 
+    public User getUserByName(String name) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public Boolean findUser(String name, String password) {
+        for (User user : users) {
+            if (user.getName().equals(name) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "com.gamehub.managers.Manager" +
                 "users=" + users +
-                ", achievement=" + achievement ;
+                ", achievement=" + achievement;
     }
 
     //Json
