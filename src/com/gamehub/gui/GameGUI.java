@@ -59,6 +59,7 @@ public class GameGUI extends JDialog {
         descriptionField.setText(game.getDescription());
         igdbField.setText(game.getAppidIGDB());
         steamField.setText(game.getAppid());
+        pathField.setText(game.getPath().getAbsolutePath());
     }
 
     private void setLabels(File file){
@@ -73,7 +74,6 @@ public class GameGUI extends JDialog {
 
     public void okButtonMouseClicked(MouseEvent e) {
         File file = new File(pathField.getText());
-
         Game game = new Game();
         game.setTitle(titleField.getText());
         game.setReleaseDate(releaseField.getText());
@@ -84,7 +84,11 @@ public class GameGUI extends JDialog {
         game.setIcon(file);
         game.setImages();
         closeWindow();
-
+        if(game.equals(libraryGUI.selectedGame))
+        {
+            libraryGUI.user.deleteGame(game);
+            libraryGUI.gamesListModel.remove(libraryGUI.gamesListModel.indexOf(game));
+        }
         libraryGUI.addGame(game);
     }
 

@@ -1,17 +1,24 @@
 /*
  * Created by JFormDesigner on Wed Nov 13 17:52:52 ART 2024
  */
+
 package com.gamehub.gui;
+
 import java.awt.*;
+import javax.print.MultiDocPrintService;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.gui.utilities.GameCellRender;
+import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
+
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -31,7 +38,6 @@ public class LibraryGUI extends JPanel {
         gamesList.setModel(gamesListModel);
         gamesList.setCellRenderer(new GameCellRender());
         this.user = user;
-        
 
         for (Game game : user.getGameList()) {
             gamesListModel.addElement(game);
@@ -113,13 +119,12 @@ public class LibraryGUI extends JPanel {
         }
     }
 
-
     private void contextPlayMouseClicked(MouseEvent e) {
         playButtonMouseClicked(e);
         popupList.setVisible(false);
     }
 
-    private void contextDeleteMouseClicked(MouseEvent e) {
+    public void contextDeleteMouseClicked(MouseEvent e) {
         Game game  = selectedGame;
         try {
             if (selectedGame != null) {
@@ -170,19 +175,17 @@ public class LibraryGUI extends JPanel {
     }
 
     private void addGamePlusMouseEntered(MouseEvent e) {
-        addGame.setForeground(Color.white);
-        addGamePlus.setForeground(Color.white);
+        // TODO add your code here
     }
 
     private void addGameMouseExited(MouseEvent e) {
-        addGame.setForeground(Color.decode("#999999"));
-        addGamePlus.setForeground(Color.decode("#999999"));
+        // TODO add your code here
     }
 
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         scrolPanelGames = new JScrollPane();
         gamesList = new JList();
         panel1 = new JPanel();
@@ -212,11 +215,12 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER
+        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font
+        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order"
+        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //======== scrolPanelGames ========
         {
@@ -528,7 +532,7 @@ public class LibraryGUI extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JScrollPane scrolPanelGames;
     private JList gamesList;
     private JPanel panel1;

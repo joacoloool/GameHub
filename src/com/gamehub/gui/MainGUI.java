@@ -101,7 +101,6 @@ public class MainGUI extends JFrame {
     private void profileButtonMouseEntered(MouseEvent e) {
     if (!active){
         profileButton.setEnabled(true);
-        profileButton.setForeground(Color.white);
     }
 
 
@@ -126,18 +125,16 @@ public class MainGUI extends JFrame {
     }
 
     private void userNameButtonMouseClicked(MouseEvent e) {
-        userNameOptions.show(e.getComponent(), e.getX(), e.getY());
+        // TODO add your code here
     }
 
     private void changeAccountButtonMouseClicked(MouseEvent e) {
-        this.dispose();
-        LoginGUI login = new LoginGUI(manager);
-        login.setVisible(true);
+        // TODO add your code here
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         libraryButton = new JButton();
         profileButton = new JButton();
         container = new JPanel();
@@ -198,13 +195,12 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,container. getBorder () ) ); container. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             container.setLayout(new CardLayout());
         }
 
@@ -285,7 +281,7 @@ public class MainGUI extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JButton libraryButton;
     private JButton profileButton;
     private JPanel container;
