@@ -61,13 +61,13 @@ public class ImageFormatter {
             g.dispose();
 
             // Crear el directorio si no existe
-            File dir = new File("images/profilesImage");
+            File dir = new File("images/profilePictures");
             if (!dir.exists()) {
                 dir.mkdirs(); // Crea el directorio si no existe
             }
 
             // Crear el archivo de destino con la ruta que incluye el directorio
-            File file = new File(dir, directory);  // Usando la variable 'directory' para el nombre del archivo
+            File file = new File(dir, directory+".png");  // Usando la variable 'directory' para el nombre del archivo
             try {
                 // Guardar la imagen como PNG
                 ImageIO.write(bufferedImage, "PNG", file);

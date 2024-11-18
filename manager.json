@@ -3,133 +3,212 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 128,
+      "count": 272,
       "description": "Add your first game.",
-      "id": 117,
+      "id": 261,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 128,
+      "count": 272,
       "description": "Get 10 games.",
-      "id": 118,
+      "id": 262,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 128,
+      "count": 272,
       "description": "Reach 50 games.",
-      "id": 119,
+      "id": 263,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 128,
+      "count": 272,
       "description": "Get to 100 games.",
-      "id": 120,
+      "id": 264,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 128,
+      "count": 272,
       "description": "Reach 200 games.",
-      "id": 121,
+      "id": 265,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 128,
+      "count": 272,
       "description": "Surpass 500 games.",
-      "id": 122,
+      "id": 266,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 128,
+      "count": 272,
       "description": "Create your first post.",
-      "id": 123,
+      "id": 267,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 128,
+      "count": 272,
       "description": "Reach 10 posts.",
-      "id": 124,
+      "id": 268,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 128,
+      "count": 272,
       "description": "Get to 50 posts.",
-      "id": 125,
+      "id": 269,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 128,
+      "count": 272,
       "description": "Publish 100 posts.",
-      "id": 126,
+      "id": 270,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 128,
+      "count": 272,
       "description": "Reach 500 posts.",
-      "id": 127,
+      "id": 271,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 128,
+      "count": 272,
       "description": "Open your first game and start the adventure!",
-      "id": 112,
+      "id": 256,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 128,
+      "count": 272,
       "description": "Open any game 10 times.",
-      "id": 113,
+      "id": 257,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 128,
+      "count": 272,
       "description": "Open a game 50 times.",
-      "id": 114,
+      "id": 258,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 128,
+      "count": 272,
       "description": "Open games 100 times in total.",
-      "id": 115,
+      "id": 259,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 128,
+      "count": 272,
       "description": "Open a game 500 times.",
-      "id": 116,
+      "id": 260,
       "type": "GAME_LAUNCHES"
     }
   ],
   "users": [
+    {
+      "feed": {"posts": []},
+      "password": "123123",
+      "favoriteAchievements": 0,
+      "name": "123",
+      "nickname": "",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 19:36:45.5700274",
+        "appidIGDB": "279634",
+        "releaseDate": "10 Oct, 2024",
+        "description": "DRAGON BALL: Sparking! ZERO takes the legendary gameplay of the Budokai Tenkaichi series and raises it to whole new levels. Make yours the destructive power of the strongest fighters ever to appear in Dragon Ball!",
+        "title": "DRAGON BALL: Sparking! ZERO",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Dragon Ball Sparking ZERO.lnk",
+        "appid": "1790600",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 11
+      }],
+      "id": 4,
+      "gamesQuant": 1,
+      "friends": []
+    },
+    {
+      "feed": {"posts": []},
+      "password": "123123",
+      "favoriteAchievements": 0,
+      "name": "123123",
+      "nickname": "123123",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 19:45:43.3895931",
+        "appidIGDB": "279634",
+        "releaseDate": "10 Oct, 2024",
+        "icon": "javax.swing.ImageIcon@44b0a6e3",
+        "description": "DRAGON BALL: Sparking! ZERO takes the legendary gameplay of the Budokai Tenkaichi series and raises it to whole new levels. Make yours the destructive power of the strongest fighters ever to appear in Dragon Ball!",
+        "title": "DRAGON BALL: Sparking! ZERO",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Dragon Ball Sparking ZERO.lnk",
+        "appid": "1790600",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 11
+      }],
+      "id": 7,
+      "gamesQuant": 1,
+      "friends": []
+    },
+    {
+      "feed": {"posts": []},
+      "password": "123123",
+      "favoriteAchievements": 0,
+      "name": "123123123",
+      "nickname": "",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 19:42:38.1607775",
+        "appidIGDB": "164290",
+        "releaseDate": "20 Sep, 2024",
+        "description": "Develop, expand, and advance your city in a society survival game set 30 years after an apocalyptic blizzard ravaged Earth. In Frostpunk 2, you face not only the perils of never-ending winter, but also the powerful factions that watch your every step inside the Council Hall.",
+        "title": "Frostpunk 2",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Frostpunk 2.lnk",
+        "appid": "1601580",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 11
+      }],
+      "id": 6,
+      "gamesQuant": 1,
+      "friends": []
+    },
     {
       "feed": {"posts": []},
       "password": "1234567",
@@ -150,7 +229,7 @@
         "genre": "UNKNOWN",
         "id": 0,
         "favorite": false,
-        "countID": 4
+        "countID": 11
       }],
       "id": 2,
       "gamesQuant": 1,
@@ -176,9 +255,47 @@
         "genre": "UNKNOWN",
         "id": 0,
         "favorite": false,
-        "countID": 4
+        "countID": 11
       }],
       "id": 1,
+      "gamesQuant": 1,
+      "friends": []
+    },
+    {
+      "feed": {"posts": []},
+      "password": "asdasdasda",
+      "favoriteAchievements": 0,
+      "name": "asdasd",
+      "nickname": "",
+      "description": "",
+      "gameList": [],
+      "id": 4,
+      "gamesQuant": 0,
+      "friends": []
+    },
+    {
+      "feed": {"posts": []},
+      "password": "elefante",
+      "favoriteAchievements": 0,
+      "name": "infinit2",
+      "nickname": "",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 19:34:09.409413",
+        "appidIGDB": "164290",
+        "releaseDate": "20 Sep, 2024",
+        "description": "Develop, expand, and advance your city in a society survival game set 30 years after an apocalyptic blizzard ravaged Earth. In Frostpunk 2, you face not only the perils of never-ending winter, but also the powerful factions that watch your every step inside the Council Hall.",
+        "title": "Frostpunk 2",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Frostpunk 2.lnk",
+        "appid": "1601580",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 11
+      }],
+      "id": 2,
       "gamesQuant": 1,
       "friends": []
     }
