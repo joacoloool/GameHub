@@ -42,6 +42,8 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
             updateProfile(currentUser , manager);
+
+
         }
 
 
@@ -52,10 +54,10 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
 
             Icon profileIcon = user.getProfileImage();
             if (profileIcon != null) {
-                profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+                //profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
             } else {
                 // Si no hay imagen, puedes establecer una imagen por defecto
-                profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
+              //  profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
             }
 
             // Actualizar logros
@@ -92,7 +94,6 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
             profile = new JScrollPane();
             group = new JPanel();
-            profileImageLabel = new JLabel();
             usernameNameLabel = new JLabel();
             descriptionLabel = new JLabel();
             modifyProfileButton = new JButton();
@@ -108,6 +109,7 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             friendList = new JList();
             FriendsTextLabel = new JLabel();
             createPostButton = new JButton();
+            label4 = new JLabel();
             dialog1 = new JDialog();
             textField1 = new JTextField();
             button2 = new JButton();
@@ -123,11 +125,13 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             button3 = new JButton();
 
             //======== this ========
-            setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-            , 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-             getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -136,11 +140,6 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                 //======== group ========
                 {
                     group.setFont(group.getFont().deriveFont(group.getFont().getSize() + 13f));
-
-                    //---- profileImageLabel ----
-                    profileImageLabel.setText(".");
-                    profileImageLabel.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg"));
-                    profileImageLabel.setBorder(new EtchedBorder());
 
                     //---- usernameNameLabel ----
                     usernameNameLabel.setText("Username");
@@ -163,10 +162,11 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
 
                     //======== LastPlayedPanel ========
                     {
-                        LastPlayedPanel.setBorder(new TitledBorder("Last Played"));
+                        LastPlayedPanel.setBorder(new TitledBorder(new LineBorder(new Color(0x34000000, true), 10), "Last Played", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION));
 
                         //---- lastGameNameLabel ----
                         lastGameNameLabel.setText("Dragon Ball Z");
+                        lastGameNameLabel.setFont(lastGameNameLabel.getFont().deriveFont(lastGameNameLabel.getFont().getStyle() & ~Font.BOLD, lastGameNameLabel.getFont().getSize() + 6f));
 
                         //---- lastGameImage2 ----
                         lastGameImage2.setText(".");
@@ -224,6 +224,10 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                     createPostButton.setText("Create Post");
                     createPostButton.addActionListener(e -> createPost(e));
 
+                    //---- label4 ----
+                    label4.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePic.jpg")));
+                    label4.setHorizontalAlignment(SwingConstants.CENTER);
+
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
                     groupLayout.setHorizontalGroup(
@@ -232,14 +236,13 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                                 .addGap(24, 24, 24)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(groupLayout.createParallelGroup()
-                                            .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(19, 19, 19)
-                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(groupLayout.createSequentialGroup()
+                                        .addGap(206, 206, 206)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE))
                                     .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(groupLayout.createSequentialGroup()
@@ -247,7 +250,7 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(createPostButton))
                                         .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
                                         .addGroup(groupLayout.createParallelGroup()
@@ -258,10 +261,10 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                                                     .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addContainerGap(200, Short.MAX_VALUE))
+                                        .addContainerGap(186, Short.MAX_VALUE))
                                     .addGroup(groupLayout.createSequentialGroup()
                                         .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(280, Short.MAX_VALUE))))
+                                        .addContainerGap(266, Short.MAX_VALUE))))
                     );
                     groupLayout.setVerticalGroup(
                         groupLayout.createParallelGroup()
@@ -269,22 +272,22 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                     .addGroup(groupLayout.createSequentialGroup()
                                         .addGap(25, 25, 25)
-                                        .addGroup(groupLayout.createParallelGroup()
+                                        .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                            .addComponent(modifyProfileButton)
                                             .addGroup(groupLayout.createSequentialGroup()
-                                                .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(modifyProfileButton))
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(profileImageLabel, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
+                                                .addGap(25, 25, 25)
+                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)
                                         .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                             .addComponent(createPostButton)
                                             .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                                     .addGroup(groupLayout.createSequentialGroup()
                                         .addContainerGap(183, Short.MAX_VALUE)
                                         .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
@@ -433,7 +436,6 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
         // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         private JScrollPane profile;
         private JPanel group;
-        private JLabel profileImageLabel;
         private JLabel usernameNameLabel;
         private JLabel descriptionLabel;
         private JButton modifyProfileButton;
@@ -449,6 +451,7 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
         private JList friendList;
         private JLabel FriendsTextLabel;
         private JButton createPostButton;
+        private JLabel label4;
         private JDialog dialog1;
         private JTextField textField1;
         private JButton button2;
