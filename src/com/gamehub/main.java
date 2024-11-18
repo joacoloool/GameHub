@@ -20,9 +20,13 @@ public class main {
         //Testing
 
         Manager manager = new Manager();
+
        manager = com.gamehub.utils.JsonUtil.leerManager();
        //Cargamos los achievements despues
+        System.out.println(manager.getUsers().toString());
        manager.createAchievements();
+       manager.verifyAchievements();
+
 
 
        if (manager.getUsers().isEmpty()) {

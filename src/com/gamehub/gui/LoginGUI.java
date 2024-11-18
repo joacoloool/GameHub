@@ -13,7 +13,6 @@ import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
-import com.gamehub.utils.JsonUtil;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -42,6 +41,9 @@ public class LoginGUI extends JFrame {
         return bd.toString();
     }
 
+    public Manager getManager() {
+        return manager;
+    }
 
     private void okButtonMouseClicked(MouseEvent e) {
         // Obtener la contraseña como un String
@@ -100,21 +102,13 @@ public class LoginGUI extends JFrame {
         backButton.setVisible(false);
     }
 
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
-
     private void thisWindowClosed(WindowEvent e) {
-        JsonUtil.guardar("manager.json", manager.toJson());
+        // TODO add your code here
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         signInL = new JLabel();
         passwordL = new JLabel();
         rememberMeCheck = new JCheckBox();
@@ -286,7 +280,7 @@ public class LoginGUI extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JLabel signInL;
     private JLabel passwordL;
     private JCheckBox rememberMeCheck;

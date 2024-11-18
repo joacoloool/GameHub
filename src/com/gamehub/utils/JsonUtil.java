@@ -99,7 +99,6 @@ public class JsonUtil {
         user.setName(u.getString("name"));
         user.setDescription(u.getString("description"));
         user.setFavoriteAchievement(u.getInt("favoriteAchievements"));
-        user.setMyAchievements(JSONArrayToAchievements(u.getJSONArray("myAchievements")));
         user.setGamesQuant(u.getInt("gamesQuant"));
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
         user.setFriends(JSONtoFriends(u.getJSONArray("friends")));

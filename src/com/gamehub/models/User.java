@@ -322,7 +322,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
 
             // JSON Array
             user.put("feed", feed.toJson());
-            user.put("myAchievements", JsonUtil.toJsonArray(myAchievements));
             user.put("friends", JsonUtil.toJsonArray(friends));
             user.put("gameList", JsonUtil.toJsonArray(gameList));
 
