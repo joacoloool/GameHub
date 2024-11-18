@@ -101,7 +101,7 @@ public class LoginGUI extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         signInL = new JLabel();
         passwordL = new JLabel();
         rememberMeCheck = new JCheckBox();
@@ -260,7 +260,7 @@ public class LoginGUI extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
     private JLabel signInL;
     private JLabel passwordL;
     private JCheckBox rememberMeCheck;
