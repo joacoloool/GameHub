@@ -4,24 +4,26 @@
 
     package com.gamehub.gui;
 
-import java.awt.event.*;
+    import java.awt.event.*;
+
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Post;
     import com.gamehub.models.User;
 
     import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
-import javax.swing.*;
+    import java.beans.PropertyChangeEvent;
+    import java.beans.PropertyChangeListener;
+    import java.util.ArrayList;
+    import java.util.concurrent.atomic.AtomicReference;
+    import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import net.miginfocom.swing.*;
+    import javax.swing.filechooser.FileNameExtensionFilter;
 
-import static com.gamehub.utils.ImageFormatter.upscaleIco;
+    import net.miginfocom.swing.*;
+
+    import static com.gamehub.utils.ImageFormatter.upscaleIco;
 
 
     /**
@@ -30,7 +32,8 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
     public class ProfileGui extends JPanel {
 
         DefaultListModel<Post> feedListModel;
-        DefaultListModel<Achievement> achievementDefaultListModel;
+        DefaultListModel<Achievement> achievementListModel;
+        DefaultListModel<User> friendsListModel;
         private User currentUser;
         private Manager manager;
 
@@ -38,14 +41,12 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
         public ProfileGui(Manager manager, User user) {
             initComponents();
             this.manager = manager;
-            this.currentUser  = user;
-            achievementDefaultListModel = new DefaultListModel<>();
+            this.currentUser = user;
+            achievementListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
-            updateProfile(currentUser , manager);
-
-
+            friendsListModel = new DefaultListModel<>();
+            updateProfile(currentUser, manager);
         }
-
 
 
         protected void updateProfile(User user, Manager manager) {
@@ -57,16 +58,16 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                 //profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
             } else {
                 // Si no hay imagen, puedes establecer una imagen por defecto
-              //  profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
+                //  profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
             }
 
             // Actualizar logros
-            achievementDefaultListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
+            achievementListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
             manager.verifyAchievements();
             for (Achievement achievement : user.getMyAchievements()) {
-                achievementDefaultListModel.addElement(achievement);
+                achievementListModel.addElement(achievement);
             }
-            achievmentList.setModel(achievementDefaultListModel);
+            achievmentList.setModel(achievementListModel);
 
             // Actualizar el feed de actividades
             feedListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
@@ -80,6 +81,7 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
         private void createPostButtonMouseClicked(MouseEvent e) {
             // TODO add your code here
         }
+
         private void modifyProfile(ActionEvent e) {
 
         }
@@ -125,13 +127,12 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             button3 = new JButton();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
+            .Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
 
             //======== profile ========
             {
@@ -187,12 +188,12 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                         LastPlayedPanelLayout.setVerticalGroup(
                             LastPlayedPanelLayout.createParallelGroup()
                                 .addGroup(LastPlayedPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(90, Short.MAX_VALUE))
-                                .addGroup(LastPlayedPanelLayout.createSequentialGroup()
-                                    .addComponent(lastGameImage2, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                    .addContainerGap())
+                                    .addGroup(LastPlayedPanelLayout.createParallelGroup()
+                                        .addGroup(LastPlayedPanelLayout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
                     }
 
@@ -227,44 +228,40 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                     //---- label4 ----
                     label4.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePic.jpg")));
                     label4.setHorizontalAlignment(SwingConstants.CENTER);
+                    label4.setBorder(new LineBorder(new Color(0x1a99eb), 3));
 
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
                     groupLayout.setHorizontalGroup(
                         groupLayout.createParallelGroup()
                             .addGroup(groupLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+                                        .addGap(24, 24, 24)
+                                        .addGroup(groupLayout.createParallelGroup()
+                                            .addGroup(groupLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label4, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(groupLayout.createSequentialGroup()
+                                                    .addComponent(feedNameLabel)
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(createPostButton))
+                                                .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(206, 206, 206)
-                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(groupLayout.createSequentialGroup()
-                                            .addComponent(feedNameLabel)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(createPostButton))
-                                        .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(230, 230, 230)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addGroup(groupLayout.createParallelGroup()
-                                    .addGroup(groupLayout.createSequentialGroup()
-                                        .addGroup(groupLayout.createParallelGroup()
-                                            .addComponent(achievmentList, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(groupLayout.createSequentialGroup()
-                                                .addGroup(groupLayout.createParallelGroup()
-                                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addContainerGap(186, Short.MAX_VALUE))
-                                    .addGroup(groupLayout.createSequentialGroup()
-                                        .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(266, Short.MAX_VALUE))))
+                                    .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(186, Short.MAX_VALUE))
                     );
                     groupLayout.setVerticalGroup(
                         groupLayout.createParallelGroup()
@@ -279,24 +276,25 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                                                 .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
                                             .addComponent(label4, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                             .addComponent(createPostButton)
                                             .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                        .addGap(59, 59, 59))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addContainerGap(183, Short.MAX_VALUE)
+                                        .addGap(183, 183, 183)
                                         .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(friendScrollPanel, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
                                 .addGap(43, 43, 43))
                     );
                 }
@@ -307,16 +305,13 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup()
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(profile, GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                         .addContainerGap())
             );
 

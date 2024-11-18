@@ -22,6 +22,7 @@ public class main {
         Manager manager = new Manager();
        //com.gamehub.managers.Manager manager = com.gamehub.utils.JsonUtil.leerManager();
 
+
        if (manager.getUsers().isEmpty()) {
           /*
           try {

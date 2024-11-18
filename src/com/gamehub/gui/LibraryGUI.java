@@ -212,11 +212,12 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
+        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== scrolPanelGames ========
         {
@@ -257,45 +258,53 @@ public class LibraryGUI extends JPanel {
             lastText.setText("Last Played");
             lastText.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 17));
             lastText.setForeground(new Color(0xbabbb4));
+            lastText.setOpaque(true);
 
             //---- lastPlayedL ----
             lastPlayedL.setText("30/05/oct");
             lastPlayedL.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 13));
             lastPlayedL.setForeground(Color.gray);
             lastPlayedL.setHorizontalAlignment(SwingConstants.CENTER);
+            lastPlayedL.setOpaque(true);
 
             //---- genreText ----
             genreText.setText("Genre");
             genreText.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 17));
             genreText.setForeground(new Color(0xbabbb4));
+            genreText.setOpaque(true);
 
             //---- genreL ----
             genreL.setText("Action");
             genreL.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 13));
             genreL.setForeground(Color.gray);
             genreL.setHorizontalAlignment(SwingConstants.CENTER);
+            genreL.setOpaque(true);
 
             //---- platformL ----
             platformL.setText("Steam");
             platformL.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 13));
             platformL.setForeground(Color.gray);
             platformL.setHorizontalAlignment(SwingConstants.CENTER);
+            platformL.setOpaque(true);
 
             //---- PlatformText ----
             PlatformText.setText("Platform");
             PlatformText.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 17));
             PlatformText.setForeground(new Color(0xbabbb4));
+            PlatformText.setOpaque(true);
 
             //---- releaseText ----
             releaseText.setText("Release Date");
             releaseText.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 17));
             releaseText.setForeground(new Color(0xbabbb4));
+            releaseText.setOpaque(true);
 
             //---- releaseL ----
             releaseL.setText("Steam");
             releaseL.setFont(new Font("JetBrains Mono Medium", Font.PLAIN, 13));
             releaseL.setForeground(Color.gray);
             releaseL.setHorizontalAlignment(SwingConstants.CENTER);
+            releaseL.setOpaque(true);
 
             GroupLayout panel1Layout = new GroupLayout(panel1);
             panel1.setLayout(panel1Layout);

@@ -40,6 +40,7 @@ new FormModel {
 					"text": "Last Played"
 					"font": &Font0 new java.awt.Font( "JetBrains Mono Medium", 0, 17 )
 					"foreground": &Color0 new java.awt.Color( 186, 187, 180, 255 )
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lastPlayedL"
@@ -47,12 +48,14 @@ new FormModel {
 					"font": &Font1 new java.awt.Font( "JetBrains Mono Medium", 0, 13 )
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "genreText"
 					"text": "Genre"
 					"font": #Font0
 					"foreground": #Color0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "genreL"
@@ -60,6 +63,7 @@ new FormModel {
 					"font": #Font1
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "platformL"
@@ -67,18 +71,21 @@ new FormModel {
 					"font": #Font1
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "PlatformText"
 					"text": "Platform"
 					"font": #Font0
 					"foreground": #Color0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "releaseText"
 					"text": "Release Date"
 					"font": #Font0
 					"foreground": #Color0
+					"opaque": true
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "releaseL"
@@ -86,6 +93,7 @@ new FormModel {
 					"font": #Font1
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
+					"opaque": true
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {

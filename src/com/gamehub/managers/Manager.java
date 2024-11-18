@@ -9,6 +9,7 @@ import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -74,7 +75,7 @@ public class Manager implements JsonConvertible {
         if (user.getName() == null || user.getName().isEmpty()) {
             throw new StringTooShort("El usuario no puede estar vacio");
         }
-    users.add(user);
+        users.add(user);
     }
 
     /**
@@ -111,18 +112,34 @@ public class Manager implements JsonConvertible {
         Achievement achievementP2 = new Achievement("Baitmaster", "Reach 10 posts.", AchievType.POSTS, 10);
         Achievement achievementP3 = new Achievement("Mini Influencer", "Get to 50 posts.", AchievType.POSTS, 50);
         Achievement achievementP4 = new Achievement("Forero Facha", "Publish 100 posts.", AchievType.POSTS, 100);
-        Achievement achievementP5 = new Achievement("Foro Sensei", "Reach 500 posts.", AchievType.POSTS, 500);
-        Achievement achievementP6 = new Achievement("Taringuero", "Surpass 1000 posts.", AchievType.POSTS, 1000);
+        Achievement achievementP5 = new Achievement("Taringuero", "Reach 500 posts.", AchievType.POSTS, 500);
+
 
         /** * agregamos en cada arraylist sus logros segun cada uno */
         Collections.addAll(gameLaunches, achievementC1, achievementC2, achievementC3, achievementC4, achievementC5);
         Collections.addAll(games, achievementG1, achievementG2, achievementG3, achievementG4, achievementG5, achievementG6);
-        Collections.addAll(posts, achievementP1, achievementP2, achievementP3, achievementP4, achievementP5, achievementP6);
+        Collections.addAll(posts, achievementP1, achievementP2, achievementP3, achievementP4, achievementP5);
+
 
         /** * Cargamos en el HashMap los arreglos */
         achievement.put(AchievType.GAME_LAUNCHES, gameLaunches);
         achievement.put(AchievType.GAMES, games);
         achievement.put(AchievType.POSTS, posts);
+
+
+        int i = 1;
+        for (Achievement ach : achievement.get(AchievType.GAMES)) {
+
+            ach.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/achievements/badgeG" + (i) + ".png")));
+            i++;
+        }
+            i = 1;
+        for (Achievement ach : achievement.get(AchievType.POSTS)) {
+            ach.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/achievements/badgeP" + (i) + ".png")));
+            i++;
+        }
+
+
     }
 
     /**

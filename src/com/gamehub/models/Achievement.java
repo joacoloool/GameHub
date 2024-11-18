@@ -1,4 +1,5 @@
 package com.gamehub.models;
+
 import com.gamehub.enums.AchievType;
 import com.gamehub.interfaces.JsonConvertible;
 import org.json.JSONException;
@@ -27,13 +28,22 @@ public class Achievement implements JsonConvertible {
         count++;
     }
 
+    public Achievement(String name, int condition, String description, AchievType type, Icon icon) {
+        this.name = name;
+        this.condition = condition;
+        this.description = description;
+        this.type = type;
+        this.id = count;
+        count++;
+    }
+
     public Achievement() {
         this.id = count;
         count++;
     }
 
     public boolean checkCondition(int valueCondition) {
-     return valueCondition>=condition;
+        return valueCondition >= condition;
     }
 
 
@@ -41,18 +51,23 @@ public class Achievement implements JsonConvertible {
     public String getName() {
         return name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public AchievType getType() {
         return type;
     }
+
     public int getId() {
         return id;
     }
+
     public int getCondition() {
         return condition;
     }
+
     public static int getCount() {
         return count;
     }
@@ -69,18 +84,23 @@ public class Achievement implements JsonConvertible {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public void setType(AchievType type) {
         this.type = type;
     }
+
     public static void setCount(int count) {
         Achievement.count = count;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public void setCondition(int condition) {
         this.condition = condition;
     }
@@ -109,6 +129,7 @@ public class Achievement implements JsonConvertible {
                 ", id=" + id +
                 '}';
     }
+
     //Json
     @Override
     public JSONObject toJson() {
