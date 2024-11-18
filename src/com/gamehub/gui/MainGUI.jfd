@@ -4,60 +4,27 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:31:p, comp libraryButton:::p::p, space :::p, comp profileButton:::p:115:p, space ::438:x, comp layeredPane1:::p:173:p, space :p:37:p}, comp container::l:::x}"
-			"$verticalGroup": "par l {seq t {space :::p, par l {comp layeredPane1::l:p:23:p, par b:l {comp libraryButton::b:p:22:p, comp profileButton::b:p:22:p}}, space :::p, comp container::::454:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:18:p, comp libraryButton:::p::p, space u:::p, comp profileButton:::p::p, space :::p, comp themeButton:::p::p, space ::658:x}, comp container::l:::x}"
+			"$verticalGroup": "par l {seq t {space :::p, par l {par b {comp libraryButton::b:p:28:p, comp profileButton::b:p:28:p}, comp themeButton::l:p:28:p}, space u:::p, comp container::::437:x, space :::p}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "libraryButton"
-				"text": " LIBRARY "
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 7, false )
-				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"contentAreaFilled": false
-				"foreground": new java.awt.Color( 26, 153, 235, 255 )
-				"maximumSize": new java.awt.Dimension( 128, 28 )
-				"minimumSize": new java.awt.Dimension( 128, 28 )
-				"preferredSize": new java.awt.Dimension( 128, 28 )
+				"text": "Library"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "libraryButtonMouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "libraryButtonMouseEntered", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "libraryButtonMouseExited", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "profileButton"
-				"text": " PROFILE "
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 7, false )
-				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"contentAreaFilled": false
-				"enabled": false
+				"text": "Profile"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "profileButtonMouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "profileButtonMouseEntered", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "profileButtonMouseExited", true ) )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 				name: "container"
 			} )
-			add( new FormContainer( "javax.swing.JLayeredPane", new FormLayoutManager( class javax.swing.JLayeredPane ) ) {
-				name: "layeredPane1"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "userNameText"
-					"text": "userName"
-					"foreground": new java.awt.Color( 26, 153, 235, 255 )
-					"font": new java.awt.Font( "Inter", 1, 12 )
-				}, new FormLayoutConstraints( null ) {
-					"width": 86
-					"height": 24
-					"x": 95
-					"y": -3
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/defaultProfilePicThumb.jpg" )
-				}, new FormLayoutConstraints( null ) {
-					"x": 70
-					"y": 0
-					"height": 20
-					"width": 20
-				} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "themeButton"
+				"text": "debug"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "themeButtonMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 185, 40 )
