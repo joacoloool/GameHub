@@ -176,6 +176,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     {
         if (!gameList.remove(game))
         {
+            throw new DuplicateElementException("This game not exist");
         }
         gamesQuant--;
     }

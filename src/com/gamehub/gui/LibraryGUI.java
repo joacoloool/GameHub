@@ -126,12 +126,13 @@ public class LibraryGUI extends JPanel {
     }
 
     private void contextDeleteMouseClicked(MouseEvent e) {
+        Game game  = selectedGame;
         try {
             if (selectedGame != null) {
                 int index = gamesListModel.indexOf(selectedGame);
                 if (index != -1) {
                     gamesListModel.remove(index);
-                    user.deleteGame(selectedGame);
+                    user.deleteGame(game);
                 }
             }
             popupList.setVisible(false);
