@@ -11,14 +11,11 @@ import java.awt.event.*;
     import com.gamehub.models.User;
 
     import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 import net.miginfocom.swing.*;
 
 import static com.gamehub.utils.ImageFormatter.upscaleIco;
@@ -54,10 +51,10 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
 
             Icon profileIcon = user.getProfileImage();
             if (profileIcon != null) {
-                //profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+              //  profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
             } else {
                 // Si no hay imagen, puedes establecer una imagen por defecto
-              //  profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
+              // profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
             }
 
             // Actualizar logros
@@ -77,21 +74,59 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             feedList.setModel(feedListModel);
         }
 
-        private void createPostButtonMouseClicked(MouseEvent e) {
-            // TODO add your code here
-        }
         private void modifyProfile(ActionEvent e) {
+            textField2.setText(currentUser .getName());
+            textField3.setText(currentUser.getDescription());
 
+            dialog2.setVisible(true);
+            button3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String newName=textField2.getText();
+                    String newDescription=textField3.getText();
+
+                    currentUser.setName(newName);
+                    currentUser.setDescription(newDescription);
+
+                    updateProfile(currentUser,manager);
+
+                    dialog2.dispose();
+                }
+            }
+            );
         }
 
         private void createPost(ActionEvent e) {
-            // TODO add your code here
+            dialog1.setVisible(true);
+
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String postContent=textField1.getText();
+
+                    if (!postContent.trim().isEmpty()) {
+                        Post newPost = new Post(postContent);
+                        feedListModel.addElement(newPost);
+                        currentUser .getFeed().createPost(postContent);
+                        dialog1.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(dialog1, "El contenido del post no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            );
+            button2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dialog1.dispose();
+                }
+            });
         }
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -125,13 +160,12 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
             button3 = new JButton();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -144,11 +178,12 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
                     //---- usernameNameLabel ----
                     usernameNameLabel.setText("Username");
                     usernameNameLabel.setFont(usernameNameLabel.getFont().deriveFont(usernameNameLabel.getFont().getSize() + 8f));
+                    usernameNameLabel.setBorder(new EtchedBorder());
 
                     //---- descriptionLabel ----
                     descriptionLabel.setText("//DESCRIPTION");
                     descriptionLabel.setFont(new Font("JetBrains Mono", Font.PLAIN, 13));
-                    descriptionLabel.setBorder(null);
+                    descriptionLabel.setBorder(new EtchedBorder());
 
                     //---- modifyProfileButton ----
                     modifyProfileButton.setText("Modificar Perfil");
@@ -433,7 +468,7 @@ import static com.gamehub.utils.ImageFormatter.upscaleIco;
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
