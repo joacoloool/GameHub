@@ -21,12 +21,13 @@ new FormModel {
 						name: "usernameNameLabel"
 						"text": "Username"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "descriptionLabel"
 						"text": "//DESCRIPTION"
 						"font": new java.awt.Font( "JetBrains Mono", 0, 13 )
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"border": #EtchedBorder0
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "modifyProfileButton"
@@ -39,7 +40,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JList" ) {
 						name: "achievmentList"
-						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+						"border": &EtchedBorder1 new javax.swing.border.EtchedBorder( 1, null, null )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :::p, comp lastGameImage2:::p:188:p, space s:::p, comp lastGameNameLabel:::p:334:p, space ::14:x}}"
@@ -56,7 +57,7 @@ new FormModel {
 							name: "lastGameImage2"
 							"text": "."
 							"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg" )
-							"border": #EtchedBorder0
+							"border": #EtchedBorder1
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -68,15 +69,15 @@ new FormModel {
 						name: "feedScrollPanel"
 						add( new FormComponent( "javax.swing.JList" ) {
 							name: "feedList"
-							"border": #EtchedBorder0
+							"border": #EtchedBorder1
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "friendScrollPanel"
-						"border": #EtchedBorder0
+						"border": #EtchedBorder1
 						add( new FormComponent( "javax.swing.JList" ) {
 							name: "friendList"
-							"border": #EtchedBorder0
+							"border": #EtchedBorder1
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -125,7 +126,7 @@ new FormModel {
 				"value": "cell 11 6"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 1050, 555 )
+			"location": new java.awt.Point( 1045, 490 )
 			"size": new java.awt.Dimension( 360, 230 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {

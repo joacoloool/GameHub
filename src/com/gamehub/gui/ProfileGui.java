@@ -4,26 +4,21 @@
 
     package com.gamehub.gui;
 
-    import java.awt.event.*;
-
+import java.awt.event.*;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Post;
     import com.gamehub.models.User;
 
     import java.awt.*;
-    import java.beans.PropertyChangeEvent;
-    import java.beans.PropertyChangeListener;
-    import java.util.ArrayList;
-    import java.util.concurrent.atomic.AtomicReference;
-    import javax.swing.*;
+import java.util.ArrayList;
+import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
-    import javax.swing.filechooser.FileNameExtensionFilter;
 
-    import net.miginfocom.swing.*;
+import net.miginfocom.swing.*;
 
-    import static com.gamehub.utils.ImageFormatter.upscaleIco;
+import static com.gamehub.utils.ImageFormatter.upscaleIco;
 
 
     /**
@@ -32,8 +27,7 @@
     public class ProfileGui extends JPanel {
 
         DefaultListModel<Post> feedListModel;
-        DefaultListModel<Achievement> achievementListModel;
-        DefaultListModel<User> friendsListModel;
+        DefaultListModel<Achievement> achievementDefaultListModel;
         private User currentUser;
         private Manager manager;
 
@@ -41,12 +35,14 @@
         public ProfileGui(Manager manager, User user) {
             initComponents();
             this.manager = manager;
-            this.currentUser = user;
-            achievementListModel = new DefaultListModel<>();
+            this.currentUser  = user;
+            achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
-            friendsListModel = new DefaultListModel<>();
-            updateProfile(currentUser, manager);
+            updateProfile(currentUser , manager);
+
+
         }
+
 
 
         protected void updateProfile(User user, Manager manager) {
@@ -55,19 +51,19 @@
 
             Icon profileIcon = user.getProfileImage();
             if (profileIcon != null) {
-                //profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
+              //  profileImageLabel.setIcon(upscaleIco(profileIcon, 170, 160));
             } else {
                 // Si no hay imagen, puedes establecer una imagen por defecto
-                //  profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
+              // profileImageLabel.setIcon(upscaleIco(new ImageIcon("ruta/a/imagen/por/defecto.jpg"), 170, 160));
             }
 
             // Actualizar logros
-            achievementListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
+            achievementDefaultListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
             manager.verifyAchievements();
             for (Achievement achievement : user.getMyAchievements()) {
-                achievementListModel.addElement(achievement);
+                achievementDefaultListModel.addElement(achievement);
             }
-            achievmentList.setModel(achievementListModel);
+            achievmentList.setModel(achievementDefaultListModel);
 
             // Actualizar el feed de actividades
             feedListModel.clear(); // Limpiar el modelo antes de agregar nuevos elementos
@@ -78,22 +74,59 @@
             feedList.setModel(feedListModel);
         }
 
-        private void createPostButtonMouseClicked(MouseEvent e) {
-            // TODO add your code here
-        }
-
         private void modifyProfile(ActionEvent e) {
+            textField2.setText(currentUser .getName());
+            textField3.setText(currentUser.getDescription());
 
+            dialog2.setVisible(true);
+            button3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String newName=textField2.getText();
+                    String newDescription=textField3.getText();
+
+                    currentUser.setName(newName);
+                    currentUser.setDescription(newDescription);
+
+                    updateProfile(currentUser,manager);
+
+                    dialog2.dispose();
+                }
+            }
+            );
         }
 
         private void createPost(ActionEvent e) {
-            // TODO add your code here
+            dialog1.setVisible(true);
+
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String postContent=textField1.getText();
+
+                    if (!postContent.trim().isEmpty()) {
+                        Post newPost = new Post(postContent);
+                        feedListModel.addElement(newPost);
+                        currentUser .getFeed().createPost(postContent);
+                        dialog1.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(dialog1, "El contenido del post no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            );
+            button2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dialog1.dispose();
+                }
+            });
         }
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -127,12 +160,12 @@
             button3 = new JButton();
 
             //======== this ========
-            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
-            .Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -145,11 +178,12 @@
                     //---- usernameNameLabel ----
                     usernameNameLabel.setText("Username");
                     usernameNameLabel.setFont(usernameNameLabel.getFont().deriveFont(usernameNameLabel.getFont().getSize() + 8f));
+                    usernameNameLabel.setBorder(new EtchedBorder());
 
                     //---- descriptionLabel ----
                     descriptionLabel.setText("//DESCRIPTION");
                     descriptionLabel.setFont(new Font("JetBrains Mono", Font.PLAIN, 13));
-                    descriptionLabel.setBorder(null);
+                    descriptionLabel.setBorder(new EtchedBorder());
 
                     //---- modifyProfileButton ----
                     modifyProfileButton.setText("Modificar Perfil");
@@ -188,12 +222,12 @@
                         LastPlayedPanelLayout.setVerticalGroup(
                             LastPlayedPanelLayout.createParallelGroup()
                                 .addGroup(LastPlayedPanelLayout.createSequentialGroup()
-                                    .addGroup(LastPlayedPanelLayout.createParallelGroup()
-                                        .addGroup(LastPlayedPanelLayout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(lastGameImage2, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addContainerGap()
+                                    .addComponent(lastGameNameLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(90, Short.MAX_VALUE))
+                                .addGroup(LastPlayedPanelLayout.createSequentialGroup()
+                                    .addComponent(lastGameImage2, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                                    .addContainerGap())
                         );
                     }
 
@@ -228,40 +262,44 @@
                     //---- label4 ----
                     label4.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePic.jpg")));
                     label4.setHorizontalAlignment(SwingConstants.CENTER);
-                    label4.setBorder(new LineBorder(new Color(0x1a99eb), 3));
 
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
                     groupLayout.setHorizontalGroup(
                         groupLayout.createParallelGroup()
                             .addGroup(groupLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addGroup(groupLayout.createParallelGroup()
-                                            .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(label4, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(groupLayout.createSequentialGroup()
-                                                    .addComponent(feedNameLabel)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(createPostButton))
-                                                .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(230, 230, 230)
-                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(206, 206, 206)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(groupLayout.createSequentialGroup()
+                                            .addComponent(feedNameLabel)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(createPostButton))
+                                        .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 570, GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addGroup(groupLayout.createParallelGroup()
-                                    .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(186, Short.MAX_VALUE))
+                                    .addGroup(groupLayout.createSequentialGroup()
+                                        .addGroup(groupLayout.createParallelGroup()
+                                            .addComponent(achievmentList, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(groupLayout.createSequentialGroup()
+                                                .addGroup(groupLayout.createParallelGroup()
+                                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addContainerGap(186, Short.MAX_VALUE))
+                                    .addGroup(groupLayout.createSequentialGroup()
+                                        .addComponent(modifyProfileButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(266, Short.MAX_VALUE))))
                     );
                     groupLayout.setVerticalGroup(
                         groupLayout.createParallelGroup()
@@ -276,25 +314,24 @@
                                                 .addComponent(usernameNameLabel, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
                                             .addComponent(label4, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)
                                         .addComponent(LastPlayedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(18, 18, 18)
                                         .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                             .addComponent(createPostButton)
                                             .addComponent(feedNameLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                                        .addGap(59, 59, 59))
+                                        .addComponent(feedScrollPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addGap(183, 183, 183)
+                                        .addContainerGap(183, Short.MAX_VALUE)
                                         .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(achievmentList, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(friendScrollPanel, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+                                        .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(43, 43, 43))
                     );
                 }
@@ -305,13 +342,16 @@
             setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup()
-                    .addComponent(profile, GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
+                        .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup()
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(profile, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                         .addContainerGap())
             );
 
@@ -428,7 +468,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;

@@ -121,13 +121,7 @@ public class Achievement implements JsonConvertible {
 
     @Override
     public String toString() {
-        return "com.gamehub.models.Achievement{" +
-                "name='" + name + '\'' +
-                ", condition=" + condition +
-                ", description='" + description + '\'' +
-                ", type=" + type +
-                ", id=" + id +
-                '}';
+        return name;
     }
 
     //Json

@@ -166,7 +166,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
 
     public void deleteGame(Game game)
     {
-       gameList.remove(game);
+       gameList.remove(game); //Agregar thrhow e non exist
        gamesQuant--;
     }
 
