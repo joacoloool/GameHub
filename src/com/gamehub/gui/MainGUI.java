@@ -2,11 +2,14 @@
  * Created by JFormDesigner on Thu Nov 14 13:24:57 ART 2024
  */
 package com.gamehub.gui;
+
 import javax.swing.border.*;
+
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.User;
+import com.gamehub.utils.JsonUtil;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -26,14 +29,12 @@ public class MainGUI extends JFrame {
     Boolean active = false; //False = Library / True = Profile
 
 
-
-
-    public MainGUI(Manager manager,User selectedUser) {
+    public MainGUI(Manager manager, User selectedUser) {
         initComponents();
         this.selectedUser = selectedUser;
-        libraryGUI = new LibraryGUI(manager.getUsers().first());
-        profileGUI = new ProfileGui(manager, manager.getUsers().getFirst());
-        this.manager=manager;
+        libraryGUI = new LibraryGUI(selectedUser);
+        profileGUI = new ProfileGui(manager, selectedUser);
+        this.manager = manager;
 
         container.add(libraryGUI, "Library");
         container.add(profileGUI, "Profile");
@@ -54,11 +55,13 @@ public class MainGUI extends JFrame {
         }
         active = false;
         profileButton.setEnabled(false);
+
+        //Logica para guardar el manager el usuario
     }
 
     private void profileButtonMouseClicked(MouseEvent e) {//por algun motivo los botones estan invertidos y funcionan xd
         container.add(libraryGUI);
-        profileGUI.updateProfile(selectedUser,manager);
+        profileGUI.updateProfile(selectedUser, manager);
         profileButton.setForeground(Color.decode("#1a99eb"));
 
         if (Objects.equals(libraryButton.getForeground(), Color.decode("#1a99eb"))) {
@@ -67,31 +70,30 @@ public class MainGUI extends JFrame {
         active = true;
         libraryButton.setEnabled(false);
 
+        //logica para guardar en manager el usuario
     }
 
     private void profileButtonMouseEntered(MouseEvent e) {
-    if (!active){
-        profileButton.setEnabled(true);
-        profileButton.setForeground(Color.white);
-    }
-
-
+        if (!active) {
+            profileButton.setEnabled(true);
+            profileButton.setForeground(Color.white);
+        }
     }
 
     private void profileButtonMouseExited(MouseEvent e) {
-    if (!active){
-        profileButton.setEnabled(false);
-    }
+        if (!active) {
+            profileButton.setEnabled(false);
+        }
     }
 
     private void libraryButtonMouseEntered(MouseEvent e) {
-        if (active){
+        if (active) {
             libraryButton.setEnabled(true);
         }
     }
 
     private void libraryButtonMouseExited(MouseEvent e) {
-        if (active){
+        if (active) {
             libraryButton.setEnabled(false);
         }
     }
@@ -101,9 +103,43 @@ public class MainGUI extends JFrame {
     }
 
     private void changeAccountButtonMouseClicked(MouseEvent e) {
+        //Guardamos
+        manager.saveModifiedUser(selectedUser);
+
         this.dispose();
         LoginGUI login = new LoginGUI(manager);
         login.setVisible(true);
+
+
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+
+    private void thisWindowClosed(WindowEvent e) {
+        manager.saveModifiedUser(selectedUser);
+        System.out.println(selectedUser.toJson());
+        JsonUtil.guardar("manager.json", manager.toJson());
+    }
+
+    private void thisWindowClosing(WindowEvent e) {
+        manager.saveModifiedUser(selectedUser);
+        System.out.println(selectedUser.toJson());
+        JsonUtil.guardar("manager.json", manager.toJson());
+        System.out.println("Cerrado launcher..");
     }
 
     private void initComponents() {
@@ -120,6 +156,16 @@ public class MainGUI extends JFrame {
         changeAccountButton = new JButton();
 
         //======== this ========
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                thisWindowClosed(e);
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                thisWindowClosing(e);
+            }
+        });
         var contentPane = getContentPane();
 
         //---- libraryButton ----
@@ -171,12 +217,13 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,container. getBorder
+            ( )) ); container. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             container.setLayout(new CardLayout());
         }
 

@@ -38,7 +38,6 @@ new FormModel {
 						name: "modifyProfileButton"
 						"text": "Modificar Perfil"
 						"cursor": &Cursor1 new java.awt.Cursor( 12 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modifyProfile", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "modifyProfileButtonMouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -110,7 +109,7 @@ new FormModel {
 						name: "createPostButton"
 						"text": "Create Post"
 						"cursor": #Cursor1
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "createPost", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createPostButtonMouseClicked", true ) )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane1"
@@ -142,83 +141,67 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill]"
-			"$rowConstraints": "[][][][][][][]"
-		} ) {
-			name: "dialog1"
-			"title": "Crear Post"
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0 13 6"
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
-				"text": "Cancelar"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 6"
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "Publicar"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 11 6"
-			} )
-		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 1045, 515 )
-			"size": new java.awt.Dimension( 360, 230 )
-		} )
-		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "hidemode 3"
-			"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill]"
 			"$rowConstraints": "[][][][][][][][][][][][][][][][][][][]"
 		} ) {
 			name: "dialog2"
-			"title": "Modificar Perfil"
+			"title": "Modify Profile"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "Modificar Nombre"
+				"text": "Change name"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
+				name: "modifyNameField"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 3 10 1"
+				"value": "cell 2 3 11 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"text": "Cambiar Descripcion"
+				"text": "Change Description"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 5"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+				name: "modifyDescriptionField"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 7 10 1"
+				"value": "cell 2 7 11 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "Cambiar imagen"
+				"text": "Change Image"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 9"
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "imageChossed"
+				"text": "text"
+				"visible": false
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/defaultProfilePic.jpg" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 10 8 3"
+			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button5"
-				"text": "Buscar archivo..."
+				name: "searchFileButton"
+				"text": "Search File..."
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "searchFileButtonMouseClicked", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 11"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button4"
-				"text": "Cancelar"
+				name: "cancelButton"
+				"text": "Cancel"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "cancelButtonMouseClicked", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "cancelButtonMouseClicked", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 18"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button3"
-				"text": "Aplicar Cambios"
+				name: "applyButton"
+				"text": "Apply changes"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "applyButtonMouseClicked", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 11 18"
+				"value": "cell 12 18"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 1045, 100 )
@@ -240,6 +223,32 @@ new FormModel {
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 1050, 770 )
 			"size": new java.awt.Dimension( 135, 85 )
+		} )
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:53:p, comp postCancelButton:::p::p, space :158:158:p, comp postButton:::p::p, space ::56:x}, comp scrollPane4::l::423:x}"
+			"$verticalGroup": "par l {seq t {space :::p, comp scrollPane4:::p:155:p, space :::p, par l {comp postCancelButton:::p::p, comp postButton:::p::p}, space :p:18:p}}"
+		} ) {
+			name: "dialog1"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane4"
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "postField"
+					"cursor": new java.awt.Cursor( 2 )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "postCancelButton"
+				"text": "Cancel"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "postCancelButtonMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "postButton"
+				"text": "Post"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "postButtonMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 610, 750 )
+			"size": new java.awt.Dimension( 425, 250 )
 		} )
 	}
 }

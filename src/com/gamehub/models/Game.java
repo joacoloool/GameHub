@@ -43,6 +43,8 @@ public class Game implements JsonConvertible {
 
     protected Icon header;
     protected Icon image;
+    protected String headerURL;
+    protected String imageURL;
 
     //Constructors
 
@@ -77,6 +79,10 @@ public class Game implements JsonConvertible {
     }
 
     public Game() {
+        if (lastTime == null) {
+            this.lastTime = Timestamp.valueOf(LocalDateTime.now());
+        }
+
     }
 
     //Getters
@@ -267,7 +273,6 @@ public class Game implements JsonConvertible {
         this.title = SteamHelper.getGameInfo(appid, "name");
         this.url = generateSteamURL();
         this.releaseDate = SteamHelper.getGameInfo(appid, "release");
-
         //Pictures
         setImages();
     }
@@ -321,12 +326,9 @@ public class Game implements JsonConvertible {
 
 
     public void setImages() {
-
-        String headerURL;
-        String imageURL;
         if (!appid.isEmpty()) {
-            headerURL = SteamHelper.getGameInfo(appid, "header");
-            imageURL = SteamHelper.getGameInfo(appid, "image");
+            this.headerURL = SteamHelper.getGameInfo(appid, "header");
+            this.imageURL = SteamHelper.getGameInfo(appid, "image");
             this.header = urlToIcon(headerURL);
             this.image = urlToIcon(imageURL);
         } else if (!appidIGDB.isEmpty()) {

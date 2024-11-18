@@ -20,7 +20,9 @@ public class main {
         //Testing
 
         Manager manager = new Manager();
-       //com.gamehub.managers.Manager manager = com.gamehub.utils.JsonUtil.leerManager();
+       manager = com.gamehub.utils.JsonUtil.leerManager();
+       //Cargamos los achievements despues
+       manager.createAchievements();
 
 
        if (manager.getUsers().isEmpty()) {
@@ -57,6 +59,8 @@ public class main {
         FlatOneDarkIJTheme.setup();
 
 
+
+
         // Crear el JFrame para la interfaz
         LoginGUI loginGUI = new LoginGUI(manager);
 
@@ -65,6 +69,12 @@ public class main {
         loginGUI.setSize(670,470 ); // Tamaño del JFrame
         loginGUI.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
         loginGUI.setVisible(true); // Mostrar el JFrame
+
+
+        JsonUtil.guardar("manager.json",loginGUI.getManager().toJson());
+        System.out.println(loginGUI.getManager().toString());
+
+
 
 
         // Configurar el ícono del JFrame

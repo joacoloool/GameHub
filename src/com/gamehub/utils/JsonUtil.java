@@ -95,6 +95,7 @@ public class JsonUtil {
     public static User JSONToUser(JSONObject u) {
         User user = new User();
         user.setId(u.getInt("id"));
+        user.setPassword(u.getString("password"));
         user.setName(u.getString("name"));
         user.setDescription(u.getString("description"));
         user.setFavoriteAchievement(u.getInt("favoriteAchievements"));
@@ -102,6 +103,7 @@ public class JsonUtil {
         user.setGamesQuant(u.getInt("gamesQuant"));
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
         user.setFriends(JSONtoFriends(u.getJSONArray("friends")));
+
         return user;
     }
 
@@ -136,8 +138,8 @@ public class JsonUtil {
         return ach;
     }
 
-    public static ArrayList<Achievement> JSONArrayToAchievements(JSONArray a) {
-        ArrayList<Achievement> ach = new ArrayList<>();
+    public static TreeSet<Achievement> JSONArrayToAchievements(JSONArray a) {
+        TreeSet<Achievement> ach = new TreeSet<>();
 
         for (int i = 0; i < a.length(); i++) {
             ach.add(JSONObjectToAchievement(a.getJSONObject(i)));

@@ -11,6 +11,7 @@ new FormModel {
 			"resizable": false
 			"alwaysOnTop": true
 			"maximumSize": new java.awt.Dimension( 620, 420 )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "signInL"
 				"text": "SIGN IN WITH ACCOUNT NAME"

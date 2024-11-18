@@ -18,12 +18,13 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name = "";
+    protected String nickname = "";
     protected String password = "";
     protected int gamesQuant = 0;
     protected String description = "";
     protected Feed feed;
     protected TreeSet<Integer> friends;
-    private ArrayList<Achievement> myAchievements;
+    private TreeSet<Achievement> myAchievements;
     protected int favoriteAchievement = 0;
     protected static int count = 0;
     private Icon profileImage;
@@ -34,8 +35,9 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.gameList = new ArrayList<>();
         this.feed = new Feed();
         this.friends = new TreeSet<>();
-        this.myAchievements = new ArrayList<>();
+        this.myAchievements = new TreeSet<>();
         this.id = count;
+        this.nickname = name;
         count++;
     }
 
@@ -44,9 +46,10 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.gameList = new ArrayList<>();
         this.feed = new Feed();
         this.friends = new TreeSet<>();
-        this.myAchievements = new ArrayList<>();
+        this.myAchievements = new TreeSet<>();
         this.id = count;
         this.password = password;
+        this.nickname = name;
 
         count++;
     }
@@ -77,7 +80,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         return description;
     }
 
-    public ArrayList<Achievement> getMyAchievements() {
+    public TreeSet<Achievement> getMyAchievements() {
         return myAchievements;
     }
 
@@ -110,9 +113,18 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.friends = friends;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
 
 
     public void setGameList(ArrayList<Game> gameList) {
@@ -131,7 +143,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.friends = friends;
     }
 
-    public void setMyAchievements(ArrayList<Achievement> myAchievements) {
+    public void setMyAchievements(TreeSet<Achievement> myAchievements) {
         this.myAchievements = myAchievements;
     }
 
@@ -254,7 +266,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     }
 
     public void createPost(String str) {
-        feed.createPost(str);
+        feed.createPost(str,name);
     }
 
     public void deletePost(int i) {
@@ -305,6 +317,8 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
             user.put("gamesQuant", gamesQuant);
             user.put("description", description);
             user.put("favoriteAchievements", favoriteAchievement);
+            user.put("password", password);
+            user.put("nickname", nickname);
 
             // JSON Array
             user.put("feed", feed.toJson());

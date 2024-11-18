@@ -38,6 +38,8 @@ public class Manager implements JsonConvertible {
         createAchievements();
     }
 
+
+
     /**
      * Getters y setters
      */
@@ -79,6 +81,18 @@ public class Manager implements JsonConvertible {
         users.add(user);
     }
 
+    public void saveModifiedUser(User user) {
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()) {
+            User u = iterator.next();
+            if (u.getName().equals(user.getName())) {
+                iterator.remove(); // Elimina de manera segura
+                users.add(user);   // Añade el nuevo usuario al final
+                break;  // No sigas iterando una vez que encuentres y modifiques al usuario
+            }
+        }
+    }
+
     /**
      * Arreglos que van en el hashmap
      * <p>
@@ -88,7 +102,7 @@ public class Manager implements JsonConvertible {
      * los logros de luncher, logros de añadir juegos y logro de crear post
      */
 
-    private void createAchievements() {
+    public void createAchievements() {
 
         ArrayList<Achievement> gameLaunches = new ArrayList<>();
         ArrayList<Achievement> games = new ArrayList<>();
@@ -133,6 +147,7 @@ public class Manager implements JsonConvertible {
 
             ach.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/achievements/badgeG" + (i) + ".png")));
             i++;
+
         }
         i = 1;
         for (Achievement ach : achievement.get(AchievType.POSTS)) {
@@ -176,7 +191,6 @@ public class Manager implements JsonConvertible {
         }
         return null;
     }
-
 
 
     public Boolean findUser(String name, String password) {

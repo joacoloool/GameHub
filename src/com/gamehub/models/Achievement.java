@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.util.Objects;
 
-public class Achievement implements JsonConvertible {
+public class Achievement implements JsonConvertible,Comparable<Achievement> {
 
     protected String name;
     protected int condition;
@@ -116,7 +116,7 @@ public class Achievement implements JsonConvertible {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(name);
     }
 
     @Override
@@ -139,5 +139,10 @@ public class Achievement implements JsonConvertible {
             System.out.println("No fue posible cargar el JSON.");
         }
         return achievement;
+    }
+
+    @Override
+    public int compareTo(Achievement o) {
+        return this.name.compareTo(o.name);
     }
 }

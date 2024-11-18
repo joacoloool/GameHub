@@ -47,6 +47,18 @@ public class ImageFormatter {
         }
     }
 
+    public static Icon getIconFromFile(File file) {
+        try {
+            // Cargar la imagen desde el directorio especificado
+            BufferedImage icoImage = ImageIO.read(file);
+            return new ImageIcon(icoImage);
+        } catch (IOException e) {
+            System.out.println("No se encontró la ruta del archivo: " + e.getMessage());
+            return null;
+        }
+    }
+
+
     public static void saveIcon(Icon icon, String name) {
 
         if (icon != null) {

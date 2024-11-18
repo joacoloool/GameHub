@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public class Post implements JsonConvertible {
     protected String message;
     protected boolean fav = false;
-    protected User user;
+    protected String user;
 
     //Builder
     public Post(String message) {
@@ -15,8 +15,9 @@ public class Post implements JsonConvertible {
         this.fav = fav;
     }
 
-    public Post( User user,String message) {
+    public Post( String user,String message) {
         this.message = message;
+        this.user = user;
     }
 
     //Getters
@@ -41,7 +42,7 @@ public class Post implements JsonConvertible {
     /// Methods
     @Override
     public String toString() {
-        return user +"\n"+ message;
+        return message+": "+ user;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class Post implements JsonConvertible {
         JSONObject post = new JSONObject();
         post.put("message", message);
         post.put("fav", fav);
-        post.put("user", user.getName());
+        post.put("user", user);
 
         return post;
     }

@@ -13,6 +13,7 @@ import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
+import com.gamehub.utils.JsonUtil;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -99,6 +100,18 @@ public class LoginGUI extends JFrame {
         backButton.setVisible(false);
     }
 
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    private void thisWindowClosed(WindowEvent e) {
+        JsonUtil.guardar("manager.json", manager.toJson());
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
@@ -119,6 +132,12 @@ public class LoginGUI extends JFrame {
         setResizable(false);
         setAlwaysOnTop(true);
         setMaximumSize(new Dimension(620, 420));
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                thisWindowClosed(e);
+            }
+        });
         var contentPane = getContentPane();
 
         //---- signInL ----

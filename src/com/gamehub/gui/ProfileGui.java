@@ -2,26 +2,24 @@
      * Created by JFormDesigner on Fri Nov 15 03:50:34 ART 2024
      */
     package com.gamehub.gui;
-
     import java.awt.event.*;
-
     import com.gamehub.gui.utilities.AchievementCellRender;
-    import com.gamehub.gui.utilities.GameCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Game;
     import com.gamehub.models.Post;
     import com.gamehub.models.User;
-
     import java.awt.*;
+    import java.io.File;
     import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.GroupLayout;
     import javax.swing.border.*;
+    import javax.swing.filechooser.FileNameExtensionFilter;
 
+    import com.gamehub.utils.ImageFormatter;
     import net.miginfocom.swing.*;
-
-    import static com.gamehub.utils.ImageFormatter.upscaleIco;
+    import static com.gamehub.utils.ImageFormatter.*;
 
     /**
      * @author joaal
@@ -49,7 +47,7 @@
         ///////////////////TOM///////////////////
 
         protected void updateProfile(User user, Manager manager) {
-            usernameNameLabel.setText(user.getName());
+            usernameNameLabel.setText(user.getNickname());
             descriptionLabel.setText(user.getDescription());
             Icon profileIcon = user.getProfileImage();
             if (profileIcon != null) {
@@ -95,56 +93,11 @@
 
         /////////////////////////////////////////
 
-        private void modifyProfile(ActionEvent e) {
-            textField2.setText(currentUser.getName());
-            textField3.setText(currentUser.getDescription());
-
-            dialog2.setVisible(true);
-            button3.addActionListener(new ActionListener() {
-                                          @Override
-                                          public void actionPerformed(ActionEvent e) {
-                                              String newName = textField2.getText();
-                                              String newDescription = textField3.getText();
-
-                                              currentUser.setName(newName);
-                                              currentUser.setDescription(newDescription);
-
-                                              updateProfile(currentUser, manager);
-                                              dialog2.dispose();
-                                          }
-                                      }
-            );
-        }
-
-        private void createPost(ActionEvent e) {
-            dialog1.setVisible(true);
-
-            button1.addActionListener(new ActionListener() {
-                                          @Override
-                                          public void actionPerformed(ActionEvent e) {
-                                              String postContent = textField1.getText();
-
-                                              if (!postContent.trim().isEmpty()) {
-                                                  Post newPost = new Post(postContent);
-                                                  feedListModel.addElement(newPost);
-                                                  currentUser.getFeed().createPost(postContent);
-                                                  dialog1.dispose();
-                                              } else {
-                                                  JOptionPane.showMessageDialog(dialog1, "El contenido del post no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-                                              }
-                                          }
-                                      }
-            );
-            button2.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    dialog1.dispose();
-                }
-            });
-        }
-
         private void modifyProfileButtonMouseClicked(MouseEvent e) {
-            // TODO add your code here
+            modifyNameField.setText(currentUser.getNickname());
+            modifyDescriptionField.setText(currentUser.getDescription());
+            imageChossed.setIcon(currentUser.getProfileImage());
+            dialog2.setVisible(true);
         }
 
         private void achievmentListMouseEntered(MouseEvent e) {
@@ -178,6 +131,54 @@
             achievmentListMouseEntered(e);
         }
 
+        private void applyButtonMouseClicked(MouseEvent e) {
+            currentUser.setDescription(modifyDescriptionField.getText());
+            currentUser.setNickname(modifyNameField.getText());
+            try {
+                currentUser.setProfileImage(ImageFormatter.upscaleIco(imageChossed.getIcon(), profileImageL.getWidth(), profileImageL.getHeight()));
+            } catch (NullPointerException f) {
+                System.out.println("No se cambio la foto");
+            }
+
+            dialog2.setVisible(false);
+            updateProfile(currentUser, manager);
+        }
+
+        private void searchFileButtonMouseClicked(MouseEvent e) {
+            JFileChooser fileChooser = new JFileChooser();
+            // Configurar el filtro para archivos PNG
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PNG", "png");
+            fileChooser.setFileFilter(filter);
+
+            // Abrir el cuadro de diálogo
+            int returnValue = fileChooser.showOpenDialog(null);
+
+            // Verificar si el usuario seleccionó un archivo
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                // Obtener el archivo seleccionado
+                File selectedFile = fileChooser.getSelectedFile();
+                imageChossed.setIcon(getIconFromFile(selectedFile));
+            }
+        }
+
+        private void cancelButtonMouseClicked(MouseEvent e) {
+            dialog2.setVisible(false);
+        }
+
+        private void createPostButtonMouseClicked(MouseEvent e) {
+           dialog1.setVisible(true);
+        }
+
+        private void postCancelButtonMouseClicked(MouseEvent e) {
+            dialog1.setVisible(false);
+        }
+
+        private void postButtonMouseClicked(MouseEvent e) {
+        currentUser.createPost(postField.getText());
+        dialog1.setVisible(false);
+        updateProfile(currentUser, manager);
+        }
+
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
             // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
@@ -203,31 +204,32 @@
             achievmentList = new JList();
             lastAchievementImage = new JLabel();
             lastAchievementName = new JLabel();
-            dialog1 = new JDialog();
-            textField1 = new JTextField();
-            button2 = new JButton();
-            button1 = new JButton();
             dialog2 = new JDialog();
             label1 = new JLabel();
-            textField2 = new JTextField();
+            modifyNameField = new JTextField();
             label2 = new JLabel();
-            textField3 = new JTextField();
+            modifyDescriptionField = new JTextField();
             label3 = new JLabel();
-            button5 = new JButton();
-            button4 = new JButton();
-            button3 = new JButton();
+            imageChossed = new JLabel();
+            searchFileButton = new JButton();
+            cancelButton = new JButton();
+            applyButton = new JButton();
             infoAchievDial = new JPopupMenu();
             achieNameL = new JLabel();
             scrollPane2 = new JScrollPane();
             achieInfoL = new JTextPane();
+            dialog1 = new JDialog();
+            scrollPane4 = new JScrollPane();
+            postField = new JTextPane();
+            postCancelButton = new JButton();
+            postButton = new JButton();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
+            red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //======== profile ========
             {
@@ -255,7 +257,6 @@
                     //---- modifyProfileButton ----
                     modifyProfileButton.setText("Modificar Perfil");
                     modifyProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    modifyProfileButton.addActionListener(e -> modifyProfile(e));
                     modifyProfileButton.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -352,7 +353,12 @@
                     //---- createPostButton ----
                     createPostButton.setText("Create Post");
                     createPostButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    createPostButton.addActionListener(e -> createPost(e));
+                    createPostButton.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            createPostButtonMouseClicked(e);
+                        }
+                    });
 
                     //======== scrollPane1 ========
                     {
@@ -484,54 +490,14 @@
                     .addComponent(profile, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
             );
 
-            //======== dialog1 ========
-            {
-                dialog1.setTitle("Crear Post");
-                var dialog1ContentPane = dialog1.getContentPane();
-                dialog1ContentPane.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]" +
-                    "[fill]",
-                    // rows
-                    "[]" +
-                    "[]" +
-                    "[]" +
-                    "[]" +
-                    "[]" +
-                    "[]" +
-                    "[]"));
-                dialog1ContentPane.add(textField1, "cell 0 0 13 6");
-
-                //---- button2 ----
-                button2.setText("Cancelar");
-                dialog1ContentPane.add(button2, "cell 2 6");
-
-                //---- button1 ----
-                button1.setText("Publicar");
-                dialog1ContentPane.add(button1, "cell 11 6");
-                dialog1.pack();
-                dialog1.setLocationRelativeTo(dialog1.getOwner());
-            }
-
             //======== dialog2 ========
             {
-                dialog2.setTitle("Modificar Perfil");
+                dialog2.setTitle("Modify Profile");
                 var dialog2ContentPane = dialog2.getContentPane();
                 dialog2ContentPane.setLayout(new MigLayout(
                     "hidemode 3",
                     // columns
+                    "[fill]" +
                     "[fill]" +
                     "[fill]" +
                     "[fill]" +
@@ -566,30 +532,55 @@
                     "[]"));
 
                 //---- label1 ----
-                label1.setText("Modificar Nombre");
+                label1.setText("Change name");
                 dialog2ContentPane.add(label1, "cell 2 1");
-                dialog2ContentPane.add(textField2, "cell 2 3 10 1");
+                dialog2ContentPane.add(modifyNameField, "cell 2 3 11 1");
 
                 //---- label2 ----
-                label2.setText("Cambiar Descripcion");
+                label2.setText("Change Description");
                 dialog2ContentPane.add(label2, "cell 2 5");
-                dialog2ContentPane.add(textField3, "cell 2 7 10 1");
+                dialog2ContentPane.add(modifyDescriptionField, "cell 2 7 11 1");
 
                 //---- label3 ----
-                label3.setText("Cambiar imagen");
+                label3.setText("Change Image");
                 dialog2ContentPane.add(label3, "cell 2 9");
 
-                //---- button5 ----
-                button5.setText("Buscar archivo...");
-                dialog2ContentPane.add(button5, "cell 2 11");
+                //---- imageChossed ----
+                imageChossed.setText("text");
+                imageChossed.setVisible(false);
+                imageChossed.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePic.jpg")));
+                dialog2ContentPane.add(imageChossed, "cell 3 10 8 3");
 
-                //---- button4 ----
-                button4.setText("Cancelar");
-                dialog2ContentPane.add(button4, "cell 2 18");
+                //---- searchFileButton ----
+                searchFileButton.setText("Search File...");
+                searchFileButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        searchFileButtonMouseClicked(e);
+                    }
+                });
+                dialog2ContentPane.add(searchFileButton, "cell 2 11");
 
-                //---- button3 ----
-                button3.setText("Aplicar Cambios");
-                dialog2ContentPane.add(button3, "cell 11 18");
+                //---- cancelButton ----
+                cancelButton.setText("Cancel");
+                cancelButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        cancelButtonMouseClicked(e);
+                        cancelButtonMouseClicked(e);
+                    }
+                });
+                dialog2ContentPane.add(cancelButton, "cell 2 18");
+
+                //---- applyButton ----
+                applyButton.setText("Apply changes");
+                applyButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        applyButtonMouseClicked(e);
+                    }
+                });
+                dialog2ContentPane.add(applyButton, "cell 12 18");
                 dialog2.pack();
                 dialog2.setLocationRelativeTo(dialog2.getOwner());
             }
@@ -609,6 +600,63 @@
                     scrollPane2.setViewportView(achieInfoL);
                 }
                 infoAchievDial.add(scrollPane2);
+            }
+
+            //======== dialog1 ========
+            {
+                var dialog1ContentPane = dialog1.getContentPane();
+
+                //======== scrollPane4 ========
+                {
+
+                    //---- postField ----
+                    postField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                    scrollPane4.setViewportView(postField);
+                }
+
+                //---- postCancelButton ----
+                postCancelButton.setText("Cancel");
+                postCancelButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        postCancelButtonMouseClicked(e);
+                    }
+                });
+
+                //---- postButton ----
+                postButton.setText("Post");
+                postButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        postButtonMouseClicked(e);
+                    }
+                });
+
+                GroupLayout dialog1ContentPaneLayout = new GroupLayout(dialog1ContentPane);
+                dialog1ContentPane.setLayout(dialog1ContentPaneLayout);
+                dialog1ContentPaneLayout.setHorizontalGroup(
+                    dialog1ContentPaneLayout.createParallelGroup()
+                        .addGroup(dialog1ContentPaneLayout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addComponent(postCancelButton)
+                            .addGap(158, 158, 158)
+                            .addComponent(postButton)
+                            .addContainerGap(56, Short.MAX_VALUE))
+                        .addComponent(scrollPane4, GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                );
+                dialog1ContentPaneLayout.setVerticalGroup(
+                    dialog1ContentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, dialog1ContentPaneLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(dialog1ContentPaneLayout.createParallelGroup()
+                                .addComponent(postCancelButton)
+                                .addComponent(postButton))
+                            .addGap(18, 18, 18))
+                );
+                dialog1.pack();
+                dialog1.setLocationRelativeTo(dialog1.getOwner());
             }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
@@ -637,22 +685,24 @@
         private JList achievmentList;
         private JLabel lastAchievementImage;
         private JLabel lastAchievementName;
-        private JDialog dialog1;
-        private JTextField textField1;
-        private JButton button2;
-        private JButton button1;
         private JDialog dialog2;
         private JLabel label1;
-        private JTextField textField2;
+        private JTextField modifyNameField;
         private JLabel label2;
-        private JTextField textField3;
+        private JTextField modifyDescriptionField;
         private JLabel label3;
-        private JButton button5;
-        private JButton button4;
-        private JButton button3;
+        private JLabel imageChossed;
+        private JButton searchFileButton;
+        private JButton cancelButton;
+        private JButton applyButton;
         private JPopupMenu infoAchievDial;
         private JLabel achieNameL;
         private JScrollPane scrollPane2;
         private JTextPane achieInfoL;
+        private JDialog dialog1;
+        private JScrollPane scrollPane4;
+        private JTextPane postField;
+        private JButton postCancelButton;
+        private JButton postButton;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

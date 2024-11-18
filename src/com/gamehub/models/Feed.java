@@ -21,9 +21,9 @@ public class Feed implements JsonConvertible {
     }
 
     // Methods ------------------------------------
-    public void createPost(String str) {
+    public void createPost(String str,String user) {
         try {
-            posts.add(new Post(str));
+            posts.add(new Post(str,user));
         } catch (NullPointerException  e) {
             System.out.println("El feed de posts no ha sido inicializado");
         }
