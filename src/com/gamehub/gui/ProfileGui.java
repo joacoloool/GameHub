@@ -21,6 +21,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import net.miginfocom.swing.*;
 
+import static com.gamehub.utils.ImageFormatter.upscaleIco;
+
 
     /**
      * @author joaal
@@ -42,17 +44,6 @@ import net.miginfocom.swing.*;
             updateProfile(currentUser , manager);
         }
 
-        public static Icon upscaleIco(Icon icon) {
-            Image img = ((ImageIcon) icon).getImage();
-            Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-            return new ImageIcon(scaledImg);
-        }
-
-        public static Icon upscaleIco(Icon icon, int width, int height) {
-            Image img = ((ImageIcon) icon).getImage();
-            Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            return new ImageIcon(scaledImg);
-        }
 
 
         protected void updateProfile(User user, Manager manager) {

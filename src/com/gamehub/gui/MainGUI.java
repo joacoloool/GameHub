@@ -101,6 +101,7 @@ public class MainGUI extends JFrame {
     private void profileButtonMouseEntered(MouseEvent e) {
     if (!active){
         profileButton.setEnabled(true);
+        profileButton.setForeground(Color.white);
     }
 
 
@@ -124,6 +125,16 @@ public class MainGUI extends JFrame {
         }
     }
 
+    private void userNameButtonMouseClicked(MouseEvent e) {
+        userNameOptions.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    private void changeAccountButtonMouseClicked(MouseEvent e) {
+        this.dispose();
+        LoginGUI login = new LoginGUI(manager);
+        login.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
@@ -132,7 +143,10 @@ public class MainGUI extends JFrame {
         container = new JPanel();
         layeredPane1 = new JLayeredPane();
         userNameText = new JLabel();
-        label1 = new JLabel();
+        profileImage = new JLabel();
+        userNameButton = new JButton();
+        userNameOptions = new JPopupMenu();
+        changeAccountButton = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -184,13 +198,13 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            container.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,container. getBorder () ) ); container. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             container.setLayout(new CardLayout());
         }
 
@@ -204,10 +218,23 @@ public class MainGUI extends JFrame {
             layeredPane1.add(userNameText, JLayeredPane.DEFAULT_LAYER);
             userNameText.setBounds(95, -3, 86, 24);
 
-            //---- label1 ----
-            label1.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePicThumb.jpg")));
-            layeredPane1.add(label1, JLayeredPane.DEFAULT_LAYER);
-            label1.setBounds(70, 0, 20, 20);
+            //---- profileImage ----
+            profileImage.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePicThumb.jpg")));
+            layeredPane1.add(profileImage, JLayeredPane.DEFAULT_LAYER);
+            profileImage.setBounds(70, 0, 20, 20);
+
+            //---- userNameButton ----
+            userNameButton.setBorderPainted(false);
+            userNameButton.setBorder(null);
+            userNameButton.setContentAreaFilled(false);
+            userNameButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    userNameButtonMouseClicked(e);
+                }
+            });
+            layeredPane1.add(userNameButton, JLayeredPane.DEFAULT_LAYER);
+            userNameButton.setBounds(65, -5, 95, 30);
         }
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -238,6 +265,21 @@ public class MainGUI extends JFrame {
         );
         pack();
         setLocationRelativeTo(getOwner());
+
+        //======== userNameOptions ========
+        {
+
+            //---- changeAccountButton ----
+            changeAccountButton.setText(" Change Account... ");
+            changeAccountButton.setBorder(new MatteBorder(0, 1, 0, 1, new Color(0x1a99eb)));
+            changeAccountButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    changeAccountButtonMouseClicked(e);
+                }
+            });
+            userNameOptions.add(changeAccountButton);
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
@@ -249,6 +291,9 @@ public class MainGUI extends JFrame {
     private JPanel container;
     private JLayeredPane layeredPane1;
     private JLabel userNameText;
-    private JLabel label1;
+    private JLabel profileImage;
+    private JButton userNameButton;
+    private JPopupMenu userNameOptions;
+    private JButton changeAccountButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

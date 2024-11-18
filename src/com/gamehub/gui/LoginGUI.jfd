@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp signInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}, space :::x}, seq t {space :::x, par l {seq t {comp gamehubIcon:::p:56:p, space :::p, par l {seq t {comp backButton:::p:50:p, space s:::p, comp okButton:::p:254:p, space :p:191:p}, seq t {comp gamehubL:::p:154:p, space :p:390:p, comp closeButton:::p:38:p}}}, seq t {par t {comp passwordWarning:::p:396:p, seq {comp textAccount:::p::p, space :::p, comp createAccountButton:::p:143:p}}, space :p:14:p}}}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :p:19:p, par b {comp gamehubL::b:p:50:p, comp gamehubIcon::b:p:68:p}, space u:::p, comp signInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p}, comp closeButton:::p:29:p}, space :p:12:p, par b {comp okButton::b:p:50:p, comp backButton::b:p::p}, space :::p, comp passwordWarning:::p:30:p, space :p:28:p, par b {comp textAccount::b:p::p, comp createAccountButton::b:p::p}, space ::11:x}}"
+			"$horizontalGroup": "par l {seq t {space :::x, par l {seq t {comp gamehubIcon:::p:56:p, space :::p, comp gamehubL:::p:363:p, space :p:217:p}, seq t {par t {comp passwordWarning:::p:396:p, seq {comp textAccount:::p::p, space :::p, comp createAccountButton:::p:143:p}}, space :p:14:p}}}, seq {par l {seq l {space :p:127:p, par l:::p {comp passwordL:::p:80:p, comp signInL:::p:206:p, comp userField::::396:x, comp passwordField1::l::396:x, comp rememberMeCheck::l:p::p}}, seq {space :p:149:p, comp backButton:::p:33:p, space s:::p, comp okButton:::p:249:p}}, space :::x}}"
+			"$verticalGroup": "par l {seq {space :p:19:p, par b {comp gamehubIcon::b:p:68:p, comp gamehubL::b:p:50:p}, space u:::p, comp signInL:::p::p, space :::p, comp userField:::p:43:p, space :::p, comp passwordL:::p:24:p, space :::p, comp passwordField1:::p:43:p, space :::p, comp rememberMeCheck:::p::p, space ::18:x, par t {seq {comp passwordWarning:::p:30:p, space :::p, comp backButton:::p:50:p}, comp okButton:::p:50:p}, space :p:28:p, par b {comp textAccount::b:p::p, comp createAccountButton::b:p::p}, space :p:21:p}}"
 		} ) {
 			name: "this"
 			"resizable": false
@@ -30,7 +30,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "okButton"
 				"text": "text"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\signButton.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/signButton.png" )
 				"border": new javax.swing.border.EtchedBorder( 1, null, null )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
 			} )
@@ -54,12 +54,6 @@ new FormModel {
 				"font": new java.awt.Font( "Yu Gothic", 0, 25 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "closeButton"
-				"text": "X"
-				"border": new javax.swing.border.MatteBorder( 1, 0, 0, 1, new java.awt.Color( 26, 153, 235, 255 ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "closeButtonMouseClicked", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "createAccountButton"
 				"text": "Create a free account"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -77,12 +71,16 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "backButton"
 				"text": "<"
-				"visible": false
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+				"border": new javax.swing.border.MatteBorder( 1, 1, 0, 0, new java.awt.Color( 26, 153, 235, 255 ) )
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				"background": new java.awt.Color( 26, 153, 235, 255 )
+				"alignmentY": 4.5f
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "backButtonMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 20, 0 )
-			"size": new java.awt.Dimension( 650, 440 )
+			"location": new java.awt.Point( 20, 20 )
+			"size": new java.awt.Dimension( 650, 420 )
 		} )
 	}
 }

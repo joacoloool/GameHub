@@ -1,7 +1,13 @@
 package com.gamehub.utils;
 
+import com.sun.tools.javac.Main;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -29,6 +35,37 @@ public class ImageFormatter {
         Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImg);
     }
+
+    public static Icon getProfilePictureFromDirectory(String name) {
+        try {
+            // Cargar la imagen desde el directorio especificado
+            BufferedImage icoImage = ImageIO.read(new File("images/profilePictures/" + name + ".png"));
+            return new ImageIcon(icoImage);
+        } catch (IOException e) {
+            System.out.println("No se encontró la ruta del archivo: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static void saveIcon(Icon icon, String name) {
+
+        if (icon != null) {
+            try {
+                // Extraer la imagen del Icon
+                ImageIcon imageIcon = (ImageIcon) icon;
+                BufferedImage image = (BufferedImage) imageIcon.getImage();
+
+                // Guardar la imagen en un archivo PNG
+                File outputFile = new File("images/profilePictures/" + name + ".png");
+                ImageIO.write(image, "PNG", outputFile);
+                System.out.println("Imagen guardada exitosamente en: " + outputFile.getAbsolutePath());
+
+            } catch (IOException e) {
+                System.out.println("Error al guardar la imagen: " + e.getMessage());
+            }
+        }
+    }
+
 
 }
 

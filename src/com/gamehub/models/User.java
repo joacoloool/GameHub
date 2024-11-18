@@ -6,6 +6,7 @@ import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
+import scala.Char;
 
 import javax.swing.*;
 import java.util.*;
@@ -18,7 +19,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name = "";
-    protected String password="";
+    protected String password = "";
     protected int gamesQuant = 0;
     protected String description = "";
     protected Feed feed;
@@ -37,18 +38,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         this.myAchievements = new ArrayList<>();
         this.id = count;
         count++;
-
-    }
-
-    public User(String name) {
-        this.name = name;
-        this.gameList = new ArrayList<>();
-        this.feed = new Feed();
-        this.friends = new TreeSet<>();
-        this.myAchievements = new ArrayList<>();
-        this.id = count;
-
-        count++;
     }
 
     public User(String name,String password) {
@@ -62,6 +51,9 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
 
         count++;
     }
+
+
+
     //Getters
     public int getId() {
         return id;
@@ -174,10 +166,8 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
 
     public void deleteGame(Game game)
     {
-        if (!gameList.remove(game))
-        {
-        }
-        gamesQuant--;
+       gameList.remove(game);
+       gamesQuant--;
     }
 
     public void addGame(Game game)throws DuplicateElementException {

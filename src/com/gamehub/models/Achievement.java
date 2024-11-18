@@ -57,6 +57,14 @@ public class Achievement implements JsonConvertible {
         return count;
     }
 
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
@@ -84,6 +92,7 @@ public class Achievement implements JsonConvertible {
         Achievement that = (Achievement) o;
         return id == that.id;
     }
+
 
     @Override
     public int hashCode() {

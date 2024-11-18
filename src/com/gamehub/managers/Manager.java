@@ -2,16 +2,14 @@ package com.gamehub.managers;
 
 import com.gamehub.enums.AchievType;
 import com.gamehub.exceptions.DuplicateElementException;
+import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.models.Achievement;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * CLASE GESTORA
@@ -63,10 +61,20 @@ public class Manager implements JsonConvertible {
      * Agregar usuario
      */
     public void addUser(User user) {
-        if (!users.add(user)){
-            throw new DuplicateElementException("El usuario ya existe");
+
+        for (User u : users) {
+            if (u.equals(user)) {
+                throw new DuplicateElementException("El usuario ya existe");
+            }
+        }
+        if (user.getPassword() == null || user.getPassword().isEmpty() || user.getPassword().length() < 6) {
+            throw new StringTooShort("La contraseña es demasiado debil");
         }
 
+        if (user.getName() == null || user.getName().isEmpty()) {
+            throw new StringTooShort("El usuario no puede estar vacio");
+        }
+    users.add(user);
     }
 
     /**
@@ -153,7 +161,7 @@ public class Manager implements JsonConvertible {
 
     public Boolean findUser(String name, String password) {
         for (User user : users) {
-            if (user.getName().equals(name) && user.getPassword().equals(password)) {
+            if (user.getName().equals(name) && Objects.equals(user.getPassword(), password)) {
                 return true;
             }
         }

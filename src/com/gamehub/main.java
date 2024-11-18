@@ -64,11 +64,10 @@ public class main {
         loginGUI.setSize(670,470 ); // Tamaño del JFrame
         loginGUI.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
         loginGUI.setVisible(true); // Mostrar el JFrame
-        loginGUI.setTitle("GameHub"); // Título de la ventana
+
 
         // Configurar el ícono del JFrame
-        ImageIcon imageIcon = new ImageIcon("gamhub2.png"); // Ruta al ícono
-        loginGUI.setIconImage(imageIcon.getImage());
+
 
 
     }

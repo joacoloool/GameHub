@@ -1,24 +1,17 @@
 /*
  * Created by JFormDesigner on Wed Nov 13 17:52:52 ART 2024
  */
-
 package com.gamehub.gui;
-
 import java.awt.*;
-import javax.print.MultiDocPrintService;
 import javax.swing.border.*;
 import javax.swing.event.*;
-
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.gui.utilities.GameCellRender;
-import com.gamehub.managers.Manager;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
-
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -38,6 +31,7 @@ public class LibraryGUI extends JPanel {
         gamesList.setModel(gamesListModel);
         gamesList.setCellRenderer(new GameCellRender());
         this.user = user;
+        
 
         for (Game game : user.getGameList()) {
             gamesListModel.addElement(game);
@@ -105,7 +99,6 @@ public class LibraryGUI extends JPanel {
 
     private void updatePics() {
         if (selectedGame != null) {
-            headerL.setIcon(selectedGame.getHeader());
             imageL.setIcon(selectedGame.getImage());
         }
 
@@ -119,6 +112,7 @@ public class LibraryGUI extends JPanel {
             }
         }
     }
+
 
     private void contextPlayMouseClicked(MouseEvent e) {
         playButtonMouseClicked(e);
@@ -174,13 +168,22 @@ public class LibraryGUI extends JPanel {
         }
     }
 
+    private void addGamePlusMouseEntered(MouseEvent e) {
+        addGame.setForeground(Color.white);
+        addGamePlus.setForeground(Color.white);
+    }
+
+    private void addGameMouseExited(MouseEvent e) {
+        addGame.setForeground(Color.decode("#999999"));
+        addGamePlus.setForeground(Color.decode("#999999"));
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         scrolPanelGames = new JScrollPane();
         gamesList = new JList();
-        addGame = new JButton();
         panel1 = new JPanel();
         playButton = new JButton();
         lastText = new JLabel();
@@ -192,13 +195,15 @@ public class LibraryGUI extends JPanel {
         releaseText = new JLabel();
         releaseL = new JLabel();
         panel2 = new JPanel();
-        headerL = new JLabel();
         scrollPane1 = new JScrollPane();
         descriptionL = new JTextArea();
         imageLayered = new JLayeredPane();
         imageText = new JLabel();
         shadow = new JLabel();
         imageL = new JLabel();
+        layeredPane1 = new JLayeredPane();
+        addGamePlus = new JLabel();
+        addGame = new JButton();
         popupList = new JPopupMenu();
         contextPlay = new JButton();
         contextFavorite = new JButton();
@@ -206,12 +211,13 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-        .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax
-        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
-        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
-        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e.
-        getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder
+        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
+        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
+        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+        ;
 
         //======== scrolPanelGames ========
         {
@@ -229,18 +235,10 @@ public class LibraryGUI extends JPanel {
             scrolPanelGames.setViewportView(gamesList);
         }
 
-        //---- addGame ----
-        addGame.setText("Add Game");
-        addGame.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                addGameMouseClicked(e);
-            }
-        });
-
         //======== panel1 ========
         {
             panel1.setBorder(null);
+            panel1.setBackground(new Color(0x002a2c2f, true));
 
             //---- playButton ----
             playButton.setText("PLAY");
@@ -248,6 +246,7 @@ public class LibraryGUI extends JPanel {
             playButton.setBackground(new Color(0x44c335));
             playButton.setForeground(Color.white);
             playButton.setBorder(null);
+            playButton.setOpaque(false);
             playButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -355,10 +354,6 @@ public class LibraryGUI extends JPanel {
         {
             panel2.setBorder(new EtchedBorder());
 
-            //---- headerL ----
-            headerL.setText("Header");
-            headerL.setBorder(null);
-
             //======== scrollPane1 ========
             {
 
@@ -375,22 +370,14 @@ public class LibraryGUI extends JPanel {
             panel2Layout.setHorizontalGroup(
                 panel2Layout.createParallelGroup()
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(headerL, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 694, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 97, Short.MAX_VALUE))
             );
             panel2Layout.setVerticalGroup(
                 panel2Layout.createParallelGroup()
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panel2Layout.createParallelGroup()
-                            .addComponent(scrollPane1)
-                            .addGroup(panel2Layout.createSequentialGroup()
-                                .addComponent(headerL, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
             );
         }
 
@@ -403,16 +390,57 @@ public class LibraryGUI extends JPanel {
             imageText.setBounds(25, 225, 750, 62);
 
             //---- shadow ----
-            shadow.setText(".");
+            shadow.setText(".c");
             shadow.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\Facultad\\Github\\GameHub10\\src\\com\\gamehub\\images\\headers\\shadow.png"));
             imageLayered.add(shadow, JLayeredPane.DEFAULT_LAYER);
-            shadow.setBounds(0, 0, 800, 305);
+            shadow.setBounds(0, -5, 1160, 660);
 
             //---- imageL ----
             imageL.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/headerProfile.png")));
             imageL.setVerticalAlignment(SwingConstants.BOTTOM);
             imageLayered.add(imageL, JLayeredPane.DEFAULT_LAYER);
             imageL.setBounds(0, 0, 800, 305);
+        }
+
+        //======== layeredPane1 ========
+        {
+
+            //---- addGamePlus ----
+            addGamePlus.setText("+");
+            addGamePlus.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 23));
+            addGamePlus.setForeground(new Color(0x999999));
+            addGamePlus.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    addGamePlusMouseEntered(e);
+                }
+            });
+            layeredPane1.add(addGamePlus, JLayeredPane.DEFAULT_LAYER);
+            addGamePlus.setBounds(0, 4, 15, 20);
+
+            //---- addGame ----
+            addGame.setText("       Add a Game");
+            addGame.setBorder(null);
+            addGame.setFont(addGame.getFont().deriveFont(addGame.getFont().getSize() - 1f));
+            addGame.setBorderPainted(false);
+            addGame.setContentAreaFilled(false);
+            addGame.setForeground(new Color(0x999999));
+            addGame.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    addGameMouseClicked(e);
+                }
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    addGamePlusMouseEntered(e);
+                }
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    addGameMouseExited(e);
+                }
+            });
+            layeredPane1.add(addGame, JLayeredPane.DEFAULT_LAYER);
+            addGame.setBounds(-10, 0, 100, 28);
         }
 
         GroupLayout layout = new GroupLayout(this);
@@ -423,14 +451,17 @@ public class LibraryGUI extends JPanel {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(addGame, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(6, 6, 6)
+                            .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 928, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(scrolPanelGames, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup()
                                 .addComponent(imageLayered, GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
-                                .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addContainerGap())
                                 .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
@@ -441,13 +472,13 @@ public class LibraryGUI extends JPanel {
                         .addComponent(scrolPanelGames)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(imageLayered, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(addGame)
-                    .addContainerGap())
+                    .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                    .addGap(23, 23, 23))
         );
 
         //======== popupList ========
@@ -498,10 +529,9 @@ public class LibraryGUI extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Gabriel Tomas Delio
+    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
     private JScrollPane scrolPanelGames;
     private JList gamesList;
-    private JButton addGame;
     private JPanel panel1;
     private JButton playButton;
     private JLabel lastText;
@@ -513,13 +543,15 @@ public class LibraryGUI extends JPanel {
     private JLabel releaseText;
     private JLabel releaseL;
     private JPanel panel2;
-    private JLabel headerL;
     private JScrollPane scrollPane1;
     private JTextArea descriptionL;
     public static JLayeredPane imageLayered;
     private JLabel imageText;
     private JLabel shadow;
     private JLabel imageL;
+    private JLayeredPane layeredPane1;
+    private JLabel addGamePlus;
+    private JButton addGame;
     private JPopupMenu popupList;
     private JButton contextPlay;
     private JButton contextFavorite;
