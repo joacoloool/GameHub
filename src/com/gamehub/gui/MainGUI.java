@@ -69,35 +69,6 @@ public class MainGUI extends JFrame {
 
     }
 
-    private void themeButtonMouseClicked(MouseEvent e) {
-        if (!darkMode) {
-            setLightMode();
-            darkMode = true;
-        } else {
-            setDarkMode();
-            darkMode = false;
-        }
-    }
-
-    private void setDarkMode() {
-        try {
-
-            UIManager.setLookAndFeel(new FlatGitHubDarkIJTheme());
-            SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private void setLightMode() {
-        try {
-            UIManager.setLookAndFeel(new FlatOneDarkIJTheme());
-            SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
     private void profileButtonMouseEntered(MouseEvent e) {
     if (!active){
         profileButton.setEnabled(true);
@@ -160,6 +131,7 @@ public class MainGUI extends JFrame {
         libraryButton.setMaximumSize(new Dimension(128, 28));
         libraryButton.setMinimumSize(new Dimension(128, 28));
         libraryButton.setPreferredSize(new Dimension(128, 28));
+        libraryButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         libraryButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -181,6 +153,7 @@ public class MainGUI extends JFrame {
         profileButton.setBorder(null);
         profileButton.setContentAreaFilled(false);
         profileButton.setEnabled(false);
+        profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         profileButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -198,12 +171,12 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-            EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing
-            .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
-            java.awt.Color.red),container. getBorder()));container. addPropertyChangeListener(new java.beans.PropertyChangeListener()
-            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))
-            throw new RuntimeException();}});
+            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             container.setLayout(new CardLayout());
         }
 
@@ -214,11 +187,13 @@ public class MainGUI extends JFrame {
             userNameText.setText("userName");
             userNameText.setForeground(new Color(0x1a99eb));
             userNameText.setFont(new Font("Inter", Font.BOLD, 12));
+            userNameText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             layeredPane1.add(userNameText, JLayeredPane.DEFAULT_LAYER);
             userNameText.setBounds(95, -3, 86, 24);
 
             //---- profileImage ----
             profileImage.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/defaultProfilePicThumb.jpg")));
+            profileImage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             layeredPane1.add(profileImage, JLayeredPane.DEFAULT_LAYER);
             profileImage.setBounds(70, 0, 20, 20);
 
@@ -226,6 +201,7 @@ public class MainGUI extends JFrame {
             userNameButton.setBorderPainted(false);
             userNameButton.setBorder(null);
             userNameButton.setContentAreaFilled(false);
+            userNameButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             userNameButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -260,7 +236,7 @@ public class MainGUI extends JFrame {
                             .addComponent(libraryButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
                             .addComponent(profileButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
+                    .addComponent(container, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -271,6 +247,7 @@ public class MainGUI extends JFrame {
             //---- changeAccountButton ----
             changeAccountButton.setText(" Change Account... ");
             changeAccountButton.setBorder(new MatteBorder(0, 1, 0, 1, new Color(0x1a99eb)));
+            changeAccountButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             changeAccountButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

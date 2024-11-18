@@ -138,12 +138,16 @@ public class LoginGUI extends JFrame {
         okButton.setText("text");
         okButton.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/headers/signButton.png")));
         okButton.setBorder(new EtchedBorder());
+        okButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         okButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 okButtonMouseClicked(e);
             }
         });
+
+        //---- userField ----
+        userField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
         //---- passwordWarning ----
         passwordWarning.setForeground(new Color(0xd23d41));
@@ -163,6 +167,7 @@ public class LoginGUI extends JFrame {
         createAccountButton.setBorder(null);
         createAccountButton.setFont(new Font("Inter", Font.BOLD, 13));
         createAccountButton.setForeground(new Color(0x1a99eb));
+        createAccountButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         createAccountButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

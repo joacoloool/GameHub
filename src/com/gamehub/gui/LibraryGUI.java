@@ -2,14 +2,17 @@
  * Created by JFormDesigner on Wed Nov 13 17:52:52 ART 2024
  */
 package com.gamehub.gui;
+
 import java.awt.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.gui.utilities.GameCellRender;
 import com.gamehub.models.Game;
 import com.gamehub.models.User;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -31,19 +34,20 @@ public class LibraryGUI extends JPanel {
         gamesList.setModel(gamesListModel);
         gamesList.setCellRenderer(new GameCellRender());
         this.user = user;
-        
+
 
         for (Game game : user.getGameList()) {
             gamesListModel.addElement(game);
         }
     }
 
+
+
     public void addGame(Game game) {//añadi extra seguridad cosa de que solo exista un juego
         try {
             user.addGame(game);
             gamesListModel.addElement(game);
-        }catch (DuplicateElementException e)
-        {
+        } catch (DuplicateElementException e) {
             JOptionPane.showMessageDialog(null, "Este juego ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -75,9 +79,7 @@ public class LibraryGUI extends JPanel {
             } else {
                 descriptionL.setText("This game not have any description.");
             }
-
         }
-
     }
 
     private void playButtonMouseClicked(MouseEvent e) {
@@ -87,14 +89,12 @@ public class LibraryGUI extends JPanel {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "You have not selected a game");
         }
-
     }
 
     private void selectedGame(ListSelectionEvent e) {
         selectedGame = (Game) gamesList.getSelectedValue();
         updateInfo();
         updatePics();
-
     }
 
     private void updatePics() {
@@ -120,7 +120,7 @@ public class LibraryGUI extends JPanel {
     }
 
     private void contextDeleteMouseClicked(MouseEvent e) {
-        Game game  = selectedGame;
+        Game game = selectedGame;
         try {
             if (selectedGame != null) {
                 int index = gamesListModel.indexOf(selectedGame);
@@ -130,8 +130,7 @@ public class LibraryGUI extends JPanel {
                 }
             }
             popupList.setVisible(false);
-        }
-        catch (NonExistObjectException e1) {
+        } catch (NonExistObjectException e1) {
             // Mostrar un mensaje de error en un pop-up
             JOptionPane.showMessageDialog(null, "Este juego no existe.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -139,7 +138,7 @@ public class LibraryGUI extends JPanel {
     }
 
     private void contextModifyMouseClicked(MouseEvent e) {
-        GameGUI modifyGame = new GameGUI(selectedGame,this);  // 'this' es la referencia de LibraryGUI
+        GameGUI modifyGame = new GameGUI(selectedGame, this);  // 'this' es la referencia de LibraryGUI
         modifyGame.setAlwaysOnTop(true);
         modifyGame.setVisible(true);
     }
@@ -212,12 +211,13 @@ public class LibraryGUI extends JPanel {
         contextDelete = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== scrolPanelGames ========
         {
@@ -246,7 +246,7 @@ public class LibraryGUI extends JPanel {
             playButton.setBackground(new Color(0x44c335));
             playButton.setForeground(Color.white);
             playButton.setBorder(null);
-            playButton.setOpaque(false);
+            playButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             playButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -266,6 +266,7 @@ public class LibraryGUI extends JPanel {
             lastPlayedL.setForeground(Color.gray);
             lastPlayedL.setHorizontalAlignment(SwingConstants.CENTER);
             lastPlayedL.setOpaque(true);
+            lastPlayedL.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
             //---- genreText ----
             genreText.setText("Genre");
@@ -279,6 +280,7 @@ public class LibraryGUI extends JPanel {
             genreL.setForeground(Color.gray);
             genreL.setHorizontalAlignment(SwingConstants.CENTER);
             genreL.setOpaque(true);
+            genreL.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
             //---- platformL ----
             platformL.setText("Steam");
@@ -286,6 +288,7 @@ public class LibraryGUI extends JPanel {
             platformL.setForeground(Color.gray);
             platformL.setHorizontalAlignment(SwingConstants.CENTER);
             platformL.setOpaque(true);
+            platformL.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
             //---- PlatformText ----
             PlatformText.setText("Platform");
@@ -305,6 +308,7 @@ public class LibraryGUI extends JPanel {
             releaseL.setForeground(Color.gray);
             releaseL.setHorizontalAlignment(SwingConstants.CENTER);
             releaseL.setOpaque(true);
+            releaseL.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
             GroupLayout panel1Layout = new GroupLayout(panel1);
             panel1.setLayout(panel1Layout);
@@ -370,6 +374,7 @@ public class LibraryGUI extends JPanel {
                 descriptionL.setLineWrap(true);
                 descriptionL.setWrapStyleWord(true);
                 descriptionL.setFocusable(false);
+                descriptionL.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 scrollPane1.setViewportView(descriptionL);
             }
 
@@ -433,6 +438,7 @@ public class LibraryGUI extends JPanel {
             addGame.setBorderPainted(false);
             addGame.setContentAreaFilled(false);
             addGame.setForeground(new Color(0x999999));
+            addGame.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             addGame.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -495,6 +501,7 @@ public class LibraryGUI extends JPanel {
             //---- contextPlay ----
             contextPlay.setText("Play");
             contextPlay.setBackground(new Color(0x44c335));
+            contextPlay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             contextPlay.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -505,6 +512,7 @@ public class LibraryGUI extends JPanel {
 
             //---- contextFavorite ----
             contextFavorite.setText("Favorite");
+            contextFavorite.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             contextFavorite.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -515,6 +523,7 @@ public class LibraryGUI extends JPanel {
 
             //---- contextModify ----
             contextModify.setText("Modify");
+            contextModify.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             contextModify.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -525,6 +534,7 @@ public class LibraryGUI extends JPanel {
 
             //---- contextDelete ----
             contextDelete.setText("Delete");
+            contextDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             contextDelete.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

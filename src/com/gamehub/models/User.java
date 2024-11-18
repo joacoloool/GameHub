@@ -10,12 +10,11 @@ import scala.Char;
 
 import javax.swing.*;
 import java.util.*;
+
 /**
- *
  * CLASE USUARIO
- *
  */
-public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
+public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     protected int id;
     protected ArrayList<Game> gameList;
     protected String name = "";
@@ -40,7 +39,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         count++;
     }
 
-    public User(String name,String password) {
+    public User(String name, String password) {
         this.name = name;
         this.gameList = new ArrayList<>();
         this.feed = new Feed();
@@ -53,29 +52,35 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     }
 
 
-
     //Getters
     public int getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+
     public int getFavoriteAchievement() {
         return favoriteAchievement;
     }
+
     public Feed getFeed() {
         return feed;
     }
+
     public TreeSet<Integer> getFriends() {
         return friends;
     }
+
     public String getDescription() {
         return description;
     }
+
     public ArrayList<Achievement> getMyAchievements() {
         return myAchievements;
     }
+
     public ArrayList<Game> getGameList() {
         return gameList;
     }
@@ -84,38 +89,48 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     public void setGamesQuant(int gamesQuant) {
         this.gamesQuant = gamesQuant;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public void setFavoriteAchievement(int favoriteAchievement) {
         this.favoriteAchievement = favoriteAchievement;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public void setName(Feed feed) {
         this.feed = feed;
     }
+
     public void setName(TreeSet<Integer> friends) {
         this.friends = friends;
     }
 
     public void setDescription(String description) {
-        this.description = description;}
+        this.description = description;
+    }
 
 
     public void setGameList(ArrayList<Game> gameList) {
         this.gameList = gameList;
     }
+
     public int getGamesQuant() {
         return gamesQuant;
     }
+
     public void setFeed(Feed feed) {
         this.feed = feed;
     }
+
     public void setFriends(TreeSet<Integer> friends) {
         this.friends = friends;
     }
+
     public void setMyAchievements(ArrayList<Achievement> myAchievements) {
         this.myAchievements = myAchievements;
     }
@@ -129,16 +144,18 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
     }
     //Methods
 
-    /** Retorna la cantidad de publicaciones en el feed del usuario
+    /**
+     * Retorna la cantidad de publicaciones en el feed del usuario
      * utiliza el metodo del objeto feed para
-     * */
-    public int getNumberOfPost()
-    {
-        return  feed.getPosts().size();
+     */
+    public int getNumberOfPost() {
+        return feed.getPosts().size();
     }
-    /** Calcula el total de lanzamientos de un juego en la lista del usuario
+
+    /**
+     * Calcula el total de lanzamientos de un juego en la lista del usuario
      * Suma los lanzamientos de cada jeugo en la lista y devuelve el total
-     * */
+     */
     public int getGameLaunches() {
         int num = 0;
         for (Game game : gameList) {
@@ -146,12 +163,13 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
         return num;
     }
-    /** Agrega un logro a la lista de logros del usuario
+
+    /**
+     * Agrega un logro a la lista de logros del usuario
      * Si el logro ya exisite lanza exception
-     * */
-    public void addAchievement(Achievement achievement) throws DuplicateElementException{
-        if (!myAchievements.add(achievement))
-        {
+     */
+    public void addAchievement(Achievement achievement) throws DuplicateElementException {
+        if (!myAchievements.add(achievement)) {
             throw new DuplicateElementException("This element already exist");
         }
     }
@@ -164,18 +182,15 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         this.password = password;
     }
 
-    public void deleteGame(Game game)
-    {
-       gameList.remove(game); //Agregar thrhow e non exist
-       gamesQuant--;
+    public void deleteGame(Game game) {
+        gameList.remove(game); //Agregar thrhow e non exist
+        gamesQuant--;
     }
 
-    public void addGame(Game game)throws DuplicateElementException {
-        if (gameList.contains(game))
-        {
+    public void addGame(Game game) throws DuplicateElementException {
+        if (gameList.contains(game)) {
             throw new DuplicateElementException("This element already exist");
-        }else
-        {
+        } else {
             gameList.add(game);
         }
         gamesQuant++;
@@ -207,13 +222,24 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         }
     }
 
-    public boolean searchFriend(int id)
-    {
-        if (friends.contains(id))
-        {
+    public boolean searchFriend(int id) {
+        if (friends.contains(id)) {
             return true;
         }
         return false;
+    }
+
+    public Game getLastPlayed() {
+        Game mayor = null;
+        if (!gameList.isEmpty()) {
+            mayor = gameList.getFirst();
+            for (Game game : gameList) {
+                if (game.lastTime.after(mayor.lastTime)) {
+                    mayor = game;
+                }
+            }
+        }
+        return mayor;
     }
 
     public User viewFriend(ArrayList<User> users, int id) {
@@ -227,13 +253,11 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User>{
         return null;
     }
 
-    public void createPost(String str)
-    {
+    public void createPost(String str) {
         feed.createPost(str);
     }
 
-    public void deletePost(int i)
-    {
+    public void deletePost(int i) {
         feed.deletePost(i);
     }
 

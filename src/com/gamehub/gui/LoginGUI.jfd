@@ -32,10 +32,12 @@ new FormModel {
 				"text": "text"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/signButton.png" )
 				"border": new javax.swing.border.EtchedBorder( 1, null, null )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "userField"
+				"cursor": new java.awt.Cursor( 2 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "passwordWarning"
@@ -59,6 +61,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"font": new java.awt.Font( "Inter", 1, 13 )
 				"foreground": new java.awt.Color( 26, 153, 235, 255 )
+				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createAccountButtonMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

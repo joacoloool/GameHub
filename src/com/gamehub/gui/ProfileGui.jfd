@@ -4,102 +4,140 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp profile::l::1015:x}"
-			"$verticalGroup": "par l {seq {space :p:69:p, comp profile::::610:x, space :::p}}"
+			"$horizontalGroup": "par l {seq t {space :::p, comp profile::::1003:x, space :::p}}"
+			"$verticalGroup": "par l {comp profile::t::735:x}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "profile"
 				"horizontalScrollBarPolicy": 31
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {par l {seq {space :p:24:p, par l {seq {space :p:18:p, comp label4:::p:179:p, space s:::p, comp usernameNameLabel:::p:155:p}, comp LastPlayedPanel::l:p::p, par t:l::p {seq t {comp feedNameLabel:::p::p, space :::x, comp createPostButton:::p::p}, comp feedScrollPanel:::p:570:p}}}, seq l {space :p:230:p, comp descriptionLabel:::p:410:p}}, space ::117:x, par l {comp achievmentList::l:p:200:p, comp FriendsTextLabel:::p:66:p, comp friendScrollPanel:::p:200:p, comp logroTextLabel::l:p:66:p, comp modifyProfileButton:::p:120:p}, space ::186:x}}"
-					"$verticalGroup": "par l {seq t {par t {seq t {space :p:25:p, par b {comp modifyProfileButton::b:p::p, seq l {space :p:25:p, comp usernameNameLabel:::p:35:p}, comp label4::b:p:163:p}, space :::p, comp descriptionLabel:::p:107:p, space :::p, comp LastPlayedPanel:::p::p, space :::p, par b {comp createPostButton::b:p::p, comp feedNameLabel::b:p:43:p}, space :p::p, comp feedScrollPanel::::70:x, space :p:59:p}, seq {space :p:183:p, comp logroTextLabel:::p:32:p, space u:p::p, comp achievmentList:::p:101:p, space :p::p, comp FriendsTextLabel:::p:32:p, space :p::p, comp friendScrollPanel::::280:x}}, space :p:43:p}}"
+					"$horizontalGroup": "par l {seq l {space :p:42:p, par l {seq l {space :0:0:x, comp createPostButton:::p::p}, seq {comp profileImageL:::p:179:p, space :p:31:p, par l {comp usernameNameLabel:::p::p, comp descriptionLabel::t:p:392:p}, space :26:26:p}, seq {comp lastPlayedPanel:::p::p, space :0:0:x}, comp feedScrollPanel:::::x}, par l {seq t {space :::p, comp modifyProfileButton:::p:120:p, space :p:167:p}, seq {par l {seq {space :p:34:p, comp lastAchievementImage:::p:72:p, space u:::p, comp lastAchievementName:::p:88:p}, seq l {space :p:104:p, par l {comp FriendsTextLabel:::p:66:p, comp scrollPane1:::p:200:p, comp friendScrollPanel::l:p:200:p, comp logroTextLabel::l:p:66:p}}}, space :p:115:p}}}}"
+					"$verticalGroup": "par l {seq t {space :p:18:p, par t {seq {par b {comp usernameNameLabel::b:p:35:p, comp modifyProfileButton::b:p::p}, par l {seq l {space :p:42:p, comp lastAchievementName:::p:32:p}, seq l {space :p:32:p, comp lastAchievementImage:::p:56:p}, seq l {space s:::p, comp descriptionLabel:::p:110:p}}}, comp profileImageL:::p:163:p}, space :p:37:p, comp logroTextLabel:::p:32:p, space :::p, par t {comp lastPlayedPanel:::p::p, comp scrollPane1:::p:194:p}, space :p:35:p, par l {seq {space :p:6:p, comp createPostButton:::p::p, space :::p, comp feedScrollPanel:::p:150:p}, seq {comp FriendsTextLabel:::p:32:p, space :::p, comp friendScrollPanel:::p:148:p}}, space :p:401:p}}"
 				} ) {
 					name: "group"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 13, false )
+					"border": new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 32 ), 7, false )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "usernameNameLabel"
 						"text": "Username"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
-						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"focusable": false
+						"cursor": &Cursor0 new java.awt.Cursor( 2 )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "descriptionLabel"
 						"text": "//DESCRIPTION"
 						"font": new java.awt.Font( "JetBrains Mono", 0, 13 )
-						"border": #EtchedBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"horizontalAlignment": 0
+						"cursor": #Cursor0
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "modifyProfileButton"
 						"text": "Modificar Perfil"
+						"cursor": &Cursor1 new java.awt.Cursor( 12 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modifyProfile", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "modifyProfileButtonMouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "logroTextLabel"
 						"text": "Badges"
-					} )
-					add( new FormComponent( "javax.swing.JList" ) {
-						name: "achievmentList"
-						"border": &EtchedBorder1 new javax.swing.border.EtchedBorder( 1, null, null )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :::p, comp lastGameImage2:::p:188:p, space s:::p, comp lastGameNameLabel:::p:334:p, space ::14:x}}"
-						"$verticalGroup": "par l {seq {par l {seq {space :::p, comp lastGameNameLabel:::p:32:p}, comp lastGameImage2::l:p:122:p}, space :::x}}"
-					} ) {
-						name: "LastPlayedPanel"
-						"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 10, false ), "Last Played", 0, 0 )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lastGameNameLabel"
-							"text": "Dragon Ball Z"
-							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 6, false )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lastGameImage2"
-							"text": "."
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg" )
-							"border": #EtchedBorder1
-						} )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "feedNameLabel"
-						"text": "Comments"
-						"font": new com.jformdesigner.model.SwingDerivedFont( "JetBrains Mono", 131072, 15, true )
-					} )
-					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "feedScrollPanel"
-						add( new FormComponent( "javax.swing.JList" ) {
-							name: "feedList"
-							"border": #EtchedBorder1
-						} )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "friendScrollPanel"
-						"border": #EtchedBorder1
+						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
 						add( new FormComponent( "javax.swing.JList" ) {
 							name: "friendList"
-							"border": #EtchedBorder1
+							"border": new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 2, false )
+							"cursor": #Cursor1
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "FriendsTextLabel"
 						"text": "Friends"
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "createPostButton"
-						"text": "Create Post"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "createPost", true ) )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label4"
+						name: "profileImageL"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/gamehub/images/headers/defaultProfilePic.jpg" )
 						"horizontalAlignment": 0
 						"border": new javax.swing.border.LineBorder( new java.awt.Color( 26, 153, 235, 255 ), 3, false )
 					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {comp lastGameImage:::p:206:p, space :::p, par l {seq {comp lastGameL:::p:316:p, space :0:32:x}, comp scrollPane3::::348:x}}}"
+						"$verticalGroup": "par l {seq {space :::p, comp lastGameL:::p:29:p, space :::p, comp scrollPane3::::81:x, space :::p}, comp lastGameImage::l::128:x}"
+					} ) {
+						name: "lastPlayedPanel"
+						"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 30, false ), "Last Played", 0, 0 )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 5, false )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lastGameImage"
+							"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg" )
+							"border": #EtchedBorder0
+							"cursor": new java.awt.Cursor( 1 )
+						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane3"
+							add( new FormComponent( "javax.swing.JTextPane" ) {
+								name: "lastGameInfo"
+								"editable": false
+								"focusable": false
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"cursor": #Cursor0
+							} )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lastGameL"
+							"text": "lastGameL"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 7, false )
+							"cursor": #Cursor0
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "feedScrollPanel"
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "feedList"
+							"border": new javax.swing.border.TitledBorder( new javax.swing.border.MatteBorder( 30, 1, 1, 1, new java.awt.Color( 0, 0, 0, 53 ) ), "Comments", 1, 2, new java.awt.Font( "Inter", 0, 14 ), sfield java.awt.Color white )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 1, false )
+							"selectionMode": 0
+							"cursor": #Cursor0
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "createPostButton"
+						"text": "Create Post"
+						"cursor": #Cursor1
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "createPost", true ) )
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						"horizontalScrollBarPolicy": 31
+						"focusable": false
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "achievmentList"
+							"cursor": #Cursor1
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "achievmentListMouseEntered", true ) )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "achievmentListMouseExited", true ) )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "achievmentListMouseClicked", true ) )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lastAchievementImage"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lastAchievementName"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 0, false )
+						"alignmentY": -6.5f
+					} )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 30, 30 )
-			"size": new java.awt.Dimension( 1015, 685 )
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 1015, 735 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
@@ -126,7 +164,7 @@ new FormModel {
 				"value": "cell 11 6"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 1045, 490 )
+			"location": new java.awt.Point( 1045, 515 )
 			"size": new java.awt.Dimension( 360, 230 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
@@ -183,8 +221,25 @@ new FormModel {
 				"value": "cell 11 18"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 1045, 75 )
+			"location": new java.awt.Point( 1045, 100 )
 			"size": new java.awt.Dimension( 365, 370 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "infoAchievDial"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "achieNameL"
+				"text": "ASDSAAASDADS"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "achieInfoL"
+					"text": "asdadsasdasd"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 1050, 770 )
+			"size": new java.awt.Dimension( 135, 85 )
 		} )
 	}
 }

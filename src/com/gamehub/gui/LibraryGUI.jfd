@@ -32,7 +32,7 @@ new FormModel {
 					"background": new java.awt.Color( 68, 195, 53, 255 )
 					"foreground": new java.awt.Color( 255, 255, 255, 255 )
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					"opaque": false
+					"cursor": &Cursor0 new java.awt.Cursor( 12 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "playButtonMouseClicked", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -49,6 +49,7 @@ new FormModel {
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
 					"opaque": true
+					"cursor": &Cursor1 new java.awt.Cursor( 2 )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "genreText"
@@ -64,6 +65,7 @@ new FormModel {
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
 					"opaque": true
+					"cursor": #Cursor1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "platformL"
@@ -72,6 +74,7 @@ new FormModel {
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
 					"opaque": true
+					"cursor": #Cursor1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "PlatformText"
@@ -94,6 +97,7 @@ new FormModel {
 					"foreground": sfield java.awt.Color gray
 					"horizontalAlignment": 0
 					"opaque": true
+					"cursor": #Cursor1
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -110,6 +114,7 @@ new FormModel {
 						"lineWrap": true
 						"wrapStyleWord": true
 						"focusable": false
+						"cursor": #Cursor1
 					} )
 				} )
 			} )
@@ -170,6 +175,7 @@ new FormModel {
 					"borderPainted": false
 					"contentAreaFilled": false
 					"foreground": new java.awt.Color( 153, 153, 153, 255 )
+					"cursor": #Cursor0
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addGameMouseClicked", true ) )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "addGamePlusMouseEntered", true ) )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "addGameMouseExited", true ) )
@@ -190,21 +196,25 @@ new FormModel {
 				name: "contextPlay"
 				"text": "Play"
 				"background": new java.awt.Color( 68, 195, 53, 255 )
+				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextPlayMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "contextFavorite"
 				"text": "Favorite"
+				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextFavoriteMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "contextModify"
 				"text": "Modify"
+				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextModifyMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "contextDelete"
 				"text": "Delete"
+				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextDeleteMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
