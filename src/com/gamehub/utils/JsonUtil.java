@@ -103,6 +103,7 @@ public class JsonUtil {
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
         user.setFriends(JSONtoFriends(u.getJSONArray("friends")));
 
+
         return user;
     }
 

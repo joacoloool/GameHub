@@ -3,12 +3,14 @@ package com.gamehub.models;
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
+import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 import scala.Char;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -39,6 +41,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.id = count;
         this.nickname = name;
         count++;
+
     }
 
     public User(String name, String password) {
@@ -220,6 +223,11 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         }
     }
 
+    public void saveProfilePicture(){
+        String pathName = name + "_pf";
+        ImageFormatter.saveProfileImageToFile(pathName,profileImage);
+    }
+
     public void addFriend(Integer id) {
         friends.add(id);
     }
@@ -240,6 +248,31 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         }
         return false;
     }
+
+    public void saveAllImages(){
+            saveProfilePicture();
+
+        for (Game game : gameList){
+            game.saveImageGame();
+            game.saveHeader();
+        }
+    }
+
+    public void loadProfileImage(){
+        String pathName = name + "_pf";
+        this.profileImage = ImageFormatter.loadProfileImageFromFile(pathName);
+    }
+
+    public void loadAllImages()
+    {
+        loadProfileImage();
+        for (Game game: gameList)
+        {
+            game.loadImageGame();
+            game.loadHeaderGame();
+        }
+    }
+
 
     public Game getLastPlayed() {
         Game mayor = null;

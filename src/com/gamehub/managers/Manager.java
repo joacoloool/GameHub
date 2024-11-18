@@ -202,6 +202,17 @@ public class Manager implements JsonConvertible {
         return false;
     }
 
+    public void saveAllImages(){
+        for (User user : users)
+        {
+            user.saveAllImages();
+        }
+    }
+
+    public void loadAllImages(){
+
+    }
+
     @Override
     public String toString() {
         return "com.gamehub.managers.Manager" +

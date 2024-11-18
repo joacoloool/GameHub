@@ -21,9 +21,9 @@ public class main {
 
         Manager manager = new Manager();
 
+        manager.loadAllImages();
        manager = com.gamehub.utils.JsonUtil.leerManager();
        //Cargamos los achievements despues
-        System.out.println(manager.getUsers().toString());
        manager.createAchievements();
        manager.verifyAchievements();
 

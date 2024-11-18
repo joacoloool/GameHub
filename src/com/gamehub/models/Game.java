@@ -5,6 +5,7 @@ import com.gamehub.gui.LibraryGUI;
 import com.gamehub.gui.ProfileGui;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.utils.IGDBHelper;
+import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.SteamHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -341,6 +342,27 @@ public class Game implements JsonConvertible {
         this.image= upscaleIco(image, LibraryGUI.imageLayered.getWidth(), LibraryGUI.imageLayered.getHeight());
 
     }
+
+    public void saveImageGame(){
+        String pathName = title + "_ig";
+        ImageFormatter.saveProfileImageToFile(pathName,image);
+    }
+
+    public void saveHeader(){
+        String pathName = title + "_he";
+        ImageFormatter.saveProfileImageToFile(pathName,header);
+    }
+
+    public void loadImageGame(){
+        String pathName = title + "_ig";
+        this.image= ImageFormatter.loadProfileImageFromFile(pathName);
+    }
+
+    public void loadHeaderGame(){
+        String pathName = title + "_he";
+        this.header = ImageFormatter.loadProfileImageFromFile(pathName);
+    }
+
 
     private String generateSteamURL() {
         return "https://store.steampowered.com/app/" + appid;

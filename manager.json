@@ -1,396 +1,186 @@
 {
   "achievement": [
     {
-      "condition": 0,
+      "condition": 1,
       "name": "Newbie",
-      "count": 256,
+      "count": 128,
       "description": "Add your first game.",
-      "id": 245,
+      "id": 117,
       "type": "GAMES"
     },
     {
-      "condition": 0,
+      "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 256,
+      "count": 128,
       "description": "Get 10 games.",
-      "id": 246,
+      "id": 118,
       "type": "GAMES"
     },
     {
-      "condition": 0,
+      "condition": 50,
       "name": "Ballena Jr.",
-      "count": 256,
+      "count": 128,
       "description": "Reach 50 games.",
-      "id": 247,
+      "id": 119,
       "type": "GAMES"
     },
     {
-      "condition": 0,
+      "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 256,
+      "count": 128,
       "description": "Get to 100 games.",
-      "id": 248,
+      "id": 120,
       "type": "GAMES"
     },
     {
-      "condition": 0,
+      "condition": 200,
       "name": "Archivador Supremo",
-      "count": 256,
+      "count": 128,
       "description": "Reach 200 games.",
-      "id": 249,
+      "id": 121,
       "type": "GAMES"
     },
     {
-      "condition": 0,
+      "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 256,
+      "count": 128,
       "description": "Surpass 500 games.",
-      "id": 250,
+      "id": 122,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 256,
+      "count": 128,
       "description": "Create your first post.",
-      "id": 251,
+      "id": 123,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 256,
+      "count": 128,
       "description": "Reach 10 posts.",
-      "id": 252,
+      "id": 124,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 256,
+      "count": 128,
       "description": "Get to 50 posts.",
-      "id": 253,
+      "id": 125,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 256,
+      "count": 128,
       "description": "Publish 100 posts.",
-      "id": 254,
+      "id": 126,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 256,
+      "count": 128,
       "description": "Reach 500 posts.",
-      "id": 255,
+      "id": 127,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 256,
+      "count": 128,
       "description": "Open your first game and start the adventure!",
-      "id": 240,
+      "id": 112,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 256,
+      "count": 128,
       "description": "Open any game 10 times.",
-      "id": 241,
+      "id": 113,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 256,
+      "count": 128,
       "description": "Open a game 50 times.",
-      "id": 242,
+      "id": 114,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 256,
+      "count": 128,
       "description": "Open games 100 times in total.",
-      "id": 243,
+      "id": 115,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 256,
+      "count": 128,
       "description": "Open a game 500 times.",
-      "id": 244,
+      "id": 116,
       "type": "GAME_LAUNCHES"
     }
   ],
   "users": [
     {
       "feed": {"posts": []},
-      "password": "adssdsd",
+      "password": "1234567",
       "favoriteAchievements": 0,
-      "name": "asasdasd",
-      "nickname": "",
-      "description": "",
-      "gameList": [],
-      "id": 3,
-      "gamesQuant": 0,
-      "friends": [],
-      "myAchievements": [
-        {
-          "condition": 0,
-          "name": "Archivador Supremo",
-          "count": 256,
-          "description": "Reach 200 games.",
-          "id": 233,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Ballena Jr.",
-          "count": 256,
-          "description": "Reach 50 games.",
-          "id": 231,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Biblioteca Insana",
-          "count": 256,
-          "description": "Get to 100 games.",
-          "id": 232,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Empezando el Vicio",
-          "count": 256,
-          "description": "Get 10 games.",
-          "id": 230,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Fachabiblioteca",
-          "count": 256,
-          "description": "Surpass 500 games.",
-          "id": 234,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Newbie",
-          "count": 256,
-          "description": "Add your first game.",
-          "id": 229,
-          "type": "GAMES"
-        }
-      ]
-    },
-    {
-      "feed": {"posts": []},
-      "password": "asdasd",
-      "favoriteAchievements": 0,
-      "name": "asdasdas",
-      "nickname": "",
-      "description": "",
-      "gameList": [],
-      "id": 2,
-      "gamesQuant": 0,
-      "friends": [],
-      "myAchievements": [
-        {
-          "condition": 0,
-          "name": "Archivador Supremo",
-          "count": 256,
-          "description": "Reach 200 games.",
-          "id": 217,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Ballena Jr.",
-          "count": 256,
-          "description": "Reach 50 games.",
-          "id": 215,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Biblioteca Insana",
-          "count": 256,
-          "description": "Get to 100 games.",
-          "id": 216,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Empezando el Vicio",
-          "count": 256,
-          "description": "Get 10 games.",
-          "id": 214,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Fachabiblioteca",
-          "count": 256,
-          "description": "Surpass 500 games.",
-          "id": 218,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Newbie",
-          "count": 256,
-          "description": "Add your first game.",
-          "id": 213,
-          "type": "GAMES"
-        }
-      ]
-    },
-    {
-      "feed": {"posts": []},
-      "password": "123456",
-      "favoriteAchievements": 0,
-      "name": "infinit2",
-      "nickname": "",
-      "description": "",
-      "gameList": [],
-      "id": 1,
-      "gamesQuant": 0,
-      "friends": [],
-      "myAchievements": [
-        {
-          "condition": 0,
-          "name": "Archivador Supremo",
-          "count": 256,
-          "description": "Reach 200 games.",
-          "id": 137,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Ballena Jr.",
-          "count": 256,
-          "description": "Reach 50 games.",
-          "id": 135,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Biblioteca Insana",
-          "count": 256,
-          "description": "Get to 100 games.",
-          "id": 136,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Empezando el Vicio",
-          "count": 256,
-          "description": "Get 10 games.",
-          "id": 134,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Fachabiblioteca",
-          "count": 256,
-          "description": "Surpass 500 games.",
-          "id": 138,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Newbie",
-          "count": 256,
-          "description": "Add your first game.",
-          "id": 133,
-          "type": "GAMES"
-        }
-      ]
-    },
-    {
-      "feed": {"posts": []},
-      "password": "123456",
-      "favoriteAchievements": 0,
-      "name": "newbie",
+      "name": "a",
       "nickname": "",
       "description": "",
       "gameList": [{
-        "lastTime": "2024-11-18 17:25:01.6472068",
-        "appidIGDB": "262052",
-        "releaseDate": "29 Oct, 2024",
-        "description": "Experience the story of former outlaw John Marston as he tracks down the last remaining members of the notorious Van der Linde Gang in the PC debut of the critically acclaimed predecessor to Red Dead Redemption 2.",
-        "title": "Red Dead Redemption",
+        "lastTime": "2024-11-18 19:27:19.1517905",
+        "appidIGDB": "279634",
+        "releaseDate": "10 Oct, 2024",
+        "description": "DRAGON BALL: Sparking! ZERO takes the legendary gameplay of the Budokai Tenkaichi series and raises it to whole new levels. Make yours the destructive power of the strongest fighters ever to appear in Dragon Ball!",
+        "title": "DRAGON BALL: Sparking! ZERO",
         "gameLaunches": 0,
         "url": "",
-        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Red Dead Redemption.lnk",
-        "appid": "2668510",
+        "path": "C:\\Users\\Public\\Desktop\\Dragon Ball Sparking ZERO.lnk",
+        "appid": "1790600",
         "genre": "UNKNOWN",
         "id": 0,
         "favorite": false,
-        "countID": 3
+        "countID": 4
       }],
       "id": 2,
       "gamesQuant": 1,
-      "friends": [],
-      "myAchievements": [
-        {
-          "condition": 0,
-          "name": "Archivador Supremo",
-          "count": 256,
-          "description": "Reach 200 games.",
-          "id": 185,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Ballena Jr.",
-          "count": 256,
-          "description": "Reach 50 games.",
-          "id": 183,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Biblioteca Insana",
-          "count": 256,
-          "description": "Get to 100 games.",
-          "id": 184,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Empezando el Vicio",
-          "count": 256,
-          "description": "Get 10 games.",
-          "id": 182,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Fachabiblioteca",
-          "count": 256,
-          "description": "Surpass 500 games.",
-          "id": 186,
-          "type": "GAMES"
-        },
-        {
-          "condition": 0,
-          "name": "Newbie",
-          "count": 256,
-          "description": "Add your first game.",
-          "id": 181,
-          "type": "GAMES"
-        }
-      ]
+      "friends": []
+    },
+    {
+      "feed": {"posts": []},
+      "password": "1234567",
+      "favoriteAchievements": 0,
+      "name": "as",
+      "nickname": "",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 19:30:29.5650436",
+        "appidIGDB": "135940",
+        "releaseDate": "18 Aug, 2023",
+        "description": "Bomb Rush Cyberfunk is 1 second per second of advanced funkstyle. Battle rival crews and dispatch militarized police to conquer the five boroughs of New Amsterdam. Become All City.",
+        "title": "Bomb Rush Cyberfunk",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Public\\Desktop\\Bomb Rush Cyberfunk.lnk",
+        "appid": "1353230",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 4
+      }],
+      "id": 1,
+      "gamesQuant": 1,
+      "friends": []
     }
   ]
 }
