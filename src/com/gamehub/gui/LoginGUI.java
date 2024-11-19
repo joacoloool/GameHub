@@ -3,22 +3,15 @@
  */
 
 package com.gamehub.gui;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.managers.Manager;
-import com.gamehub.models.Game;
 import com.gamehub.models.User;
-
 import javax.swing.*;
 import javax.swing.GroupLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.TreeSet;
 
 /**
  * @author Administrator

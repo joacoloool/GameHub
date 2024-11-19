@@ -7,6 +7,7 @@
     import com.gamehub.exceptions.NonExistObjectException;
     import com.gamehub.exceptions.UyMeLlameAmiMismoException;
     import com.gamehub.gui.utilities.AchievementCellRender;
+    import com.gamehub.gui.utilities.FriendsCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Game;
@@ -46,6 +47,7 @@
             friendDefaultListModel = new DefaultListModel<>();
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
+            friendList.setCellRenderer(new FriendsCellRender());
         }
 
 
@@ -109,7 +111,7 @@
 
             } catch (NullPointerException e) {
                 e.getMessage();
-            };
+            }
 
         }
 
@@ -139,7 +141,7 @@
                             e.getYOnScreen() + 10
                     );
                 } catch (Exception ex) {
-
+                ex.getMessage();
                 }
             }
         }
@@ -268,14 +270,9 @@
             dialog3.setVisible(false);
         }
 
-
-
-
-
-
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -334,13 +331,13 @@
             postButton2 = new JButton();
 
             //======== this ========
-            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-            ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -973,7 +970,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;

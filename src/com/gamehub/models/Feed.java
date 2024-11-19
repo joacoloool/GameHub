@@ -38,47 +38,6 @@ public class Feed implements JsonConvertible {
 
     }
 
-    private void pinPost(Post post) {
-
-        if (posts.contains(post))
-        {
-            if (!post.getFav())
-            {
-                posts.remove(post);
-                for (int i = 0; i < 3; i++)
-                {
-                    if (!posts.get(i).getFav() && !posts.get(i).equals(post))
-                    {
-                        posts.set(i, post);
-                        post.setFav(true);
-                        break;
-                    }
-                }
-            }
-
-        }
-    }
-
-    private void unpinPost (Post post){
-        if (posts.contains(post))
-        {
-            if (post.getFav()) {
-                posts.remove(post);
-                posts.addLast(post);
-                post.setFav(false);
-            }
-        }
-    }
-    public void togglePinPost(Post post)
-    {
-        if (post.getFav())
-        {
-            unpinPost(post);
-        }
-        else{
-            pinPost(post);
-        }
-    }
     //Json
     @Override
     public JSONObject toJson() {

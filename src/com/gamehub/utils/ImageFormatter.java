@@ -30,11 +30,6 @@ public class ImageFormatter {
 
 try{
     if (icon.getIconHeight() != height && icon.getIconWidth() != width) {
-
-
-
-
-
         try{
             Image img = ((ImageIcon) icon).getImage();
             Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);

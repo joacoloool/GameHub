@@ -1,16 +1,8 @@
 package com.gamehub;
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
-import com.gamehub.enums.AchievType;
-import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.gui.*;
-import com.gamehub.models.Achievement;
-import com.gamehub.models.Game;
-import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import com.gamehub.managers.*;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
-import scala.App;
-
 import javax.swing.*;
 
 
@@ -25,10 +17,13 @@ public class main {
     {
         manager = com.gamehub.utils.JsonUtil.leerManager();
     }
-        manager.loadAllImages();
-       //Cargamos los achievements despues
-       manager.createAchievements();
-       manager.verifyAchievements();
+        if (manager != null) {
+            manager.loadAllImages();
+            manager.createAchievements();
+            manager.verifyAchievements();
+        }
+        //Cargamos los achievements después
+
 
         //UI debug
         FlatOneDarkIJTheme.setup();

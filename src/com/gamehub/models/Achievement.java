@@ -28,14 +28,6 @@ public class Achievement implements JsonConvertible,Comparable<Achievement> {
         count++;
     }
 
-    public Achievement(String name, int condition, String description, AchievType type, Icon icon) {
-        this.name = name;
-        this.condition = condition;
-        this.description = description;
-        this.type = type;
-        this.id = count;
-        count++;
-    }
 
     public Achievement() {
         this.id = count;
@@ -58,18 +50,6 @@ public class Achievement implements JsonConvertible,Comparable<Achievement> {
 
     public AchievType getType() {
         return type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getCondition() {
-        return condition;
-    }
-
-    public static int getCount() {
-        return count;
     }
 
     public Icon getIcon() {
