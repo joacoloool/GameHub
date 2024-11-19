@@ -190,6 +190,31 @@ public class LibraryGUI extends JPanel {
         selectedGame.openPath();
     }
 
+    private void sortButtonMouseClicked(MouseEvent e) {
+        sortMenu.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    private void nameButtonMouseClicked(MouseEvent e) {
+        user.sortName();
+        gamesListModel.removeAllElements();
+        gamesListModel.addAll(user.getGameList());
+        this.repaint();
+    }
+
+    private void lastButtonMouseClicked(MouseEvent e) {
+        user.sortLastTime();
+        gamesListModel.removeAllElements();
+        gamesListModel.addAll(user.getGameList());
+        this.repaint();
+    }
+
+    private void mostButtonMouseClicked(MouseEvent e) {
+        user.sortPlayCount();
+        gamesListModel.removeAllElements();
+        gamesListModel.addAll(user.getGameList());
+        this.repaint();
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -216,20 +241,21 @@ public class LibraryGUI extends JPanel {
         layeredPane1 = new JLayeredPane();
         addGamePlus = new JLabel();
         addGame = new JButton();
+        sortButton = new JButton();
         popupList = new JPopupMenu();
         contextPlay = new JButton();
         contextFavorite = new JButton();
         contextModify = new JButton();
         contextDelete = new JButton();
         openPathButton = new JButton();
+        sortMenu = new JPopupMenu();
+        nameButton = new JButton();
+        lastButton = new JButton();
+        mostButton = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+
+
 
         //======== scrolPanelGames ========
         {
@@ -395,8 +421,8 @@ public class LibraryGUI extends JPanel {
             panel2Layout.setHorizontalGroup(
                 panel2Layout.createParallelGroup()
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 694, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 97, Short.MAX_VALUE))
+                        .addComponent(scrollPane1)
+                        .addGap(97, 97, 97))
             );
             panel2Layout.setVerticalGroup(
                 panel2Layout.createParallelGroup()
@@ -441,7 +467,7 @@ public class LibraryGUI extends JPanel {
                 }
             });
             layeredPane1.add(addGamePlus, JLayeredPane.DEFAULT_LAYER);
-            addGamePlus.setBounds(0, 4, 15, 20);
+            addGamePlus.setBounds(0, 5, 15, 20);
 
             //---- addGame ----
             addGame.setText("       Add a Game");
@@ -469,39 +495,52 @@ public class LibraryGUI extends JPanel {
             addGame.setBounds(-10, 0, 100, 28);
         }
 
+        //---- sortButton ----
+        sortButton.setFocusable(false);
+        sortButton.setIcon(UIManager.getIcon("InternalFrame.minimizeIcon"));
+        sortButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sortButtonMouseClicked(e);
+                sortButtonMouseClicked(e);
+            }
+        });
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(12, 12, 12)
+                    .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 928, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(scrolPanelGames, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(imageLayered, GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
-                                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addContainerGap())
-                                .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addComponent(scrolPanelGames, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sortButton, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup()
+                        .addComponent(imageLayered)
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addContainerGap())
+                        .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(scrolPanelGames)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(imageLayered, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(sortButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(scrolPanelGames)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                     .addGap(23, 23, 23))
@@ -565,6 +604,40 @@ public class LibraryGUI extends JPanel {
             });
             popupList.add(openPathButton);
         }
+
+        //======== sortMenu ========
+        {
+
+            //---- nameButton ----
+            nameButton.setText("Name");
+            nameButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    nameButtonMouseClicked(e);
+                }
+            });
+            sortMenu.add(nameButton);
+
+            //---- lastButton ----
+            lastButton.setText("LastPlay");
+            lastButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    lastButtonMouseClicked(e);
+                }
+            });
+            sortMenu.add(lastButton);
+
+            //---- mostButton ----
+            mostButton.setText("MorePlay");
+            mostButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    mostButtonMouseClicked(e);
+                }
+            });
+            sortMenu.add(mostButton);
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
@@ -592,11 +665,16 @@ public class LibraryGUI extends JPanel {
     private JLayeredPane layeredPane1;
     private JLabel addGamePlus;
     private JButton addGame;
+    private JButton sortButton;
     private JPopupMenu popupList;
     private JButton contextPlay;
     private JButton contextFavorite;
     private JButton contextModify;
     private JButton contextDelete;
     private JButton openPathButton;
+    private JPopupMenu sortMenu;
+    private JButton nameButton;
+    private JButton lastButton;
+    private JButton mostButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

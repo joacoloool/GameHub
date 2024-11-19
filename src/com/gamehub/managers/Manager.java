@@ -154,6 +154,11 @@ public class Manager implements JsonConvertible {
             ach.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/achievements/badgeP" + (i) + ".png")));
             i++;
         }
+        i = 1;
+        for (Achievement ach : achievement.get(AchievType.GAME_LAUNCHES)){
+            ach.setIcon(new ImageIcon(getClass().getResource("/com/gamehub/images/achievements/badgeC" + (i) + ".jpg")));
+            i++;
+        }
 
 
     }

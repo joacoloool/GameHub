@@ -333,7 +333,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
 
     @Override
     public void sortLastTime() {
-        gameList.sort(Comparator.comparing(Game::getLastTime));
+        gameList.sort(Comparator.comparing(Game::getLastTime).reversed());
     }
 
     @Override

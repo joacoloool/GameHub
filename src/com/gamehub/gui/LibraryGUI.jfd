@@ -4,10 +4,11 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :::p, par l {seq {space :6:6:p, comp layeredPane1:::p:100:p, space :0:928:x}, seq {comp scrolPanelGames:::p:233:p, space :::p, par l {comp imageLayered::l::795:x, seq t {comp panel1:::::x, space :::p}, comp panel2::l:::x}}}}}"
-			"$verticalGroup": "par l {seq l {space :p::p, par l {comp scrolPanelGames:::::x, seq {comp imageLayered:::p:308:p, space :::p, comp panel1:::p::p, space u:::p, comp panel2:::::x}}, space :::p, comp layeredPane1:::p:30:p, space :p:23:p}}"
+			"$horizontalGroup": "par l {seq {space :p:12:p, comp layeredPane1:::p:100:p, space :0:0:x}, seq {par l {comp scrolPanelGames:::p:233:p, comp sortButton:::p:29:p}, space u:p::p, par l {comp imageLayered::l:::x, seq t {comp panel1:::::x, space :::p}, comp panel2::l:::x}}}"
+			"$verticalGroup": "par l {seq l {space :p::p, par l {seq {comp imageLayered:::p:308:p, space :::p, comp panel1:::p::p, space u:::p, comp panel2:::::x}, seq {comp sortButton:::p:22:p, space :p::p, comp scrolPanelGames:::::x}}, space :p::p, comp layeredPane1:::p:30:p, space :p:23:p}}"
 		} ) {
 			name: "this"
+			"border": new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 34 ), 3, false )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrolPanelGames"
 				"horizontalScrollBarPolicy": 31
@@ -101,7 +102,7 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {comp scrollPane1:::p:694:p, space :0:97:x}}"
+				"$horizontalGroup": "par l {seq l {comp scrollPane1:::::x, space :p:97:p}}"
 				"$verticalGroup": "par l {seq l {comp scrollPane1:::p:115:p, space :0:0:x}}"
 			} ) {
 				name: "panel2"
@@ -163,7 +164,7 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "addGamePlusMouseEntered", true ) )
 				}, new FormLayoutConstraints( null ) {
 					"x": 0
-					"y": 4
+					"y": 5
 					"width": 15
 					"height": 20
 				} )
@@ -186,9 +187,16 @@ new FormModel {
 					"y": 0
 				} )
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortButton"
+				"focusable": false
+				"icon": new com.jformdesigner.model.SwingIcon( 2, "InternalFrame.minimizeIcon" )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "sortButtonMouseClicked", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "sortButtonMouseClicked", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 120, 175 )
-			"size": new java.awt.Dimension( 1040, 585 )
+			"size": new java.awt.Dimension( 1040, 570 )
 		} )
 		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
 			name: "popupList"
@@ -225,6 +233,27 @@ new FormModel {
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 20, 195 )
 			"size": new java.awt.Dimension( 80, 170 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "sortMenu"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "nameButton"
+				"text": "Name"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "nameButtonMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "lastButton"
+				"text": "LastPlay"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "lastButtonMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "mostButton"
+				"text": "MorePlay"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "mostButtonMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 395 )
+			"size": new java.awt.Dimension( 80, 110 )
 		} )
 	}
 }
