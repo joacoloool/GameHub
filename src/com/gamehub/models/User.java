@@ -42,6 +42,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.nickname = name;
         count++;
 
+
     }
 
     //Uses in Friend. why? because need only name for searches a user in manager
@@ -63,18 +64,8 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         count++;
     }
 
-
-    //Getters
-    public int getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public int getFavoriteAchievement() {
-        return favoriteAchievement;
     }
 
     public Feed getFeed() {
@@ -152,10 +143,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.friends = friends;
     }
 
-    public void setMyAchievements(TreeSet<Achievement> myAchievements) {
-        this.myAchievements = myAchievements;
-    }
-
     public Icon getProfileImage() {
         return profileImage;
     }
@@ -175,19 +162,19 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
 
     /**
      * Calcula el total de lanzamientos de un juego en la lista del usuario
-     * Suma los lanzamientos de cada jeugo en la lista y devuelve el total
+     * Suma los lanzamientos de cada juego en la lista y devuelve el total
      */
     public int getGameLaunches() {
         int num = 0;
         for (Game game : gameList) {
-            num = +game.getGameLaunches();
+            num += game.getGameLaunches();
         }
         return num;
     }
 
     /**
      * Agrega un logro a la lista de logros del usuario
-     * Si el logro ya exisite lanza exception
+     * Si el logro ya existe lanza exception
      */
     public void addAchievement(Achievement achievement) throws DuplicateElementException {
         if (!myAchievements.add(achievement)) {
@@ -204,7 +191,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     }
 
     public void deleteGame(Game game) {
-        gameList.remove(game); //Agregar thrhow e non exist
+        gameList.remove(game); //Agregar throw e non exist
         gamesQuant--;
     }
 
@@ -215,18 +202,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
             gameList.add(game);
         }
         gamesQuant++;
-    }
-
-    public void modifyGame() {
-        //implement
-    }
-
-    public Game getGame(int pos) {
-        try {
-            return gameList.get(pos);
-        } catch (Exception e) {
-            return null;
-        }
     }
 
     public void saveProfilePicture(){
@@ -243,21 +218,8 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         }
     }
 
-    public void deleteFriend(String id) {
-        try {
-            if (!friends.remove(id)) {
-                System.out.println("El amigo no está en la lista");
-            }
-        } catch (NullPointerException e) {
-            System.out.println("La lista de amigos no ha sido inicializada");
-        }
-    }
-
     public boolean searchFriend(String id) {
-        if (friends.contains(id)) {
-            return true;
-        }
-        return false;
+        return friends.contains(id);
     }
 
     public void saveAllImages(){
@@ -298,16 +260,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         return mayor;
     }
 
-    public User viewFriend(ArrayList<User> users, int id) {
-        for (User user : users) {
-            if (user.getId() == id) {
-                System.out.println("Amigo encontrado: " + user.getName());
-                return user;
-            }
-        }
-        System.out.println("Amigo no encontrado con ID: " + id);
-        return null;
-    }
 
     public void createPost(String str) {
         feed.createPost(str,name);
@@ -315,10 +267,6 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
 
     public void createPost(String str,String name) {
         feed.createPost(str,name);
-    }
-
-    public void deletePost(int i) {
-        feed.deletePost(i);
     }
 
     @Override

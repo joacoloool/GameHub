@@ -3,189 +3,131 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 464,
+      "count": 64,
       "description": "Add your first game.",
-      "id": 453,
+      "id": 53,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 464,
+      "count": 64,
       "description": "Get 10 games.",
-      "id": 454,
+      "id": 54,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 464,
+      "count": 64,
       "description": "Reach 50 games.",
-      "id": 455,
+      "id": 55,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 464,
+      "count": 64,
       "description": "Get to 100 games.",
-      "id": 456,
+      "id": 56,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 464,
+      "count": 64,
       "description": "Reach 200 games.",
-      "id": 457,
+      "id": 57,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 464,
+      "count": 64,
       "description": "Surpass 500 games.",
-      "id": 458,
+      "id": 58,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 464,
+      "count": 64,
       "description": "Create your first post.",
-      "id": 459,
+      "id": 59,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 464,
+      "count": 64,
       "description": "Reach 10 posts.",
-      "id": 460,
+      "id": 60,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 464,
+      "count": 64,
       "description": "Get to 50 posts.",
-      "id": 461,
+      "id": 61,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 464,
+      "count": 64,
       "description": "Publish 100 posts.",
-      "id": 462,
+      "id": 62,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 464,
+      "count": 64,
       "description": "Reach 500 posts.",
-      "id": 463,
+      "id": 63,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 464,
+      "count": 64,
       "description": "Open your first game and start the adventure!",
-      "id": 448,
+      "id": 48,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 464,
+      "count": 64,
       "description": "Open any game 10 times.",
-      "id": 449,
+      "id": 49,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 464,
+      "count": 64,
       "description": "Open a game 50 times.",
-      "id": 450,
+      "id": 50,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 464,
+      "count": 64,
       "description": "Open games 100 times in total.",
-      "id": 451,
+      "id": 51,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 464,
+      "count": 64,
       "description": "Open a game 500 times.",
-      "id": 452,
+      "id": 52,
       "type": "GAME_LAUNCHES"
     }
   ],
-  "users": [
-    {
-      "feed": {"post": []},
-      "password": "123123",
-      "favoriteAchievements": 0,
-      "name": "a",
-      "nickname": "a",
-      "friend": [],
-      "description": "",
-      "gameList": [
-        {
-          "lastTime": "2024-11-19 02:30:50.3268111",
-          "appidIGDB": "241",
-          "releaseDate": "1 Nov, 2000",
-          "icon": "javax.swing.ImageIcon@117e949d",
-          "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
-          "title": "Counter-Strike",
-          "gameLaunches": 2,
-          "url": "",
-          "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
-          "appid": "10",
-          "genre": "ACTION",
-          "id": 0,
-          "favorite": false,
-          "countID": 3
-        },
-        {
-          "lastTime": "2024-11-19 02:31:43.4925238",
-          "appidIGDB": "262052",
-          "releaseDate": "29 Oct, 2024",
-          "icon": "javax.swing.ImageIcon@6db9f5a4",
-          "description": "Experience the story of former outlaw John Marston as he tracks down the last remaining members of the notorious Van der Linde Gang in the PC debut of the critically acclaimed predecessor to Red Dead Redemption 2.",
-          "title": "Red Dead Redemption",
-          "gameLaunches": 1,
-          "url": "",
-          "path": "C:\\Users\\Administrator\\Desktop\\Games\\Red Dead Redemption.lnk",
-          "appid": "2668510",
-          "genre": "ACTION",
-          "id": 0,
-          "favorite": false,
-          "countID": 3
-        }
-      ],
-      "id": 4,
-      "gamesQuant": 2
-    },
-    {
-      "feed": {"post": []},
-      "password": "123123",
-      "favoriteAchievements": 0,
-      "name": "b",
-      "nickname": "b",
-      "friend": ["a"],
-      "description": "",
-      "gameList": [],
-      "id": 3,
-      "gamesQuant": 0
-    }
-  ]
+  "users": []
 }

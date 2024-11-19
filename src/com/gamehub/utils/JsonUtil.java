@@ -52,7 +52,7 @@ public class JsonUtil {
 
 
             if (!manager.containsKey(type)) {
-                manager.put(type, new ArrayList<Achievement>());
+                manager.put(type, new ArrayList<>());
             }
             manager.get(type).add(achievement);
         }
@@ -139,38 +139,6 @@ public class JsonUtil {
         AchievType type = AchievType.valueOf(a.getString("type"));
         ach.setType(type);
         return ach;
-    }
-
-    public static TreeSet<Achievement> JSONArrayToAchievements(JSONArray a) {
-        TreeSet<Achievement> ach = new TreeSet<>();
-
-        for (int i = 0; i < a.length(); i++) {
-            ach.add(JSONObjectToAchievement(a.getJSONObject(i)));
-        }
-        return ach;
-    }
-
-    public static HashMap<AchievType, ArrayList<Achievement>> JSONArrayToAchievementsHash(JSONArray a) {
-        HashMap<AchievType, ArrayList<Achievement>> achievementMap = new HashMap<>();
-
-        for (int i = 0; i < a.length(); i++) {
-            try {
-                JSONObject jsonObject = a.getJSONObject(i);
-                Achievement achievement = JSONObjectToAchievement(jsonObject);
-
-                // Obtenemos el tipo de logro
-                AchievType type = achievement.getType();
-
-                // Añadimos el logro a la lista correspondiente en el HashMap
-                achievementMap.putIfAbsent(type, new ArrayList<>());
-                achievementMap.get(type).add(achievement);
-
-            } catch (JSONException e) {
-                System.out.println("Error al convertir JSONObject a com.gamehub.models.Achievement: " + e.getMessage());
-            }
-        }
-
-        return achievementMap;
     }
 
     public static Game JSONToGame(JSONObject u) {

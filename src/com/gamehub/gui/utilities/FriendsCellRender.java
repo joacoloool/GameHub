@@ -16,6 +16,8 @@ public class FriendsCellRender extends DefaultListCellRenderer {
         if (value instanceof User user) {
             setText(user.getName());
             setFont(new Font("Arial", Font.PLAIN, 15));
+
+            
             Icon icon = ImageFormatter.upscaleIco(user.getProfileImage(),32,32); // Obtener la imagen de perfil
             if (icon != null) {
                 setIcon(icon);

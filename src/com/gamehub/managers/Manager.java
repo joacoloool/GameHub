@@ -1,12 +1,10 @@
 package com.gamehub.managers;
-
 import com.gamehub.enums.AchievType;
 import com.gamehub.exceptions.DuplicateElementException;
 import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.models.Achievement;
-import com.gamehub.models.Game;
 import com.gamehub.models.User;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
@@ -51,10 +49,6 @@ public class Manager implements JsonConvertible {
         this.users = users;
     }
 
-    public HashMap<AchievType, ArrayList<Achievement>> getAchievement() {
-        return achievement;
-    }
-
     public void setAchievement(HashMap<AchievType, ArrayList<Achievement>> achievement) {
         this.achievement = achievement;
     }
@@ -97,7 +91,7 @@ public class Manager implements JsonConvertible {
      * Arreglos que van en el hashmap
      * <p>
      * <p>
-     * Arreglo de de los logros
+     * Arreglo de los logros
      * cada uno de los arraylist carga uno de los tipos de logros
      * los logros de luncher, logros de añadir juegos y logro de crear post
      */

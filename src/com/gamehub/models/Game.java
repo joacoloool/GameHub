@@ -2,14 +2,12 @@ package com.gamehub.models;
 
 import com.gamehub.enums.Genre;
 import com.gamehub.gui.LibraryGUI;
-import com.gamehub.gui.ProfileGui;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.utils.IGDBHelper;
 import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.SteamHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
@@ -19,7 +17,6 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
 import static com.gamehub.utils.ImageFormatter.*;
 
 
@@ -77,22 +74,6 @@ public class Game implements JsonConvertible {
 
     //Getters
 
-
-    public String getHeaderURL() {
-        return headerURL;
-    }
-
-    public void setHeaderURL(String headerURL) {
-        this.headerURL = headerURL;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
 
     public Icon getHeader() {
         return header;
@@ -177,10 +158,6 @@ public class Game implements JsonConvertible {
         this.description = description;
     }
 
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
@@ -203,10 +180,6 @@ public class Game implements JsonConvertible {
 
     public void setIcon(Icon icon) {
         this.icon = icon;
-    }
-
-    public void setIcon(File file) {
-        this.icon = extractIcon();
     }
 
     public void setAppid(String appid) {

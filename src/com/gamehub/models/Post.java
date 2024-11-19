@@ -10,9 +10,7 @@ public class Post implements JsonConvertible {
 
     //Builder
     public Post(String message) {
-        this.user = user;
         this.message = message;
-        this.fav = fav;
     }
 
     public Post( String user,String message) {
@@ -26,17 +24,6 @@ public class Post implements JsonConvertible {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    //Getters
-    public String getMessage() {
-        return message;
-    }
-    public boolean isFav() {
-        return fav;
-    }
-    public boolean getFav() {
-        return fav;
     }
 
     //Setters

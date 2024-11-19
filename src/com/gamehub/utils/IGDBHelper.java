@@ -124,7 +124,7 @@ public class IGDBHelper {
                                         JSONObject genre = genresArray.getJSONObject(i);
                                         genres.append(genre.optString("name", "")).append(", ");
                                     }
-                                    if (genres.length() > 0) {
+                                    if (!genres.isEmpty()) {
                                         genres.setLength(genres.length() - 2); // Eliminar la última coma y espacio
                                     }
                                     return genres.toString();
@@ -142,18 +142,5 @@ public class IGDBHelper {
             }
         }
         return null;
-    }
-
-    // Obtener los géneros del juego
-    private static String getGenres(JSONObject gameInfo) {
-        JSONArray genres = gameInfo.optJSONArray("genres");
-        if (genres != null) {
-            StringBuilder genreNames = new StringBuilder();
-            for (int i = 0; i < genres.length(); i++) {
-                genreNames.append(genres.getJSONObject(i).optString("name")).append(", ");
-            }
-            return !genreNames.isEmpty() ? genreNames.substring(0, genreNames.length() - 2) : "Géneros no disponibles.";
-        }
-        return "Géneros no disponibles.";
     }
 }
