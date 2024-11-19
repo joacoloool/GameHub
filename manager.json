@@ -3,133 +3,145 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 64,
+      "count": 128,
       "description": "Add your first game.",
-      "id": 53,
+      "id": 117,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 64,
+      "count": 128,
       "description": "Get 10 games.",
-      "id": 54,
+      "id": 118,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 64,
+      "count": 128,
       "description": "Reach 50 games.",
-      "id": 55,
+      "id": 119,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 64,
+      "count": 128,
       "description": "Get to 100 games.",
-      "id": 56,
+      "id": 120,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 64,
+      "count": 128,
       "description": "Reach 200 games.",
-      "id": 57,
+      "id": 121,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 64,
+      "count": 128,
       "description": "Surpass 500 games.",
-      "id": 58,
+      "id": 122,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 64,
+      "count": 128,
       "description": "Create your first post.",
-      "id": 59,
+      "id": 123,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 64,
+      "count": 128,
       "description": "Reach 10 posts.",
-      "id": 60,
+      "id": 124,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 64,
+      "count": 128,
       "description": "Get to 50 posts.",
-      "id": 61,
+      "id": 125,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 64,
+      "count": 128,
       "description": "Publish 100 posts.",
-      "id": 62,
+      "id": 126,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 64,
+      "count": 128,
       "description": "Reach 500 posts.",
-      "id": 63,
+      "id": 127,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 64,
+      "count": 128,
       "description": "Open your first game and start the adventure!",
-      "id": 48,
+      "id": 112,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 64,
+      "count": 128,
       "description": "Open any game 10 times.",
-      "id": 49,
+      "id": 113,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 64,
+      "count": 128,
       "description": "Open a game 50 times.",
-      "id": 50,
+      "id": 114,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 64,
+      "count": 128,
       "description": "Open games 100 times in total.",
-      "id": 51,
+      "id": 115,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 64,
+      "count": 128,
       "description": "Open a game 500 times.",
-      "id": 52,
+      "id": 116,
       "type": "GAME_LAUNCHES"
     }
   ],
   "users": [
+    {
+      "feed": {"post": []},
+      "password": "AAAAAA",
+      "favoriteAchievements": 0,
+      "name": "A",
+      "nickname": "A",
+      "friend": ["a1"],
+      "description": "",
+      "gameList": [],
+      "id": 4,
+      "gamesQuant": 0
+    },
     {
       "feed": {"post": []},
       "password": "12345678",
@@ -143,7 +155,7 @@
           "lastTime": "2024-11-19 02:20:06.916722",
           "appidIGDB": "198261",
           "releaseDate": "2023-09-19",
-          "icon": "javax.swing.ImageIcon@34f7cfd9",
+          "icon": "javax.swing.ImageIcon@67080771",
           "description": "The Champions Edition includes:\n- Limited-Time Bonus: Miami-Themed Content Pack\n- 3 days Early Access\n- F1 Life Starter Pack\n- F1 22 New Era Content\n- New My Team Icons\n- 18,000 PitCoin",
           "title": "F1 22: Champions Edition",
           "gameLaunches": 0,
@@ -153,13 +165,13 @@
           "genre": "ACTION",
           "id": 0,
           "favorite": false,
-          "countID": 3
+          "countID": 10
         },
         {
           "lastTime": "2024-11-19 02:21:49.1785242",
           "appidIGDB": "279634",
           "releaseDate": "10 Oct, 2024",
-          "icon": "javax.swing.ImageIcon@65f095f8",
+          "icon": "javax.swing.ImageIcon@72cde7cc",
           "description": "DRAGON BALL: Sparking! ZERO takes the legendary gameplay of the Budokai Tenkaichi series and raises it to whole new levels. Make yours the destructive power of the strongest fighters ever to appear in Dragon Ball!",
           "title": "DRAGON BALL: Sparking! ZERO",
           "gameLaunches": 0,
@@ -169,23 +181,123 @@
           "genre": "ACTION",
           "id": 0,
           "favorite": false,
-          "countID": 3
+          "countID": 10
         }
       ],
       "id": 1,
       "gamesQuant": 2
     },
     {
-      "feed": {"post": []},
-      "password": "123456789",
+      "feed": {"post": [
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "EFAEFRW"
+        },
+        {
+          "fav": false,
+          "message": "A",
+          "user": "JDSHASDGSAdg"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        },
+        {
+          "fav": false,
+          "message": "a1",
+          "user": "asdas"
+        }
+      ]},
+      "password": "123412",
       "favoriteAchievements": 0,
       "name": "a1",
-      "nickname": "a1",
-      "friend": [],
+      "nickname": "a",
+      "friend": ["a"],
       "description": "",
-      "gameList": [],
-      "id": 2,
-      "gamesQuant": 0
+      "gameList": [
+        {
+          "lastTime": "2024-11-19 03:44:34.5957513",
+          "appidIGDB": "135940",
+          "releaseDate": "18 Aug, 2023",
+          "icon": "javax.swing.ImageIcon@5fd4f8f5",
+          "description": "Bomb Rush Cyberfunk is 1 second per second of advanced funkstyle. Battle rival crews and dispatch militarized police to conquer the five boroughs of New Amsterdam. Become All City.",
+          "title": "Bomb Rush Cyberfunk",
+          "gameLaunches": 2,
+          "url": "",
+          "path": "C:\\Users\\Public\\Desktop\\Bomb Rush Cyberfunk.lnk",
+          "appid": "1353230",
+          "genre": "ACTION",
+          "id": 0,
+          "favorite": false,
+          "countID": 10
+        },
+        {
+          "lastTime": "2024-11-19 04:01:42.3264306",
+          "appidIGDB": "51198",
+          "releaseDate": "",
+          "icon": "javax.swing.ImageIcon@48f96555",
+          "description": ",header_image:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/header.jpg?t=1699990406,capsule_image:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/capsule_231x87.jpg?t=1699990406,capsule_imagev5:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/capsule_184x69.jpg?t=1699990406,website:https:\\/\\/www.steamdeck.com\\/,pc_requirements:[],mac_requirements:[],linux_requirements:[],package_groups:[],platforms:{windows:true,mac:true,linux:true},screenshots:[{id:0,path_thumbnail:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_5535edca3f6c9844d301de3a88ed16a4575376ac.600x338.jpg?t=1699990406,path_full:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_5535edca3f6c9844d301de3a88ed16a4575376ac.1920x1080.jpg?t=1699990406},{id:1,path_thumbnail:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_585b19a7e2eb7e2784c6148fe44782acab73229c.600x338.jpg?t=1699990406,path_full:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_585b19a7e2eb7e2784c6148fe44782acab73229c.1920x1080.jpg?t=1699990406},{id:2,path_thumbnail:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_6d25000e7a7badd44ec9f38e6264c7f400db649c.600x338.jpg?t=1699990406,path_full:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_6d25000e7a7badd44ec9f38e6264c7f400db649c.1920x1080.jpg?t=1699990406},{id:3,path_thumbnail:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_fa9f7868b7ae1b0b6fc98876bd03c1bfd5a73030.600x338.jpg?t=1699990406,path_full:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_fa9f7868b7ae1b0b6fc98876bd03c1bfd5a73030.1920x1080.jpg?t=1699990406},{id:4,path_thumbnail:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_9452b8b23fc9f3fa95165ea4535b75cae585886e.600x338.jpg?t=1699990406,path_full:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/ss_9452b8b23fc9f3fa95165ea4535b75cae585886e.1920x1080.jpg?t=1699990406}],release_date:{coming_soon:false,date:},support_info:{url:https:\\/\\/www.steamdeck.com\\/,email:},background:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/page_bg_generated_v6b.jpg?t=1699990406,background_raw:https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1675200\\/page_bg_generated.jpg?t=1699990406,content_descriptors:{ids:[],notes:null},ratings:null}}}",
+          "title": "Steam Deck",
+          "gameLaunches": 0,
+          "url": "",
+          "path": "C:\\Users\\Public\\Desktop\\Steam.lnk",
+          "appid": "1675200",
+          "genre": "ACTION",
+          "id": 0,
+          "favorite": false,
+          "countID": 10
+        },
+        {
+          "lastTime": "2024-11-19 04:00:56.5940701",
+          "appidIGDB": "196621",
+          "releaseDate": "21 Aug, 2017",
+          "icon": "javax.swing.ImageIcon@601d1883",
+          "description": "Discord Bot Maker is a powerful bot development tool for the #1 text and voice chat service for gamers: Discord. With this tool, you and your teammates can take your social experience to the next level!",
+          "title": "Discord Bot Maker",
+          "gameLaunches": 0,
+          "url": "",
+          "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\Discord.lnk",
+          "appid": "682130",
+          "genre": "ACTION",
+          "id": 0,
+          "favorite": false,
+          "countID": 10
+        }
+      ],
+      "id": 4,
+      "gamesQuant": 3
     }
   ]
 }

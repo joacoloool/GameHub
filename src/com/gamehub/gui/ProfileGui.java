@@ -1,8 +1,5 @@
-    /*
-     * Created by JFormDesigner on Fri Nov 15 03:50:34 ART 2024
-     */
-    package com.gamehub.gui;
-    import java.awt.event.*;
+ package com.gamehub.gui;
+import java.awt.event.*;
 
     import com.gamehub.exceptions.NonExistObjectException;
     import com.gamehub.exceptions.UyMeLlameAmiMismoException;
@@ -26,113 +23,129 @@
     import static com.gamehub.utils.ImageFormatter.*;
 
     /**
+     * Clase que representa la interfaz gráfica del perfil de un usuario en GameHub.
+     * Permite visualizar y modificar la información del usuario, gestionar amigos y logros.
+     *
      * @author joaal
      */
     public class ProfileGui extends JPanel {
 
+        // Modelos de lista para el feed de publicaciones, logros y amigos
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
         DefaultListModel<User> friendDefaultListModel;
-        private final User currentUser;
-        private final Manager manager;
-        protected User currentFriend;
 
+        // Usuario actual y su gestor
+        private final User currentUser ; // Usuario cuyo perfil se está mostrando
+        private final Manager manager; // Gestor que maneja la lógica del sistema
+        protected User currentFriend; // Amigo actualmente seleccionado
 
+        /**
+         * Constructor que inicializa el panel del perfil del usuario.
+         *
+         * @param manager El gestor que maneja la lógica del sistema.
+         * @param user    El usuario cuyo perfil se está mostrando.
+         */
         public ProfileGui(Manager manager, User user) {
-            initComponents();
+            initComponents(); // Inicializa los componentes de la interfaz
             this.manager = manager;
-            this.currentUser = user;
+            this.currentUser  = user;
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
             friendDefaultListModel = new DefaultListModel<>();
-            updateProfile(manager);
-            achievmentList.setCellRenderer(new AchievementCellRender());
-            friendList.setCellRenderer(new FriendsCellRender());
+            updateProfile(manager); // Actualiza la información del perfil
+            achievmentList.setCellRenderer(new AchievementCellRender()); // Establece el renderizador para la lista de logros
+            friendList.setCellRenderer(new FriendsCellRender()); // Establece el renderizador para la lista de amigos
         }
 
-
+        /**
+         * Actualiza la información del perfil del usuario en la interfaz gráfica.
+         *
+         * @param manager El gestor que maneja la lógica del sistema.
+         */
         protected void updateProfile(Manager manager) {
-
-            //USERNAME
-            if (currentUser.getNickname().isEmpty()) {
-                usernameNameLabel.setText(currentUser.getName());
+            // Actualiza el nombre de usuario
+            if (currentUser .getNickname().isEmpty()) {
+                usernameNameLabel.setText(currentUser .getName());
             } else {
-                usernameNameLabel.setText(currentUser.getNickname());
+                usernameNameLabel.setText(currentUser .getNickname());
             }
-            //DESCRIPTION
-            descriptionLabel.setText(currentUser.getDescription());
+            // Actualiza la descripción del usuario
+            descriptionLabel.setText(currentUser .getDescription());
 
-            //ICON
-            Icon profileIcon = currentUser.getProfileImage();
+            // Actualiza la imagen de perfil
+            Icon profileIcon = currentUser .getProfileImage();
             if (profileIcon != null) {
                 profileImageL.setIcon(upscaleIco(profileIcon, profileImageL.getWidth(), profileImageL.getHeight()));
             }
 
             // Actualizar logros
             achievementDefaultListModel.clear();
-            manager.verifyAchievements();
-            for (Achievement achievement : currentUser.getMyAchievements()) {
+            manager.verifyAchievements(); // Verifica los logros del usuario
+            for (Achievement achievement : currentUser .getMyAchievements()) {
                 achievementDefaultListModel.addElement(achievement);
             }
             achievmentList.setModel(achievementDefaultListModel);
 
             // Actualizar el feed de actividades
             feedListModel.clear();
-            ArrayList<Post> activities = currentUser.getFeed().getPosts();
+            ArrayList<Post> activities = currentUser .getFeed().getPosts();
             for (Post activity : activities) {
                 feedListModel.addElement(activity);
             }
             feedList.setModel(feedListModel);
 
-            //Actualiza friends
+            // Actualiza la lista de amigos
             friendDefaultListModel.clear();
-            for (User user: manager.getUsers())
-            {
-               if (currentUser.searchFriend(user.getName()))
-               {
-                   friendDefaultListModel.addElement(user);
-               }
+            for (User  user : manager.getUsers()) {
+                if (currentUser .searchFriend(user.getName())) {
+                    friendDefaultListModel.addElement(user);
+                }
             }
             friendList.setModel(friendDefaultListModel);
 
+            // Muestra el último logro obtenido, si existe
             if (!achievementDefaultListModel.isEmpty()) {
                 lastAchievementImage.setVisible(true);
                 lastAchievementImage.setIcon(achievementDefaultListModel.lastElement().getIcon());
                 lastAchievementName.setText(achievementDefaultListModel.lastElement().getName());
-
             }
 
+            // Muestra información sobre el último juego jugado
             try {
-                Game game = currentUser.getLastPlayed();
+                Game game = currentUser .getLastPlayed();
                 lastPlayedPanel.setVisible(true);
                 lastGameInfo.setText(game.getDescription());
                 lastGameL.setText(game.getTitle());
-                lastGameImage.setIcon(upscaleIco(game.getHeader(),lastGameImage.getWidth(),lastGameImage.getHeight()));
-
+                lastGameImage.setIcon(upscaleIco(game.getHeader(), lastGameImage.getWidth(), lastGameImage.getHeight()));
             } catch (NullPointerException e) {
-                e.getMessage();
+                e.getMessage(); // Maneja la excepción si no hay un juego jugado
             }
-
         }
 
-        /////////////////////////////////////////
-
+        /**
+         * Maneja el evento de clic en el botón para modificar el perfil del usuario.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void modifyProfileButtonMouseClicked(MouseEvent e) {
-            modifyNameField.setText(currentUser.getNickname());
-            modifyDescriptionField.setText(currentUser.getDescription());
-            imageChossed.setIcon(currentUser.getProfileImage());
-            dialog2.setVisible(true);
+            modifyNameField.setText(currentUser .getNickname());
+            modifyDescriptionField.setText(currentUser .getDescription());
+            imageChossed.setIcon(currentUser .getProfileImage());
+            dialog2.setVisible(true); // Muestra el diálogo para modificar el perfil
         }
 
+        /**
+         * Maneja el evento cuando el mouse entra en la lista de logros.
+         *
+         * @param e El evento de entrada del mouse.
+         */
         private void achievmentListMouseEntered(MouseEvent e) {
             Achievement ach = (Achievement) achievmentList.getSelectedValue();
             if (ach != null) {
-                // Muestra el diálogo
-                infoAchievDial.setVisible(true);
-
-                // Configura los textos del diálogo
+                infoAchievDial.setVisible(true); // Muestra el diálogo de información del logro
                 achieNameL.setText(ach.getName());
-                achieInfoL.setText(ach.getDescription()); // Para manejar texto largo
+                achieInfoL.setText(ach.getDescription()); // Muestra la descripción del logro
 
                 // Posiciona el diálogo cerca del mouse
                 try {
@@ -141,32 +154,52 @@
                             e.getYOnScreen() + 10
                     );
                 } catch (Exception ex) {
-                ex.getMessage();
+                    ex.getMessage(); // Maneja cualquier excepción al posicionar el diálogo
                 }
             }
         }
 
+        /**
+         * Maneja el evento cuando el mouse sale de la lista de logros.
+         *
+         * @param e El evento de salida del mouse.
+         */
         private void achievmentListMouseExited(MouseEvent e) {
-            infoAchievDial.setVisible(false);
+            infoAchievDial.setVisible(false); // Oculta el diálogo de información del logro
         }
 
+        /**
+         * Maneja el evento de clic en la lista de logros.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void achievmentListMouseClicked(MouseEvent e) {
-            achievmentListMouseEntered(e);
+            achievmentListMouseEntered(e); // Llama al método de entrada del mouse
         }
 
+        /**
+         * Maneja el evento de clic en el botón de aplicar cambios en el perfil.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void applyButtonMouseClicked(MouseEvent e) {
-            currentUser.setDescription(modifyDescriptionField.getText());
-            currentUser.setNickname(modifyNameField.getText());
+            currentUser .setDescription(modifyDescriptionField.getText());
+            currentUser .setNickname(modifyNameField.getText());
             try {
-                currentUser.setProfileImage(ImageFormatter.upscaleIco(imageChossed.getIcon(), profileImageL.getWidth(), profileImageL.getHeight()));
+                currentUser .setProfileImage(ImageFormatter.upscaleIco(imageChossed.getIcon(), profileImageL.getWidth(), profileImageL.getHeight()));
             } catch (NullPointerException f) {
-                System.out.println("No se cambio la foto");
+                System.out.println("No se cambió la foto"); // Maneja la excepción si no se cambia la foto
             }
 
-            dialog2.setVisible(false);
-            updateProfile(manager);
+            dialog2.setVisible(false); // Cierra el diálogo de modificación
+            updateProfile(manager); // Actualiza el perfil con los nuevos datos
         }
 
+        /**
+         * Maneja el evento de clic en el botón para buscar un archivo de imagen.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void searchFileButtonMouseClicked(MouseEvent e) {
             JFileChooser fileChooser = new JFileChooser();
             // Configurar el filtro para archivos PNG
@@ -178,97 +211,145 @@
 
             // Verificar si el usuario seleccionó un archivo
             if (returnValue == JFileChooser.APPROVE_OPTION) {
-                // Obtener el archivo seleccionado
                 File selectedFile = fileChooser.getSelectedFile();
-                imageChossed.setIcon(getIconFromFile(selectedFile));
+                imageChossed.setIcon(getIconFromFile(selectedFile)); // Establece la imagen seleccionada
             }
         }
 
+        /**
+         * Maneja el evento de clic en el botón de cancelar en el diálogo de modificación de perfil.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void cancelButtonMouseClicked(MouseEvent e) {
-            dialog2.setVisible(false);
+            dialog2.setVisible(false); // Cierra el diálogo de modificación
         }
 
+        /**
+         * Maneja el evento de clic en el botón para crear una nueva publicación.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void createPostButtonMouseClicked(MouseEvent e) {
-           dialog1.setVisible(true);
+            dialog1.setVisible(true); // Muestra el diálogo para crear una nueva publicación
         }
 
+        /**
+         * Maneja el evento de clic en el botón de cancelar en el diálogo de publicación.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void postCancelButtonMouseClicked(MouseEvent e) {
-            dialog1.setVisible(false);
+            dialog1.setVisible(false); // Cierra el diálogo de publicación
         }
 
+        /**
+         * Maneja el evento de clic en el botón para publicar un nuevo post.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void postButtonMouseClicked(MouseEvent e) {
-        currentUser.createPost(postField.getText());
-        dialog1.setVisible(false);
-        updateProfile(manager);
+            currentUser .createPost(postField.getText()); // Crea una nueva publicación con el texto ingresado
+            dialog1.setVisible(false); // Cierra el diálogo de publicación
+            updateProfile(manager); // Actualiza el perfil para reflejar la nueva publicación
         }
 
-
-
+        /**
+         * Maneja el evento de clic en el botón para agregar un amigo.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void addFriendButtonMouseClicked(MouseEvent e) {
-            addFriendDialog.setVisible(true);
-
+            addFriendDialog.setVisible(true); // Muestra el diálogo para agregar un amigo
         }
-        // En ProfileGui.java
 
-
-
-
+        /**
+         * Maneja el evento de clic en el botón para confirmar la adición de un amigo.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void addButtonFriendMouseClicked(MouseEvent e) {
             try {
-                if (manager.containsUser(new User(addFriendField.getText()))) {
+                if (manager.containsUser (new User(addFriendField.getText()))) { // Verifica si el usuario existe
                     try {
-                        currentUser.addFriend(addFriendField.getText());
-                    }
-                    catch (UyMeLlameAmiMismoException e1){
-                        exceptionLabel.setText(e1.getMessage());
+                        currentUser .addFriend(addFriendField.getText()); // Agrega al amigo
+                    } catch (UyMeLlameAmiMismoException e1) {
+                        exceptionLabel.setText(e1.getMessage()); // Muestra el mensaje de error si intenta agregar a sí mismo
                         errorDialog.setVisible(true);
                     }
                 }
-            }catch (NonExistObjectException e1){
-
-                exceptionLabel.setText(e1.getMessage());
+            } catch (NonExistObjectException e1) {
+                exceptionLabel.setText(e1.getMessage()); // Muestra el mensaje de error si el usuario no existe
                 errorDialog.setVisible(true);
             }
-                addFriendDialog.dispose();
-                updateProfile(manager);
-                System.out.println(currentUser.getFriends());
-
-
+            addFriendDialog.dispose(); // Cierra el diálogo de agregar amigo
+            updateProfile(manager); // Actualiza el perfil para reflejar los cambios
+            System.out.println(currentUser .getFriends()); // Imprime la lista de amigos en la consola
         }
 
+        /**
+         * Maneja el evento de clic en el botón de cancelar en el diálogo de adición de amigos.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void cancelButtonFriendMouseClicked(MouseEvent e) {
-            addFriendDialog.dispose();
+            addFriendDialog.dispose(); // Cierra el diálogo de agregar amigo
         }
 
+        /**
+         * Maneja el evento de clic en el botón de aceptar en el diálogo de error.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void okButtonMouseClicked(MouseEvent e) {
-          errorDialog.dispose();
-
+            errorDialog.dispose(); // Cierra el diálogo de error
         }
 
+        /**
+         * Maneja el evento de clic en la lista de amigos.
+         * Si se hace doble clic, se abre el diálogo para interactuar con el amigo seleccionado.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void friendListMouseClicked(MouseEvent e) {
-           if (e.getClickCount() == 2) {
+            if (e.getClickCount() == 2) { // Verifica si se hizo doble clic
                 JList<User> list = (JList<User>) e.getSource();
                 int index = list.locationToIndex(e.getPoint());
                 if (index != -1) {
-                    currentFriend = list.getModel().getElementAt(index);
-                    dialog3.setVisible(true);
-
+                    currentFriend = list.getModel().getElementAt(index); // Obtiene el amigo seleccionado
+                    dialog3.setVisible(true); // Muestra el diálogo para interactuar con el amigo
                 }
             }
         }
 
+        /**
+         * Maneja el evento de clic en el botón de retroceso.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void goBackButtonMouseClicked(MouseEvent e) {
-            // TODO add your code here
+            // TODO: Implementar la lógica para regresar a la vista anterior
         }
 
+        /**
+         * Maneja el evento de clic en el botón para publicar en el perfil del amigo.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void postButton2MouseClicked(MouseEvent e) {
-                currentFriend.createPost(postField2.getText(),currentUser.getName());
-                dialog3.setVisible(false);
+            currentFriend.createPost(postField2.getText(), currentUser .getName()); // Publica en el perfil del amigo
+            dialog3.setVisible(false); // Cierra el diálogo de publicación en el perfil del amigo
         }
 
+        /**
+         * Maneja el evento de clic en el botón de cancelar en el diálogo de publicación del amigo.
+         *
+         * @param e El evento de clic del mouse.
+         */
         private void postCancelButton2MouseClicked(MouseEvent e) {
-            dialog3.setVisible(false);
+            dialog3.setVisible(false); // Cierra el diálogo de publicación en el perfil del amigo
         }
+
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
