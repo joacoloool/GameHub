@@ -3,175 +3,160 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 176,
+      "count": 112,
       "description": "Add your first game.",
-      "id": 165,
+      "id": 101,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 176,
+      "count": 112,
       "description": "Get 10 games.",
-      "id": 166,
+      "id": 102,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 176,
+      "count": 112,
       "description": "Reach 50 games.",
-      "id": 167,
+      "id": 103,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 176,
+      "count": 112,
       "description": "Get to 100 games.",
-      "id": 168,
+      "id": 104,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 176,
+      "count": 112,
       "description": "Reach 200 games.",
-      "id": 169,
+      "id": 105,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 176,
+      "count": 112,
       "description": "Surpass 500 games.",
-      "id": 170,
+      "id": 106,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 176,
+      "count": 112,
       "description": "Create your first post.",
-      "id": 171,
+      "id": 107,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 176,
+      "count": 112,
       "description": "Reach 10 posts.",
-      "id": 172,
+      "id": 108,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 176,
+      "count": 112,
       "description": "Get to 50 posts.",
-      "id": 173,
+      "id": 109,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 176,
+      "count": 112,
       "description": "Publish 100 posts.",
-      "id": 174,
+      "id": 110,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 176,
+      "count": 112,
       "description": "Reach 500 posts.",
-      "id": 175,
+      "id": 111,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 176,
+      "count": 112,
       "description": "Open your first game and start the adventure!",
-      "id": 160,
+      "id": 96,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 176,
+      "count": 112,
       "description": "Open any game 10 times.",
-      "id": 161,
+      "id": 97,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 176,
+      "count": 112,
       "description": "Open a game 50 times.",
-      "id": 162,
+      "id": 98,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 176,
+      "count": 112,
       "description": "Open games 100 times in total.",
-      "id": 163,
+      "id": 99,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 176,
+      "count": 112,
       "description": "Open a game 500 times.",
-      "id": 164,
+      "id": 100,
       "type": "GAME_LAUNCHES"
     }
   ],
   "users": [
     {
-      "feed": {"post": []},
+      "feed": {"post": [{
+        "fav": false,
+        "message": "a",
+        "user": "b"
+      }]},
       "password": "123123",
       "favoriteAchievements": 0,
       "name": "a",
       "nickname": "a",
+      "friend": ["b"],
       "description": "",
       "gameList": [],
-      "id": 4,
-      "gamesQuant": 0,
-      "friends": []
+      "id": 11,
+      "gamesQuant": 0
     },
     {
-      "feed": {"post": [{
-        "fav": false,
-        "message": "b",
-        "user": "asdasdasdasd"
-      }]},
+      "feed": {"post": []},
       "password": "123123",
       "favoriteAchievements": 0,
       "name": "b",
-      "nickname": "bebe",
-      "description": "asdasdasdasdasd",
-      "gameList": [{
-        "lastTime": "2024-11-19 00:25:59.5152607",
-        "appidIGDB": "241",
-        "releaseDate": "1 Nov, 2000",
-        "icon": "javax.swing.ImageIcon@38102d01",
-        "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
-        "title": "Counter-Strike",
-        "gameLaunches": 0,
-        "url": "",
-        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
-        "appid": "10",
-        "genre": "ACTION",
-        "id": 0,
-        "favorite": false,
-        "countID": 2
-      }],
-      "id": 4,
-      "gamesQuant": 1,
-      "friends": []
+      "nickname": "b",
+      "friend": [],
+      "description": "",
+      "gameList": [],
+      "id": 13,
+      "gamesQuant": 0
     }
   ]
 }

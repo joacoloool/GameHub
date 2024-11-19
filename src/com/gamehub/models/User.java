@@ -6,6 +6,7 @@ import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.JsonUtil;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -371,7 +372,14 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
 
             // JSON Array
             user.put("feed", feed.toJson());
-            user.put("friends", JsonUtil.toJsonArray(friends));
+
+
+            JSONArray friendsJson = new JSONArray();
+            for (String friend : friends) {
+                friendsJson.put(friend);
+            }
+
+            user.put("friend", friendsJson);
             user.put("gameList", JsonUtil.toJsonArray(gameList));
 
         } catch (JSONException e) {
