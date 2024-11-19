@@ -316,6 +316,11 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         return mayor;
     }
 
+    public boolean deleteFriend(String name)
+    {
+       return friends.remove(name);
+    }
+
     /**
      * Crea una publicación en el feed del usuario con el contenido especificado.
      *

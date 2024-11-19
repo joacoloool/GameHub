@@ -54,6 +54,7 @@ new FormModel {
 							"cursor": #Cursor1
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 1, false )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "friendListMouseClicked", true ) )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "friendListDeleteMouseClicked", true ) )
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -106,6 +107,7 @@ new FormModel {
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 1, false )
 							"selectionMode": 0
 							"cursor": #Cursor0
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "feedListMouseClicked", true ) )
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
@@ -338,6 +340,28 @@ new FormModel {
 		}, new FormLayoutConstraints( null ) {
 			"size": #Dimension0
 			"location": new java.awt.Point( 0, 1021 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "deletePopup"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "deletePostButton"
+				"text": "Delete"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deletePostButtonMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 1240, 595 )
+			"size": new java.awt.Dimension( 80, 40 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "deleteFriendPop"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "deleteFriendButton"
+				"text": "Delete"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deleteFriendButtonMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 1250, 720 )
+			"size": new java.awt.Dimension( 80, 45 )
 		} )
 	}
 }

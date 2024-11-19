@@ -1,5 +1,6 @@
 package com.gamehub.models;
 
+import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONObject;
@@ -59,13 +60,14 @@ public class Feed implements JsonConvertible {
     /**
      * Elimina una publicación del feed en la posición especificada.
      *
-     * @param i El índice de la publicación a eliminar.
+     * @param post la publicación a eliminar.
      */
-    public void deletePost(int i) {
+    public void deletePost(Post post) {
         try {
-            posts.remove(i); // Elimina la publicación en el índice especificado
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El índice no existe en la lista"); // Manejo de excepción si el índice no es válido
+            posts.remove(post); // Elimina la publicación en el índice especificado
+        }catch (NonExistObjectException e)
+        {
+            e.getMessage();
         }
     }
 

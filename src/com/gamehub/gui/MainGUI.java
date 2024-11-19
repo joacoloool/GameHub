@@ -8,6 +8,7 @@ import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
 import com.gamehub.managers.Manager;
 import com.gamehub.models.User;
+import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.JsonUtil;
 
 import java.awt.*;
@@ -54,6 +55,7 @@ public class MainGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar aplicacion al cerrar ventana
         this.setSize(1024, 768); // Tamano de la ventana
         this.setLocationRelativeTo(null); // Centrar ventana en pantalla
+        this.profileImage.setIcon(ImageFormatter.upscaleIco(selectedUser.getProfileImage(),profileImage.getWidth(),profileImage.getHeight()));
     }
 
     /**
@@ -266,9 +268,11 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container. addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            container.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
+            ,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red),
+            container. getBorder()));container. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
             container.setLayout(new CardLayout());
         }
 

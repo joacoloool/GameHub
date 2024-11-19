@@ -14,11 +14,14 @@ public class Main {
     public static void main(String[] args) {
 
         // Inicialización del gestor
-        Manager manager = new Manager();
+        Manager manager;
 
-        // Cargar el gestor desde un archivo JSON si existe
+        // Si el jsonUtil tiene algo lo carga
         if (JsonUtil.leerManager() != null) {
             manager = JsonUtil.leerManager();
+        }else//sino, se inicializa de cero el manager, haciendo que no se cree constantemente el arreglo de Achievements
+        {
+            manager= new Manager();
         }
 
         // Verificar y cargar los logros (achievements) si el gestor no es nulo
@@ -48,4 +51,4 @@ public class Main {
 
 
 //gracias por ver :)
-//en honor a alan arruti dep
+//en honor a alan arruti

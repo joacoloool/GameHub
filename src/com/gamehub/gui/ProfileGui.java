@@ -31,15 +31,16 @@ import java.awt.event.*;
     public class ProfileGui extends JPanel {
 
         // Modelos de lista para el feed de publicaciones, logros y amigos
-        DefaultListModel<Post> feedListModel;
-        DefaultListModel<Achievement> achievementDefaultListModel;
-        DefaultListModel<User> friendDefaultListModel;
+        protected DefaultListModel<Post> feedListModel;
+        protected DefaultListModel<Achievement> achievementDefaultListModel;
+        protected DefaultListModel<User> friendDefaultListModel;
+
 
         // Usuario actual y su gestor
         private final User currentUser ; // Usuario cuyo perfil se está mostrando
         private final Manager manager; // Gestor que maneja la lógica del sistema
         protected User currentFriend; // Amigo actualmente seleccionado
-
+        protected Post selectedPost;
         /**
          * Constructor que inicializa el panel del perfil del usuario.
          *
@@ -350,10 +351,42 @@ import java.awt.event.*;
             dialog3.setVisible(false); // Cierra el diálogo de publicación en el perfil del amigo
         }
 
+        private void deletePostButtonMouseClicked(MouseEvent e) {
+            currentUser.getFeed().deletePost(selectedPost);
+            updateProfile(manager);
+            deletePopup.setVisible(false);
+        }
+
+        private void feedListMouseClicked(MouseEvent e) {
+            selectedPost = (Post) feedList.getSelectedValue();
+            if (selectedPost != null) {
+                deletePopup.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
+
+
+        private void friendListDeleteMouseClicked(MouseEvent e) {
+            if (e.getButton() == MouseEvent.BUTTON3) {
+                currentFriend = (User) friendList.getSelectedValue();
+                if (currentFriend != null) {
+                    deleteFriendPop.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+
+        }
+
+        private void deleteFriendButtonMouseClicked(MouseEvent e) {
+            currentUser.deleteFriend(currentFriend.getName());
+            updateProfile(manager);
+            deleteFriendPop.setVisible(false);
+        }
+
+
+
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -410,11 +443,19 @@ import java.awt.event.*;
             postField2 = new JTextPane();
             postCancelButton2 = new JButton();
             postButton2 = new JButton();
+            deletePopup = new JPopupMenu();
+            deletePostButton = new JButton();
+            deleteFriendPop = new JPopupMenu();
+            deleteFriendButton = new JButton();
 
             //======== this ========
-             addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+            awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
+            ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
 
             //======== profile ========
             {
@@ -465,6 +506,7 @@ import java.awt.event.*;
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 friendListMouseClicked(e);
+                                friendListDeleteMouseClicked(e);
                             }
                         });
                         friendScrollPanel.setViewportView(friendList);
@@ -540,6 +582,12 @@ import java.awt.event.*;
                         feedList.setFont(feedList.getFont().deriveFont(feedList.getFont().getSize() + 1f));
                         feedList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                         feedList.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                        feedList.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                feedListMouseClicked(e);
+                            }
+                        });
                         feedScrollPanel.setViewportView(feedList);
                     }
 
@@ -1043,11 +1091,39 @@ import java.awt.event.*;
                 dialog3.pack();
                 dialog3.setLocationRelativeTo(dialog3.getOwner());
             }
+
+            //======== deletePopup ========
+            {
+
+                //---- deletePostButton ----
+                deletePostButton.setText("Delete");
+                deletePostButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        deletePostButtonMouseClicked(e);
+                    }
+                });
+                deletePopup.add(deletePostButton);
+            }
+
+            //======== deleteFriendPop ========
+            {
+
+                //---- deleteFriendButton ----
+                deleteFriendButton.setText("Delete");
+                deleteFriendButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        deleteFriendButtonMouseClicked(e);
+                    }
+                });
+                deleteFriendPop.add(deleteFriendButton);
+            }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
@@ -1104,5 +1180,9 @@ import java.awt.event.*;
         private JTextPane postField2;
         private JButton postCancelButton2;
         private JButton postButton2;
+        private JPopupMenu deletePopup;
+        private JButton deletePostButton;
+        private JPopupMenu deleteFriendPop;
+        private JButton deleteFriendButton;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

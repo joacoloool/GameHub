@@ -3,194 +3,142 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 32,
+      "count": 64,
       "description": "Add your first game.",
-      "id": 21,
+      "id": 53,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 32,
+      "count": 64,
       "description": "Get 10 games.",
-      "id": 22,
+      "id": 54,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 32,
+      "count": 64,
       "description": "Reach 50 games.",
-      "id": 23,
+      "id": 55,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 32,
+      "count": 64,
       "description": "Get to 100 games.",
-      "id": 24,
+      "id": 56,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 32,
+      "count": 64,
       "description": "Reach 200 games.",
-      "id": 25,
+      "id": 57,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 32,
+      "count": 64,
       "description": "Surpass 500 games.",
-      "id": 26,
+      "id": 58,
       "type": "GAMES"
     },
     {
       "condition": 1,
-      "name": "Primer Bait",
-      "count": 32,
-      "description": "Create your first post.",
-      "id": 27,
-      "type": "POSTS"
-    },
-    {
-      "condition": 10,
-      "name": "Baitmaster",
-      "count": 32,
-      "description": "Reach 10 posts.",
-      "id": 28,
-      "type": "POSTS"
-    },
-    {
-      "condition": 50,
-      "name": "Mini Influencer",
-      "count": 32,
-      "description": "Get to 50 posts.",
-      "id": 29,
-      "type": "POSTS"
-    },
-    {
-      "condition": 100,
-      "name": "Forero Facha",
-      "count": 32,
-      "description": "Publish 100 posts.",
-      "id": 30,
-      "type": "POSTS"
-    },
-    {
-      "condition": 500,
-      "name": "Taringuero",
-      "count": 32,
-      "description": "Reach 500 posts.",
-      "id": 31,
-      "type": "POSTS"
-    },
-    {
-      "condition": 1,
       "name": "Dame Masa",
-      "count": 32,
+      "count": 64,
       "description": "Open your first game and start the adventure!",
-      "id": 16,
+      "id": 48,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 32,
+      "count": 64,
       "description": "Open any game 10 times.",
-      "id": 17,
+      "id": 49,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 32,
+      "count": 64,
       "description": "Open a game 50 times.",
-      "id": 18,
+      "id": 50,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 32,
+      "count": 64,
       "description": "Open games 100 times in total.",
-      "id": 19,
+      "id": 51,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 32,
+      "count": 64,
       "description": "Open a game 500 times.",
-      "id": 20,
+      "id": 52,
       "type": "GAME_LAUNCHES"
-    }
-  ],
-  "users": [
-    {
-      "feed": {"post": [{
-        "fav": false,
-        "message": "tom",
-        "user": "buen dia, sale counter?\r\n"
-      }]},
-      "password": "123412",
-      "favoriteAchievements": 0,
-      "name": "joacolol",
-      "nickname": "joacolol",
-      "friend": ["tom"],
-      "description": "el señor de la noche",
-      "gameList": [{
-        "lastTime": "2024-11-19 04:43:22.9757563",
-        "appidIGDB": "198261",
-        "releaseDate": "2023-09-19",
-        "icon": "javax.swing.ImageIcon@4a56c66f",
-        "description": "The Champions Edition includes:\n- Limited-Time Bonus: Miami-Themed Content Pack\n- 3 days Early Access\n- F1 Life Starter Pack\n- F1 22 New Era Content\n- New My Team Icons\n- 18,000 PitCoin",
-        "title": "F1 22: Champions Edition",
-        "gameLaunches": 0,
-        "url": "",
-        "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\F1 22.lnk",
-        "appid": "",
-        "genre": "ACTION",
-        "id": 0,
-        "favorite": false,
-        "countID": 4
-      }],
-      "id": 0,
-      "gamesQuant": 1
     },
     {
-      "feed": {"post": [{
-        "fav": false,
-        "message": "joacolol",
-        "user": "hola, no. no tengo manos"
-      }]},
-      "password": "123412",
-      "favoriteAchievements": 0,
-      "name": "tom",
-      "nickname": "tom",
-      "friend": ["joacolol"],
-      "description": "Joder nena, no soy un maldito fuckboy aviento mi skate, mientras me hago un porro, golpeo la pared y coqueteo contigo Créeme que soy diferente. Nunca había conocido a una chica como tú.",
-      "gameList": [{
-        "lastTime": "2024-11-19 04:41:54.4573792",
-        "appidIGDB": "242408",
-        "releaseDate": "21 Aug, 2012",
-        "icon": "javax.swing.ImageIcon@c8f11b2",
-        "description": "For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.",
-        "title": "Counter-Strike 2",
-        "gameLaunches": 0,
-        "url": "",
-        "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\Counter-Strike 2.url",
-        "appid": "730",
-        "genre": "ACTION",
-        "id": 0,
-        "favorite": false,
-        "countID": 4
-      }],
-      "id": 1,
-      "gamesQuant": 1
+      "condition": 1,
+      "name": "Primer Bait",
+      "count": 64,
+      "description": "Create your first post.",
+      "id": 59,
+      "type": "POSTS"
+    },
+    {
+      "condition": 10,
+      "name": "Baitmaster",
+      "count": 64,
+      "description": "Reach 10 posts.",
+      "id": 60,
+      "type": "POSTS"
+    },
+    {
+      "condition": 50,
+      "name": "Mini Influencer",
+      "count": 64,
+      "description": "Get to 50 posts.",
+      "id": 61,
+      "type": "POSTS"
+    },
+    {
+      "condition": 100,
+      "name": "Forero Facha",
+      "count": 64,
+      "description": "Publish 100 posts.",
+      "id": 62,
+      "type": "POSTS"
+    },
+    {
+      "condition": 500,
+      "name": "Taringuero",
+      "count": 64,
+      "description": "Reach 500 posts.",
+      "id": 63,
+      "type": "POSTS"
     }
-  ]
+  ],
+  "users": [{
+    "feed": {"post": []},
+    "password": "123412",
+    "favoriteAchievements": 0,
+    "name": "joacolol",
+    "nickname": "joacolol",
+    "friend": [],
+    "description": "",
+    "gameList": [],
+    "id": 0,
+    "gamesQuant": 0
+  }]
 }
