@@ -1,16 +1,15 @@
 package com.gamehub.models;
 
 import com.gamehub.exceptions.DuplicateElementException;
+import com.gamehub.exceptions.UyMeLlameAmiMismoException;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.interfaces.SortTool;
 import com.gamehub.utils.ImageFormatter;
 import com.gamehub.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
-import scala.Char;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.*;
 
 /**
@@ -25,7 +24,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     protected int gamesQuant = 0;
     protected String description = "";
     protected Feed feed;
-    protected TreeSet<Integer> friends;
+    protected TreeSet<String> friends;
     private TreeSet<Achievement> myAchievements;
     protected int favoriteAchievement = 0;
     protected static int count = 0;
@@ -42,6 +41,12 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.nickname = name;
         count++;
 
+    }
+
+    //Uses in Friend. why? because need only name for searches a user in manager
+    public User(String name)
+    {
+        this.name = name;
     }
 
     public User(String name, String password) {
@@ -75,7 +80,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         return feed;
     }
 
-    public TreeSet<Integer> getFriends() {
+    public TreeSet<String> getFriends() {
         return friends;
     }
 
@@ -112,7 +117,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.feed = feed;
     }
 
-    public void setName(TreeSet<Integer> friends) {
+    public void setName(TreeSet<String> friends) {
         this.friends = friends;
     }
 
@@ -142,7 +147,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         this.feed = feed;
     }
 
-    public void setFriends(TreeSet<Integer> friends) {
+    public void setFriends(TreeSet<String> friends) {
         this.friends = friends;
     }
 
@@ -228,11 +233,16 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         ImageFormatter.saveProfileImageToFile(pathName,profileImage);
     }
 
-    public void addFriend(Integer id) {
-        friends.add(id);
+    public void addFriend(String name) {
+        if (this.name != name){
+        friends.add(name);
+        }
+        else{
+            throw new UyMeLlameAmiMismoException("Uy me llame a mi mismo");
+        }
     }
 
-    public void deleteFriend(Integer id) {
+    public void deleteFriend(String id) {
         try {
             if (!friends.remove(id)) {
                 System.out.println("El amigo no está en la lista");
@@ -242,7 +252,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         }
     }
 
-    public boolean searchFriend(int id) {
+    public boolean searchFriend(String id) {
         if (friends.contains(id)) {
             return true;
         }

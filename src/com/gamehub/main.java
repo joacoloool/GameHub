@@ -21,51 +21,17 @@ public class main {
 
         Manager manager = new Manager();
 
-
-     manager = com.gamehub.utils.JsonUtil.leerManager();
+    if(JsonUtil.leerManager() != null)
+    {
+        manager = com.gamehub.utils.JsonUtil.leerManager();
+    }
         manager.loadAllImages();
        //Cargamos los achievements despues
        manager.createAchievements();
        manager.verifyAchievements();
 
-
-
-       if (manager.getUsers().isEmpty()) {
-          /*
-          try {
-              user.addGame(game);
-          }
-          catch (DuplicateElementException e)
-          {
-              System.err.println(e.getMessage());
-          }
-
-           try {
-               user.addGame(game);
-           }
-           catch (DuplicateElementException e)
-           {
-               System.err.println(e.getMessage());
-           }
-        */
-
-
-       }
-
-
-
-        // user.getGame(1).run();
-        //user.getGame(2).run();
-        // System.out.println(user.getGame(2).getLastTime());
-        //System.out.println(user.getGame(2).getGameLaunches());
-
-
         //UI debug
         FlatOneDarkIJTheme.setup();
-
-
-
-
         // Crear el JFrame para la interfaz
         LoginGUI loginGUI = new LoginGUI(manager);
 

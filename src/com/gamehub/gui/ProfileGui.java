@@ -3,6 +3,8 @@
      */
     package com.gamehub.gui;
     import java.awt.event.*;
+
+    import com.gamehub.exceptions.NonExistObjectException;
     import com.gamehub.gui.utilities.AchievementCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
@@ -28,7 +30,7 @@
 
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
-
+        DefaultListModel<User> friendDefaultListModel;
         private final User currentUser;
         private final Manager manager;
 
@@ -39,20 +41,18 @@
             this.currentUser = user;
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
+            friendDefaultListModel = new DefaultListModel<>();
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
         }
 
 
-        ///////////////////TOM///////////////////
-
         protected void updateProfile(Manager manager) {
 
             //USERNAME
-            if (currentUser.getNickname().isEmpty()){
+            if (currentUser.getNickname().isEmpty()) {
                 usernameNameLabel.setText(currentUser.getName());
-            }
-            else{
+            } else {
                 usernameNameLabel.setText(currentUser.getNickname());
             }
             //DESCRIPTION
@@ -80,6 +80,16 @@
             }
             feedList.setModel(feedListModel);
 
+            //Actualiza friends
+            friendDefaultListModel.clear();
+            for (User user: manager.getUsers())
+            {
+               if (currentUser.searchFriend(user.getName()))
+               {
+                   friendDefaultListModel.addElement(user);
+               }
+            }
+            friendList.setModel(friendDefaultListModel);
 
             if (!achievementDefaultListModel.isEmpty()) {
                 lastAchievementImage.setVisible(true);
@@ -188,9 +198,34 @@
         updateProfile(manager);
         }
 
+        private void addFriendButtonMouseClicked(MouseEvent e) {
+            addFriendDialog.setVisible(true);
+            addFriendDialog.setModal(true);
+        }
+
+        private void addButtonFriendMouseClicked(MouseEvent e) {
+            try {
+                if (manager.containsUser(new User(addFriendField.getText()))) {
+                    currentUser.addFriend(addFriendField.getText());
+                }
+            }catch (NonExistObjectException e1){
+                JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            addFriendDialog.dispose();
+            updateProfile(manager);
+            System.out.println(currentUser.getFriends());
+
+        }
+
+        private void cancelButtonFriendMouseClicked(MouseEvent e) {
+            addFriendDialog.dispose();
+        }
+
+
+
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -213,6 +248,7 @@
             achievmentList = new JList();
             lastAchievementImage = new JLabel();
             lastAchievementName = new JLabel();
+            addFriendButton = new JButton();
             dialog2 = new JDialog();
             label1 = new JLabel();
             modifyNameField = new JTextField();
@@ -232,15 +268,20 @@
             postField = new JTextPane();
             postCancelButton = new JButton();
             postButton = new JButton();
+            addFriendDialog = new JDialog();
+            addFriendField = new JTextField();
+            friendLabel = new JLabel();
+            addButtonFriend = new JButton();
+            cancelButtonFriend = new JButton();
 
             //======== this ========
-            setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
+            awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
+            ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
 
             //======== profile ========
             {
@@ -266,7 +307,7 @@
                     descriptionLabel.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 
                     //---- modifyProfileButton ----
-                    modifyProfileButton.setText("Modificar Perfil");
+                    modifyProfileButton.setText("Modify Profile");
                     modifyProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     modifyProfileButton.addMouseListener(new MouseAdapter() {
                         @Override
@@ -402,6 +443,15 @@
                     lastAchievementName.setFont(lastAchievementName.getFont().deriveFont(lastAchievementName.getFont().getStyle() | Font.BOLD));
                     lastAchievementName.setAlignmentY(-6.5F);
 
+                    //---- addFriendButton ----
+                    addFriendButton.setText("Add Friend");
+                    addFriendButton.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            addFriendButtonMouseClicked(e);
+                        }
+                    });
+
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
                     groupLayout.setHorizontalGroup(
@@ -438,10 +488,14 @@
                                             .addGroup(groupLayout.createSequentialGroup()
                                                 .addGap(104, 104, 104)
                                                 .addGroup(groupLayout.createParallelGroup()
-                                                    .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(groupLayout.createSequentialGroup()
+                                                            .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(addFriendButton))
+                                                        .addComponent(friendScrollPanel, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))))
                                         .addGap(115, 115, 115))))
                     );
                     groupLayout.setVerticalGroup(
@@ -478,7 +532,9 @@
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(feedScrollPanel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(groupLayout.createSequentialGroup()
-                                        .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                            .addComponent(FriendsTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(addFriendButton))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(friendScrollPanel, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(401, 401, 401))
@@ -600,14 +656,14 @@
             {
 
                 //---- achieNameL ----
-                achieNameL.setText("ASDSAAASDADS");
+                achieNameL.setText(".");
                 infoAchievDial.add(achieNameL);
 
                 //======== scrollPane2 ========
                 {
 
                     //---- achieInfoL ----
-                    achieInfoL.setText("asdadsasdasd");
+                    achieInfoL.setText(".");
                     scrollPane2.setViewportView(achieInfoL);
                 }
                 infoAchievDial.add(scrollPane2);
@@ -669,11 +725,71 @@
                 dialog1.pack();
                 dialog1.setLocationRelativeTo(dialog1.getOwner());
             }
+
+            //======== addFriendDialog ========
+            {
+                addFriendDialog.setTitle("Add Friend");
+                var addFriendDialogContentPane = addFriendDialog.getContentPane();
+
+                //---- friendLabel ----
+                friendLabel.setText("Friend");
+
+                //---- addButtonFriend ----
+                addButtonFriend.setText("Add");
+                addButtonFriend.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        addButtonFriendMouseClicked(e);
+                    }
+                });
+
+                //---- cancelButtonFriend ----
+                cancelButtonFriend.setText("Cancel");
+                cancelButtonFriend.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        cancelButtonFriendMouseClicked(e);
+                    }
+                });
+
+                GroupLayout addFriendDialogContentPaneLayout = new GroupLayout(addFriendDialogContentPane);
+                addFriendDialogContentPane.setLayout(addFriendDialogContentPaneLayout);
+                addFriendDialogContentPaneLayout.setHorizontalGroup(
+                    addFriendDialogContentPaneLayout.createParallelGroup()
+                        .addGroup(addFriendDialogContentPaneLayout.createSequentialGroup()
+                            .addContainerGap(15, Short.MAX_VALUE)
+                            .addGroup(addFriendDialogContentPaneLayout.createParallelGroup()
+                                .addComponent(friendLabel)
+                                .addComponent(addFriendField, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18))
+                        .addGroup(GroupLayout.Alignment.TRAILING, addFriendDialogContentPaneLayout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(cancelButtonFriend)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                            .addComponent(addButtonFriend)
+                            .addGap(34, 34, 34))
+                );
+                addFriendDialogContentPaneLayout.setVerticalGroup(
+                    addFriendDialogContentPaneLayout.createParallelGroup()
+                        .addGroup(addFriendDialogContentPaneLayout.createSequentialGroup()
+                            .addGap(17, 17, 17)
+                            .addComponent(friendLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(addFriendField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(addFriendDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(addButtonFriend)
+                                .addComponent(cancelButtonFriend))
+                            .addContainerGap(19, Short.MAX_VALUE))
+                );
+                addFriendDialog.pack();
+                addFriendDialog.setLocationRelativeTo(addFriendDialog.getOwner());
+            }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
@@ -696,6 +812,7 @@
         private JList achievmentList;
         private JLabel lastAchievementImage;
         private JLabel lastAchievementName;
+        private JButton addFriendButton;
         private JDialog dialog2;
         private JLabel label1;
         private JTextField modifyNameField;
@@ -715,5 +832,10 @@
         private JTextPane postField;
         private JButton postCancelButton;
         private JButton postButton;
+        private JDialog addFriendDialog;
+        private JTextField addFriendField;
+        private JLabel friendLabel;
+        private JButton addButtonFriend;
+        private JButton cancelButtonFriend;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

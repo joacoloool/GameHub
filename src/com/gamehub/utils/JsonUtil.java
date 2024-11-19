@@ -119,11 +119,11 @@ public class JsonUtil {
         return users;
     }
 
-    public static TreeSet<Integer> JSONtoFriends(JSONArray f) {
-        TreeSet<Integer> friends = new TreeSet<>();
+    public static TreeSet<String> JSONtoFriends(JSONArray f) {
+        TreeSet<String> friends = new TreeSet<>();
 
         for (int i = 0; i < f.length(); i++) {
-            friends.add(f.getInt(i));
+            friends.add(f.getString(i));
         }
         return friends;
     }

@@ -3,207 +3,171 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 592,
+      "count": 240,
       "description": "Add your first game.",
-      "id": 581,
+      "id": 229,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 592,
+      "count": 240,
       "description": "Get 10 games.",
-      "id": 582,
+      "id": 230,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 592,
+      "count": 240,
       "description": "Reach 50 games.",
-      "id": 583,
+      "id": 231,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 592,
+      "count": 240,
       "description": "Get to 100 games.",
-      "id": 584,
+      "id": 232,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 592,
+      "count": 240,
       "description": "Reach 200 games.",
-      "id": 585,
+      "id": 233,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 592,
+      "count": 240,
       "description": "Surpass 500 games.",
-      "id": 586,
+      "id": 234,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 592,
+      "count": 240,
       "description": "Create your first post.",
-      "id": 587,
+      "id": 235,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 592,
+      "count": 240,
       "description": "Reach 10 posts.",
-      "id": 588,
+      "id": 236,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 592,
+      "count": 240,
       "description": "Get to 50 posts.",
-      "id": 589,
+      "id": 237,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 592,
+      "count": 240,
       "description": "Publish 100 posts.",
-      "id": 590,
+      "id": 238,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 592,
+      "count": 240,
       "description": "Reach 500 posts.",
-      "id": 591,
+      "id": 239,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 592,
+      "count": 240,
       "description": "Open your first game and start the adventure!",
-      "id": 576,
+      "id": 224,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 592,
+      "count": 240,
       "description": "Open any game 10 times.",
-      "id": 577,
+      "id": 225,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 592,
+      "count": 240,
       "description": "Open a game 50 times.",
-      "id": 578,
+      "id": 226,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 592,
+      "count": 240,
       "description": "Open games 100 times in total.",
-      "id": 579,
+      "id": 227,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 592,
+      "count": 240,
       "description": "Open a game 500 times.",
-      "id": 580,
+      "id": 228,
       "type": "GAME_LAUNCHES"
     }
   ],
-  "users": [{
-    "feed": {"post": [
-      {
-        "fav": false,
-        "message": "123",
-        "user": "123123"
-      },
-      {
-        "fav": false,
-        "message": "123",
-        "user": "123123123123"
-      },
-      {
-        "fav": false,
-        "message": "123",
-        "user": "asdsasd"
-      }
-    ]},
-    "password": "123123",
-    "favoriteAchievements": 0,
-    "name": "123",
-    "nickname": "Newbie",
-    "description": " Youtube Instagram [www.instagram.com]123123",
-    "gameList": [
-      {
-        "lastTime": "2024-11-18 21:30:52.6097795",
-        "appidIGDB": "241",
-        "releaseDate": "1 Nov, 2000",
-        "icon": "javax.swing.ImageIcon@6ab778a",
-        "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
-        "title": "Counter-Strike",
+  "users": [
+    {
+      "feed": {"post": []},
+      "password": "12345678",
+      "favoriteAchievements": 0,
+      "name": "a",
+      "nickname": "a",
+      "description": "",
+      "gameList": [{
+        "lastTime": "2024-11-18 21:41:40.5822193",
+        "appidIGDB": "119455",
+        "releaseDate": "6 Jun, 2019",
+        "icon": "javax.swing.ImageIcon@51f116b8",
+        "description": "Quake II RTX is a cutting-edge, ray-traced reimagining of id software\u2019s old school classic, by NVIDIA\u2019s Lightspeed Studios. Global lighting effects, including realistic reflections, refraction, shadows, ambient occlusion and global illumination are a result of the path-traced simulation of light.",
+        "title": "Quake II RTX",
         "gameLaunches": 0,
         "url": "",
-        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
-        "appid": "10",
-        "genre": "UNKNOWN",
+        "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\Quake II RTX.url",
+        "appid": "1089130",
+        "genre": "ACTION",
         "id": 0,
         "favorite": false,
-        "countID": 4
-      },
-      {
-        "lastTime": "2024-11-18 21:33:02.0279771",
-        "appidIGDB": "164290",
-        "releaseDate": "20 Sep, 2024",
-        "icon": "javax.swing.ImageIcon@4e3958e7",
-        "description": "Develop, expand, and advance your city in a society survival game set 30 years after an apocalyptic blizzard ravaged Earth. In Frostpunk 2, you face not only the perils of never-ending winter, but also the powerful factions that watch your every step inside the Council Hall.",
-        "title": "Frostpunk 2",
-        "gameLaunches": 0,
-        "url": "",
-        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Frostpunk 2.lnk",
-        "appid": "1601580",
-        "genre": "STRATEGY",
-        "id": 0,
-        "favorite": false,
-        "countID": 4
-      },
-      {
-        "lastTime": "2024-11-18 21:34:03.9174507",
-        "appidIGDB": "242408",
-        "releaseDate": "21 Aug, 2012",
-        "icon": "javax.swing.ImageIcon@6bc32d04",
-        "description": "For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.",
-        "title": "Counter-Strike 2",
-        "gameLaunches": 0,
-        "url": "",
-        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike 2.url",
-        "appid": "730",
-        "genre": "SHOOTER",
-        "id": 0,
-        "favorite": false,
-        "countID": 4
-      }
-    ],
-    "id": 0,
-    "gamesQuant": 3,
-    "friends": []
-  }]
+        "countID": 5
+      }],
+      "id": 1,
+      "gamesQuant": 1,
+      "friends": []
+    },
+    {
+      "feed": {"post": []},
+      "password": "12345678",
+      "favoriteAchievements": 0,
+      "name": "jose1234",
+      "nickname": "jose1234",
+      "description": "",
+      "gameList": [],
+      "id": 2,
+      "gamesQuant": 0,
+      "friends": []
+    }
+  ]
 }

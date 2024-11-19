@@ -2,6 +2,7 @@ package com.gamehub.managers;
 
 import com.gamehub.enums.AchievType;
 import com.gamehub.exceptions.DuplicateElementException;
+import com.gamehub.exceptions.NonExistObjectException;
 import com.gamehub.exceptions.StringTooShort;
 import com.gamehub.interfaces.JsonConvertible;
 import com.gamehub.models.Achievement;
@@ -191,6 +192,14 @@ public class Manager implements JsonConvertible {
         return null;
     }
 
+    public boolean containsUser (User user) throws NonExistObjectException
+    {
+        if (!users.contains(user))
+        {
+            throw new NonExistObjectException("Este usuario no existe");
+        }
+        return true;
+    }
 
     public Boolean findUser(String name, String password) {
         for (User user : users) {
