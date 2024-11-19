@@ -102,7 +102,7 @@ public class JsonUtil {
         user.setFavoriteAchievement(u.getInt("favoriteAchievements"));
         user.setGamesQuant(u.getInt("gamesQuant"));
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
-        user.setFriends(JSONtoFriends(u.getJSONArray("friends")));
+        user.setFriends(JSONtoFriends(u.getJSONArray("friend")));
         user.setNickname(u.getString("nickname"));
         user.setFeed(JSONToFeed(u.getJSONObject("feed")));
 
