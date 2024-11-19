@@ -12,6 +12,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTh
 import scala.App;
 
 import javax.swing.*;
+import java.io.File;
 
 
 public class main {
@@ -23,7 +24,7 @@ public class main {
 
 
      manager = com.gamehub.utils.JsonUtil.leerManager();
-        manager.loadAllImages();
+     manager.loadAllImages();
        //Cargamos los achievements despues
        manager.createAchievements();
        manager.verifyAchievements();
@@ -77,7 +78,6 @@ public class main {
 
 
         JsonUtil.guardar("manager.json",loginGUI.getManager().toJson());
-        System.out.println(loginGUI.getManager().toString());
 
 
 

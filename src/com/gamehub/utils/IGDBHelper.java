@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class IGDBHelper {
@@ -62,28 +63,85 @@ public class IGDBHelper {
         String query = "search \"" + gameName + "\"; fields id;";
         String jsonResponse = executeQuery(query);
         if (jsonResponse != null) {
-            JSONArray jsonArray = new JSONArray(jsonResponse);
-            return !jsonArray.isEmpty() ? String.valueOf(jsonArray.getJSONObject(0).getInt("id")) : null;
-        }
-        return null;
-    }
-
-    // Método para obtener información de un juego
-    public static String getGameInfo(String gameId, String infoType) {
-        String query = "fields name, genres.name, summary, cover.url; where id = " + gameId + ";";
-        String jsonResponse = executeQuery(query);
-        if (jsonResponse != null) {
-            JSONObject gameInfo = new JSONArray(jsonResponse).getJSONObject(0);
-            switch (infoType.toLowerCase()) {
-                case "description": return gameInfo.optString("summary", "Descripción no disponible.");
-                case "name": return gameInfo.optString("name", "Nombre no disponible.").split(":")[0];
-                case "image": return gameInfo.optJSONObject("cover").optString("url", "Imagen no disponible.").replace("t_thumb", "t_720p");
-                case "genres": return getGenres(gameInfo);
-                case "release": return String.valueOf(gameInfo.optLong("release_dates", 0));
-                default: return "Información no disponible.";
+            try {
+                JSONArray jsonArray = new JSONArray(jsonResponse);
+                // Verifica si el JSONArray no está vacío y obtiene el primer "id"
+                if (!jsonArray.isEmpty()) {
+                    return String.valueOf(jsonArray.getJSONObject(0).getInt("id"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
-        return "Información no disponible.";
+        return null; // Si no se encuentra el id, devuelve null
+    }
+
+
+    public static String getGameInfo(String gameId, String infoType) {
+        if (!gameId.isEmpty()) {
+            try {
+                // Consulta a la API de IGDB
+                String query = "fields name, genres.name, summary, cover.url, first_release_date; where id = " + gameId + ";";
+                String jsonResponse = executeQuery(query); // Método que debes implementar para ejecutar la consulta
+
+                if (jsonResponse != null && !jsonResponse.trim().isEmpty()) {
+                    JSONArray jsonArray = new JSONArray(jsonResponse);
+                    if (!jsonArray.isEmpty()) {
+                        JSONObject gameInfo = jsonArray.getJSONObject(0);
+
+                        switch (infoType.toLowerCase()) {
+                            case "description":
+                                return gameInfo.optString("summary", "Descripción no disponible.");
+                            case "name":
+                                return gameInfo.optString("name", "Nombre no disponible.");
+                            case "image":
+                            case "header":
+                                if (gameInfo.has("cover")) {
+                                    String imageUrl = gameInfo.optJSONObject("cover").optString("url", null);
+                                    if (imageUrl != null) {
+                                        if (imageUrl.startsWith("//")) {
+                                            imageUrl = "https:" + imageUrl; // Añadir el esquema https
+                                        }
+                                        return imageUrl.replace("t_thumb", "t_original"); // Cambiar a la resolución original
+                                    } else {
+                                        return "Imagen no disponible.";
+                                    }
+                                } else {
+                                    return "Imagen no disponible.";
+                                }
+
+                            case "release":
+                                long releaseDateMillis = gameInfo.optLong("first_release_date", 0);
+                                if (releaseDateMillis > 0) {
+                                    return new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date(releaseDateMillis * 1000));
+                                }
+                                return "Fecha de lanzamiento no disponible.";
+                            case "genre":
+                                if (gameInfo.has("genres")) {
+                                    JSONArray genresArray = gameInfo.getJSONArray("genres");
+                                    StringBuilder genres = new StringBuilder();
+                                    for (int i = 0; i < genresArray.length(); i++) {
+                                        JSONObject genre = genresArray.getJSONObject(i);
+                                        genres.append(genre.optString("name", "")).append(", ");
+                                    }
+                                    if (genres.length() > 0) {
+                                        genres.setLength(genres.length() - 2); // Eliminar la última coma y espacio
+                                    }
+                                    return genres.toString();
+                                }
+                                return "Géneros no disponibles.";
+                            default:
+                                return "Tipo de información no soportada: " + infoType;
+                        }
+                    }
+                } else {
+                    return "No se recibió respuesta de la API o la respuesta está vacía.";
+                }
+            } catch (Exception e) {
+                System.out.println("No fue posible conectar a la base de datos de IGDB: " + e.getMessage());
+            }
+        }
+        return null;
     }
 
     // Obtener los géneros del juego

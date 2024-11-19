@@ -217,9 +217,14 @@ new FormModel {
 				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "contextDeleteMouseClicked", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "openPathButton"
+				"text": "Path"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "openPathButtonMouseClicked", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 20, 195 )
-			"size": new java.awt.Dimension( 80, 148 )
+			"size": new java.awt.Dimension( 80, 170 )
 		} )
 	}
 }

@@ -28,7 +28,11 @@ public class ImageFormatter {
 
     public static Icon upscaleIco(Icon icon, int width, int height) {
 
-        if (icon.getIconHeight() != height && icon.getIconWidth() != width) {
+try{
+    if (icon.getIconHeight() != height && icon.getIconWidth() != width) {
+
+
+
 
 
         try{
@@ -40,6 +44,11 @@ public class ImageFormatter {
             System.out.println(e.getMessage());
         }
         }
+}
+    catch(NullPointerException e){
+    System.out.println(e.getMessage());
+    }
+
         return icon;
     }
 
@@ -73,7 +82,7 @@ public class ImageFormatter {
             try {
                 // Guardar la imagen como PNG
                 ImageIO.write(bufferedImage, "PNG", file);
-                System.out.println("Imagen de perfil guardada en: " + file.getAbsolutePath());
+
             } catch (IOException e) {
                 System.out.println("Error al guardar la imagen de perfil: " + e.getMessage());
             }
