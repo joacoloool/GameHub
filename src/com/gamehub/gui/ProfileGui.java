@@ -5,6 +5,7 @@
     import java.awt.event.*;
 
     import com.gamehub.exceptions.NonExistObjectException;
+    import com.gamehub.exceptions.UyMeLlameAmiMismoException;
     import com.gamehub.gui.utilities.AchievementCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
@@ -206,14 +207,22 @@
         private void addButtonFriendMouseClicked(MouseEvent e) {
             try {
                 if (manager.containsUser(new User(addFriendField.getText()))) {
-                    currentUser.addFriend(addFriendField.getText());
+                    try {
+                        currentUser.addFriend(addFriendField.getText());
+                    }
+                    catch (UyMeLlameAmiMismoException e1){
+                        JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
             }catch (NonExistObjectException e1){
                 JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }finally {
+                addFriendDialog.dispose();
+                updateProfile(manager);
+                System.out.println(currentUser.getFriends());
             }
-            addFriendDialog.dispose();
-            updateProfile(manager);
-            System.out.println(currentUser.getFriends());
+
 
         }
 

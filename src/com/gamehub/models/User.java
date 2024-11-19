@@ -233,9 +233,9 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         ImageFormatter.saveProfileImageToFile(pathName,profileImage);
     }
 
-    public void addFriend(String name) {
-        if (this.name != name){
-        friends.add(name);
+    public void addFriend(String name) throws UyMeLlameAmiMismoException {
+        if (!this.name.equals(name)){
+            friends.add(name);
         }
         else{
             throw new UyMeLlameAmiMismoException("Uy me llame a mi mismo");
