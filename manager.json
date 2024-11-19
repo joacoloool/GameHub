@@ -3,189 +3,157 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 64,
+      "count": 80,
       "description": "Add your first game.",
-      "id": 53,
+      "id": 69,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 64,
+      "count": 80,
       "description": "Get 10 games.",
-      "id": 54,
+      "id": 70,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 64,
+      "count": 80,
       "description": "Reach 50 games.",
-      "id": 55,
+      "id": 71,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 64,
+      "count": 80,
       "description": "Get to 100 games.",
-      "id": 56,
+      "id": 72,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 64,
+      "count": 80,
       "description": "Reach 200 games.",
-      "id": 57,
+      "id": 73,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 64,
+      "count": 80,
       "description": "Surpass 500 games.",
-      "id": 58,
+      "id": 74,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 64,
+      "count": 80,
       "description": "Create your first post.",
-      "id": 59,
+      "id": 75,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 64,
+      "count": 80,
       "description": "Reach 10 posts.",
-      "id": 60,
+      "id": 76,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 64,
+      "count": 80,
       "description": "Get to 50 posts.",
-      "id": 61,
+      "id": 77,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 64,
+      "count": 80,
       "description": "Publish 100 posts.",
-      "id": 62,
+      "id": 78,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 64,
+      "count": 80,
       "description": "Reach 500 posts.",
-      "id": 63,
+      "id": 79,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 64,
+      "count": 80,
       "description": "Open your first game and start the adventure!",
-      "id": 48,
+      "id": 64,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 64,
+      "count": 80,
       "description": "Open any game 10 times.",
-      "id": 49,
+      "id": 65,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 64,
+      "count": 80,
       "description": "Open a game 50 times.",
-      "id": 50,
+      "id": 66,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 64,
+      "count": 80,
       "description": "Open games 100 times in total.",
-      "id": 51,
+      "id": 67,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 64,
+      "count": 80,
       "description": "Open a game 500 times.",
-      "id": 52,
+      "id": 68,
       "type": "GAME_LAUNCHES"
     }
   ],
-  "users": [
-    {
-      "feed": {"post": []},
-      "password": "12345678",
-      "favoriteAchievements": 0,
-      "name": "a",
-      "nickname": "a",
-      "friend": [],
-      "description": "",
-      "gameList": [
-        {
-          "lastTime": "2024-11-19 02:20:06.916722",
-          "appidIGDB": "198261",
-          "releaseDate": "2023-09-19",
-          "icon": "javax.swing.ImageIcon@34f7cfd9",
-          "description": "The Champions Edition includes:\n- Limited-Time Bonus: Miami-Themed Content Pack\n- 3 days Early Access\n- F1 Life Starter Pack\n- F1 22 New Era Content\n- New My Team Icons\n- 18,000 PitCoin",
-          "title": "F1 22: Champions Edition",
-          "gameLaunches": 0,
-          "url": "",
-          "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\F1 22.lnk",
-          "appid": "",
-          "genre": "ACTION",
-          "id": 0,
-          "favorite": false,
-          "countID": 3
-        },
-        {
-          "lastTime": "2024-11-19 02:21:49.1785242",
-          "appidIGDB": "279634",
-          "releaseDate": "10 Oct, 2024",
-          "icon": "javax.swing.ImageIcon@65f095f8",
-          "description": "DRAGON BALL: Sparking! ZERO takes the legendary gameplay of the Budokai Tenkaichi series and raises it to whole new levels. Make yours the destructive power of the strongest fighters ever to appear in Dragon Ball!",
-          "title": "DRAGON BALL: Sparking! ZERO",
-          "gameLaunches": 0,
-          "url": "",
-          "path": "C:\\Users\\Public\\Desktop\\Dragon Ball Sparking ZERO.lnk",
-          "appid": "1790600",
-          "genre": "ACTION",
-          "id": 0,
-          "favorite": false,
-          "countID": 3
-        }
-      ],
-      "id": 1,
-      "gamesQuant": 2
-    },
-    {
-      "feed": {"post": []},
-      "password": "123456789",
-      "favoriteAchievements": 0,
-      "name": "a1",
-      "nickname": "a1",
-      "friend": [],
-      "description": "",
-      "gameList": [],
-      "id": 2,
-      "gamesQuant": 0
-    }
-  ]
+  "users": [{
+    "feed": {"post": []},
+    "password": "123123",
+    "favoriteAchievements": 0,
+    "name": "a",
+    "nickname": "a",
+    "friend": [],
+    "description": "",
+    "gameList": [{
+      "lastTime": "2024-11-19 03:48:35.9413053",
+      "appidIGDB": "241",
+      "releaseDate": "1 Nov, 2000",
+      "icon": "javax.swing.ImageIcon@4c309d4d",
+      "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
+      "title": "Counter-Strike",
+      "gameLaunches": 0,
+      "url": "",
+      "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
+      "appid": "10",
+      "genre": "ACTION",
+      "id": 0,
+      "favorite": false,
+      "countID": 2
+    }],
+    "id": 1,
+    "gamesQuant": 1
+  }]
 }

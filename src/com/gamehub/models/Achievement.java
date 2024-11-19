@@ -48,9 +48,6 @@ public class Achievement implements JsonConvertible,Comparable<Achievement> {
         return description;
     }
 
-    public AchievType getType() {
-        return type;
-    }
 
     public Icon getIcon() {
         return icon;
