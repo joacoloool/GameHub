@@ -6,6 +6,7 @@
 
     import com.gamehub.exceptions.NonExistObjectException;
     import com.gamehub.gui.utilities.AchievementCellRender;
+    import com.gamehub.gui.utilities.FriendsCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Game;
@@ -28,6 +29,7 @@
      */
     public class ProfileGui extends JPanel {
 
+
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
         DefaultListModel<User> friendDefaultListModel;
@@ -42,8 +44,10 @@
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
             friendDefaultListModel = new DefaultListModel<>();
+
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
+            friendList.setCellRenderer(new FriendsCellRender());
         }
 
 
@@ -225,7 +229,7 @@
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -275,13 +279,12 @@
             cancelButtonFriend = new JButton();
 
             //======== this ========
-            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
-            awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
-            ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -327,6 +330,7 @@
                         //---- friendList ----
                         friendList.setBorder(new LineBorder(new Color(0x34000000, true), 2));
                         friendList.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        friendList.setFont(friendList.getFont().deriveFont(friendList.getFont().getStyle() & ~Font.BOLD, friendList.getFont().getSize() + 1f));
                         friendScrollPanel.setViewportView(friendList);
                     }
 
@@ -789,7 +793,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
