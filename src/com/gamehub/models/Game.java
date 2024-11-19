@@ -57,84 +57,70 @@ public class Game implements JsonConvertible {
         this.icon = extractIcon(); //DEBUG
         this.lastTime = Timestamp.valueOf(LocalDateTime.now());
         this.appidIGDB = IGDBHelper.getAppid(title);
-        if (!appid.isEmpty()) {
-            generateSteamData();
-        } else if (!appidIGDB.isEmpty()) {
-            generateIGDBData();
-        }
-    }
 
-    public Game(File path, String title) {
-        this.path = path;
-        this.id = countID++;
-        this.title = title;
-        this.appid = SteamHelper.getAppid(title);
-        this.appidIGDB = IGDBHelper.getAppid(title);
-        this.icon = extractIcon(); //DEBUG
-        this.lastTime = Timestamp.valueOf(LocalDateTime.now());
-        if (!appid.isEmpty()) {
-            generateSteamData();
-        } else if (!appidIGDB.isEmpty()) {
-            generateIGDBData();
+        try{
+            if (!appid.isEmpty()) {
+                generateSteamData();
+            } else if (appidIGDB != null && !appidIGDB.isEmpty()) {
+                generateIGDBData();
+            }
         }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
     }
 
     public Game() {
-        if (lastTime == null) {
-            this.lastTime = Timestamp.valueOf(LocalDateTime.now());
-        }
+        this.lastTime = Timestamp.valueOf(LocalDateTime.now());
     }
 
     //Getters
 
 
+    public String getHeaderURL() {
+        return headerURL;
+    }
+
+    public void setHeaderURL(String headerURL) {
+        this.headerURL = headerURL;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     public Icon getHeader() {
         return header;
     }
-
-    public void setHeader(Icon header) {
-        this.header = header;
-    }
-
     public Icon getImage() {
         return image;
     }
-
-    public void setImage(Icon image) {
-        this.image = image;
-    }
-
     public String getReleaseDate() {
         return releaseDate;
     }
-
-    public String getUrl() {
-        return url;
-    }
-
     public String getAppidIGDB() {
         return appidIGDB;
     }
-
     public String getAppid() {
         return appid;
     }
-
     public String getTitle() {
         return title;
     }
-
     public boolean getFavorite() {
         return favorite;
     }
-
     public String getDescription() {
         return description;
     }
 
     public String getGenre() {
         if (genre != null) {
-            System.out.println(genre.name());
             return genre.name();
         }
         return "UNKNOWN"; // Si no hay valor, devuelve algo predeterminado
@@ -155,18 +141,6 @@ public class Game implements JsonConvertible {
 
     public File getPath() {
         return path;
-    }
-
-    public static int getCountID() {
-        return countID;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public boolean isFavorite() {
-        return favorite;
     }
 
     public Icon getIcon() {
@@ -333,11 +307,12 @@ public class Game implements JsonConvertible {
         if (!appid.isEmpty()) {
             this.headerURL = SteamHelper.getGameInfo(appid, "header");
             this.imageURL = SteamHelper.getGameInfo(appid, "image");
+
             this.header = urlToIcon(headerURL);
             this.image = urlToIcon(imageURL);
         } else if (!appidIGDB.isEmpty()) {
-            headerURL = IGDBHelper.getGameInfo(appid, "header");
-            imageURL = IGDBHelper.getGameInfo(appid, "image");
+            headerURL = IGDBHelper.getGameInfo(appidIGDB, "header");
+            imageURL = IGDBHelper.getGameInfo(appidIGDB, "image");
             this.header = urlToIcon(headerURL);
             this.image = urlToIcon(imageURL);
         }
@@ -358,13 +333,12 @@ public class Game implements JsonConvertible {
 
     public void loadImageGame() {
         String pathName = title + "_ig";
-        System.out.println("Cargando imagen del juego: " + pathName); // Debug
+
         this.image = ImageFormatter.loadProfileImageFromFile(pathName);
     }
 
     public void loadHeaderGame() {
         String pathName = title + "_he";
-        System.out.println("Cargando encabezado del juego: " + pathName); // Debug
         this.header = ImageFormatter.loadProfileImageFromFile(pathName);
     }
 
