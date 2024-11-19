@@ -18,8 +18,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-
 /**
+ * Clase que representa la interfaz grafica de la biblioteca de juegos.
+ * Permite a los usuarios gestionar su lista de juegos.
+ *
  * @author Administrator
  */
 public class LibraryGUI extends JPanel {
@@ -28,21 +30,28 @@ public class LibraryGUI extends JPanel {
     User user;
     Game selectedGame;
 
+    /**
+     * Constructor de la clase LibraryGUI.
+     *
+     * @param user El usuario que posee la biblioteca de juegos.
+     */
     public LibraryGUI(User user) {
         initComponents();
         gamesList.setModel(gamesListModel);
         gamesList.setCellRenderer(new GameCellRender());
         this.user = user;
 
-
         for (Game game : user.getGameList()) {
             gamesListModel.addElement(game);
         }
     }
 
-
-
-    public void addGame(Game game) {//añadi extra seguridad cosa de que solo exista un juego
+    /**
+     * Agrega un juego a la biblioteca del usuario.
+     *
+     * @param game El juego a agregar.
+     */
+    public void addGame(Game game) {
         try {
             user.addGame(game);
             gamesListModel.addElement(game);
@@ -51,13 +60,20 @@ public class LibraryGUI extends JPanel {
         }
     }
 
+    /**
+     * Maneja el evento de clic en el boton de agregar juego.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void addGameMouseClicked(MouseEvent e) {
         GameGUI addgame = new GameGUI(this);  // 'this' es la referencia de LibraryGUI
         addgame.setVisible(true);
     }
 
+    /**
+     * Actualiza la informacion del juego seleccionado.
+     */
     private void updateInfo() {
-
         if (selectedGame != null) {
             if (selectedGame.getLastTime() != null) {
                 lastPlayedL.setText(selectedGame.getLastTimeFormatted());
@@ -76,41 +92,68 @@ public class LibraryGUI extends JPanel {
             if (selectedGame.getDescription() != null) {
                 descriptionL.setText(selectedGame.getDescription());
             } else {
-                descriptionL.setText("This game not have any description.");
+                descriptionL.setText("This game does not have any description.");
             }
         }
     }
 
+    /**
+     * Maneja el evento de clic en el boton de jugar.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void playButtonMouseClicked(MouseEvent e) {
         try {
             selectedGame.run();
             updateInfo();
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "You have not selected a game");
+            JOptionPane.showMessageDialog(null, "No has seleccionado un juego.");
         }
     }
 
+    /**
+     * Maneja el evento de seleccion de un juego en la lista.
+     *
+     * @param e El evento de seleccion.
+     */
     private void selectedGame(ListSelectionEvent e) {
         selectedGame = (Game) gamesList.getSelectedValue();
         updateInfo();
         updatePics();
     }
 
+    /**
+     * Actualiza la imagen del juego seleccionado.
+     */
     private void updatePics() {
         if (selectedGame != null) {
             imageL.setIcon(selectedGame.getImage());
         }
-
     }
 
-    public User getUser() {
+    /**
+     * Obtiene el usuario asociado a la biblioteca.
+     *
+     * @return El usuario.
+     */
+    public User getUser () {
         return user;
     }
 
-    public void setUser(User user) {
+    /**
+     * Establece el usuario asociado a la biblioteca.
+     *
+     * @param user El usuario a establecer.
+     */
+    public void setUser (User user) {
         this.user = user;
     }
 
+    /**
+     * Maneja el evento de clic derecho en la lista de juegos.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void gamesListRightClick(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON3) {
             selectedGame = (Game) gamesList.getSelectedValue();
@@ -120,12 +163,21 @@ public class LibraryGUI extends JPanel {
         }
     }
 
-
+    /**
+     * Maneja el evento de clic en la opcion de jugar del menu contextual.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void contextPlayMouseClicked(MouseEvent e) {
         playButtonMouseClicked(e);
         popupList.setVisible(false);
     }
 
+    /**
+     * Maneja el evento de clic en la opcion de eliminar del menu contextual.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void contextDeleteMouseClicked(MouseEvent e) {
         Game game = selectedGame;
         try {
@@ -138,23 +190,34 @@ public class LibraryGUI extends JPanel {
             }
             popupList.setVisible(false);
         } catch (NonExistObjectException e1) {
-            // Mostrar un mensaje de error en un pop-up
             JOptionPane.showMessageDialog(null, "Este juego no existe.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
+    /**
+     * Maneja el evento de clic en la opcion de modificar del menu contextual.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void contextModifyMouseClicked(MouseEvent e) {
         GameGUI modifyGame = new GameGUI(selectedGame, this);  // 'this' es la referencia de LibraryGUI
         modifyGame.setAlwaysOnTop(true);
         modifyGame.setVisible(true);
     }
 
+    /**
+     * Maneja el evento de clic en la opcion de marcar como favorito del menu contextual.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void contextFavoriteMouseClicked(MouseEvent e) {
         selectedGame.setFavorite(!selectedGame.getFavorite());
         orderByFavorite();
     }
 
+    /**
+     * Ordena los juegos por favoritos.
+     */
     private void orderByFavorite() {
         ArrayList<Game> games = new ArrayList<>();
         ArrayList<Game> others = new ArrayList<>();
@@ -175,24 +238,49 @@ public class LibraryGUI extends JPanel {
         }
     }
 
+    /**
+     * Maneja el evento de entrada del mouse en el boton de agregar juego.
+     *
+     * @param e El evento de entrada del mouse.
+     */
     private void addGamePlusMouseEntered(MouseEvent e) {
         addGame.setForeground(Color.white);
         addGamePlus.setForeground(Color.white);
     }
 
+    /**
+     * Maneja el evento de salida del mouse en el boton de agregar juego.
+     *
+     * @param e El evento de salida del mouse.
+     */
     private void addGameMouseExited(MouseEvent e) {
         addGame.setForeground(Color.decode("#999999"));
         addGamePlus.setForeground(Color.decode("#999999"));
     }
 
+    /**
+     * Maneja el evento de clic en el boton para abrir la ruta del juego.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void openPathButtonMouseClicked(MouseEvent e) {
         selectedGame.openPath();
     }
 
+    /**
+     * Maneja el evento de clic en el boton de ordenar juegos.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void sortButtonMouseClicked(MouseEvent e) {
         sortMenu.show(e.getComponent(), e.getX(), e.getY());
     }
 
+    /**
+     * Maneja el evento de clic en el boton para ordenar por nombre.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void nameButtonMouseClicked(MouseEvent e) {
         user.sortName();
         gamesListModel.removeAllElements();
@@ -200,6 +288,11 @@ public class LibraryGUI extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Maneja el evento de clic en el boton para ordenar por ultima vez jugado.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void lastButtonMouseClicked(MouseEvent e) {
         user.sortLastTime();
         gamesListModel.removeAllElements();
@@ -207,13 +300,17 @@ public class LibraryGUI extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Maneja el evento de clic en el boton para ordenar por cantidad de veces jugado.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void mostButtonMouseClicked(MouseEvent e) {
         user.sortPlayCount();
         gamesListModel.removeAllElements();
         gamesListModel.addAll(user.getGameList());
         this.repaint();
     }
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off

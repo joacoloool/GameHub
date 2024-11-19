@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Nov 14 17:43:38 ART 2024
- */
-
 package com.gamehub.gui;
 
 import com.gamehub.enums.Genre;
@@ -15,45 +11,75 @@ import javax.swing.GroupLayout;
 import javax.swing.border.*;
 
 /**
- * @author Administrator
+ * Clase que representa la interfaz gráfica para gestionar la información de un juego.
+ * Permite visualizar y editar los detalles de un juego seleccionado.
  */
-
 public class GameGUI extends JDialog {
 
-    private LibraryGUI libraryGUI;
+    private final LibraryGUI libraryGUI; // Referencia a la interfaz de la biblioteca de juegos.
 
+    /**
+     * Constructor que inicializa la interfaz con un juego seleccionado.
+     *
+     * @param selectedGame El juego que se va a mostrar.
+     * @param libraryGUI   La interfaz de la biblioteca de juegos.
+     */
     public GameGUI(Game selectedGame, LibraryGUI libraryGUI) {
-        initComponents();
-        this.libraryGUI = libraryGUI;
-        setLabels(selectedGame);
+        initComponents(); // Inicializa los componentes de la interfaz.
+        this.libraryGUI = libraryGUI; // Guarda la referencia a la biblioteca.
+        setLabels(selectedGame); // Establece los campos con la información del juego seleccionado.
     }
 
+    /**
+     * Constructor que inicializa la interfaz sin un juego seleccionado.
+     *
+     * @param libraryGUI La interfaz de la biblioteca de juegos.
+     */
     public GameGUI(LibraryGUI libraryGUI) {
-        initComponents();
-        this.libraryGUI = libraryGUI;
-    }
-    private void cancelButtonMouseClicked(MouseEvent e) {
-        closeWindow();
+        initComponents(); // Inicializa los componentes de la interfaz.
+        this.libraryGUI = libraryGUI; // Guarda la referencia a la biblioteca.
     }
 
+    /**
+     * Metodo que se ejecuta al hacer clic en el botón de cancelar.
+     * Cierra la ventana del diálogo.
+     */
+    private void cancelButtonMouseClicked(MouseEvent e) {
+        closeWindow(); // Cierra la ventana si se hace clic en el botón de cancelar.
+    }
+
+    /**
+     * Metodo que cierra la ventana del diálogo.
+     */
     private void closeWindow() {
         Window window = SwingUtilities.getWindowAncestor(this);
         if (window != null) {
-            window.dispose();
+            window.dispose(); // Cierra la ventana del diálogo.
         }
     }
 
+    /**
+     * Metodo que se ejecuta al hacer clic en el botón para buscar un archivo.
+     * Abre un cuadro de diálogo para seleccionar un archivo y establece los campos con la información del archivo seleccionado.
+     */
     private void searchPathButtonMouseClicked(MouseEvent e) {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int result = chooser.showOpenDialog(null);
+        JFileChooser chooser = new JFileChooser(); // Crea un cuadro de diálogo para seleccionar un archivo.
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY); // Configura para seleccionar solo archivos.
+        int result = chooser.showOpenDialog(null); // Muestra el cuadro de diálogo.
 
+        // Si se selecciona un archivo, actualiza los campos con la información del archivo.
         if (result == JFileChooser.APPROVE_OPTION) {
             setLabels(chooser.getSelectedFile());
         }
     }
 
-    private void setLabels (Game game) {
+    /**
+     * Metodo que establece los campos de texto con la información del juego.
+     *
+     * @param game El juego del cual se obtendrá la información.
+     */
+    private void setLabels(Game game) {
+        // Establece los campos de texto con la información del juego.
         titleField.setText(game.getTitle());
         releaseField.setText(game.getReleaseDate());
         descriptionField.setText(game.getDescription());
@@ -63,9 +89,16 @@ public class GameGUI extends JDialog {
         genreBox.setSelectedItem(game.getGenre());
     }
 
-    private void setLabels(File file){
+    /**
+     * Metodo que establece los campos de texto a partir de un archivo seleccionado.
+     *
+     * @param file El archivo seleccionado que representa un juego.
+     */
+    private void setLabels(File file) {
+        // Establece la ruta del archivo y crea un nuevo objeto Game a partir del archivo.
         pathField.setText(file.getAbsolutePath());
-        Game game = new Game(file);
+        Game game = new Game(file); // Crea un nuevo objeto Game a partir del archivo.
+        // Establece los campos de texto con la información del juego.
         descriptionField.setText(game.getDescription());
         titleField.setText(game.getTitle());
         releaseField.setText(game.getReleaseDate());
@@ -74,7 +107,12 @@ public class GameGUI extends JDialog {
         genreBox.setSelectedItem(game.getGenre());
     }
 
+    /**
+     * Metodo que se ejecuta al hacer clic en el botón OK.
+     * Crea un nuevo objeto Game con la información ingresada en los campos de texto.
+     */
     public void okButtonMouseClicked(MouseEvent e) {
+        // Crea un nuevo objeto Game y establece sus propiedades a partir de los campos de texto.
         File file = new File(pathField.getText());
         Game game = new Game();
         game.setTitle(titleField.getText());
@@ -84,18 +122,17 @@ public class GameGUI extends JDialog {
         game.setAppid(steamField.getText());
         game.setPath(new File(pathField.getText()));
         game.setGenre((Genre) genreBox.getSelectedItem());
-        game.setIcon(game.extractIcon());
-        game.setImages();
-        closeWindow();
-        if(game.equals(libraryGUI.selectedGame))
-        {
-            libraryGUI.user.deleteGame(game);
-            libraryGUI.gamesListModel.remove(libraryGUI.gamesListModel.indexOf(game));
+        game.setIcon(game.extractIcon()); // Extrae el ícono del juego.
+        game.setImages(); // Establece las imágenes del juego.
+        closeWindow(); // Cierra la ventana después de guardar la información.
+
+        // Verifica si el juego agregado es el mismo que el juego seleccionado en la biblioteca.
+        if (game.equals(libraryGUI.selectedGame)) {
+            libraryGUI.user.deleteGame(game); // Elimina el juego de la biblioteca si es el mismo.
+            libraryGUI.gamesListModel.remove(libraryGUI.gamesListModel.indexOf(game)); // Elimina el juego de la lista.
         }
-        libraryGUI.addGame(game);
+        libraryGUI.addGame(game); // Agrega el nuevo juego a la biblioteca.
     }
-
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -128,12 +165,11 @@ public class GameGUI extends JDialog {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========

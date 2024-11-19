@@ -8,12 +8,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Clase IGDBHelper que proporciona métodos para interactuar con la API de IGDB (Internet Game Database).
+ */
 public class IGDBHelper {
 
     private static final String CLIENT_ID = "na9kjqze3tefu0tpnleahe90oi75rh"; // Client ID
     private static final String CLIENT_SECRET = "sxdpf9hwfw20ueadd4uda3ml2ri69x"; // Client Secret
 
-    // Método para obtener el token de acceso
+    /**
+     * Método privado que obtiene el token de acceso a la API de IGDB.
+     *
+     * @return El token de acceso como una cadena, o null si no se pudo obtener.
+     */
     private static String getAccessToken() {
         try {
             URL url = new URL("https://id.twitch.tv/oauth2/token?client_id=" + CLIENT_ID +
@@ -32,7 +39,12 @@ public class IGDBHelper {
         return null;
     }
 
-    // Método para ejecutar una consulta
+    /**
+     * Método privado que ejecuta una consulta a la API de IGDB.
+     *
+     * @param query La consulta a ejecutar.
+     * @return La respuesta JSON como una cadena, o null si hubo un error.
+     */
     private static String executeQuery(String query) {
         try {
             HttpURLConnection con = getConnection();
@@ -48,7 +60,12 @@ public class IGDBHelper {
         return null;
     }
 
-    // Conexión HTTP para la API de IGDB
+    /**
+     * Método privado que establece la conexión HTTP para la API de IGDB.
+     *
+     * @return Un objeto HttpURLConnection configurado para la API de IGDB.
+     * @throws IOException Si ocurre un error al abrir la conexión.
+     */
     private static HttpURLConnection getConnection() throws IOException {
         HttpURLConnection con = (HttpURLConnection) new URL("https://api.igdb.com/v4/games").openConnection();
         con.setRequestMethod("POST");
@@ -58,7 +75,12 @@ public class IGDBHelper {
         return con;
     }
 
-    // Método para obtener el ID de la aplicación por nombre
+    /**
+     * Método público que obtiene el ID de un juego dado su nombre.
+     *
+     * @param gameName El nombre del juego.
+     * @return El ID del juego como una cadena, o null si no se encontró.
+     */
     public static String getAppid(String gameName) {
         String query = "search \"" + gameName + "\"; fields id;";
         String jsonResponse = executeQuery(query);
@@ -76,13 +98,19 @@ public class IGDBHelper {
         return null; // Si no se encuentra el id, devuelve null
     }
 
-
+    /**
+     * Método público que obtiene información sobre un juego dado su ID y el tipo de información solicitada.
+     *
+     * @param gameId   El ID del juego.
+     * @param infoType El tipo de información solicitada (nombre, descripción, imagen, etc.).
+     * @return La información solicitada como una cadena, o un mensaje de error si no se pudo obtener.
+     */
     public static String getGameInfo(String gameId, String infoType) {
         if (!gameId.isEmpty()) {
             try {
                 // Consulta a la API de IGDB
                 String query = "fields name, genres.name, summary, cover.url, first_release_date; where id = " + gameId + ";";
-                String jsonResponse = executeQuery(query); // Método que debes implementar para ejecutar la consulta
+                String jsonResponse = executeQuery(query); // Método que ejecuta la consulta
 
                 if (jsonResponse != null && !jsonResponse.trim().isEmpty()) {
                     JSONArray jsonArray = new JSONArray(jsonResponse);

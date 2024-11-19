@@ -1,8 +1,9 @@
 package com.gamehub.enums;
 
-/** *
- * Tipos de generos de los juegos.
- * */
+/**
+ * Enumeración Genre que representa los diferentes tipos de géneros de los juegos.
+ * Esta enumeración permite categorizar los juegos en base a su estilo y mecánicas de juego.
+ */
 public enum Genre {
 
     ACTION,
@@ -22,5 +23,9 @@ public enum Genre {
     SANDBOX,
     RTS,
     INDIE,
+
+    /**
+     * Género desconocido, utilizado cuando no se puede clasificar un juego en un género específico.
+     */
     UNKNOWN,
-    }
+}

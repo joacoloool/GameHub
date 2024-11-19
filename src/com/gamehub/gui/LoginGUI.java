@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Fri Nov 15 23:23:38 ART 2024
- */
-
 package com.gamehub.gui;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,6 +10,9 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 /**
+ * Clase que representa la interfaz grafica de inicio de sesion.
+ * Permite a los usuarios iniciar sesion o crear una cuenta nueva.
+ *
  * @author Administrator
  */
 public class LoginGUI extends JFrame {
@@ -21,11 +20,22 @@ public class LoginGUI extends JFrame {
     Manager manager;
     Boolean register = false;
 
+    /**
+     * Constructor de la clase LoginGUI.
+     *
+     * @param manager El administrador que maneja los usuarios.
+     */
     public LoginGUI(Manager manager) {
         initComponents();
         this.manager = manager;
     }
 
+    /**
+     * Convierte un arreglo de caracteres de contraseña a un String.
+     *
+     * @param password El arreglo de caracteres de la contraseña.
+     * @return La contraseña como un String.
+     */
     public static String passwordToString(char[] password) {
         StringBuilder bd = new StringBuilder();
         for (char c : password) {
@@ -34,10 +44,21 @@ public class LoginGUI extends JFrame {
         return bd.toString();
     }
 
+    /**
+     * Obtiene el administrador de usuarios.
+     *
+     * @return El objeto Manager que maneja los usuarios.
+     */
     public Manager getManager() {
         return manager;
     }
 
+    /**
+     * Maneja el evento de clic en el boton de OK.
+     * Verifica si el usuario desea registrarse o iniciar sesion.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void okButtonMouseClicked(MouseEvent e) {
         // Obtener la contraseña como un String
         String password = passwordToString(passwordField1.getPassword());
@@ -67,13 +88,19 @@ public class LoginGUI extends JFrame {
                 mainGUI.setVisible(true);
                 this.dispose(); // Cerramos la ventana actual
             } else {
-                // Mostramos un mensaje si las credenciales no son válidas
+                // Mostramos un mensaje si las credenciales no son validas
                 passwordWarning.setText("Usuario o contraseña incorrectos.");
                 passwordWarning.setVisible(true);
             }
         }
     }
 
+    /**
+     * Maneja el evento de clic en el boton de crear cuenta.
+     * Cambia la interfaz para permitir el registro de un nuevo usuario.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void createAccountButtonMouseClicked(MouseEvent e) {
         gamehubL.setText("Create Account");
         signInL.setText("Name");
@@ -84,6 +111,12 @@ public class LoginGUI extends JFrame {
         backButton.setVisible(true);
     }
 
+    /**
+     * Maneja el evento de clic en el boton de volver.
+     * Regresa la interfaz a la pantalla de inicio de sesion.
+     *
+     * @param e El evento de clic del mouse.
+     */
     private void backButtonMouseClicked(MouseEvent e) {
         gamehubL.setText("GAMEHUB®");
         gamehubL.setText("Create Account");
@@ -93,10 +126,6 @@ public class LoginGUI extends JFrame {
         register = false;
         passwordWarning.setVisible(false);
         backButton.setVisible(false);
-    }
-
-    private void thisWindowClosed(WindowEvent e) {
-        // TODO add your code here
     }
 
     private void initComponents() {
@@ -120,10 +149,6 @@ public class LoginGUI extends JFrame {
         setAlwaysOnTop(true);
         setMaximumSize(new Dimension(620, 420));
         addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                thisWindowClosed(e);
-            }
         });
         var contentPane = getContentPane();
 
