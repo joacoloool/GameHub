@@ -28,11 +28,11 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "descriptionLabel"
-						"text": "//DESCRIPTION"
 						"font": new java.awt.Font( "JetBrains Mono", 0, 13 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 0
 						"cursor": #Cursor0
+						"text": "The user did not specify profile information"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "modifyProfileButton"
@@ -88,11 +88,12 @@ new FormModel {
 								"focusable": false
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 								"cursor": #Cursor0
+								"text": "Try to open one, you might get a surprise ;)"
 							} )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lastGameL"
-							"text": "lastGameL"
+							"text": "You haven't opened any game"
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 7, false )
 							"cursor": #Cursor0
 						} )
