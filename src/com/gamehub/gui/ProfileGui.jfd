@@ -52,6 +52,7 @@ new FormModel {
 							name: "friendList"
 							"border": new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 2, false )
 							"cursor": #Cursor1
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 1, false )
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
