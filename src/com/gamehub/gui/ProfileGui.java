@@ -32,9 +32,9 @@
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
         DefaultListModel<User> friendDefaultListModel;
-        private User currentUser;
-        private User friendProfile;
+        private final User currentUser;
         private final Manager manager;
+        protected User currentFriend;
 
 
         public ProfileGui(Manager manager, User user) {
@@ -46,13 +46,6 @@
             friendDefaultListModel = new DefaultListModel<>();
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
-        }
-
-
-        public void viewFriendProfile(String friendName){
-
-            friendProfile = manager.getUserByName(friendName);
-            updateProfile(manager);
         }
 
 
@@ -207,10 +200,16 @@
         updateProfile(manager);
         }
 
+
+
         private void addFriendButtonMouseClicked(MouseEvent e) {
             addFriendDialog.setVisible(true);
 
         }
+        // En ProfileGui.java
+
+
+
 
         private void addButtonFriendMouseClicked(MouseEvent e) {
             try {
@@ -244,28 +243,39 @@
 
         }
 
-        private void goBackButtonMouseClicked(MouseEvent e) {
-
-        }
-
         private void friendListMouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) {
+           if (e.getClickCount() == 2) {
                 JList<User> list = (JList<User>) e.getSource();
                 int index = list.locationToIndex(e.getPoint());
                 if (index != -1) {
-                    User selectedUser  = list.getModel().getElementAt(index);
-                    viewFriendProfile(selectedUser.getNickname());
+                    currentFriend = list.getModel().getElementAt(index);
+                    dialog3.setVisible(true);
+
                 }
-
-
             }
         }
+
+        private void goBackButtonMouseClicked(MouseEvent e) {
+            // TODO add your code here
+        }
+
+        private void postButton2MouseClicked(MouseEvent e) {
+                currentFriend.createPost(postField2.getText(),currentUser.getName());
+                dialog3.setVisible(false);
+        }
+
+        private void postCancelButton2MouseClicked(MouseEvent e) {
+            dialog3.setVisible(false);
+        }
+
+
+
 
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -317,15 +327,19 @@
             errorDialog = new JDialog();
             okButton = new JButton();
             exceptionLabel = new JLabel();
+            dialog3 = new JDialog();
+            scrollPane5 = new JScrollPane();
+            postField2 = new JTextPane();
+            postCancelButton2 = new JButton();
+            postButton2 = new JButton();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
 
             //======== profile ========
             {
@@ -505,6 +519,7 @@
 
                     //---- goBackButton ----
                     goBackButton.setText("<");
+                    goBackButton.setVisible(false);
                     goBackButton.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -893,11 +908,70 @@
                 errorDialog.pack();
                 errorDialog.setLocationRelativeTo(errorDialog.getOwner());
             }
+
+            //======== dialog3 ========
+            {
+                dialog3.setTitle("Friend Post");
+                var dialog3ContentPane = dialog3.getContentPane();
+
+                //======== scrollPane5 ========
+                {
+
+                    //---- postField2 ----
+                    postField2.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                    scrollPane5.setViewportView(postField2);
+                }
+
+                //---- postCancelButton2 ----
+                postCancelButton2.setText("Cancel");
+                postCancelButton2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        postCancelButtonMouseClicked(e);
+                        postCancelButton2MouseClicked(e);
+                    }
+                });
+
+                //---- postButton2 ----
+                postButton2.setText("Post");
+                postButton2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        postButton2MouseClicked(e);
+                    }
+                });
+
+                GroupLayout dialog3ContentPaneLayout = new GroupLayout(dialog3ContentPane);
+                dialog3ContentPane.setLayout(dialog3ContentPaneLayout);
+                dialog3ContentPaneLayout.setHorizontalGroup(
+                    dialog3ContentPaneLayout.createParallelGroup()
+                        .addGroup(dialog3ContentPaneLayout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addComponent(postCancelButton2)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                            .addComponent(postButton2)
+                            .addGap(75, 75, 75))
+                        .addComponent(scrollPane5, GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                );
+                dialog3ContentPaneLayout.setVerticalGroup(
+                    dialog3ContentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, dialog3ContentPaneLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(scrollPane5, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(dialog3ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(postCancelButton2)
+                                .addComponent(postButton2))
+                            .addGap(18, 18, 18))
+                );
+                dialog3.pack();
+                dialog3.setLocationRelativeTo(dialog3.getOwner());
+            }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
@@ -949,5 +1023,10 @@
         private JDialog errorDialog;
         private JButton okButton;
         private JLabel exceptionLabel;
+        private JDialog dialog3;
+        private JScrollPane scrollPane5;
+        private JTextPane postField2;
+        private JButton postCancelButton2;
+        private JButton postButton2;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

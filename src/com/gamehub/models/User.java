@@ -312,6 +312,10 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
         feed.createPost(str,name);
     }
 
+    public void createPost(String str,String name) {
+        feed.createPost(str,name);
+    }
+
     public void deletePost(int i) {
         feed.deletePost(i);
     }
