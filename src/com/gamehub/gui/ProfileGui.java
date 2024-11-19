@@ -7,7 +7,6 @@
     import com.gamehub.exceptions.NonExistObjectException;
     import com.gamehub.exceptions.UyMeLlameAmiMismoException;
     import com.gamehub.gui.utilities.AchievementCellRender;
-    import com.gamehub.gui.utilities.FriendsCellRender;
     import com.gamehub.managers.Manager;
     import com.gamehub.models.Achievement;
     import com.gamehub.models.Game;
@@ -30,7 +29,6 @@
      */
     public class ProfileGui extends JPanel {
 
-
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
         DefaultListModel<User> friendDefaultListModel;
@@ -45,10 +43,8 @@
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
             friendDefaultListModel = new DefaultListModel<>();
-
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
-            friendList.setCellRenderer(new FriendsCellRender());
         }
 
 
@@ -205,7 +201,7 @@
 
         private void addFriendButtonMouseClicked(MouseEvent e) {
             addFriendDialog.setVisible(true);
-            addFriendDialog.setModal(true);
+
         }
 
         private void addButtonFriendMouseClicked(MouseEvent e) {
@@ -215,17 +211,18 @@
                         currentUser.addFriend(addFriendField.getText());
                     }
                     catch (UyMeLlameAmiMismoException e1){
-                        JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-
+                        exceptionLabel.setText(e1.getMessage());
+                        errorDialog.setVisible(true);
                     }
                 }
             }catch (NonExistObjectException e1){
-                JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }finally {
+
+                exceptionLabel.setText(e1.getMessage());
+                errorDialog.setVisible(true);
+            }
                 addFriendDialog.dispose();
                 updateProfile(manager);
                 System.out.println(currentUser.getFriends());
-            }
 
 
         }
@@ -234,11 +231,16 @@
             addFriendDialog.dispose();
         }
 
+        private void okButtonMouseClicked(MouseEvent e) {
+          errorDialog.dispose();
+
+        }
+
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -286,14 +288,18 @@
             friendLabel = new JLabel();
             addButtonFriend = new JButton();
             cancelButtonFriend = new JButton();
+            errorDialog = new JDialog();
+            okButton = new JButton();
+            exceptionLabel = new JLabel();
 
             //======== this ========
-            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border
+            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
+            ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
+            ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+            .beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
+            ();}});
 
             //======== profile ========
             {
@@ -798,11 +804,55 @@
                 addFriendDialog.pack();
                 addFriendDialog.setLocationRelativeTo(addFriendDialog.getOwner());
             }
+
+            //======== errorDialog ========
+            {
+                errorDialog.setTitle("Error");
+                var errorDialogContentPane = errorDialog.getContentPane();
+
+                //---- okButton ----
+                okButton.setText("Ok");
+                okButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        okButtonMouseClicked(e);
+                    }
+                });
+
+                //---- exceptionLabel ----
+                exceptionLabel.setText(".");
+                exceptionLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+
+                GroupLayout errorDialogContentPaneLayout = new GroupLayout(errorDialogContentPane);
+                errorDialogContentPane.setLayout(errorDialogContentPaneLayout);
+                errorDialogContentPaneLayout.setHorizontalGroup(
+                    errorDialogContentPaneLayout.createParallelGroup()
+                        .addGroup(errorDialogContentPaneLayout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(okButton)
+                            .addContainerGap(84, Short.MAX_VALUE))
+                        .addGroup(GroupLayout.Alignment.TRAILING, errorDialogContentPaneLayout.createSequentialGroup()
+                            .addContainerGap(31, Short.MAX_VALUE)
+                            .addComponent(exceptionLabel, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
+                            .addGap(28, 28, 28))
+                );
+                errorDialogContentPaneLayout.setVerticalGroup(
+                    errorDialogContentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, errorDialogContentPaneLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(exceptionLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(okButton)
+                            .addGap(35, 35, 35))
+                );
+                errorDialog.pack();
+                errorDialog.setLocationRelativeTo(errorDialog.getOwner());
+            }
             // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
+        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
@@ -850,5 +900,8 @@
         private JLabel friendLabel;
         private JButton addButtonFriend;
         private JButton cancelButtonFriend;
+        private JDialog errorDialog;
+        private JButton okButton;
+        private JLabel exceptionLabel;
         // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
     }

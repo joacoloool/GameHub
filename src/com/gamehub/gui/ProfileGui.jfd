@@ -227,7 +227,7 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 1050, 770 )
+			"location": new java.awt.Point( 1045, 500 )
 			"size": new java.awt.Dimension( 135, 85 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -253,7 +253,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "postButtonMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 610, 750 )
+			"location": new java.awt.Point( 760, 755 )
 			"size": new java.awt.Dimension( 425, 250 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -280,8 +280,28 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "cancelButtonFriendMouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 175, 750 )
+			"location": new java.awt.Point( 5, 780 )
 			"size": new java.awt.Dimension( 335, 170 )
+		} )
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:81:p, comp okButton:::p::p, space ::84:x}, seq t {space ::31:x, comp exceptionLabel:::p:184:p, space :p:28:p}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp exceptionLabel:::p:33:p, space :::x, comp okButton:::p::p, space :p:35:p}}"
+		} ) {
+			name: "errorDialog"
+			"title": "Error"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "okButton"
+				"text": "Ok"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "exceptionLabel"
+				"text": "."
+				"horizontalTextPosition": 0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 405, 770 )
+			"size": new java.awt.Dimension( 245, 145 )
 		} )
 	}
 }
