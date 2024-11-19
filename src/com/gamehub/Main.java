@@ -45,3 +45,7 @@ public class Main {
         System.out.println(loginGUI.getManager().toString());
     }
 }
+
+
+//gracias por ver :)
+//en honor a alan arruti dep
