@@ -27,20 +27,22 @@ public class ImageFormatter {
     }
 
     public static Icon upscaleIco(Icon icon, int width, int height) {
-        Image img = ((ImageIcon) icon).getImage();
-        Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return new ImageIcon(scaledImg);
+
+        if (icon.getIconHeight() != height && icon.getIconWidth() != width) {
+
+
+        try{
+            Image img = ((ImageIcon) icon).getImage();
+            Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(scaledImg);
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+        }
+        return icon;
     }
 
-    public static Icon getProfilePictureFromDirectory(String name) {
-        try {
-            BufferedImage icoImage = ImageIO.read(new File("images/profilePictures/" + name + ".png"));
-            return new ImageIcon(icoImage);
-        } catch (IOException e) {
-            System.out.println("No se encontró la ruta del archivo: " + e.getMessage());
-            return null;
-        }
-    }
 
     public static Icon getIconFromFile(File file) {
         try {
@@ -61,7 +63,7 @@ public class ImageFormatter {
             g.dispose();
 
             // Crear el directorio si no existe
-            File dir = new File("images/profilePictures");
+            File dir = new File("src/com/gamehub/images/profilePictures");
             if (!dir.exists()) {
                 dir.mkdirs(); // Crea el directorio si no existe
             }
@@ -81,7 +83,7 @@ public class ImageFormatter {
     }
 
     public static Icon loadProfileImageFromFile(String filePath) {
-        File file = new File(filePath);
+        File file = new File("src/com/gamehub/images/profilePictures",filePath+".png");
         if (file.exists()) {
             try {
                 // Leer la imagen desde el archivo

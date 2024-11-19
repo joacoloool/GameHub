@@ -353,16 +353,17 @@ public class Game implements JsonConvertible {
         ImageFormatter.saveProfileImageToFile(pathName,header);
     }
 
-    public void loadImageGame(){
+    public void loadImageGame() {
         String pathName = title + "_ig";
-        this.image= ImageFormatter.loadProfileImageFromFile(pathName);
+        System.out.println("Cargando imagen del juego: " + pathName); // Debug
+        this.image = ImageFormatter.loadProfileImageFromFile(pathName);
     }
 
-    public void loadHeaderGame(){
+    public void loadHeaderGame() {
         String pathName = title + "_he";
+        System.out.println("Cargando encabezado del juego: " + pathName); // Debug
         this.header = ImageFormatter.loadProfileImageFromFile(pathName);
     }
-
 
     private String generateSteamURL() {
         return "https://store.steampowered.com/app/" + appid;

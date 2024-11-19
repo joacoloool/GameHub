@@ -81,6 +81,7 @@ public class JsonUtil {
         Post post = new Post("");
         post.setMessage(m.getString("message"));
         post.setFav(m.getBoolean("fav"));
+        post.setUser(m.getString("user"));
         return post;
     }
 
@@ -102,6 +103,8 @@ public class JsonUtil {
         user.setGamesQuant(u.getInt("gamesQuant"));
         user.setGameList(JSONArrayToGames(u.getJSONArray("gameList")));
         user.setFriends(JSONtoFriends(u.getJSONArray("friends")));
+        user.setNickname(u.getString("nickname"));
+        user.setFeed(JSONToFeed(u.getJSONObject("feed")));
 
 
         return user;

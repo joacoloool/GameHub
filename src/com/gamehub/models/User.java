@@ -261,6 +261,7 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
     public void loadProfileImage(){
         String pathName = name + "_pf";
         this.profileImage = ImageFormatter.loadProfileImageFromFile(pathName);
+        System.out.println("EJECUTAMOS EL LOAD PROFILE IMAGE CON LA RUTA \n"+ pathName);
     }
 
     public void loadAllImages()
@@ -351,7 +352,13 @@ public class User implements SortTool<Game>, JsonConvertible, Comparable<User> {
             user.put("description", description);
             user.put("favoriteAchievements", favoriteAchievement);
             user.put("password", password);
-            user.put("nickname", nickname);
+            if (nickname.isEmpty()){
+                user.put("nickname",name);
+            }
+            else{
+                user.put("nickname", nickname);
+            }
+
 
             // JSON Array
             user.put("feed", feed.toJson());

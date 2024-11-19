@@ -20,6 +20,14 @@ public class Post implements JsonConvertible {
         this.user = user;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     //Getters
     public String getMessage() {
         return message;
@@ -54,6 +62,8 @@ public class Post implements JsonConvertible {
 
         return post;
     }
+
+
 
 
 }

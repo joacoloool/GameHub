@@ -39,31 +39,42 @@
             this.currentUser = user;
             achievementDefaultListModel = new DefaultListModel<>();
             feedListModel = new DefaultListModel<>();
-            updateProfile(currentUser, manager);
+            updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
         }
 
 
         ///////////////////TOM///////////////////
 
-        protected void updateProfile(User user, Manager manager) {
-            usernameNameLabel.setText(user.getNickname());
-            descriptionLabel.setText(user.getDescription());
-            Icon profileIcon = user.getProfileImage();
-            if (profileIcon != null) {
-                profileImageL.setIcon(upscaleIco(profileIcon, 179, 163));
+        protected void updateProfile(Manager manager) {
+
+            //USERNAME
+            if (currentUser.getNickname().isEmpty()){
+                usernameNameLabel.setText(currentUser.getName());
             }
+            else{
+                usernameNameLabel.setText(currentUser.getNickname());
+            }
+            //DESCRIPTION
+            descriptionLabel.setText(currentUser.getDescription());
+
+            //ICON
+            Icon profileIcon = currentUser.getProfileImage();
+            if (profileIcon != null) {
+                profileImageL.setIcon(upscaleIco(profileIcon, profileImageL.getWidth(), profileImageL.getHeight()));
+            }
+
             // Actualizar logros
             achievementDefaultListModel.clear();
             manager.verifyAchievements();
-            for (Achievement achievement : user.getMyAchievements()) {
+            for (Achievement achievement : currentUser.getMyAchievements()) {
                 achievementDefaultListModel.addElement(achievement);
             }
             achievmentList.setModel(achievementDefaultListModel);
 
             // Actualizar el feed de actividades
             feedListModel.clear();
-            ArrayList<Post> activities = user.getFeed().getPosts();
+            ArrayList<Post> activities = currentUser.getFeed().getPosts();
             for (Post activity : activities) {
                 feedListModel.addElement(activity);
             }
@@ -78,16 +89,15 @@
             }
 
             try {
-                Game game = user.getLastPlayed();
+                Game game = currentUser.getLastPlayed();
                 lastPlayedPanel.setVisible(true);
-                lastGameImage.setIcon(game.getIcon());
                 lastGameInfo.setText(game.getDescription());
                 lastGameL.setText(game.getTitle());
-                lastGameImage.setIcon(upscaleIco(game.getHeader(), lastGameImage.getWidth(), lastGameImage.getHeight()));
+                lastGameImage.setIcon(upscaleIco(game.getHeader(),lastGameImage.getWidth(),lastGameImage.getHeight()));
 
             } catch (NullPointerException e) {
                 lastPlayedPanel.setVisible(false);
-            }
+            };
 
         }
 
@@ -119,7 +129,6 @@
                 } catch (Exception ex) {
 
                 }
-
             }
         }
 
@@ -141,7 +150,7 @@
             }
 
             dialog2.setVisible(false);
-            updateProfile(currentUser, manager);
+            updateProfile(manager);
         }
 
         private void searchFileButtonMouseClicked(MouseEvent e) {
@@ -176,7 +185,7 @@
         private void postButtonMouseClicked(MouseEvent e) {
         currentUser.createPost(postField.getText());
         dialog1.setVisible(false);
-        updateProfile(currentUser, manager);
+        updateProfile(manager);
         }
 
         private void initComponents() {
@@ -225,11 +234,12 @@
             postButton = new JButton();
 
             //======== this ========
-            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-            red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
 
             //======== profile ========
             {
@@ -293,7 +303,6 @@
                         lastPlayedPanel.setFont(lastPlayedPanel.getFont().deriveFont(lastPlayedPanel.getFont().getStyle() | Font.BOLD, lastPlayedPanel.getFont().getSize() + 5f));
 
                         //---- lastGameImage ----
-                        lastGameImage.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\UTN_logo.jpg"));
                         lastGameImage.setBorder(new EtchedBorder());
                         lastGameImage.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 
@@ -534,7 +543,7 @@
                 //---- label1 ----
                 label1.setText("Change name");
                 dialog2ContentPane.add(label1, "cell 2 1");
-                dialog2ContentPane.add(modifyNameField, "cell 2 3 11 1");
+                dialog2ContentPane.add(modifyNameField, "cell 2 2 11 1");
 
                 //---- label2 ----
                 label2.setText("Change Description");

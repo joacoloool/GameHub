@@ -61,7 +61,7 @@ public class MainGUI extends JFrame {
 
     private void profileButtonMouseClicked(MouseEvent e) {//por algun motivo los botones estan invertidos y funcionan xd
         container.add(libraryGUI);
-        profileGUI.updateProfile(selectedUser, manager);
+        profileGUI.updateProfile(manager);
         profileButton.setForeground(Color.decode("#1a99eb"));
 
         if (Objects.equals(libraryButton.getForeground(), Color.decode("#1a99eb"))) {
@@ -137,9 +137,13 @@ public class MainGUI extends JFrame {
         manager.saveAllImages();
     }
 
+    private void thisWindowClosed(WindowEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         libraryButton = new JButton();
         profileButton = new JButton();
         container = new JPanel();
@@ -152,6 +156,10 @@ public class MainGUI extends JFrame {
 
         //======== this ========
         addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                thisWindowClosed(e);
+            }
             @Override
             public void windowClosing(WindowEvent e) {
                 thisWindowClosing(e);
@@ -208,13 +216,12 @@ public class MainGUI extends JFrame {
 
         //======== container ========
         {
-            container.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,container. getBorder () ) ); container. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            container.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,container. getBorder( )) ); container. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             container.setLayout(new CardLayout());
         }
 
@@ -299,7 +306,7 @@ public class MainGUI extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+    // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
     private JButton libraryButton;
     private JButton profileButton;
     private JPanel container;

@@ -39,7 +39,6 @@ public class Manager implements JsonConvertible {
     }
 
 
-
     /**
      * Getters y setters
      */
@@ -202,15 +201,16 @@ public class Manager implements JsonConvertible {
         return false;
     }
 
-    public void saveAllImages(){
-        for (User user : users)
-        {
+    public void saveAllImages() {
+        for (User user : users) {
             user.saveAllImages();
         }
     }
 
-    public void loadAllImages(){
-
+    public void loadAllImages() {
+        for (User user : users) {
+            user.loadAllImages();
+        }
     }
 
     @Override
@@ -229,4 +229,6 @@ public class Manager implements JsonConvertible {
 
         return manager;
     }
+
+
 }
