@@ -3,146 +3,160 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 64,
+      "count": 96,
       "description": "Add your first game.",
-      "id": 53,
+      "id": 85,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 64,
+      "count": 96,
       "description": "Get 10 games.",
-      "id": 54,
+      "id": 86,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 64,
+      "count": 96,
       "description": "Reach 50 games.",
-      "id": 55,
+      "id": 87,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 64,
+      "count": 96,
       "description": "Get to 100 games.",
-      "id": 56,
+      "id": 88,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 64,
+      "count": 96,
       "description": "Reach 200 games.",
-      "id": 57,
+      "id": 89,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 64,
+      "count": 96,
       "description": "Surpass 500 games.",
-      "id": 58,
+      "id": 90,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 64,
+      "count": 96,
       "description": "Create your first post.",
-      "id": 59,
+      "id": 91,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 64,
+      "count": 96,
       "description": "Reach 10 posts.",
-      "id": 60,
+      "id": 92,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 64,
+      "count": 96,
       "description": "Get to 50 posts.",
-      "id": 61,
+      "id": 93,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 64,
+      "count": 96,
       "description": "Publish 100 posts.",
-      "id": 62,
+      "id": 94,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 64,
+      "count": 96,
       "description": "Reach 500 posts.",
-      "id": 63,
+      "id": 95,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 64,
+      "count": 96,
       "description": "Open your first game and start the adventure!",
-      "id": 48,
+      "id": 80,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 64,
+      "count": 96,
       "description": "Open any game 10 times.",
-      "id": 49,
+      "id": 81,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 64,
+      "count": 96,
       "description": "Open a game 50 times.",
-      "id": 50,
+      "id": 82,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 64,
+      "count": 96,
       "description": "Open games 100 times in total.",
-      "id": 51,
+      "id": 83,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 64,
+      "count": 96,
       "description": "Open a game 500 times.",
-      "id": 52,
+      "id": 84,
       "type": "GAME_LAUNCHES"
     }
   ],
-  "users": [{
-    "feed": {"post": [{
-      "fav": false,
-      "message": "a1",
-      "user": "JJAJAJ COMO ME GUSTA EL PORNO GAY"
-    }]},
-    "password": "123412",
-    "favoriteAchievements": 0,
-    "name": "a1",
-    "nickname": "a1",
-    "friend": [],
-    "description": "",
-    "gameList": [],
-    "id": 2,
-    "gamesQuant": 0
-  }]
+  "users": [
+    {
+      "feed": {"post": []},
+      "password": "123123",
+      "favoriteAchievements": 0,
+      "name": "a",
+      "nickname": "a",
+      "friend": [],
+      "description": "",
+      "gameList": [],
+      "id": 2,
+      "gamesQuant": 0
+    },
+    {
+      "feed": {"post": [{
+        "fav": false,
+        "message": "a1",
+        "user": "JJAJAJ COMO ME GUSTA EL PORNO GAY"
+      }]},
+      "password": "123412",
+      "favoriteAchievements": 0,
+      "name": "a1",
+      "nickname": "a1",
+      "friend": [],
+      "description": "",
+      "gameList": [],
+      "id": 2,
+      "gamesQuant": 0
+    }
+  ]
 }
