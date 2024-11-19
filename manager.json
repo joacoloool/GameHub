@@ -3,129 +3,129 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 432,
+      "count": 592,
       "description": "Add your first game.",
-      "id": 421,
+      "id": 581,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 432,
+      "count": 592,
       "description": "Get 10 games.",
-      "id": 422,
+      "id": 582,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 432,
+      "count": 592,
       "description": "Reach 50 games.",
-      "id": 423,
+      "id": 583,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 432,
+      "count": 592,
       "description": "Get to 100 games.",
-      "id": 424,
+      "id": 584,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 432,
+      "count": 592,
       "description": "Reach 200 games.",
-      "id": 425,
+      "id": 585,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 432,
+      "count": 592,
       "description": "Surpass 500 games.",
-      "id": 426,
+      "id": 586,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 432,
+      "count": 592,
       "description": "Create your first post.",
-      "id": 427,
+      "id": 587,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 432,
+      "count": 592,
       "description": "Reach 10 posts.",
-      "id": 428,
+      "id": 588,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 432,
+      "count": 592,
       "description": "Get to 50 posts.",
-      "id": 429,
+      "id": 589,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 432,
+      "count": 592,
       "description": "Publish 100 posts.",
-      "id": 430,
+      "id": 590,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 432,
+      "count": 592,
       "description": "Reach 500 posts.",
-      "id": 431,
+      "id": 591,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 432,
+      "count": 592,
       "description": "Open your first game and start the adventure!",
-      "id": 416,
+      "id": 576,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 432,
+      "count": 592,
       "description": "Open any game 10 times.",
-      "id": 417,
+      "id": 577,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 432,
+      "count": 592,
       "description": "Open a game 50 times.",
-      "id": 418,
+      "id": 578,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 432,
+      "count": 592,
       "description": "Open games 100 times in total.",
-      "id": 419,
+      "id": 579,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 432,
+      "count": 592,
       "description": "Open a game 500 times.",
-      "id": 420,
+      "id": 580,
       "type": "GAME_LAUNCHES"
     }
   ],
@@ -140,6 +140,11 @@
         "fav": false,
         "message": "123",
         "user": "123123123123"
+      },
+      {
+        "fav": false,
+        "message": "123",
+        "user": "asdsasd"
       }
     ]},
     "password": "123123",
@@ -147,23 +152,58 @@
     "name": "123",
     "nickname": "Newbie",
     "description": " Youtube Instagram [www.instagram.com]123123",
-    "gameList": [{
-      "lastTime": "2024-11-18 20:48:16.845338",
-      "appidIGDB": "242408",
-      "releaseDate": "21 Aug, 2012",
-      "description": "For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.",
-      "title": "Counter-Strike 2",
-      "gameLaunches": 0,
-      "url": "",
-      "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike 2.url",
-      "appid": "730",
-      "genre": "UNKNOWN",
-      "id": 0,
-      "favorite": false,
-      "countID": 2
-    }],
+    "gameList": [
+      {
+        "lastTime": "2024-11-18 21:30:52.6097795",
+        "appidIGDB": "241",
+        "releaseDate": "1 Nov, 2000",
+        "icon": "javax.swing.ImageIcon@6ab778a",
+        "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
+        "title": "Counter-Strike",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
+        "appid": "10",
+        "genre": "UNKNOWN",
+        "id": 0,
+        "favorite": false,
+        "countID": 4
+      },
+      {
+        "lastTime": "2024-11-18 21:33:02.0279771",
+        "appidIGDB": "164290",
+        "releaseDate": "20 Sep, 2024",
+        "icon": "javax.swing.ImageIcon@4e3958e7",
+        "description": "Develop, expand, and advance your city in a society survival game set 30 years after an apocalyptic blizzard ravaged Earth. In Frostpunk 2, you face not only the perils of never-ending winter, but also the powerful factions that watch your every step inside the Council Hall.",
+        "title": "Frostpunk 2",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Frostpunk 2.lnk",
+        "appid": "1601580",
+        "genre": "STRATEGY",
+        "id": 0,
+        "favorite": false,
+        "countID": 4
+      },
+      {
+        "lastTime": "2024-11-18 21:34:03.9174507",
+        "appidIGDB": "242408",
+        "releaseDate": "21 Aug, 2012",
+        "icon": "javax.swing.ImageIcon@6bc32d04",
+        "description": "For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.",
+        "title": "Counter-Strike 2",
+        "gameLaunches": 0,
+        "url": "",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike 2.url",
+        "appid": "730",
+        "genre": "SHOOTER",
+        "id": 0,
+        "favorite": false,
+        "countID": 4
+      }
+    ],
     "id": 0,
-    "gamesQuant": 1,
+    "gamesQuant": 3,
     "friends": []
   }]
 }

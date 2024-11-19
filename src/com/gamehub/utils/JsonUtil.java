@@ -189,6 +189,7 @@ public class JsonUtil {
         game.setGenre(genre);
         game.setLastTime(Timestamp.valueOf(u.getString("lastTime")));
         Game.setCountID(u.getInt("countID"));
+        game.setIcon(game.extractIcon());
         //count id
         //Icon
         return game;

@@ -67,7 +67,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {comp lastGameImage:::p:206:p, space :::p, par l {seq {comp lastGameL:::p:316:p, space :0:32:x}, comp scrollPane3::::348:x}}}"
-						"$verticalGroup": "par l {seq {space :::p, comp lastGameL:::p:29:p, space :::p, comp scrollPane3::::81:x, space :::p}, comp lastGameImage::l::128:x}"
+						"$verticalGroup": "par l {seq {space :::p, comp lastGameL:::p:29:p, space :::p, comp scrollPane3:::::x, space :::p}, comp lastGameImage::l:p:128:p}"
 					} ) {
 						name: "lastPlayedPanel"
 						"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 30, false ), "Last Played", 0, 0 )

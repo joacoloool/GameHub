@@ -83,7 +83,6 @@ public class Game implements JsonConvertible {
         if (lastTime == null) {
             this.lastTime = Timestamp.valueOf(LocalDateTime.now());
         }
-
     }
 
     //Getters
@@ -133,8 +132,12 @@ public class Game implements JsonConvertible {
         return description;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public String getGenre() {
+        if (genre != null) {
+            System.out.println(genre.name());
+            return genre.name();
+        }
+        return "UNKNOWN"; // Si no hay valor, devuelve algo predeterminado
     }
 
     public Timestamp getLastTime() {
