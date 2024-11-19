@@ -32,7 +32,8 @@
         DefaultListModel<Post> feedListModel;
         DefaultListModel<Achievement> achievementDefaultListModel;
         DefaultListModel<User> friendDefaultListModel;
-        private final User currentUser;
+        private User currentUser;
+        private User friendProfile;
         private final Manager manager;
 
 
@@ -45,6 +46,13 @@
             friendDefaultListModel = new DefaultListModel<>();
             updateProfile(manager);
             achievmentList.setCellRenderer(new AchievementCellRender());
+        }
+
+
+        public void viewFriendProfile(String friendName){
+
+            friendProfile = manager.getUserByName(friendName);
+            updateProfile(manager);
         }
 
 
@@ -236,11 +244,28 @@
 
         }
 
+        private void goBackButtonMouseClicked(MouseEvent e) {
+
+        }
+
+        private void friendListMouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2) {
+                JList<User> list = (JList<User>) e.getSource();
+                int index = list.locationToIndex(e.getPoint());
+                if (index != -1) {
+                    User selectedUser  = list.getModel().getElementAt(index);
+                    viewFriendProfile(selectedUser.getNickname());
+                }
+
+
+            }
+        }
+
 
 
         private void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-            // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+            // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
             profile = new JScrollPane();
             group = new JPanel();
             usernameNameLabel = new JLabel();
@@ -264,6 +289,7 @@
             lastAchievementImage = new JLabel();
             lastAchievementName = new JLabel();
             addFriendButton = new JButton();
+            goBackButton = new JButton();
             dialog2 = new JDialog();
             label1 = new JLabel();
             modifyNameField = new JTextField();
@@ -293,13 +319,13 @@
             exceptionLabel = new JLabel();
 
             //======== this ========
-            setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
-            ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
 
             //======== profile ========
             {
@@ -346,6 +372,12 @@
                         friendList.setBorder(new LineBorder(new Color(0x34000000, true), 2));
                         friendList.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         friendList.setFont(friendList.getFont().deriveFont(friendList.getFont().getStyle() & ~Font.BOLD, friendList.getFont().getSize() + 1f));
+                        friendList.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                friendListMouseClicked(e);
+                            }
+                        });
                         friendScrollPanel.setViewportView(friendList);
                     }
 
@@ -471,12 +503,23 @@
                         }
                     });
 
+                    //---- goBackButton ----
+                    goBackButton.setText("<");
+                    goBackButton.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            goBackButtonMouseClicked(e);
+                        }
+                    });
+
                     GroupLayout groupLayout = new GroupLayout(group);
                     group.setLayout(groupLayout);
                     groupLayout.setHorizontalGroup(
                         groupLayout.createParallelGroup()
                             .addGroup(groupLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+                                .addGap(23, 23, 23)
+                                .addComponent(goBackButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(groupLayout.createParallelGroup()
                                     .addGroup(groupLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -536,7 +579,9 @@
                                             .addGroup(groupLayout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
                                                 .addComponent(descriptionLabel, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(profileImageL, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(groupLayout.createParallelGroup()
+                                        .addComponent(goBackButton)
+                                        .addComponent(profileImageL, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(37, 37, 37)
                                 .addComponent(logroTextLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -852,7 +897,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Joaquin Albornoz
+        // Generated using JFormDesigner Evaluation license - VALERIA MARQUEZ
         private JScrollPane profile;
         private JPanel group;
         private JLabel usernameNameLabel;
@@ -876,6 +921,7 @@
         private JLabel lastAchievementImage;
         private JLabel lastAchievementName;
         private JButton addFriendButton;
+        private JButton goBackButton;
         private JDialog dialog2;
         private JLabel label1;
         private JTextField modifyNameField;

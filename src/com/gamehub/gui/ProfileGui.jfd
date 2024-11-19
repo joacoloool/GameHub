@@ -12,8 +12,8 @@ new FormModel {
 				name: "profile"
 				"horizontalScrollBarPolicy": 31
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:42:p, par l {seq l {space :0:0:x, comp createPostButton:::p::p}, seq {comp profileImageL:::p:179:p, space :p:31:p, par l {comp usernameNameLabel:::p::p, comp descriptionLabel::t:p:392:p}, space :26:26:p}, seq {comp lastPlayedPanel:::p::p, space :0:0:x}, comp feedScrollPanel:::::x}, par l {seq t {space :::p, comp modifyProfileButton:::p:120:p, space :p:167:p}, seq {par l {seq {space :p:34:p, comp lastAchievementImage:::p:72:p, space u:::p, comp lastAchievementName:::p:88:p}, seq l {space :p:104:p, par l {comp scrollPane1:::p:200:p, comp logroTextLabel::l:p:66:p, par t:l::p {seq {comp FriendsTextLabel:::p:66:p, space :::x, comp addFriendButton:::p::p}, comp friendScrollPanel::l:p:200:p}}}}, space :p:115:p}}}}"
-					"$verticalGroup": "par l {seq t {space :p:18:p, par t {seq {par b {comp usernameNameLabel::b:p:35:p, comp modifyProfileButton::b:p::p}, par l {seq l {space :p:42:p, comp lastAchievementName:::p:32:p}, seq l {space :p:32:p, comp lastAchievementImage:::p:56:p}, seq l {space s:::p, comp descriptionLabel:::p:110:p}}}, comp profileImageL:::p:163:p}, space :p:37:p, comp logroTextLabel:::p:32:p, space :::p, par t {comp lastPlayedPanel:::p::p, comp scrollPane1:::p:194:p}, space :p:35:p, par l {seq {space :p:6:p, comp createPostButton:::p::p, space :::p, comp feedScrollPanel:::p:150:p}, seq {par b {comp FriendsTextLabel::b:p:32:p, comp addFriendButton::b:p::p}, space :::p, comp friendScrollPanel:::p:148:p}}, space :p:401:p}}"
+					"$horizontalGroup": "par l {seq l {space :p:23:p, comp goBackButton:::p:39:p, space s:::p, par l {seq l {space :0:0:x, comp createPostButton:::p::p}, seq {comp profileImageL:::p:179:p, space :p:31:p, par l {comp usernameNameLabel:::p::p, comp descriptionLabel::t:p:392:p}, space :26:26:p}, seq {comp lastPlayedPanel:::p::p, space :0:0:x}, comp feedScrollPanel:::::x}, par l {seq t {space :::p, comp modifyProfileButton:::p:120:p, space :p:167:p}, seq {par l {seq {space :p:34:p, comp lastAchievementImage:::p:72:p, space u:::p, comp lastAchievementName:::p:88:p}, seq l {space :p:104:p, par l {comp scrollPane1:::p:200:p, comp logroTextLabel::l:p:66:p, par t:l::p {seq {comp FriendsTextLabel:::p:66:p, space :::x, comp addFriendButton:::p::p}, comp friendScrollPanel::l:p:200:p}}}}, space :p:115:p}}}}"
+					"$verticalGroup": "par l {seq t {space :p:18:p, par t {seq {par b {comp usernameNameLabel::b:p:35:p, comp modifyProfileButton::b:p::p}, par l {seq l {space :p:42:p, comp lastAchievementName:::p:32:p}, seq l {space :p:32:p, comp lastAchievementImage:::p:56:p}, seq l {space s:::p, comp descriptionLabel:::p:110:p}}}, par l:t {comp goBackButton:::p::p, comp profileImageL:::p:163:p}}, space :p:37:p, comp logroTextLabel:::p:32:p, space :::p, par t {comp lastPlayedPanel:::p::p, comp scrollPane1:::p:194:p}, space :p:35:p, par l {seq {space :p:6:p, comp createPostButton:::p::p, space :::p, comp feedScrollPanel:::p:150:p}, seq {par b {comp FriendsTextLabel::b:p:32:p, comp addFriendButton::b:p::p}, space :::p, comp friendScrollPanel:::p:148:p}}, space :p:401:p}}"
 				} ) {
 					name: "group"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 13, false )
@@ -53,6 +53,7 @@ new FormModel {
 							"border": new javax.swing.border.LineBorder( new java.awt.Color( 0, 0, 0, 52 ), 2, false )
 							"cursor": #Cursor1
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 1, false )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "friendListMouseClicked", true ) )
 						} )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -137,6 +138,12 @@ new FormModel {
 						name: "addFriendButton"
 						"text": "Add Friend"
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addFriendButtonMouseClicked", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "goBackButton"
+						"text": "<"
+						"visible": false
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "goBackButtonMouseClicked", true ) )
 					} )
 				} )
 			} )

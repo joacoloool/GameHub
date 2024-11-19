@@ -3,182 +3,174 @@
     {
       "condition": 1,
       "name": "Newbie",
-      "count": 416,
+      "count": 176,
       "description": "Add your first game.",
-      "id": 405,
+      "id": 165,
       "type": "GAMES"
     },
     {
       "condition": 10,
       "name": "Empezando el Vicio",
-      "count": 416,
+      "count": 176,
       "description": "Get 10 games.",
-      "id": 406,
+      "id": 166,
       "type": "GAMES"
     },
     {
       "condition": 50,
       "name": "Ballena Jr.",
-      "count": 416,
+      "count": 176,
       "description": "Reach 50 games.",
-      "id": 407,
+      "id": 167,
       "type": "GAMES"
     },
     {
       "condition": 100,
       "name": "Biblioteca Insana",
-      "count": 416,
+      "count": 176,
       "description": "Get to 100 games.",
-      "id": 408,
+      "id": 168,
       "type": "GAMES"
     },
     {
       "condition": 200,
       "name": "Archivador Supremo",
-      "count": 416,
+      "count": 176,
       "description": "Reach 200 games.",
-      "id": 409,
+      "id": 169,
       "type": "GAMES"
     },
     {
       "condition": 500,
       "name": "Fachabiblioteca",
-      "count": 416,
+      "count": 176,
       "description": "Surpass 500 games.",
-      "id": 410,
+      "id": 170,
       "type": "GAMES"
     },
     {
       "condition": 1,
       "name": "Primer Bait",
-      "count": 416,
+      "count": 176,
       "description": "Create your first post.",
-      "id": 411,
+      "id": 171,
       "type": "POSTS"
     },
     {
       "condition": 10,
       "name": "Baitmaster",
-      "count": 416,
+      "count": 176,
       "description": "Reach 10 posts.",
-      "id": 412,
+      "id": 172,
       "type": "POSTS"
     },
     {
       "condition": 50,
       "name": "Mini Influencer",
-      "count": 416,
+      "count": 176,
       "description": "Get to 50 posts.",
-      "id": 413,
+      "id": 173,
       "type": "POSTS"
     },
     {
       "condition": 100,
       "name": "Forero Facha",
-      "count": 416,
+      "count": 176,
       "description": "Publish 100 posts.",
-      "id": 414,
+      "id": 174,
       "type": "POSTS"
     },
     {
       "condition": 500,
       "name": "Taringuero",
-      "count": 416,
+      "count": 176,
       "description": "Reach 500 posts.",
-      "id": 415,
+      "id": 175,
       "type": "POSTS"
     },
     {
       "condition": 1,
       "name": "Dame Masa",
-      "count": 416,
+      "count": 176,
       "description": "Open your first game and start the adventure!",
-      "id": 400,
+      "id": 160,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 10,
       "name": "Casi Main",
-      "count": 416,
+      "count": 176,
       "description": "Open any game 10 times.",
-      "id": 401,
+      "id": 161,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 50,
       "name": "Tryhard",
-      "count": 416,
+      "count": 176,
       "description": "Open a game 50 times.",
-      "id": 402,
+      "id": 162,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 100,
       "name": "Full Vicio",
-      "count": 416,
+      "count": 176,
       "description": "Open games 100 times in total.",
-      "id": 403,
+      "id": 163,
       "type": "GAME_LAUNCHES"
     },
     {
       "condition": 500,
       "name": "Gordo Virgo",
-      "count": 416,
+      "count": 176,
       "description": "Open a game 500 times.",
-      "id": 404,
+      "id": 164,
       "type": "GAME_LAUNCHES"
     }
   ],
   "users": [
     {
       "feed": {"post": []},
-      "password": "12345678",
+      "password": "123123",
       "favoriteAchievements": 0,
       "name": "a",
       "nickname": "a",
       "description": "",
+      "gameList": [],
+      "id": 4,
+      "gamesQuant": 0,
+      "friends": []
+    },
+    {
+      "feed": {"post": [{
+        "fav": false,
+        "message": "b",
+        "user": "asdasdasdasd"
+      }]},
+      "password": "123123",
+      "favoriteAchievements": 0,
+      "name": "b",
+      "nickname": "bebe",
+      "description": "asdasdasdasdasd",
       "gameList": [{
-        "lastTime": "2024-11-18 21:41:40.5822193",
-        "appidIGDB": "119455",
-        "releaseDate": "6 Jun, 2019",
-        "icon": "javax.swing.ImageIcon@51f116b8",
-        "description": "Quake II RTX is a cutting-edge, ray-traced reimagining of id software\u2019s old school classic, by NVIDIA\u2019s Lightspeed Studios. Global lighting effects, including realistic reflections, refraction, shadows, ambient occlusion and global illumination are a result of the path-traced simulation of light.",
-        "title": "Quake II RTX",
+        "lastTime": "2024-11-19 00:25:59.5152607",
+        "appidIGDB": "241",
+        "releaseDate": "1 Nov, 2000",
+        "icon": "javax.swing.ImageIcon@38102d01",
+        "description": "Play the world's number 1 online action game. Engage in an incredibly realistic brand of terrorist warfare in this wildly popular team-based game. Ally with teammates to complete strategic missions. Take out enemy sites. Rescue hostages. Your role affects your team's success. Your team's success affects your role.",
+        "title": "Counter-Strike",
         "gameLaunches": 0,
         "url": "",
-        "path": "C:\\Users\\joaal\\OneDrive\\Escritorio\\Quake II RTX.url",
-        "appid": "1089130",
+        "path": "C:\\Users\\Administrator\\Desktop\\Games\\Counter-Strike.url",
+        "appid": "10",
         "genre": "ACTION",
         "id": 0,
         "favorite": false,
-        "countID": 5
+        "countID": 2
       }],
-      "id": 1,
+      "id": 4,
       "gamesQuant": 1,
-      "friends": []
-    },
-    {
-      "feed": {"post": []},
-      "password": "1234512",
-      "favoriteAchievements": 0,
-      "name": "b",
-      "nickname": "b",
-      "description": "",
-      "gameList": [],
-      "id": 5,
-      "gamesQuant": 0,
-      "friends": []
-    },
-    {
-      "feed": {"post": []},
-      "password": "12345678",
-      "favoriteAchievements": 0,
-      "name": "jose1234",
-      "nickname": "jose1234",
-      "description": "",
-      "gameList": [],
-      "id": 2,
-      "gamesQuant": 0,
       "friends": []
     }
   ]
